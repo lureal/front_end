@@ -1,0 +1,366 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+
+<div class="wrapper">
+	{% include '../../modules/header.html' %}
+	{% include '../../modules/sidebar.html' %}
+
+	<div class="content-wrapper">
+		<section class="content-header">
+			<h1>信息概览</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i>信息概览</a></li>
+			</ol>
+		</section>
+		<section class="content">
+			<div class="row">
+				<div class="col-md-6 overview-count-ad" id="overview-count-ad">
+					<div class="info-box">
+						<div class="info-box-content">
+							<ul class="nav nav-pills" id="overview-count-title"></ul>
+							<div id="overview-count-data"></div>
+							<div class="col-sm-1 col-xs-12 ovplatform-btn z-hidden wbshowflag">
+							<i class="fa  fa-chevron-right fa-lg" aria-hidden="true"></i>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="box">
+
+						<!-- 所有平台图表 -->
+						<div class="box-body" id="overview">
+							<div class="row">
+								<div class="col-xs-12 box-toolbar last">
+									<div class="form-inline">
+										<div class="form-group">
+											<input type="text" class="form-control pull-right" id="delivery-overview-datepicker" placeholder="选择日期" style="width: 183px;">
+										</div>
+
+										<!-- 搜索按钮 -->
+										<div class="form-group">
+											<a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row platform-data">
+								<div class="col-md-12">
+
+									<!-- 图表统计 -->
+									<div class="col-md-4 chart-stastic" id="overview-platform-text">
+									</div>
+
+									<!-- 图表 -->
+									<div class="col-md-8">
+										<!-- <p class="text-center title">图表</p> -->
+										<div class="chart" id="overview-chart-wrap"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row platform-data" style="display:none;" id="table-data2">
+								<div class="col-md-12">
+
+									<!-- 图表统计 -->
+									<div class="col-md-4 chart-stastic" id="overview-platform-text1">
+									</div>
+
+									<!-- 图表 -->
+									<div class="col-md-8">
+										<div class="chart" id="overview-chart-wrap1"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row platform-data" style="display:none;" id="table-data3">
+								<div class="col-md-12">
+
+									<!-- 图表统计 -->
+									<div class="col-md-4 chart-stastic" id="overview-platform-text2">
+									</div>
+
+									<!-- 图表 -->
+									<div class="col-md-8">
+										<div class="chart" id="overview-chart-wrap2"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	{% include '../../modules/copyright.html' %}
+	{% include '../../modules/modal.html' %}
+
+	<!--概览顶部栏模板：显示特定平台的投放，审核和未通过数量说-->
+	<script type="text/template" id="overview-count-title-tpl">
+		<li class="active" weiboflag id="weibo"><a href="javascript:void(0);"><%= data['1']%></a></li>
+		<li class="active" tengxunflag style="display:none;" id="tengxun"><a href="javascript:void(0);"><%= data['2']%></a></li>
+		<li class="active" sinaflag style="display:none;" id="sina"><a href="javascript:void(0);"><%= data['3'] %></a></li>			
+	</script>
+
+	<script type="text/template" id="overview-count-data-tpl">
+		<span class="devote">投放中
+			<strong><%= data.validCount %>个</strong>
+		</span>
+		<span class="audit">
+			待审核<strong><%= data.verifyingCount %>个</strong>
+		</span>
+		<span>未通过
+			<strong><%= data.invalidCount %>个</strong>
+		</span>
+	</script>
+
+	<!-- 微博WAX -->
+	<script type="text/template" id="overview-platform-text-tpl">
+		<p class="text-center title"><strong><%= data.records[0].platformName  %></strong></p>
+			<% if(data.records[0].consume !== null || data.records[0].showCount !== null ||data.records[0].interactCount !== null || data.records[0].interactRatio !== null || data.records[0].interactPrice !== null || data.records[0].clickCount !== null || data.records[0].clickPrice !== null || data.records[0].downloadCount !== null ){ %>
+				<ul class="data">
+					<% if(data.records[0].showCount !== null) { %>
+						<li>
+							曝光量：
+							<span class="label label-warning pull-right"><%= data.records[0].showCount %></span>
+						</li>
+					<% } %>
+					<% if(data.records[0].interactCount !== null) { %>
+						<li>
+							互动量
+							<span class="label label-warning pull-right"><%= data.records[0].interactCount %></span>
+						</li>
+					<% } %>
+					<% if(data.records[0].interactRatio !== null) { %>
+						<li>
+							互动率
+							<span class="label label-warning pull-right"><%= (data.records[0].interactRatio *100).toFixed(2)  %>%</span>
+						</li>
+					<% } %>
+					<% if(data.records[0].interactPrice !== null) { %>
+						<li>
+							互动成本
+							<span class="label label-warning pull-right"><%= (data.records[0].interactPrice)/100 %></span>
+						</li>
+					<% } %>
+					<% if(data.records[0].clickCount !== null) { %>
+						<li>
+							点击量
+							<span class="label label-warning pull-right"><%= data.records[0].clickCount %></span>
+						</li>
+					<% } %>
+					<% if(data.records[0].clickRatio !== null) { %>
+						<li>
+							点击率
+							<span class="label label-warning pull-right"><%= (data.records[0].clickRatio*100).toFixed(2) %>%</span>
+						</li>
+					<% } %>
+					<% if(data.records[0].clickPrice !== null) { %>
+						<li>
+							点击均价
+							<span class="label label-warning pull-right"><%= (data.records[0].clickPrice)/100 %></span>
+						</li>
+					<% } %>
+					<% if(data.records[0].downloadCount !== null) { %>
+						<li>
+							下载量
+							<span class="label label-warning pull-right"><%= data.records[0].downloadCount %></span>
+						</li>
+					<% } %>
+					<% if(data.records[0].consume !== null) { %>
+						<li>
+							消耗
+							<span class="label label-warning pull-right"><%= (data.records[0].consume)/100 %></span>
+						</li>
+					<% } %>
+				</ul>
+			<% } %>
+
+		<% if(data.records[0].consume  === null && data.records[0].showCount === null && data.records[0].interactCount === null && data.records[0].interactRatio === null && data.records[0].interactPrice === null && data.records[0].clickCount === null && data.records[0].clickPrice === null && data.records[0].downloadCount === null) { %>
+			<div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+		<% } %>  
+	</script>
+
+	<!-- 腾讯ADX -->
+	<script type="text/template" id="overview-platform-text-tpl1">
+		<p class="text-center title"><strong><%= data.records[1].platformName  %></strong></p>
+			<% if(data.records[1].consume !== null || data.records[1].showCount !== null ||data.records[1].interactCount !== null || data.records[1].interactRatio !== null || data.records[1].interactPrice !== null || data.records[1].clickCount !== null || data.records[1].clickPrice !== null || data.records[1].downloadCount !== null){ %>
+				<ul class="data">
+					<li>
+						曝光量：
+						<span class="label label-warning pull-right"><%= data.records[1].showCount %></span>
+					</li>
+					<li>
+						互动量
+						<span class="label label-warning pull-right"><%= data.records[1].interactCount %></span>
+					</li>
+					<li>
+						互动率
+						<span class="label label-warning pull-right"><%= (data.records[1].interactRatio *100).toFixed(2)  %>%</span>
+					</li>
+					<li>
+						互动成本
+						<span class="label label-warning pull-right"><%= (data.records[1].interactPrice)/100 %></span>
+					</li>
+					<li>
+						点击量
+						<span class="label label-warning pull-right"><%= data.records[1].clickCount %></span>
+					</li>
+					<li>
+						点击率
+						<span class="label label-warning pull-right"><%= (data.records[1].clickRatio*100).toFixed(2) %>%</span>
+					</li>
+					<li>
+						点击均价
+						<span class="label label-warning pull-right"><%= (data.records[1].clickPrice)/100 %></span>
+					</li>
+					<li>
+						下载量
+						<span class="label label-warning pull-right"><%= data.records[1].downloadCount %></span>
+					</li>
+					<li>
+						消耗
+						<span class="label label-warning pull-right"><%= (data.records[1].consume)/100 %></span>
+					</li>
+				</ul>
+			<% } %>
+
+		<% if(data.records[1].consume  === null && data.records[1].showCount === null && data.records[1].interactCount === null && data.records[1].interactRatio === null && data.records[1].interactPrice === null && data.records[1].clickCount === null && data.records[1].clickPrice === null && data.records[1].downloadCount === null) { %>
+			<div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+		<% } %>  
+	</script>
+
+	<!-- 新浪 -->
+	<script type="text/template" id="overview-platform-text-tpl2">
+		<p class="text-center title"><strong><%= data.records[2].platformName %></strong></p>
+			<% if(data.records[2].consume !== null || data.records[2].showCount !== null ||data.records[2].interactCount !== null || data.records[2].interactRatio !== null || data.records[2].interactPrice !== null || data.records[2].clickCount !== null || data.records[2].clickPrice !== null || data.records[2].downloadCount !== null){ %>
+				<ul class="data">
+					<li>
+						曝光量：
+						<span class="label label-warning pull-right"><%= data.records[2].showCount %></span>
+					</li>
+					<li>
+						互动量
+						<span class="label label-warning pull-right"><%= data.records[2].interactCount %></span>
+					</li>
+					<li>
+						互动率
+						<span class="label label-warning pull-right"><%= (data.records[2].interactRatio *100).toFixed(2)  %>%</span>
+					</li>
+					<li>
+						互动成本
+						<span class="label label-warning pull-right"><%= (data.records[2].interactPrice)/100 %></span>
+					</li>
+					<li>
+						点击量
+						<span class="label label-warning pull-right"><%= data.records[2].clickCount %></span>
+					</li>
+					<li>
+						点击率
+						<span class="label label-warning pull-right"><%= (data.records[2].clickRatio*100).toFixed(2) %>%</span>
+					</li>
+					<li>
+						点击均价
+						<span class="label label-warning pull-right"><%= (data.records[2].clickPrice)/100 %></span>
+					</li>
+					<li>
+						下载量
+						<span class="label label-warning pull-right"><%= data.records[2].downloadCount %></span>
+					</li>
+					<li>
+						消耗
+						<span class="label label-warning pull-right"><%= (data.records[2].consume)/100 %></span>
+					</li>
+				</ul>
+			<% } %>
+
+		<% if(data.records[2].consume  === null && data.records[2].showCount === null && data.records[2].interactCount === null && data.records[2].interactRatio === null && data.records[2].interactPrice === null && data.records[2].clickCount === null && data.records[2].clickPrice === null && data.records[2].downloadCount === null) { %>
+			<div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+		<% } %>  
+	</script>
+	
+	<!-- 微博WAX图表 -->
+	<!-- 图表 -->
+	<% _.each(data.records, function(val, index) { %>
+		<script type="text/template" id="overview-chart-tpl">
+				<div class="row">
+					<div class="col-md-12 form-inline">
+						<div class="form-group" style="margin-right: 10px">
+							<select id="overview-chart-select" multiple class="form-control select2" style="width: 260px;"></select>
+						</div>
+						<button class="btn btn-default" id="overview-generate-chart">生成图表</button>
+					</div>
+					<div class="col-md-12">
+						<div class="overview-chart" id="overview-chart">
+						</div>                     
+					</div>
+				</div>
+		</script>
+	<% }); %>
+
+	<!-- 腾讯ADX图表 -->
+	<!-- 图表 -->
+	<% _.each(data.records, function(val, index) { %>
+		<script type="text/template" id="overview-chart-tpl1">
+			<div class="row">
+				<div class="col-md-12 form-inline">
+					<div class="form-group" style="margin-right: 10px">
+						<select id="overview-chart-select1" multiple class="form-control select2" style="width: 260px;"></select>
+					</div>
+					<button class="btn btn-default" id="overview-generate-chart1">生成图表</button>
+				</div>
+				<div class="col-md-12">
+					<div class="overview-chart" id="overview-chart1">
+					</div>                     
+				</div>
+			</div>
+		</script>
+	<% }); %>
+
+	<!-- sina图表 -->
+	<!-- 图表 -->
+	<% _.each(data.records, function(val, index) { %>
+		<script type="text/template" id="overview-chart-tpl2">
+			<div class="row">
+				<div class="col-md-12 form-inline">
+					<div class="form-group" style="margin-right: 10px">
+						<select id="overview-chart-select2" multiple class="form-control select2" style="width: 260px;"></select>
+					</div>
+					<button class="btn btn-default" id="overview-generate-chart2">生成图表</button>
+				</div>
+				<div class="col-md-12">
+					<div class="overview-chart" id="overview-chart2">
+					</div>                     
+				</div>
+			</div>
+		</script>
+	<% }); %>
+
+	<script type="text/template" id="type-tpl">
+		<% for(var prop in data) { %>
+			<option value="<%= prop %>"><%= data[prop]  %></option>
+		<% } %>
+	</script>
+
+	<script type="text/template" id="type-tpl1">
+		<% for(var prop in data) { %>
+			<option value="<%= prop %>"><%= data[prop]  %></option>
+		<% } %>
+	</script>
+
+	<script type="text/template" id="type-tpl2">
+		<% for(var prop in data) { %>
+			<option value="<%= prop %>"><%= data[prop]  %></option>
+		<% } %>
+	</script>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-overview.js"></script>
+{% endblock %}

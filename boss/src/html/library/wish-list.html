@@ -1,0 +1,166 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>心愿单</h1>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="col-xs-12 box-toolbar table-toolbar">
+                            <div class="form-inline">
+
+                                <!-- 藏书地点 -->
+                                <div class="form-group">
+                                    <select class="form-control select2" id="collection-place" style="width: 100%;">
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>（请选择藏书地点）</label>
+                                </div>
+
+                                <!-- 购买状态 -->
+                                <div class="form-group">
+                                    <select class="form-control select2" id="buy-state" style="width: 100%;">
+                                    </select>
+                                </div>
+                                
+                                <!-- 书名、作者名 -->
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="author" placeholder="书名，作者名">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm search-btn" id="search">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm export-btn" id="export">导出</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-body" id="wish-list">  
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="wish-list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>添加时间</th>
+                    <th>部门</th>
+                    <th>姓名</th>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+               <% _.each(data.books, function(val, index) { %>
+                <tr>
+                    <td style="vertical-align: middle;"><%= val.addDate %></td>
+                    <td style="vertical-align: middle;"><%= val.depart %></td>
+                    <td style="vertical-align: middle;"><%= val.name %></td>
+                    <td style="vertical-align: middle;"><%= val.bookName %></td>
+                    <td style="vertical-align: middle;"><%= val.author %></td>
+                    <td style="vertical-align: middle;"><%= val.bookStatus %></td>
+                    <td>
+                        <% if(val.bookStatus !== '拒绝采购' && val.bookStatus !== '已采购') { %>
+                            <a href="/#proj_name#/library/manage-wishlist-detail?id=<%= val.id %>" class="btn btn-sm btn-success" >详情</a>
+                        <% } %>
+                    </td>
+                </tr>
+               <% });%>
+            </tbody>
+        </table>
+
+        <% if(data.books.length === 0) { %>
+            <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+            <nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                        var end = data.pageCount - 1;
+                        var start = 2;
+                        var pagenum = 7;
+                        if(data.pageCount > pagenum) {
+                            var left = data.page - start;
+                            var right = end- data.page > 2 ? 2:end- data.page;
+                            if(left<2) {
+                                end = start + 4;
+                            } else if(right<2){
+                                start = end - 4;
+                            } else {
+                                start = data.page - 2;
+                                end = data.page + 2;
+                            }
+                        }   
+                        for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>
+    </script>
+
+    <!-- 藏书地点下拉框 -->
+    <script type="text/template" id="collection-place-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 购买状态下拉框 -->
+    <script type="text/template" id="buy-state-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/library-wish-list.js"></script>
+{% endblock %}

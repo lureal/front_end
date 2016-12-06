@@ -1,0 +1,79 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/service/index.html">
+                    <i class="fa fa-home"></i>设置
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);">
+                    基本信息
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content settle-info">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">基本信息</h3>
+                    </div>
+                    <div class="box-body w-box-body w-form w-form-readonly">
+                        <div class="form-horizontal clearfix w-row" data-type="input" data-id="email" data-validate="empty">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">注册邮箱</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" value="" name="name" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">姓名</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" placeholder="请填写您的姓名">
+                                </div>
+                            </div>
+                            <div class="w-field-error clearfix">
+                                <p class="col-sm-10 col-sm-offset-2">请填写正确的姓名</p>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" data-type="input" data-id="mobile" data-validate="empty,mobile">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">手机</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" placeholder="请填写您的手机号码">
+                                </div>
+                            </div>
+                            <div class="w-field-error clearfix">
+                                <p class="col-sm-10 col-sm-offset-2">请填写正确的手机号</p>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" data-type="input" data-id="address" data-validate="empty">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">联系地址</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" placeholder="请填写您的联系地址">
+                                </div>
+                            </div>
+                            <div class="w-field-error clearfix">
+                                <p class="col-sm-10 col-sm-offset-2">请填写正确的联系地址</p>
+                            </div>
+                        </div>
+                        <div class="w-form-footer clearfix">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <a href="javascript:void(0);" class="w-btn w-btn-primary" id="save" data-id="">保存</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/settle-info.js"></script>
+{% endblock %}

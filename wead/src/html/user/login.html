@@ -1,0 +1,94 @@
+{% extends '../layouts/user.html' %}
+{% block content %}
+<div class="user-login" style="display: none;">
+
+    {# 背景图 #}
+    <img class="bg" src="/#proj_name#/img/bg.jpg" alt="wead" />
+
+    {# 主体 #}
+    <div class="ctn">
+        <div class="wrap">
+
+            {# 头部 #}
+            <div class="header">
+                <img class="logo" src="/#proj_name#/img/logo-lg.png" alt="wead" />
+            </div>
+
+            {# 主体 #}
+            <div class="body">
+                <div class="username">
+                    <input class="form-control" type="text" placeholder="用户" id="username">
+                    <p class="error-tip"></p>
+                </div>
+                <div class="password">
+                    <input class="form-control" type="password" placeholder="密码" id="passwd">
+                    <p class="error-tip"></p>
+                </div>
+                <button type="button" class="w-btn login" id="login">登录</button>
+                <div class="other clearfix">
+                    <a href="javascript:void(0);" class="pull-left register" id="register">新用户注册</a>
+                    <a href="javascript:void(0);" class="pull-right forget-pwd" id="forget-pwd">忘记密码？</a>
+                </div>
+            </div>
+
+            {# 其他信息，联系客服、copyright 等等 #}
+            <div class="footer">
+                <div class="contact">如有任何疑问，请 <a href="http://p.qiao.baidu.com//im/index?siteid=6768606&ucid=10452001" target="_blank">联系客服</a></div>
+                <div class="copyright">粤ICP备15014511号 Copyright © 2016 WESDOM. All Rights Reserved</div>
+                <div class="company">深圳赚友科技有限公司</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# 新用户注册模板 #}
+<script type="text/template" id="register-tpl">
+    <div class="register-modal">
+        <h2 class="modal-diy-title">WeAD新用户注册</h2>
+        <div class="modal-diy-body">
+            <div>
+                <input type="text" class="form-control" placeholder="请输入注册邮箱" id="modal-registe-email">
+                <p class="error-tip"></p>
+            </div>
+            <div>
+                <input type="password" class="form-control" placeholder="请设置密码" id="modal-registe-passwd">
+                <p class="error-tip"></p>
+            </div>
+        </div>
+        <div class="modal-diy-footer">
+            <button class="w-btn w-btn-primary" id="modal-registe">注册</button>
+        </div>
+    </div>
+</script>
+
+{# 找回密码模板 #}
+<script type="text/template" id="find-pwd-tpl">
+    <div class="find-pwd-modal">
+        <h2 class="modal-diy-title">找回密码</h2>
+        <div class="modal-diy-body">
+            <div>
+                <input type="text" class="form-control" placeholder="请填写邮箱" id="modal-findpwd-email">
+                <p class="error-tip"></p>
+            </div>
+        </div>
+        <div class="modal-diy-footer">
+            <button class="w-btn w-btn-primary" id="modal-findpwd">申请找回密码</button>
+        </div>
+    </div>
+</script>
+
+{# 验证邮箱模板 #}
+<script type="text/template" id="verify-tpl">
+    <div class="verify-modal">
+        <h2 class="modal-diy-title">验证邮箱</h2>
+        <div class="modal-diy-body">
+            <p>重置密码邮件已发送到 <span id="verify-email"><%= email %></span></p>
+            <p>请注意查收邮件，并重置密码</p>
+        </div>
+        <div class="modal-diy-footer">
+            <button class="w-btn w-btn-primary" data-dismiss="modal" aria-label="Close">好的</button>
+        </div>
+    </div>
+</script>
+<script src="/#proj_name#/js/login.js"></script>
+{% endblock %}

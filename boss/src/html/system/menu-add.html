@@ -1,0 +1,89 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加菜单</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/system/menu-list.html"><i class="fa fa-dashboard"></i>菜单管理</a></li>
+                <li>
+                    添加菜单
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <!-- <div class="box-header with-border">
+                    <h3 class="box-title">添加菜单</h3>
+                </div> -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>名称（必须输入）</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>链接</label>
+                                <input type="text" class="form-control" placeholder="" id="link">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>图标<small>（可以填：fa fa-circle-o）</small></label>
+                                <input type="text" class="form-control" placeholder="" id="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>上级菜单</label>
+                                <select id="parentId" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>序号</label>
+                                <input type="number" class="form-control" placeholder="" id="order">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">提交</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-menu-add.js"></script>
+{% endblock %}

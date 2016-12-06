@@ -1,0 +1,193 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="banner-add">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>添加banner</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">banner管理</li>
+					<li class="active">添加banner</li>
+				</ol>
+			</section>
+
+			<section class="content" id="banner-add-content">
+				<div class="box box-default">
+	        		<div class="box-header with-border">
+	        			<h3 class="box-title">添加banner</h3>
+	        		</div>
+	        		<div class="box-body">
+
+	        			<div id="banner1">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>banner1(Banner 尺寸：480x330)</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="banner1-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<input type="text" class="form-control" placeholder="banner 描述" id="banner1-add-description">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="banner1-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_banner.do">
+										<div class="input-group">
+											<input type="file" name="bannerFile" id="banner1-img_input" accept="image/*">
+											<br>
+                                            <img id="banner1-preview" class="banner-preview" src="/#proj_name#/img/none.png" alt="" />
+                                            <br>
+											<button id="banner1-add-image" class="btn btn-primary btn-sm" type="submit">上传banner</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+	        			</div>
+
+	        			<div id="banner2">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>banner2(Banner 尺寸：475x160)</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="banner2-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<input type="text" class="form-control" placeholder="banner 描述" id="banner2-add-description">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="banner2-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_banner.do">
+										<div class="input-group">
+											<input type="file" name="bannerFile" id="banner2-img_input" accept="image/*">
+											<br>
+                                            <img id="banner2-preview" class="banner-preview" src="/#proj_name#/img/none.png" alt="" />
+                                            <br>
+											<button id="banner2-add-image" class="btn btn-primary btn-sm" type="submit">上传banner</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+	        			</div>
+
+	        			<div id="banner3">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>banner3(Banner 尺寸：230x160)</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="banner3-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<input type="text" class="form-control" placeholder="banner 描述" id="banner3-add-description">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="banner3-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_banner.do">
+										<div class="input-group">
+											<input type="file" name="bannerFile" id="banner3-img_input" accept="image/*">
+											<br>
+                                            <img id="banner3-preview" class="banner-preview" src="/#proj_name#/img/none.png" alt="" />
+                                            <br>
+											<button id="banner3-add-image" class="btn btn-primary btn-sm" type="submit">上传banner</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+	        			</div>
+
+	        			<div id="banner4">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>banner4(Banner 尺寸：230x160)</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="banner4-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<input type="text" class="form-control" placeholder="banner 描述" id="banner4-add-description">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="banner4-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_banner.do">
+										<div class="input-group">
+											<input type="file" name="bannerFile" id="banner4-img_input" accept="image/*">
+											<br>
+                                            <img id="banner4-preview" class="banner-preview" src="/#proj_name#/img/none.png" alt="" />
+                                            <br>
+											<button id="banner4-add-image" class="btn btn-primary btn-sm" type="submit">上传banner</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+	        			</div>
+
+	        			<div id="banner5">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>banner5</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="banner5-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<input type="text" class="form-control" placeholder="banner 描述" id="banner5-add-description">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="banner5-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_banner.do">
+										<div class="input-group">
+											<input type="file" name="bannerFile" id="banner5-img_input" accept="image/*">
+											<br>
+                                            <img id="banner5-preview" class="banner-preview" src="/#proj_name#/img/none.png" alt="" />
+                                            <br>
+											<button id="banner5-add-image" class="btn btn-primary btn-sm" type="submit">上传banner</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+	        			</div>
+
+	        		</div>
+
+	        		<div class="box-footer">
+						<button class="btn btn-default" id="banner-add-canel">取消</button>
+						<button class="btn btn-info pull-left" id="banner-add-submit" data-img="">添加</button>
+	        		</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+    </div>
+{% endblock %}

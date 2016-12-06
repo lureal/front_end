@@ -1,0 +1,288 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/finance/detail.html">
+                    <i class="fa fa-home"></i>财务管理
+                </a>
+            </li>
+            <li>
+                <a href="/#proj_name#/html/finance/invoice.html">
+                    索取发票
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);">
+                    填写发票信息
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content get-invoice">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box w-box-primary">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">填写发票信息</h3>
+                    </div>
+                    <div class="box-body w-box-body w-form w-form-readonly">
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">发票内容</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="信息服务费" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" data-type="input" data-id="amount" data-validate="empty">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">发票金额</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" placeholder="请填写发票金额">
+                                </div>
+                            </div>
+                            <div class="w-field-error clearfix">
+                                <p class="col-sm-10 col-sm-offset-2">请确保输入正确的发票金额（不能小于 100 元，且不能大于可开发票金额）</p>
+                            </div>
+                            <div class="w-field-tip clearfix">
+                                <p class="col-sm-4 col-sm-offset-2">当前可开具发票金额 <span id="surplus"></span> 元</p>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">发票类型</label>
+                                <div class="col-sm-4 w-field-content w-field-select">
+                                    <select class="form-control w-field-input" id="invoice-select">
+                                        <option value="1">增值税专用发票</option>
+                                        <option value="2">增值税普通发票</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# 增值税专用发票 #}
+                        <div class="special-invoice">
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="textarea" data-id="companyName" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">公司名称</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="请填写公司名称"></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的公司名称</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="companyAddress" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">公司地址</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写公司地址">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的公司地址</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="companyPhone" data-validate="empty,phone">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">公司电话</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写公司电话">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的公司电话</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="taxno" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">税务登记证号</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写税务登记证号">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的税务登记证号</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="bank" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">开户银行</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写开户银行">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的开户银行</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="account" data-validate="empty,bank">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">银行账号</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写银行账号">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的银行账号</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="image" data-id="businessLicense" data-validate="">
+                                <div class="w-field w-upload-img-field clearfix">
+                                    <label class="col-sm-2 w-field-title">营业执照</label>
+                                    <div class="col-sm-4 w-field-content" id="business">
+                                        <div class="w-upload-wrap">
+                                            <input type="file" accept="image/*" id="business-upload">
+                                            <button class="w-btn w-btn-success" id="business-button">上传图片</button>
+                                        </div>
+                                        <span class="w-filename pull-right" id="business-img">
+                                            <i class="fa fa-check"></i><span></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 w-upload-preview clearfix" id="business-upload-preview">
+                                        <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+                                            <img src="" alt="上传图片" class="preview-thumbnail">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-field-tip clearfix">
+                                    <p class="col-sm-4 col-sm-offset-2">说明：支持 JPG，PNG，不要超过2M</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="image" data-id="taxCertification" data-validate="empty">
+                                <div class="w-field w-upload-img-field clearfix">
+                                    <label class="col-sm-2 w-field-title">一般纳税人证明</label>
+                                    <div class="col-sm-4 w-field-content" id="tax-certification">
+                                        <div class="w-upload-wrap">
+                                            <input type="file" accept="image/*" id="tax-certification-upload">
+                                            <button class="w-btn w-btn-success" id="tax-certification-button">上传图片</button>
+                                        </div>
+                                        <span class="w-filename pull-right" id="tax-certification-img">
+                                            <i class="fa fa-check"></i><span></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-12 w-upload-preview clearfix" id="tax-certification-upload-preview">
+                                        <div class="col-sm-4 col-sm-offset-2 col-xs-12">
+                                            <img src="" alt="上传图片" class="preview-thumbnail">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-field-tip clearfix">
+                                    <p class="col-sm-4 col-sm-offset-2">说明：支持 JPG，PNG，不要超过2M</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="recipient" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">收件人</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写收件人姓名">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的收件人</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="textarea" data-id="address" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">邮递地址</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="请填写邮递地址"></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的邮递地址</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row add-tax" data-type="input" data-id="phone" data-validate="empty,mobile">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">联系电话</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写联系电话">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的联系电话</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# 增值税普通发票 #}
+                        <div class="normal-invoice" style="display: none;">
+                            <div class="form-horizontal clearfix w-row">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">发票抬头</label>
+                                    <div class="col-sm-4 w-field-content w-field-radio" id="invoice-header-select">
+                                        <span class="pull-left">
+                                            <label>
+                                                <input type="radio" name="invoice-header" value="0" checked>公司
+                                            </label>
+                                        </span>
+                                        <span class="pull-left">
+                                            <label>
+                                                <input type="radio" name="invoice-header" value="1">个人
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row normal-tax" id="company-header" data-type="input" data-id="companyName" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title placeholder-file-title"></label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写发票抬头">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的发票抬头</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row normal-tax" data-type="input" data-id="recipient" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">收件人</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写收件人姓名">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的收件人</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row normal-tax" data-type="textarea" data-id="address" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">邮递地址</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="请填写邮递地址"></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的邮递地址</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row normal-tax" data-type="input" data-id="phone" data-validate="empty,mobile">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title">联系电话</label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写联系电话">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-sm-10 col-sm-offset-2">请确保输入正确的联系电话</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-form-footer clearfix">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="submit">提交</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/finance-get-invoice.js"></script>
+{% endblock %}

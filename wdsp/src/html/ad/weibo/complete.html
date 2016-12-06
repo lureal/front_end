@@ -1,0 +1,94 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">创建新广告</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-complete">
+
+    {# 订单数据 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <ul class="content-progress clearfix">
+                <li class="active">
+                    <div class="progress-step">
+                        <span>1</span>
+                    </div>
+                    <div class="progress-title">
+                        填写基本信息
+                        <a href="/#proj_name#/html/ad/weibo/base-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>2</span>
+                    </div>
+                    <div class="progress-title">
+                        设置推广信息
+                        <a href="/#proj_name#/html/ad/weibo/promotion-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>3</span>
+                    </div>
+                    <div class="progress-title">
+                        设置定向范围
+                        <a href="/#proj_name#/html/ad/weibo/orientation.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>4</span>
+                    </div>
+                    <div class="progress-title">
+                        设置投放时间
+                        <a href="/#proj_name#/html/ad/weibo/time-to-market.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>5</span>
+                    </div>
+                    <div class="progress-title">完成</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {# 完成 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box complete-wrap">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">第5步：完成</h3>
+                </div>
+                <div class="box-body w-box-body">
+                    <h2 class="complete-title" id="complete-text"></h2>
+                    <p class="complete-desc">（审核通过后，该订单将会在投放时间内开始投放！）</p>
+                    <div class="view-bill">
+                        <a class="w-btn w-btn-default" href="/#proj_name#/html/ad/bill.html">查看订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-weibo-complete.js"></script>
+{% endblock %}

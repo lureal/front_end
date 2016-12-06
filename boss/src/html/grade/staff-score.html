@@ -1,0 +1,122 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>主管评分</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i>环评打分</li>
+                <li><i class="fa fa-dashboard"></i>主管评分</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body" id="staff-score">
+                            <div class="row">
+                                <div class="col-sm-12" id="staff-table">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button class="btn btn-default" id="save">保存</button>
+                            <button class="btn btn-info pull-left" id="commit">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="staff-table-tpl">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <% _.each(data.staffs, function(val, index) { %>
+                    <li>
+                        <a href="#<%= val.departId%>" data-toggle="tab"><%= val.departName%></a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <% _.each(data.staffs, function(val, index) { %>
+                <div class="tab-pane fade in" id="<%= val.departId %>" data-departId="<%= val.departId%>" style="overflow:hidden;">
+                    <table class="table table-bordered dataTable">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>评分类别</th>
+                                <th>主管评分</th>
+                                <th>自评分</th>
+                                <th>工作建议</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%_.each(data.staffs[index].gradeUsers, function(val, index) { %>
+                                <tr data-userId="<%= val.userId%>" class="tableTr">
+                                    <td rowspan="2" style="vertical-align: middle;text-align: center">
+                                        <%= val.userName%>
+                                    </td>
+                                    <td style="vertical-align: middle;text-align: center">能力</td>
+                                    <td>
+                                        <input type="number" class="form-control ability" value=<%= val.mgrAbilityScore%> data-userId="<%= val.userId%>" min=1 max=5>
+                                    </td>
+                                    <td><%= val.myAbilityScore%></td>
+                                    <td rowspan="2">
+                                        <textarea class="form-control suggest" rows="4" data-userId="<%= val.userId%>"><%= val.suggest%></textarea>
+                                    </td>
+                                </tr>
+                                <tr data-userId="<%= val.userId%>" class="tableTr1">
+                                    <td style="vertical-align: middle;text-align:center">态度</td>
+                                    <td>
+                                        <input type="number" class="form-control attitude" value=<%= val.mgrAttitudeScore %> min=1 max=5>
+                                    </td>
+                                    <td><%= val.myAttitudeScore%></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    <% if(data.staffs[index].gradeUsers.length === 0) { %>
+                        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+                    <% } %>
+                </div>
+            <% }); %>
+        </div>
+    </script>
+
+   <div class="modal fade" id="modal-tpl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">确认提交</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="w-filed ">
+                       <p>确认提交后将无法再次修改！</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancel" type="button" class="btn btn-default">取消</button>
+                    <button id="submit" type="button" class="btn btn-primary pull-left">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/grade-staff-score.js"></script>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header computer-add">
+            <h1>添加电脑工具</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/basedata-list.html"><i class="fa fa-dashboard"></i>添加电脑工具</a></li>
+                <li>
+                    添加电脑工具
+                </li>
+            </ol>
+        </section>
+        <section class="content-header computer-detail z-hidden">
+            <h1>电脑工具详情</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/basedata-list.html"><i class="fa fa-dashboard"></i>修改电脑工具</a></li>
+                <li>
+                    修改电脑工具
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>电脑编号</label>
+                                <input type="text" class="form-control" placeholder="" id="computer-number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>品牌</label>
+                                <input type="text" class="form-control" placeholder="" id="brand">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>电脑型号</label>
+                                <input type="text" class="form-control" placeholder="" id="computer-type">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>办公区域</label>
+                                <select class="select2 form-control" style="width: 100%;" id="area"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>备注</label>
+                                <input type="text" class="form-control" placeholder="" id="memo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <a href="javascript:void(0);" class="btn btn-default" id="canel">取消</a>
+                    <a href="javascript:void(0);" class="btn btn-info pull-left add" id="add">添加</a>
+                    <a href="javascript:void(0);" class="btn btn-success btn-info modify-btn modify z-hidden" id="modify">修改</a>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 类型 -->
+    <script type="text/template" id="area-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/asset-office-computer-add.js"></script>
+{% endblock %}

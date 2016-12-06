@@ -1,0 +1,198 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>办公电脑使用详情</h1>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body" id="computer-detail">  
+                            
+                        </div>
+                        <div class="box-footer">
+                            <a href="/#proj_name#/asset/office-computer" class="btn btn-default" id="cancel">取消</a>
+                            
+                            <a href="javascript:void(0);" class="btn btn-info pull-left submit" id="submit">提交</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="computer-detail-tpl">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label><%= data.allot.username%></label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label><%= data.allot.position%></label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label><%= data.allot.userstatus%></label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-inline">
+                <div class="col-sm-2">
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="power" id="power">电源</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="mouse" >鼠标</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="computerPackage">电脑包</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="其他配件" id="others">
+                </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <a href="javascript:void(0);" class="btn btn-info" id="add-record">添加记录</a>
+                </div>
+            </div>
+        </div>
+        <div id="record-wrap">
+            <% _.each(data.allot.devicesUse, function(val, index) { %>
+                <div class="row record">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <select class="form-control select2" id="company-device<%= val.id%>" data-select="<%= val.id%>" disabled></select>
+                        </div>
+                    </div>
+                        <% if(val.number !== null) { %>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <select class="form-control select2" id="model<%= val.id%>" data-select="<%= val.id%>" data-option="<%= val.deviceid%>" disabled>
+                                        <option value="<%= val.model%>" selected="selected"><%= val.number%></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <input type="text" name="number" class="form-control" id="number<%= val.id%>" value="<%= val.trademark%> <%= val.model%>" disabled>
+                                </div>
+                            </div>
+                            
+                           
+                        <% } else { %>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="" value="<%= val.model%>" id="self-device" disabled>
+                                </div>
+                            </div>
+                        <% } %>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control dealtime" name="" id="dealtime<%= val.id%>" value="<%= val.dealtime%>">
+                            </div>
+                        </div>
+                    <% if(val.remakType === 0 || val.remakType === 1 ) { %>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <a href="javascript:void(0);" class="btn btn-default btn-sm reback" id="reback<%= val.id %>" data-id="<%= val.id %>" disabeld>归还</a>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <a href="javascript:void(0);" class="rebacked btn-default" >已归还</a>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% }); %>
+        </div>
+        
+    </script>
+
+    {# 增加记录模板 #}
+    <script type="text/template" id="record-tpl">
+        <div class="row record-add record<%= index %>">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select class="form-control select2 company-device" id="company-device<%= index%>" data-select="<%= index%>"></select>
+                </div>
+            </div>
+                <div class="col-sm-3 co-device">
+                    <div class="form-group">
+                        <select class="form-control select2 model" id="model<%= index%>" data-select="<%= index%>">
+                        </select>
+                    </div>
+                </div>
+            <div class="col-sm-3 co-device">
+                <div class="form-group">
+                    <input type="text" class="form-control number" name="" value="" id="number<%= index%>">
+                </div>
+            </div>
+            <div class="col-sm-4 self-device z-hidden">
+                <div class="form-group">
+                    <input type="text" class="form-control deself-device" name="" id="self-device<%= index%>">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <input type="text" class="form-control dealtime" name="" id="dealtime<%= index%>">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <select class="form-control select2 memo" id="memo<%= index%>" data-select="<%= index%>"></select>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <a href="javascript:void(0);" class="btn btn-danger btn-sm delete">删除</a>
+                </div>
+            </div>
+        </div>
+    </script>>
+
+    <!-- 电脑设备下拉框 -->
+    <script type="text/template" id="company-device-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 备注下拉框 -->
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+    
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/asset-office-computer-detail.js"></script>
+{% endblock %}

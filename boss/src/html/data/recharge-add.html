@@ -1,0 +1,171 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加充值记录</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/recharge-list.html"><i class="fa fa-dashboard"></i>充值管理</a></li>
+                <li>
+                    添加充值记录
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <!-- <div class="box-header with-border">
+                    <h3 class="box-title">添加充值记录</h3>
+                </div> -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>合同日期</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="contractDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>合同号</label>
+                                <input type="text" class="form-control" placeholder="" id="contractId">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>平台ID</label>
+                                <input type="text" class="form-control" placeholder="" id="platformId">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>客户名称</label>
+                                <input type="text" class="form-control" placeholder="" id="custName">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>有无代理</label>
+                                <select id="agent" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>合同金额</label>
+                                <input type="number" class="form-control" placeholder="" id="contractAmount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>回款金额</label>
+                                <input type="number" class="form-control" placeholder="" id="paymentAmount">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>回款日期</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="paymentDate">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>折扣</label>
+                                <input type="text" class="form-control" placeholder="" id="discount">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>赠送金额（元）</label>
+                                <input type="number" class="form-control" placeholder="" id="donate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>充值金额（元）</label>
+                                <input type="number" class="form-control" placeholder="" id="chargeAmount">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>划拨日期</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="allotDate">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>服务费（元）</label>
+                                <input type="number" class="form-control" placeholder="" id="serviceCharge">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>开户费（元）</label>
+                                <input type="number" class="form-control" placeholder="" id="openCharge">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>备注</label>
+                                <input type="text" class="form-control" placeholder="" id="memo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">添加</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 客户 -->
+    <script type="text/template" id="select-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/data-recharge-add.js"></script>
+{% endblock %}

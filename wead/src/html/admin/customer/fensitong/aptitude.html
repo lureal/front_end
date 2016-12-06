@@ -1,0 +1,351 @@
+{% extends '../../../layouts/admin.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/admin/customer/index.html">
+                    <i class="fa fa-home"></i>客户列表
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" id="breadcrumb-company">
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content admin-service-aptitude">
+
+        {# 公司名名称 #}
+        <div class="row company-name">
+            <div class="col-md-12 col-sm-12 col-xs-12" id="box-company">
+            </div>
+        </div>
+
+        {# 导航条 #}
+        <div class="row content-nav">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <a href="javascript:void(0);" class="active" data-active="1">
+                    <i class="fa fa-file-text"></i>资质<span class="notice-num" id="aptitude-notice-num" style="display: none;">2</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="content-nav-finance" style="display: none;">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-folder"></i>财务<i class="fa fa-caret-down"></i>
+                </a>
+                <ul>
+                    <li style="display: none;">
+                        <a href="/#proj_name#/html/admin/customer/fensitong/capital.html" class="content-nav-link">
+                            <i class="fa fa-database"></i>资金
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#proj_name#/html/admin/customer/fensitong/invoice.html" class="content-nav-link">
+                            <i class="fa fa-tags"></i>发票<span class="notice-num" id="invoice-notice-num" style="display: none;">2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" id="content-nav-data" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/data.html" class="content-nav-link">
+                    <i class="fa fa-pie-chart move-left5"></i>数据
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/account.html" class="content-nav-link">
+                    <i class="fa fa-flag move-left5"></i>账户
+                </a>
+            </div>
+        </div>
+
+        {# 资质详情 #}
+        <div class="row detail-box">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">资质详情</h3>
+                    </div>
+                    <div class="box-body w-box-body w-form w-form-readonly">
+                        <div class="form-horizontal clearfix w-row" id="account">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">微博登录账号</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="uid">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">微博UID</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div id="other-uid"></div>
+                        <div class="form-horizontal clearfix w-row" id="contact">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">联系人姓名</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="company-name">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">公司（网站）名称</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="url">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">网站URL</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="address">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">通信地址</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="phone">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">联系电话</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">平台开户行业</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" id="weiboTrade" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">微博广告行业</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" id="trade" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="businessLicense">
+                            <div class="w-field w-img-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">营业执照</label>
+                                <div class="col-sm-4 clearfix w-download-preview">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <img src="" alt="上传图片" class="preview-thumbnail">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 w-field-content clearfix">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button class="w-btn w-btn-success download-img pic-download">下载</button>
+                                    </div>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row" id="icpLicense">
+                            <div class="w-field w-img-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">ICP 备案</label>
+                                <div class="col-sm-4 clearfix w-download-preview">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <img src="" alt="上传图片" class="preview-thumbnail">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 w-field-content clearfix">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button class="w-btn w-btn-success download-img pic-download">下载</button>
+                                    </div>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div id="otherLicense"></div>
+                        <div class="form-horizontal clearfix w-row" id="sales-email">
+                            <div class="w-field">
+                                <label class="mobile-update pull-right">有更新</label>
+                                <label class="col-sm-2 w-field-title">商务经理邮箱</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                                <label class="pc-update">有更新</label>
+                            </div>
+                        </div>
+                        <div class="normal-invoice" id="operate">
+                            <div class="form-horizontal clearfix w-row">
+                                <div class="w-field">
+                                    <label class="mobile-update pull-right">有更新</label>
+                                    <label class="col-sm-2 w-field-title label-blue">审核操作</label>
+                                    <div class="col-sm-4 w-field-content w-field-radio" id="pass-status">
+                                        <span class="pull-left">
+                                            <label>
+                                                <input type="radio" name="is-review-pass" value="0" checked>通过
+                                            </label>
+                                        </span>
+                                        <span class="pull-left">
+                                            <label>
+                                                <input type="radio" name="is-review-pass" value="1">不通过
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" id="not-pass-reason" style="display: none;">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title placeholder-file-title"></label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="请填写资质不通过的详细原因"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-form-footer clearfix clearfix" id="footer">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="confirm">确认</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# 记录列表 #}
+        <div class="row records-box" style="display: none">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box" id="records">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">记录列表</h3>
+                    </div>
+                    <div class="box-body w-box-body table-responsive w-table" id="records-table"></div>
+                    <div class="box-footer clearfix w-pager" id="records-pager">
+                        <div class="pull-right">
+                            <button class="w-previous pull-left">
+                                <i class="fa fa-chevron-circle-left"></i>
+                            </button>
+                            <div class="pull-left clearfix">
+                                <input type="text" class="w-page-now form-control pull-left" value="1">
+                                <span class="w-allpage pull-left">
+                                    /
+                                    <span>15</span>
+                                </span>
+                            </div>
+                            <button class="w-next pull-left">
+                                <i class="fa fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/template" id="records-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>操作</th>
+                </tr>
+                <% _.each(records, function(record) { %>
+                    <tr>
+                        <td><%= record.time %></td>
+                        <td class="w-collapse-td w-collapse-td-close">
+                            <div>
+                                <p><%= record.action %></p>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" class="w-collapse-toggle">展开详情<i class="fa fa-caret-down"></i></a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
+    <script type="text/template" id="other-uid-tpl">
+        <div class="form-horizontal clearfix w-row">
+            <div class="w-field">
+                <label class="mobile-update pull-right">有更新</label>
+                <label class="col-sm-2 w-field-title"></label>
+                <div class="col-sm-4 w-field-content">
+                    <input type="text" class="form-control w-field-input" name="name" value="<%= uid %>" readonly>
+                </div>
+                <label class="pc-update">有更新</label>
+            </div>
+        </div>
+    </script>
+    <script type="text/template" id="other-license-tpl">
+        <% _.each(otherLicenses, function(item, index) { %>
+            <% if (index === 0) { %>
+                <div class="form-horizontal clearfix w-row">
+                    <div class="w-field w-img-field">
+                        <label class="mobile-update pull-right">有更新</label>
+                        <label class="col-sm-2 w-field-title">营业执照</label>
+                        <div class="col-sm-4 clearfix w-download-preview">
+                            <div class="col-sm-4 col-xs-12">
+                                <img src="<%= item.url %>" alt="上传图片" class="preview-thumbnail">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 w-field-content clearfix">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="w-btn w-btn-success download-img pic-download">下载</button>
+                            </div>
+                        </div>
+                        <label class="pc-update">有更新</label>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="form-horizontal clearfix w-row">
+                    <div class="w-field w-img-field">
+                        <label class="mobile-update pull-right">有更新</label>
+                        <label class="col-sm-2 w-field-title"></label>
+                        <div class="col-sm-4 clearfix w-download-preview">
+                            <div class="col-sm-4 col-xs-12">
+                                <img src="<%= item.url %>" alt="上传图片" class="preview-thumbnail">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 w-field-content clearfix">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="w-btn w-btn-success download-img pic-download">下载</button>
+                            </div>
+                        </div>
+                        <label class="pc-update">有更新</label>
+                    </div>
+                </div>
+            <% } %>
+        <% }); %>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-fensitong-aptitude.js"></script>
+{% endblock %}

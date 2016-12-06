@@ -1,0 +1,142 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-dimension-subject">
+
+    {# 顶部导航 #}
+    <div class="content-nav row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/ad/group.html" class="content-nav-link">
+                <i class="fa fa-files-o"></i>广告组<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/ad/bill.html" class="content-nav-lin">
+                <i class="fa fa-file-o"></i>广告订单<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu">
+            <a href="javascript:void(0)" class="active" data-active="1">
+                <i class="fa fa-th"></i><span class="move-right30">投放主体</span><i class="fa fa-caret-down move-right20"></i>
+            </a>
+            <ul>
+                <li>
+                    <a href="/#proj_name#/html/ad/dimension-platform.html" class="content-nav-link">
+                        <i class="fa fa-television"></i><span class="move-right30">投放平台</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-nav-btn">
+            <button class="w-btn w-btn-primary" id="create-ad">创建新广告</button>
+        </div>
+    </div>
+
+    {# 广告组列表 #}
+    <div class="row">
+        <div class="ccol-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="dimension-subject">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">投放主体</h3>
+                </div>
+                <div class="w-box-tool form-inline">
+                    <div class="w-table-tool" id="dimension-subject-tool">
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                        </div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="dimension-subject-search">搜索</button>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="dimension-subject-export" style="display: none;">导出</button>
+                    </div>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="dimension-subject-table"></div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="dimension-subject-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 广告组模板 #}
+<script type="text/template" id="dimension-subject-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>投放主体</th>
+                <th>曝光量</th>
+                <th>互动情况</th>
+                <th>点击情况</th>
+                <th>下载量</th>
+                <th>消耗（元）</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(record, index) { %>
+                    <tr>
+                        <td><%= record.name %></td>
+                        <td><%= record.showCount %></td>
+                        <td>
+                            <span>互动量：<%= record.interactCount %></span><br>
+                            <span>互动率：<%= record.interactRatio %></span><br>
+                            <span>互动成本（元）：<%= record.interactPrice %></span>
+                        </td>
+                        <td>
+                            <span>点击量：<%= record.clickCount %></span><br>
+                            <span>点击率：<%= record.clickRatio %></span><br>
+                            <span>点击成本（元）：<%= record.clickPrice %></span>
+                        </td>
+                        <td><%= record.downloadCount %></td>
+                        <td><%= record.consume %></td>
+                    <tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-dimension-subject.js"></script>
+{% endblock %}

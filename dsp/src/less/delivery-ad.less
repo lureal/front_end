@@ -1,0 +1,353 @@
+/* 
+ ** 客户管理系统的权限管理页面less文件 （manage/auth）
+*/
+
+/*auth-createrole 页面样式 */
+#delivery-ad-step2 {
+    .card-title {
+        border: 1px solid gray; 
+        font-size: 18px;
+        padding: 5px 10px;
+    }
+    .card-content {
+        border-left: 1px solid gray; 
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+        padding-top:10px; 
+        .person-icon {
+            margin-left: 10px;
+            & > img {
+                border-radius: 50%;
+                height: 45px;
+            }
+        }
+        .person-des {
+            .person-name {  
+               margin-top: -45px; 
+            }
+            p {
+                position: relative; 
+                margin-left: 65px; 
+            }
+            .btn-focus {
+                color: #ED8E3D;
+                position: absolute;
+                right: 30px;
+                top: 50px; 
+                
+            }
+        }
+        .upload-img {
+            align-items: center;
+            display: flex;
+            height: 170px;
+            justify-content: center;
+        }
+        .card-watch {
+            & > p {
+                height: 18px; 
+                margin: 0; 
+                margin-left: 20px;
+                margin-top: 5px;
+                .user {
+                    float: right; 
+                    margin-right: 20px; 
+                    & > i {
+                        color:#9C9E9F;
+                        font-size: 20px; 
+                    }
+                }
+            }
+            & > p:nth-child(2) {
+                color: #CECBCB; 
+                height: 25px;
+                margin: 0; 
+                margin-left: 20px; 
+                padding-top: 5px;
+                .card-content-watch {
+                    color: #AEABAB;
+                }
+                .card-button-watch {
+                    color: #3c8dbc;
+                    position: absolute; 
+                    text-align: center; 
+                    right: 34px;
+                    width: 30px;
+                    
+                }
+            }
+            
+        }
+    }
+
+    #application-classify > span{
+        background: yellow;
+        // .select2-container {
+            width: 386px;
+        // }
+    }
+    .card-footer {
+        border-left: 1px solid gray; 
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+        & > div {
+           padding: 10px 0 ; 
+            ul {
+                border: 0;
+                li {
+                    border-right: 1px solid gray;
+                    color: #989B9D;  
+                    width: 33%; 
+                    text-align: center; 
+                    
+                }
+                & > li:nth-child(3) {
+                    border-right: 0;
+                }
+            }
+        }
+    }
+    #watch-scratchable {
+        .arrow-right {
+            border-top: 10px dashed transparent;
+            border-bottom: 10px dashed transparent;
+            border-right: 10px solid #777;
+            font-size: 0; 
+            height: 0;
+            width: 0;
+        }
+        .scratchable-watch-buttonType {
+            background: #777; 
+            font-size: 10px;
+            height: 20px;
+            width: 50px;
+        }
+        .pic4-img1 {
+            position: absolute;
+            bottom: 55%;
+            left: 23.5%
+        }
+        .pic4-button1 {
+            position: absolute;
+            bottom: 55%;
+            left: 25%; 
+        }
+        .pic4-img2 {
+            position: absolute;
+            bottom: 55%;
+            right: 32.6%;
+        }
+        .pic4-button2 {
+            position: absolute;
+            right: 25%;
+            bottom: 55%;
+        }
+        .pic4-img3 {
+            position: absolute;
+            bottom: 25%;
+            left: 23.5%;
+        }
+        .pic4-img4 {
+            position: absolute;
+            bottom: 25%;
+            right: 32.6%;
+        }
+        .pic4-button3 {
+            position: absolute;
+            bottom: 25%;
+            left: 25%;
+        }
+        .pic4-button4 {
+            position: absolute;
+            bottom: 25%;
+            right: 25%;
+        }
+        .pic6-img1 {
+            bottom: 55%;
+            left: 14.95% ;
+            position: absolute;
+        }
+        .pic6-button1 {
+            position: absolute;
+            bottom: 55%;
+            left: 16.6%; 
+        }
+        .pic6-img2 {
+            position: absolute;
+            bottom: 55%;
+            left: 46.1% ;
+        }
+        .pic6-button2 {
+            position: absolute;
+            bottom: 55%;
+            left: 47.7%;
+        }
+        .pic6-img3 {
+            position: absolute;
+            bottom: 55%;
+            right: 21.2%;
+
+        }
+        .pic6-button3 {
+            position: absolute;
+            bottom: 55%;
+            left: 78.8%;
+        }
+        .pic6-img4 {
+            bottom: 25%;
+            left: 14.95% ;
+            position: absolute;
+
+        }
+        .pic6-button4 {
+            bottom: 25%;
+            left: 16.6%;
+            position: absolute;
+        }
+        .pic6-img5 {
+            position: absolute;
+            bottom: 25%;
+            left: 46.1%;
+        }
+        .pic6-button5 {
+            position: absolute;
+            bottom: 25%;
+            left: 47.7%;
+        }
+        .pic6-img6 {
+            position: absolute;
+            bottom: 25%;
+            right: 21.2% ;
+        }
+        .pic6-button6 {
+            position: absolute;
+            bottom: 25%;
+            left: 78.8%;
+        }
+        .pic9-img1 {
+            bottom: 65%;
+            left: 14.95% ;
+            position: absolute;
+        }
+        .pic9-button1 {
+           bottom: 65%;
+           left: 16.6%;
+           position: absolute;
+        }
+        .pic9-img2 {
+            bottom: 65%;
+            left: 46.1% ;
+            position: absolute;
+        }
+        .pic9-button2 {
+            bottom: 65%;
+            left: 47.7%;
+             position: absolute;
+        }
+        .pic9-img3 {
+            position: absolute;
+            bottom: 65%;
+            right: 21.2%;
+
+        }
+        .pic9-button3 {
+            position: absolute;
+            bottom: 65%;
+            left: 78.8%;
+        }
+
+        .pic9-img4 {
+            bottom:  43%;
+            left: 14.95% ;
+            position: absolute;
+
+        }
+        .pic9-button4 {
+            bottom: 43%;
+            left: 16.6%;
+            position: absolute;
+        }
+
+        .pic9-img5 {
+            position: absolute;
+            bottom: 43%;
+            left: 46.1%;
+        }
+        .pic9-button5 {
+            position: absolute;
+            bottom: 43%;
+            left: 47.7%;
+        }
+        .pic9-img6 {
+            bottom: 43%;
+            right: 21.2% ;
+            position: absolute;
+        }
+        .pic9-button6 {
+            bottom: 43%;
+            left: 78.8%;
+            position: absolute;
+           
+        }
+        .pic9-img7 {
+            bottom: 18%;
+            left: 14.95% ;
+            position: absolute;
+        }
+        .pic9-button7 {
+            bottom: 18%;
+            left: 16.6%;
+            position: absolute;
+        }
+        .pic9-img8 {
+            bottom: 18%;
+            left: 46.1%;
+            position: absolute;
+        }
+        .pic9-button8 {
+            bottom: 18%;
+            left: 47.7%;
+            position: absolute;
+        }
+        .pic9-img9 {
+            bottom: 18%;
+            right: 21.2% ;
+            position: absolute;
+        }
+        .pic9-button9 {
+            bottom: 18%;
+            left: 78.8%;
+            position: absolute;
+        }
+
+    }
+    
+}
+
+// 广告订单
+#delivery-ad-step3 {
+    #area {
+        .glyphicon-unchecked:before {
+            content: '\e157'!important;
+        }
+        .glyphicon-unchecked:before {
+            content: '\e157'!important;
+        }
+        .expand-icon+span+span {
+            display: inline-block!important;
+        }
+    }
+    #interest {
+        .glyphicon-unchecked:before {
+            content: '\e157'!important;
+        }
+        .glyphicon-unchecked:before {
+            content: '\e157'!important;
+        }
+        .treeview .expand-icon+span+span {
+            display: inline-block!important;
+        }
+    }
+}
+
+

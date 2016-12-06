@@ -1,0 +1,51 @@
+{% extends '../layouts/user.html' %}
+
+{%  block body %}
+<body>
+    <div class="register-in">
+        <div class="row">
+            <div class="register-in-logo">
+                <div class="register-in-title">
+                    WeAD移动广告平台
+                </div>
+            </div>
+        </div>
+        <div class="register-in-form">
+            <div class="register-in-form-title">
+                <span class="form-title">注册</span>
+            </div>
+
+            <form id="validate-form">
+                <div class="form-group has-feedback" >
+                    <input type="text" class="form-control" name="username" id="username" placeholder="用户名">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password"  class="form-control" name="password" id="password" placeholder="输入密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password"  class="form-control" name="repassword" id="repassword" placeholder="重新确认输入密码">
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                </div>
+
+                <div class="row login-word">
+                    <div class="col-xs-4 col-xs-offset-8">
+                        <div class="register-btn">
+                            <button class="btn btn-primary btn-block" type="submit">注册</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row register-word">
+                    <a href="/#proj_name#/user/login">我已经有账户</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/validate/validate.min.js"></script>
+    <script src="/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+</body>
+{% endblock %}

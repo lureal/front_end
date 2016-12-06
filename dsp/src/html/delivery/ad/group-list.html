@@ -1,0 +1,278 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>广告组下订单</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>广告组下订单</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">订单列表</h3>
+                            <a href="javascript:void(0);" class="btn btn-primary btn-sm pull-right" style="margin: 4px 5px 0 0;" id="create-ad">创建广告</a>
+                        </div>
+                        <div class="col-xs-12 box-toolbar">
+                            <div class="form-inline">
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control pull-right" id="order-search-keyword" placeholder="名称/ID" style="width: 183px;">
+                                </div>
+
+                                <div class="form-group">
+                                    <select id="order-search-state" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control pull-right" id="order-search-datepicker" placeholder="选择日期" style="width: 183px;">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-search">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-export">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 box-toolbar last">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-enable">批量启用</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-disable">批量停用</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-edit-date">批量修改日期</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-edit-time">批量修改时间</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="order-edit-money">批量修改出价</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-danger btn-sm" id="order-del">批量删除</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="group-bill-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover tab-table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="order-all-checkbox">
+                        名称
+                    </th>
+                    <th>曝光量</th>
+                    <th>互动量</th>
+                    <th>互动率</th>
+                    <th>互动成本（元）</th>
+                    <th>点击量</th>
+                    <th>点击率</th>
+                    <th>点击均价（元）</th>
+                    <th>消耗（元）<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="该数据每30秒更新一次"></i></th>
+                    <th>出价方式</th>
+                    <th>订单出价</th>
+                    <th>订单预算</th>
+                    <th>订单预算</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td style="vertical-align: middle;">
+                            <input type="checkbox" value="<%= val.orderId %>" data-status="<% val.status %>" class="order-checkbox">
+                            <%= val.orderName === null ? '-' : val.orderName %>
+                        </td>
+                        <td style="vertical-align: middle;"><%= val.showCount === null ? '-' : val.showCount %></td>
+                        <td style="vertical-align: middle;"><%= val.interactCount === null ? '-' : val.interactCount %></td>
+                        <td style="vertical-align: middle;"><%= val.interactRatio === null ? '-' : (val.interactRatio * 100).toFixed(2) + '％' %></td>
+                        <td style="vertical-align: middle;"><%= val.interactPrice === null ? '-' : (val.interactPrice / 100).toFixed(2) %></td>
+                        <td style="vertical-align: middle;"><%= val.clickCount === null ? '-' : val.clickCount %></td>
+                        <td style="vertical-align: middle;"><%= val.clickRatio === null ? '-' : (val.clickRatio * 100).toFixed(2) + '％' %></td>
+                        <td style="vertical-align: middle;"><%= val.clickPrice === null ? '-' : (val.clickPrice / 100).toFixed(2) %></td>
+                        <td style="vertical-align: middle;"><%= val.consume === null ? '-' : (val.consume / 100).toFixed(2) %></td>
+                        <td style="vertical-align: middle;"><%= val.bidWay === null ? '-' : val.bidWay %></td>
+                        <td style="vertical-align: middle;"><%= val.bidPrice === null ? '-' : (val.bidPrice / 100).toFixed(2) %></td>
+                        <td style="vertical-align: middle;"><%= val.quota === null ? '-' : (val.quota / 100).toFixed(2) %></td>
+                        <td style="max-width: 150px;">
+                            <div class="input-group input-group-sm group-quota-wrap">
+                                <input type="text" class="form-control quota-input" value="<%= val.quota === null ? '-' : val.quota / 100 %>">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-info btn-flat group-edit-quota" data-id="<%= val.orderId %>">修改</button>
+                                </span>
+                            </div>
+                        </td>
+
+                        <!--当前没有值-->
+                        <% if(val.status === null) { %>
+                            <td style="vertical-align: middle;">-</td>
+
+                        <!--未送审-->
+                        <% } else if(val.status === 0) { %>
+                            <td style="vertical-align: middle;">未送审</td>
+
+                        <!--审核中-->
+                        <% } else if(val.status === 1) { %>
+                            <td style="vertical-align: middle;">审核中</td>
+
+                        <!--审核不通过-->
+                        <% } else if(val.status === 2) { %>
+                            <td style="vertical-align: middle;"><span data-toggle="tooltip" data-placement="top" title="<%= val.reason %>">审核不通过</span></td>
+
+                        <!---审核通过，启用中-->
+                        <% } else if(val.status === 3) { %>
+                            <td style="vertical-align: middle;">启用中</td>
+
+                        <!--审核用过，停用-->
+                        <% } else if(val.status === 4) { %>
+                            <td style="vertical-align: middle;">停用中</td>
+
+                        <!--投放结束-->
+                        <% } else { %>
+                            <td style="vertical-align: middle;">投放结束</td>
+
+                        <% } %>
+
+                        <td style="vertical-align: middle;">
+                            <a class="btn btn-xs btn-success" data-ah_href="/#proj_name#/html/delivery/ad/detail.html?id=<%= val.orderId %>">详情</a>
+                            <% if(val.status === 3) { %>
+                                <button class="btn btn-xs btn-default order-stop" data-id="<%= val.orderId %>">停用</button>
+                            <% } else if(val.status === 4) { %>
+                                <button class="btn btn-xs btn-default order-start" data-id="<%= val.orderId %>">启用</button>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav class="tab-pager">
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <% for(var i = 0; i < data.pageCount; i++) { %>
+                <li class="<%= (i + 1) === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i + 1 %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i + 1 %></a>
+                </li>
+                <% } %>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="date-modal-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>日期</label>
+                        <input type="text" class="form-control" id="order-modal-datepicker" placeholder="选择日期" style="width: 183px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="order-modal-datepicker-submit" type="button" class="btn btn-primary">批量修改</button>
+        </div>
+    </script>
+
+    <script type="text/template" id="time-modal-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12 bootstrap-timepicker" style="position: relative; z-index: 300;">
+                    <div class="form-group">
+                        <label>开始时间</label>
+                        <div class="input-group">
+                            <input id="order-modal-timepicker-start" type="text" class="form-control timepicker" placeholder="选择时间">
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 bootstrap-timepicker" style="position: relative; z-index: 200;">
+                    <div class="form-group">
+                        <label>结束时间</label>
+                        <div class="input-group">
+                            <input id="order-modal-timepicker-end" type="text" class="form-control timepicker" placeholder="选择时间">
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="order-modal-timepicker-submit" type="button" class="btn btn-primary">批量修改</button>
+        </div>
+    </script>
+
+    <script type="text/template" id="price-modal-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>出价</label>
+                        <input type="number" class="form-control" id="order-modal-price" placeholder="请输入出价">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="order-modal-price-submit" type="button" class="btn btn-primary">批量修改</button>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-ad-group-list.js"></script>
+{% endblock %}

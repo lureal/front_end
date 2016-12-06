@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>微思敦企业门户</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+        <!--[if IE]>
+        <script src="/vendor/html5shiv/dist/html5shiv.min.js"></script>
+        <script src="/vendor/respond/dest/respond.min.js"></script>
+        <![endif]-->
+
+        {#
+            IE 10, 11, edge 对 media query 支持不是很完善，具体表现在刚进入屏幕时执
+            行了 media query 设置小屏幕的 css 代码。并且 IE html 注释版本判定只支持
+            IE 9，IE 9 以上并不支持，所以这里新增识别 IE 9 以上以及 Edge 浏览器，让
+            他们强制使用 respond.min.js
+        #}
+        <script>
+            var ua = navigator.userAgent, head, link;
+            if(/rv:11.0/i.test(navigator.userAgent) ||/MSIE 10/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
+                head = document.getElementsByTagName('head')[0];
+                html5shiv = document.createElement('script');
+                html5shiv.src = '/vendor/html5shiv/dist/html5shiv.min.js';
+                respond = document.createElement('script');
+                respond.src = '/vendor/respond/dest/respond.min.js';
+                head.appendChild(respond);
+                head.appendChild(html5shiv);
+            }
+        </script>
+
+        {% block head %}
+        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/vendor/AdminLTE/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+        <!-- <link rel="stylesheet" href="/vendor/AdminLTE/plugins/select2/select2.min.css"> -->
+        <link rel="stylesheet" href="/vendor/AdminLTE/plugins/timepicker/bootstrap-timepicker.min.css">
+        <link rel="stylesheet" href="/vendor/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css">
+        <link rel="stylesheet" href="/#proj_name#/css/notice.css">
+        <script src="/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/vendor/underscore/underscore-min.js"></script>
+        <script src="/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
+        <script src="/vendor/moment/min/moment.min.js"></script>
+        <script src="/vendor/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+        <script src="/vendor/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+        {% endblock %}
+
+    </head>
+    <body>
+        <img id="loading" src="/#proj_name#/img/loading.gif" alt="loading" />
+        <div id="main-content" style="display: none;">
+
+            {# 顶部横栏 #}
+            <header class="b-navbar">
+                <div class="wrap">
+
+                    {# logo #}
+                    <a class="logo" href="javascript:void(0);">
+                        <img src="/#proj_name#/img/login-logo.png" srcset="/#proj_name#/img/login-logo@2x.png">
+                    </a>
+
+                    {# 导航 #}
+                    <div class="nav">
+
+                        {# 固定导航 #}
+                        <ul class="navbar-fix">
+                            <li id="navbar-hidden-toggle" class="navbar-hidden-toggle">
+                                <a href="javascript:void(0);">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </a>
+                                <div class="navbar-hidden">
+                                    <ul id="navbar-hidden"></ul>
+                                </div>
+                            </li>
+                            <li class="email">
+                                <a href="javascript:void(0);" id="username">@wesdom.me</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" id="changePwd">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" id="logout">退出</a>
+                            </li>
+                        </ul>
+
+                        {# 变动导航 #}
+                        <div class="navbar-change">
+                            <ul id="navbar-change"></ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </header>
+
+            <div class="wrap">
+
+                {# 实际内容区域 #}
+                <div class="b-content" >
+                    <div class="title">
+                    <h4>公告栏</h4>
+                    </div>
+                    <div class="main-content">
+                        <div class="content-title">
+                            <h4>公告栏列表</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="box" id="b-content-table">
+                                </div>
+                                <div class="box-footer clearfix w-pager">
+                                    <div class="pull-right" id="b-content-pager">
+                                        <button class="w-previous pull-left">
+                                            <i class="fa fa-chevron-circle-left"></i>
+                                        </button>
+                                        <div class="pull-left clearfix w-pager">
+                                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                                            <span class="w-allpage pull-left">
+                                                /
+                                                <span>1</span>
+                                            </span>
+                                        </div>
+                                        <button class="w-next pull-left">
+                                            <i class="fa fa-chevron-circle-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="modal-title">
+                                    回复内容
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="w-filed ">
+                                    <textarea class="form-control submit-input" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="javascript:void(0);" class="submit">提交</a>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+
+            </div>
+            <footer class="b-footer">
+                <div class="wrap">
+                    <div class="copyright">
+                        <p>鄂 ICP备15001665号 Copyright © 2016 WESDOM. All Rights Reserved</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        {# 顶部栏 #}
+        <script type="text/template" id="b-navbar-tpl">
+            <% _.each(sidebars, function(sidebar, index) { %>
+                <% if (index < 4) { %>
+                    <li>
+                        <a href="<%= sidebar.url === undefined ? 'javascript:void(0);' : sidebar.url %>"><%= sidebar.title %></a>
+                    </li>
+                <% } %>
+            <% }); %>
+        </script>
+
+        {# 顶部栏隐藏菜单 #}
+        <script type="text/template" id="hidden-navbar-tpl">
+            <% _.each(sidebars, function(sidebar, index) { %>
+                <% if (index >= 4) { %>
+                    <li>
+                        <a href="<%= sidebar.url === undefined ? 'javascript:void(0);' : sidebar.url %>"><%= sidebar.title %></a>
+                    </li>
+                <% } %>
+            <% }); %>
+        </script>
+
+
+        {# 实际内容区域模板 #}
+        {# 5是非置顶，10是置顶 #}
+        <script type="text/template" id="b-content-tpl">
+            <div class="box-body table-responsive">
+                <table class="table content-detail">
+                    <tbody>
+                        <tr class="content-table-title">
+                            <th class="person">标题</th>
+                            <th class="detail">日期</th>
+                        </tr>
+
+                    <%_.each(data.notices, function(val, index) { %>
+                        <tr class="content-normal">
+                            <td class="normal-person">
+                                <a href="/#proj_name#/portal/notice-list-preview?id=<%= val.id%>">
+                                    <% if(val.status === 10) { %>
+                                        <span style="color:#f64d46; padding-right: 12px;">[ 置顶 ]</span>
+                                    <% } %>
+                                    <%= val.title%>
+                                </a>
+                            </td>
+                            <td class="detail-date"> <%= val.lmodify%></td>
+                        </tr>
+                    <% }); %>
+                    </tbody>
+                </table>
+
+                <% if(data.notices.length === 0) { %>
+                    <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+                <% }  %>
+            </div>
+        </script>
+
+        {# 弹出框模板 #}
+
+
+         <!-- 类型 -->
+        <script type="text/template" id="type-tpl">
+            <% for(var prop in data) { %>
+                <option value="<%= prop %>"><%= data[prop] %></option>
+            <% } %>
+        </script>
+
+        {% include '../modules/modal.html' %}
+        <script src="/#proj_name#/js/notice.js"></script>
+    </body>
+</html>

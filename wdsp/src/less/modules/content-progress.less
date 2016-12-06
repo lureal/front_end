@@ -1,0 +1,90 @@
+.content-progress {
+    list-style: none;
+    margin: 22px 0 29px;
+    padding: 0;
+
+    li {
+        float: left;
+        width: 20%;
+
+        // 标识位置的小圆圈
+        .progress-step {
+            position: relative;
+
+            span {
+                border-radius: 50%;
+                background: #ccc;
+                color: #fff;
+                display: block;
+                font-size: 20px;
+                height: 30px;
+                line-height: 30px;
+                margin: auto;
+                position: relative;
+                text-align: center;
+                width: 30px;
+                z-index: 6;
+            }
+        }
+
+        // 为除了第一个项外的其他项添加一条左边的横条
+        & + li {
+            .progress-step:before {
+                background: #ccc;
+                content: '';
+                height: 4px;
+                left: -50%;
+                margin-top: -2px;
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                z-index: 5;
+            }
+        }
+
+        // 位置的名称
+        .progress-title {
+            color: #738399;
+            font-size: 14px;
+            line-height: 1;
+            margin-top: 14px;
+            text-align: center;
+
+            a {
+                color: #738399;
+                display: none;
+                font-size: 13px;
+            }
+        }
+
+        // 如果当前是激活状态
+        &.active {
+
+            // 改变标识位置小圆圈的背景颜色
+            .progress-step {
+                span {
+                    background: #1b8cfa;
+                }
+
+                &:before {
+                    background: #1b8cfa;
+                }
+            }
+
+            // 位置的名称
+            .progress-title {
+                color: #1b8cfa;
+            }
+        }
+
+        // 当前是否属于可以重新编辑的状态
+        &.reedit {
+            .progress-title {
+                a {
+                    display: block;
+                    margin-top: 9px;
+                }
+            }
+        }
+    }
+}

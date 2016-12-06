@@ -1,0 +1,61 @@
+{% extends '../layouts/user.html' %}
+
+{%  block body %}
+<body>
+    <div class="resetpwd-in">
+        <div class="row">
+            <div class="resetpwd-in-logo">
+                <div class="resetpwd-in-title">
+                    <b>WeAD移动广告平台</b>
+                </div>
+            </div>
+        </div>
+        <div class="resetpwd-in-form">
+            <div class="resetpwd-in-form-title">
+                <span class="form-title">修改密码</span>
+            </div>
+
+            <form id="validate-form" >
+                <div class="form-group has-feedback" >
+                    <input type="text" class="form-control required" name="username" id="username" placeholder="用户名">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password"  class="form-control" name="oldPassword" id="oldPassword" placeholder="原始密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password"  class="form-control" name="newPassword" id="newPassword" placeholder="重新设置密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password"  class="form-control" name="confirm_password" id="confirm_password" placeholder="再次确认输入密码">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+
+                <div class="row login-word">
+                    <div class="col-xs-4 col-xs-offset-8">
+                        <div class="resetpwd-btn">
+                            <a href="javascript:void(0);" class="btn btn-primary btn-block" id="resetpwd-submit">确认</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row resetpwd-word">
+                    <a href="/#proj_name#/user/login">登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% include '../modules/modal.html' %}
+
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/validate/validate.min.js"></script>
+    <script src="/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/#proj_name#/js/user.js"></script>
+</body>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>广告</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>广告管理</a></li>
+                <li><a href="#">广告</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">广告</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>选择广告组<button id="create-group" type="button" class="btn btn-primary btn-xs" style="margin-left: 10px">新建</button></label>
+                                <select id="select-group" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>订单名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="list"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer" style="position: fixed; bottom: 0;opacity: .7;background: gray;width: 100%;margin-left: -15px; padding-left: 20px">
+                    <button class="btn btn-default" id="canel">上一步</button>
+                    <button class="btn btn-info pull-left" id="submit">下一步</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="checkbox-tpl">
+        <label>选择投放平台</label>
+        <% for(var prop in data) { %>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="platform" value="<%= prop %>">
+                    <span style="color: #403e3e"><%= data[prop] %></span>
+                </label>
+            </div>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="group-modal-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>广告组名称</label>
+                        <input type="text" class="form-control" id="group-modal-name" placeholder="广告组名称">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>日限额设置（元）</label>
+                        <input type="number" class="form-control" id="group-modal-quota" placeholder="日限额设置">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="group-modal-submit" type="button" class="btn btn-primary">新增</button>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-ad-step1.js"></script>
+{% endblock %}

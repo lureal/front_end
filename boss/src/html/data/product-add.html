@@ -1,0 +1,59 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加产品</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/product-list.html"><i class="fa fa-dashboard"></i>产品管理</a></li>
+                <li>
+                    添加产品
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+               <!--  <div class="box-header with-border">
+                    <h3 class="box-title">添加产品</h3>
+                </div> -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>产品名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>备注</label>
+                                <input type="text" class="form-control" placeholder="" id="memo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">添加</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/data-product-add.js"></script>
+{% endblock %}

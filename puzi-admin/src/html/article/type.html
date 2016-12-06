@@ -1,0 +1,73 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="article-tag-add">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>添加文章标签</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">文章管理</li>
+					<li class="active">添加文章标签</li>
+				</ol>
+			</section>
+
+			<section class="content" id="article-tag-add-content">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">添加文章标签</h3>
+                    </div>
+                    <div class="box-body" >
+                        <div id="article-label">
+                            
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>添加标签</label>
+                                    <input type="text" class="form-control" placeholder="标签名" id="article-tag-add-name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button class="btn btn-default" id="article-tag-add-canel">取消</button>
+                        <button class="btn btn-info pull-left" id="article-tag-add-submit">添加</button>
+                    </div>
+                </div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+
+        <script type="text/template" id="article-label-tpl">
+            <div class="row" >
+                <div class="col-md-12">
+                    <label>热门标签</label> <a href="javascript:void(0);" class="btn btn-primary btn-sm edit" id="edit">编辑</a><a href="javascript:void(0);" class="btn btn-primary btn-sm z-hidden complete" id="complete">完成</a>
+                    <div class="form-group" >
+                        <% _.each(data.tagHot, function(val, index) { %>
+                            <a href="javascript:void(0);" class="btn btn-default taghot tag<%= index %>" data-val="<%= val%>"><%= val %><span class="delete z-hidden"><i class="fa fa-times"></i></span></a>
+                            
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>全部标签</label>
+                    <div class="form-group">
+                    <%_.each(data.tagAll, function(val, index) { %>
+                        <a href="javascript:void(0);" class="btn btn-default tagall tag<%= index %>" data-val="<%= val%>" data-id="<%= index%>"><%= val %><span class="delete-all z-hidden"><i class="fa fa-times"></i></span></a>
+                    <% }); %>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
+{% endblock %}

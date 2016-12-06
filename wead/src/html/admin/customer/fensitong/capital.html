@@ -1,0 +1,199 @@
+{% extends '../../../layouts/admin.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/admin/customer/index.html">
+                    <i class="fa fa-home"></i>客户列表
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" id="breadcrumb-company">
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content admin-service-capital">
+
+        {# 公司名名称 #}
+        <div class="row company-name">
+            <div class="col-md-12 col-sm-12 col-xs-12" id="box-company">
+            </div>
+        </div>
+
+        {# 导航条 #}
+        <div class="row content-nav">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <a href="/#proj_name#/html/admin/customer/fensitong/aptitude.html" class="content-nav-link">
+                    <i class="fa fa-file-text"></i>资质<span class="notice-num" id="aptitude-notice-num" style="display: none;">2</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="content-nav-finance" style="display: none;">
+                <a href="javascript:void(0);" class="active" data-active="1">
+                    <i class="fa fa-database"></i>资金<i class="fa fa-caret-down"></i>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/#proj_name#/html/admin/customer/fensitong/invoice.html" class="content-nav-link">
+                            <i class="fa fa-tags"></i>发票<span class="notice-num" id="invoice-notice-num" style="display: none;">2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" id="content-nav-data" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/data.html" class="content-nav-link">
+                    <i class="fa fa-pie-chart move-left5"></i>数据
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/account.html" class="content-nav-link">
+                    <i class="fa fa-flag move-left5"></i>账户
+                </a>
+            </div>
+        </div>
+
+        {# 充值金额 #}
+        <div class="row recharge-title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>充值金额</h2>
+            </div>
+        </div>
+        <div class="row recharge">
+            <div class="col-md-6 col-sm-12 col-xs-12 card card-with-icon">
+                <div class="info-box">
+                    <i></i>
+                    <div>
+                        <h3>账户累计总充值（元）</h3>
+                        <p id="all-money"></p>
+                    </div>
+                    <button class="w-btn w-btn-success edit-all" id="edit-all">修改</button>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 card">
+                <div class="info-box">
+                    <i></i>
+                    <div>
+                        <h3>粉丝通累计充值（元）</h3>
+                        <p id="fensitong-money"></p>
+                    </div>
+                    <button class="w-btn w-btn-success edit-fensitong" id="edit-fensitong">修改</button>
+                </div>
+            </div>
+        </div>
+
+        {# 资金明细 #}
+        <div class="row detail-title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>资金明细</h2>
+            </div>
+        </div>
+        <div class="row detail">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box" id="details">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">明细列表</h3>
+                    </div>
+                    <div class="box-body w-box-body w-table table-responsive details-table" id="details-table"></div>
+                    <div class="box-footer clearfix w-pager" id="details-pager">
+                        <div class="pull-right">
+                            <button class="w-previous pull-left">
+                                <i class="fa fa-chevron-circle-left"></i>
+                            </button>
+                            <div class="pull-left clearfix">
+                                <input type="text" class="w-page-now form-control pull-left" value="1">
+                                <span class="w-allpage pull-left">
+                                    /
+                                    <span>15</span>
+                                </span>
+                            </div>
+                            <button class="w-next pull-left">
+                                <i class="fa fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# 明细列表模板 #}
+    <script type="text/template" id="details-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th width=150>操作</th>
+                </tr>
+
+                <!-- 新增明细 -->
+                <tr>
+                    <td>
+                        <%= dateNow %>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="请填写明细内容" class="form-control" id="detail-ctn">
+                    </td>
+                    <td width=150>
+                        <button class="w-btn w-btn-primary" id="add-detail">新增</button>
+                    </td>
+                </tr>
+
+                <!-- 明细列表 -->
+                <% _.each(records, function(detail) { %>
+                    <tr>
+                        <td><%= detail.time %></td>
+                        <td>
+                            <span class="ctn">
+                                <%= detail.content %>
+                            </span>
+                        </td>
+                        <td width=150>
+                            <button class="table-btn w-btn-default-noborder edit-detail-ctn" data-id="<%= detail.id %>">修改</button>
+                            <button class="table-btn w-btn-default-noborder del-detail" data-id="<%= detail.id %>">删除</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
+
+    {# 账户累计总充值弹出框模板 #}
+    <script type="text/template" id="recharge-all-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-capital">账户累计总充值</h2>
+        <div class="modal-diy-body modal-fensitong-capital">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-capital" id="modal-all-input">
+            <p class="error-tip">请输入正确的充值金额</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-capital">
+            <button class="w-btn w-btn-success" id="modal-all-edit">确认修改</button>
+        </div>
+    </script>
+
+    {# 粉丝通累计充值弹出框模板 #}
+    <script type="text/template" id="recharge-fensitong-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-capital">粉丝通累计充值</h2>
+        <div class="modal-diy-body modal-fensitong-capital">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-capital" id="modal-fensitong-input">
+            <p class="error-tip">请输入正确的充值金额</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-capital">
+            <button class="w-btn w-btn-success" id="modal-fensitong-edit">确认修改</button>
+        </div>
+    </script>
+
+    {# 明细内容弹出框 #}
+    <script type="text/template" id="detail-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-capital">明细内容</h2>
+        <div class="modal-diy-body modal-fensitong-capital">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-capital" id="modal-detail-input">
+            <p class="error-tip">请输入正确的明细内容</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-capital">
+            <button class="w-btn w-btn-primary" id="modal-detail-edit">确认修改</button>
+        </div>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-fensitong-capital.js"></script>
+{% endblock %}

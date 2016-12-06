@@ -1,0 +1,229 @@
+{% extends '../../../layouts/admin.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/admin/customer/index.html">
+                    <i class="fa fa-home"></i>客户列表
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" id="breadcrumb-company">
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content admin-service-invoice">
+
+        {# 公司名名称 #}
+        <div class="row company-name">
+            <div class="col-md-12 col-sm-12 col-xs-12" id="box-company">
+            </div>
+        </div>
+
+        {# 导航条 #}
+        <div class="row content-nav">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <a href="/#proj_name#/html/admin/customer/fensitong/aptitude.html" class="content-nav-link">
+                    <i class="fa fa-file-text"></i>资质<span class="notice-num" id="aptitude-notice-num" style="display: none;">2</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="content-nav-finance" style="display: none;">
+                <a href="javascript:void(0);" class="active" data-active="1">
+                    <i class="fa fa-tags"></i>发票<i class="fa fa-caret-down"></i><span class="notice-num" id="invoice-notice-num" style="display: none;">2</span>
+                </a>
+                <ul>
+                    <li style="display: none;">
+                        <a href="/#proj_name#/html/admin/customer/fensitong/capital.html" class="content-nav-link">
+                            <i class="fa fa-database"></i>资金
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" id="content-nav-data" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/data.html" class="content-nav-link">
+                    <i class="fa fa-pie-chart move-left5"></i>数据
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/account.html" class="content-nav-link">
+                    <i class="fa fa-flag move-left5"></i>账户
+                </a>
+            </div>
+        </div>
+
+        {# 发票金额 #}
+        <div class="row recharge-title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>发票金额</h2>
+            </div>
+        </div>
+        <div class="row recharge">
+            <div class="col-md-6 col-sm-12 col-xs-12 card">
+                <div class="info-box">
+                    <i></i>
+                    <div>
+                        <h3>已开发票金额（元）</h3>
+                        <p id="opened-money"></p>
+                    </div>
+                    <button class="w-btn w-btn-success edit-all" id="edit-opened-invoice">修改</button>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 card">
+                <div class="info-box">
+                    <i></i>
+                    <div>
+                        <h3>可开具发票金额（元）</h3>
+                        <p id="open-money"></p>
+                    </div>
+                    <button class="w-btn w-btn-success edit-fensitong" id="edit-open-invoice">修改</button>
+                </div>
+            </div>
+        </div>
+
+        {# 发票审核 #}
+        <div class="row invoice-list-title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>发票审核</h2>
+            </div>
+        </div>
+        <div class="row detail">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box" id="invoices">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">发票列表</h3>
+                    </div>
+                    <div class="box-body w-box-body table-responsive w-table-collapse-td" id="invoices-table"></div>
+                    <div class="box-footer clearfix w-pager" id="invoices-pager">
+                        <div class="pull-right">
+                            <button class="w-previous pull-left">
+                                <i class="fa fa-chevron-circle-left"></i>
+                            </button>
+                            <div class="pull-left clearfix">
+                                <input type="text" class="w-page-now form-control pull-left" value="1">
+                                <span class="w-allpage pull-left">
+                                    /
+                                    <span>15</span>
+                                </span>
+                            </div>
+                            <button class="w-next pull-left">
+                                <i class="fa fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# 明细列表模板 #}
+    <script type="text/template" id="invoices-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th width=200>时间</th>
+                    <th>主要内容</th>
+                    <th width=110>状态</th>
+                    <th>发票文件</th>
+                    <th width=150>操作</th>
+                </tr>
+
+                <!-- 发票列表 -->
+                <% _.each(records, function(invoice) { %>
+                    <tr>
+                        <td width=200><%= invoice.time %></td>
+                        <td>
+                            <div class="ctn w-collapse-td <%= invoice.status === 0 ? 'w-collapse-td-open' : 'w-collapse-td-close' %>">
+                                <%= invoice.content %>
+                            </div>
+                        </td>
+                        <td class="status-td" width=110>
+
+                            <!-- 待处理 -->
+                            <% if (invoice.status === 0) { %>
+                                <i class="fa fa-clock-o"></i>待处理
+
+                            <!-- 已驳回 -->
+                            <% } else if (invoice.status === 2) { %>
+                                <i class="fa fa-close"></i>已驳回
+
+                            <!-- 已完成 -->
+                            <% } else { %>
+                                <i class="fa fa-check"></i>已完成
+
+                            <% } %>
+                        </td>
+                        <td class="download-td">
+                            <% if (invoice.type === 1) { %>
+                                <button class="w-btn w-btn-primary download-invoice" data-url="<%= invoice.id %>">点击下载</button>
+                            <% } %>
+                        </td>
+                        <td width=150 class="operate-td">
+
+                            <!-- 待处理 -->
+                            <% if (invoice.status === 0) { %>
+                                <button class="table-btn w-btn-default-noborder table-btn-pass" data-id="<%= invoice.id %>">通过</button>
+                                <button class="table-btn w-btn-default-noborder table-btn-reject" data-id="<%= invoice.id %>">驳回</button>
+                            <% } else { %>
+                                <button class="table-btn w-btn-default-noborder w-collapse-toggle">
+                                    查看详情<i class="fa fa-caret-down"></i>
+                                </button>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
+
+    {# 已开发票金额模板 #}
+    <script type="text/template" id="opened-invoice-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-invoice">已开发票金额</h2>
+        <div class="modal-diy-body modal-fensitong-invoice">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-invoice" id="modal-opened-invoice-input">
+            <p class="error-tip">请输入正确的金额</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-invoice">
+            <button class="w-btn w-btn-success" id="modal-opened-invoice-btn">确认修改</button>
+        </div>
+    </script>
+
+    {# 可开具发票金额模板 #}
+    <script type="text/template" id="open-invoice-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-invoice">可开具发票金额</h2>
+        <div class="modal-diy-body modal-fensitong-invoice">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-invoice" id="modal-open-invoice-input">
+            <p class="error-tip">请输入正确的金额</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-invoice">
+            <button class="w-btn w-btn-success" id="modal-open-invoice-btn">确认修改</button>
+        </div>
+    </script>
+
+    {# 驳回弹出窗 #}
+    <script type="text/template" id="reject-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-invoice">请填写驳回原因</h2>
+        <div class="modal-diy-body modal-fensitong-invoice">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-invoice" id="modal-reject-input">
+            <p class="error-tip">请输入正确的驳回原因</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-invoice">
+            <button class="w-btn w-btn-primary" id="modal-reject-btn" data-id="<%= id %>">确认驳回</button>
+        </div>
+    </script>
+
+    {# 通过弹出窗 #}
+    <script type="text/template" id="pass-modal-tpl">
+        <h2 class="modal-diy-title modal-fensitong-invoice">请填写快递单号</h2>
+        <div class="modal-diy-body modal-fensitong-invoice">
+            <input type="text" class="form-control modal-diy-input modal-fensitong-invoice" id="modal-pass-input">
+            <p class="error-tip">请输入正确的快递单号</p>
+        </div>
+        <div class="modal-diy-btn modal-fensitong-invoice">
+            <button class="w-btn w-btn-primary" id="modal-pass-btn" data-id="<%= id %>">确认通过</button>
+        </div>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-fensitong-invoice.js"></script>
+{% endblock %}

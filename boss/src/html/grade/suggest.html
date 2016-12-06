@@ -1,0 +1,100 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>环评建议</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i>主管评分</li>
+                <li><i class="fa fa-dashboard"></i>环评建议</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body" id="suggest">
+                            <div class="col-xs-12 box-toolbar last">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <select class="form-control select2" id="score-date" style="width:100%">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- 搜索按钮 -->
+                                    <div class="form-group">
+                                        <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" id="suggest-table">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="suggest-table-tpl">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <% _.each(data.suggests, function(val, index) { %>
+                <li>
+                    <a href="#<%= val.departId%>" data-toggle="tab"><%= val.departName%></a>
+                <% }); %>
+            </ul>
+            <div class="tab-content">
+                <% _.each(data.suggests, function(val, index) { %>
+                    <div class="tab-pane fade in" id="<%= val.departId%>" style="overflow:hidden;">
+                        <table class="table table-borderd table-hover">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>工作建议</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%_.each(data.suggests[index].suggests, function(val, index) { %>
+                                    <tr>
+                                        <td><%= index+1 %></td>
+                                        <td><%= val%></td>
+                                    </tr>
+                                <% });%>
+                            </tbody>
+                        </table>
+                        <% if(data.suggests[index].suggests.length === 0) { %>
+                            <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        </div>    
+    </script>
+
+    <!-- 季度下拉框 -->
+    <script type="text/template" id="score-date-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/grade-suggest-list.js"></script>
+{% endblock %}

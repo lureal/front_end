@@ -1,0 +1,153 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="ad-add">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>添加ad</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">ad管理</li>
+					<li class="active">添加ad</li>
+				</ol>
+			</section>
+
+			<section class="content" id="ad-add-content">
+				<div class="box box-default">
+	        		<div class="box-header with-border">
+	        			<h3 class="box-title">添加ad(广告图片规格228x130   大小建议20KB以内)</h3>
+	        		</div>
+	        		<div class="box-body">
+	        			<div id="ad1">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>ad1</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="ad1-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="ad1-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_ad.do">
+										<div class="input-group">
+											<input type="file" name="adFile" id="ad1-img_input" accept="image/*">
+											<br>
+                                            <img src="/#proj_name#/img/none.png" id="ad1-img-preview" alt="banner1图片" class="img-preview" />
+                                            <br>
+											<button id="ad1-add-image" class="btn btn-primary btn-sm" type="submit">上传ad</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+	        			</div>
+	        			<div id="ad2">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>ad2</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="ad2-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="ad2-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_ad.do">
+										<div class="input-group">
+											<input type="file" name="adFile" id="ad2-img_input" accept="image/*">
+											<br>
+                                            <img src="/#proj_name#/img/none.png" id="ad2-img-preview" alt="banner1图片" class="img-preview" />
+                                            <br>
+											<button id="ad2-add-image" class="btn btn-primary btn-sm" type="submit">上传ad</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+		        		</div>
+		        		<div id="ad3">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>ad3</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="ad3-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="ad3-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_ad.do">
+										<div class="input-group">
+											<input type="file" name="adFile" id="ad3-img_input" accept="image/*">
+											<br>
+                                            <img src="/#proj_name#/img/none.png" id="ad3-img-preview" alt="banner1图片" class="img-preview" />
+                                            <br>
+											<button id="ad3-add-image" class="btn btn-primary btn-sm" type="submit">上传ad</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+		        		</div>
+
+	        			<div id="ad4">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>ad4</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="ad4-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="ad4-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_ad.do">
+										<div class="input-group">
+											<input type="file" name="adFile" id="ad4-img_input" accept="image/*">
+											<br>
+                                            <img src="/#proj_name#/img/none.png" id="ad4-img-preview" alt="banner1图片" class="img-preview" />
+                                            <br>
+											<button id="ad4-add-image" class="btn btn-primary btn-sm" type="submit">上传ad</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+		        		</div>
+		        		<div id="ad5">
+		        			<div class="row">
+	        					<div class="col-md-6">
+		        					<div class="form-group">
+		        						<label>ad5</label>
+		        						<input type="text" class="form-control" placeholder="网址" id="ad5-add-name">
+		        					</div>
+		        				</div>
+		        			</div>
+		        			<div class="row">
+	        					<div class="col-md-12">
+		        					<form id="ad5-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/brand/upload_ad.do">
+										<div class="input-group">
+											<input type="file" name="adFile" id="ad5-img_input" accept="image/*">
+											<br>
+                                            <img src="/#proj_name#/img/none.png" id="ad5-img-preview" alt="banner1图片" class="img-preview" />
+                                            <br>
+											<button id="ad5-add-image" class="btn btn-primary btn-sm" type="submit">上传ad</button>
+										</div>
+		        					</form>
+		        				</div>
+		        			</div>
+		        		</div>
+	        		</div>
+
+	        		<div class="box-footer">
+						<button class="btn btn-default" id="ad-add-canel">取消</button>
+						<button class="btn btn-info pull-right" id="ad-add-submit" data-img="">添加</button>
+	        		</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,129 @@
+.finance-invoice {
+    .card {
+        .info-box {
+            border-radius: 4px;
+            box-shadow: none;
+            height: 120px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        i {
+            background: #1a8cff;
+            border-radius: 50%;
+            display: none;
+            height: 60px;
+            left: 30px;
+            margin-top: -30px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 60px;
+
+            &:after {
+                color: #fff;
+                content: "\f1c0";
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: 27px;
+                display: inline-block;
+                line-height: 60px;
+            }
+        }
+
+        .info-box > div {
+            padding-top: 28px;
+
+            h3,
+            p {
+                color: #1a8cff;
+                line-height: 1.2;
+                margin: 0;
+            }
+
+            h3 {
+                font-size: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            p {
+                font-size: 30px;
+                margin-top: 7px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        // 获取发票按钮
+        .get-invoice-btn {
+            bottom: 23px;
+            position: absolute;
+            right: 30px;
+        }
+
+        // 颜色反转的 card
+        &.card-reserve {
+            > div {
+                background: #1a8cff;
+            }
+
+            .info-box > div {
+                h3,
+                p {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    // 发票列表
+    .w-table-collapse-tr {
+
+        // 小图标
+        i {
+            margin: 0 5px;
+
+            &.fa-check {
+                color: #b8e62e;
+            }
+        }
+
+        // 查看详情
+        .view-detail {
+            color: #1a8cff;
+
+            // 未打开详情
+            &[aria-expanded="false"] {
+                .fa-caret-down {
+                    transform: rotate(0);
+                }
+            }
+
+            // 打开详情
+            &[aria-expanded="true"] {
+                .fa-caret-down {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        // 具体内容
+        .detail-ctn {
+            background: #f3f9ff;
+            line-height: 2.285;
+            margin: 0 30px 0 30px;
+            padding: 10px 20px;
+
+            & + .detail-ctn {
+                margin-top: 15px;
+            }
+
+            &:last-child {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

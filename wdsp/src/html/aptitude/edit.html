@@ -1,0 +1,181 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="/#proj_name#/html/service/index.html">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">开户</a>
+        </li>
+    </ol>
+</section>
+<section class="content create-aptitude">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="create-aptitude">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">填写开户资质</h3>
+                </div>
+                <div class="box-body w-box-body w-form w-form-readonly">
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="customName" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">公司名称</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="您的公司名称，如微梦创科网络有限公司">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的公司（网站）名称</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="url" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">网站URL</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="公司网址，如：http://www.weibo.com">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的网站URL</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="contactName" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">联系人姓名</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="您的姓名，如张三">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的联系人姓名</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="phone" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">联系电话</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="格式：区号-电话或手机号">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的联系电话</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="address" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">通信地址</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="公司地址，如深圳市南山区威新软件园">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的通信地址</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="select" data-id="tradeId" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">行业</label>
+                            <div class="col-sm-4 w-field-content w-field-select">
+                                <select class="form-control w-field-input" id="industry"></select>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请选择行业</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-id="businessLicense" data-validate="empty">
+                        <div class="w-field single-img-field">
+                            <label class="col-sm-2 w-field-title">营业执照</label>
+                            <div class="col-sm-4 w-field-contentl-sm-10 w-field-content">
+                                <div class="single-upload-tip">( 说明：请上传公司营业执照 )</div>
+                                <div class="single-upload-items" id="upload-business-license">
+                                    <div class="single-upload-item add">
+                                        <div class="add-wrap">
+                                            <input type="file" access="image/x-png,image/png">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                        <div class="upload-wrap">
+                                            <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                            <button>
+                                                <i class="fa fa-close"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-id="icpLicense" data-validate="empty">
+                        <div class="w-field single-img-field">
+                            <label class="col-sm-2 w-field-title">ICP备案</label>
+                            <div class="col-sm-4 w-field-contentl-sm-10 w-field-content">
+                                <div class="single-upload-tip">( 说明：请上传ICP备案 )</div>
+                                <div class="single-upload-items" id="upload-icp-license">
+                                    <div class="single-upload-item add">
+                                        <div class="add-wrap">
+                                            <input type="file" access="image/x-png,image/png">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                        <div class="upload-wrap">
+                                            <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                            <button>
+                                                <i class="fa fa-close"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="salesEmail" data-validate="empty,email">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">联系邮箱</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="您的商务经理邮箱">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的邮箱地址</p>
+                        </div>
+                        <div class="w-field-tip clearfix">
+                            <p class="col-sm-4 col-sm-offset-2">不知道邮箱？请<a href="http://p.qiao.baidu.com//im/index?siteid=6768606&ucid=10452001" target="_blank">联系客服</a></p>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="submit">提交</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 选择下拉框模板 #}
+<script type="text/template" id="select-tpl">
+    <% for (var prop in data) { %>
+        <option value="<%= prop %>"><%= data[prop] %></option>
+    <% } %>
+</script>
+
+{# 请先完成开户流程弹窗 #}
+<script type="text/template" id="create-aptitude2-tpl">
+    <div class="input-modal">
+        <h2 class="modal-diy-title">请先完成开户流程</h2>
+        <div class="modal-diy-btn">
+            <a href="/#proj_name#/html/aptitude/edit.html" class="w-btn w-btn-primary">立即开户</a>
+        </div>
+    </div>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/aptitude-edit.js"></script>
+{% endblock %}

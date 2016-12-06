@@ -1,0 +1,131 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加客户</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/customer-list.html"><i class="fa fa-dashboard"></i>客户管理</a></li>
+                <li>
+                    添加客户
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>客户名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>备注</label>
+                                <input type="text" class="form-control" placeholder="" id="memo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>业务线</label>
+                                <select id="product-line" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>产品</label>
+                                <select id="product" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>平台 ID</label>
+                                <input type="text" class="form-control" id="platform-line" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>行业</label>
+                                <select id="industry-id" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>区域</label>
+                                <select id="area-line" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>运营人员</label>
+                                <select id="adviser-id" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>销售来源</label>
+                                <select id="channel-line" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 bussiness-manager">
+                            <div class="form-group">
+                                <label>商务丨渠道经理</label>
+                                <select id="sales-id" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 channel-manager z-hidden">
+                            <div class="form-group">
+                                <label>渠道商</label>
+                                <select id="channel-manager" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>返点情况</label>
+                                <input type="text" class="form-control" id="rebate" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">添加</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 客户 -->
+    <script type="text/template" id="select-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/data-customer-add.js"></script>
+{% endblock %}

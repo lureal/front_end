@@ -1,0 +1,123 @@
+
+// 提示框
+.w-tip {
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+
+    .w-tip-dialog {
+        left: 0;
+        margin-top: -35px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 50%;
+        z-index: 10001;
+    }
+
+    .w-tip-content {
+        border-radius: 4px;
+        background: #39414d;
+        color: #fff;
+        display: inline-block;
+        font-size: 18px;
+        height: 70px;
+        line-height: 70px;
+        min-width: 150px;
+        padding: 0 20px;
+
+        i {
+            margin-right: 8px;
+        }
+    }
+}
+
+// 弹出窗
+.modal {
+
+    // 主要的内容块
+    .modal-content {
+        border-radius: 4px;
+    }
+
+    // 实际内容块
+    .modal-body {
+        color: #75839a;
+        font-size: 14px;
+        padding: 50px 20px 30px;
+        text-align: center;
+    }
+
+    // 右上角叉叉按钮
+    button.close {
+        height: 50px;
+        line-height: 1;
+        outline: none;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50px;
+    }
+
+    // 底部按钮
+    .modal-footer {
+        border-top: 0;
+        text-align: center;
+        padding: 0 0 35px 0;
+
+        button {
+            margin: 0 20px;
+        }
+    }
+}
+
+// 图片预览弹出窗
+.modal-image-preview {
+
+    .modal-dialog {
+        margin: 0;
+        padding: 100px;
+        width: 100%;
+    }
+
+    .modal-content {
+        background: rgba(0, 0, 0, 0);
+        box-shadow: none;
+        width: 100%;
+
+        table,
+        tbody,
+        tr,
+        td {
+            text-align: center;
+            width: 100%;
+        }
+
+        table {
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+
+    // 设置弹出窗宽度
+    .modal-dialog {
+        margin-top: 200px;
+        width: 380px;
+    }
+}
+
+// 小尺寸屏幕
+@media (max-width: 768px) {
+    .modal-image-preview .modal-dialog {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,66 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加菜单权限</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/system/menu-list.html"><i class="fa fa-dashboard"></i>菜单管理</a></li>
+                <li>
+                    添加菜单权限
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+               <!--  <div class="box-header with-border">
+                    <h3 class="box-title">添加菜单权限</h3>
+                </div> -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>编码</label>
+                                <input type="text" class="form-control" placeholder="" id="code">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>url</label>
+                                <input type="text" class="form-control" placeholder="" id="url">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">添加</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-menu-action-add.js"></script>
+{% endblock %}

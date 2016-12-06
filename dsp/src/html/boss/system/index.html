@@ -1,0 +1,43 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>系统配置</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>系统配置</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">系统配置</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>服务费（%）</label>
+                            <input type="number" name="service-charge" class="form-control" id="service-charge" min=0>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-info pull-left" id="commit">提交</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/boss-system.js"></script>
+{% endblock %}

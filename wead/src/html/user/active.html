@@ -1,0 +1,88 @@
+{% extends '../layouts/user.html' %}
+{% block content %}
+<div class="user-active">
+
+    {# 背景图 #}
+    <img class="bg" src="/#proj_name#/img/bg.jpg" alt="wead" />
+
+    {# 主体 #}
+    <div class="ctn">
+        <div class="wrap">
+
+            {# 头部 #}
+            <div class="header">
+                <img class="logo" src="/#proj_name#/img/logo-lg.png" alt="wead" />
+            </div>
+
+            {# 主体 #}
+            <div class="body" id="body"></div>
+
+            {# 其他信息，联系客服、copyright 等等 #}
+            <div class="footer">
+                <div class="contact">如有任何疑问，请 <a href="http://p.qiao.baidu.com//im/index?siteid=6768606&ucid=10452001" target="_blank">联系客服</a></div>
+                <div class="copyright">粤ICP备15014511号 Copyright © 2016 WESDOM. All Rights Reserved</div>
+                <div class="company">深圳赚友科技有限公司</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# 注册成功 #}
+<script type="text/template" id="registe-success">
+    <div class="registe-success">
+        <h2 class="detail-title">恭喜注册成功</h2>
+        <div class="detail-body">
+            <p>激活邮件已发送至：<span id="email"></span></p>
+            <p>请点击邮件内的链接来激活账户</p>
+        </div>
+        <div class="detail-btn">
+            <button class="w-btn w-btn-primary back-to-home">返回首页</button>
+        </div>
+        <div class="detail-tip">
+            <p>未收到激活邮件，<a href="javascript:void(0);" class="re-active">再发一次</a></p>
+        </div>
+    </div>
+</script>
+
+{# 尚未激活 #}
+<script type="text/template" id="not-active">
+    <div class="not-active">
+        <h2 class="detail-title">您的账户尚未激活</h2>
+        <div class="detail-body">
+            <p>您需要登录账户邮箱：<span id="email"></span></p>
+            <p>并通过激活链接激活您的账户</p>
+        </div>
+        <div class="detail-btn">
+            <button class="w-btn w-btn-primary back-to-home">返回首页</button>
+        </div>
+        <div class="detail-tip">
+            <p>未收到激活邮件，<a href="javascript:void(0);" class="re-active">再发一次</a></p>
+        </div>
+    </div>
+</script>
+
+{# 链接过期 #}
+<script type="text/template" id="expire">
+    <div class="expire">
+        <h2 class="detail-title">激活链接已过期</h2>
+        <div class="detail-body">
+            <p>请重新发送激活邮件至：<span id="email"></span></p>
+        </div>
+        <div class="detail-btn">
+            <button class="w-btn w-btn-primary re-active">发送激活邮件</button>
+        </div>
+    </div>
+</script>
+
+{# 激活成功 #}
+<script type="text/template" id="active-success">
+    <div class="active-success">
+        <h2 class="detail-title">账户已成功激活</h2>
+        <div class="detail-btn">
+            <button class="w-btn w-btn-primary back-to-home">立即登录</button>
+        </div>
+    </div>
+</script>
+
+<script src="/#proj_name#/js/active.js"></script>
+{% endblock %}

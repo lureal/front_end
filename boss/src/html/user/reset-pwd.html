@@ -1,0 +1,41 @@
+{% extends '../layouts/user.html' %}
+{% block head %}
+<link rel="stylesheet" href="/#proj_name#/css/reset-pwd.css">
+{% endblock %}
+
+{% block body %}
+<body>
+
+    {# 主体 #}
+    <div class="main">
+        <div class="name">
+			<p>微思敦企业门户</p>
+		</div>
+		<div class="form">
+			<p class="title">重置密码</p>
+			<p class="tips">请输入电子邮箱，系统将给你发送一封重置邮件，请注意收取。</p>
+			<div class="email">
+				<i class="fa fa-envelope" aria-hidden="true"></i>
+				<input class="input-email" type="text" placeholder="请输入邮箱" id="email">
+			</div>
+			<button id="send">发送邮件</button>
+            <p class="back" id="back">
+                <a href="javascript:void(0)">返回登录</a>
+            </p>
+		</div>
+    </div>
+
+    {# 版权信息 #}
+    <div class="copyright">
+        <p>
+            <a class="number" href="http://www.miitbeian.gov.cn/" target="_blank">鄂 ICP备15001665号</a> Copyright © 2016 Wesdom. All Rights Reserved
+        </p>
+        <p class="conpany">武汉微思敦网络技术有限公司 版权所有</p>
+    </div>
+
+    {% include '../modules/modal.html' %}
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/#proj_name#/js/user-reset-pwd.js"></script>
+</body>
+{% endblock %}

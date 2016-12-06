@@ -1,0 +1,164 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="article-add">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>添加文章</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">文章管理</li>
+					<li class="active">文章详情</li>
+				</ol>
+			</section>
+
+			<section class="content" id="article-add-content">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">文章详情</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+
+                            {# 文章标题 #}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>标题（建议 25 个字以内，手机端超过 20 个字将显示 "..."，PC 端超过一行显示 "..."）</label>
+                                    <input type="text" class="form-control" placeholder="" id="article-add-name">
+                                </div>
+                            </div>
+
+                            {# 文章作者 #}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>作者</label>
+                                    <select id="article-add-author" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            {# 文章类型 #}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>类型</label>
+                                    <select id="article-add-type" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+                            </div>
+
+                            {# 文章标签 #}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>标签</label>
+                                    <select id="article-add-tag" multiple="" class="form-control select2" style="width: 100%;">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>文章标识</label>
+                                    <input type="text" class="form-control" placeholder="" id="article-add-sign">
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="add-top1" style="margin-top: 20px;">
+                                <div class="form-group form-inline">
+                                    <label>是否置顶</label>
+                                    <div class="radio" >
+                                        <label>
+                                            <input type="radio" name="is-top"  value="true" checked="" id="top-choose"><span>是</span>
+                                        </label>
+                                        <input type="text" name="toptime" class="form-control" id="toptime" style="width: 50px;">小时（请输入0.5或者1的倍数，不能为0，也不能为空）
+                                        <label>
+                                            <input type="radio" name="is-top"  value="false" id="top-unchoose"><span>否</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# 略缩图 #}
+                        <div class="row snapshats">
+                            <form id="img_form" class="form-group col-md-12" enctype="multipart/form-data" method="POST" action="/admin/article/upload.do">
+                               <div class="form-group">
+                                   <label>缩略图(缩略图规格172x135   大小建议15KB以内)</label>
+                                   <div id="snapshats-img-wtap"></div>
+                                    <div class="input-group">
+                                        <input type="file" name="snapshotFile" id="img_input" accept="image/*">
+                                        <br>
+                                        <button id="article-add-image" class="btn btn-primary btn-sm" type="submit">上传略缩图</button>
+                                    </div>
+
+                               </div>
+                            </form>
+                        </div>
+
+                        {# 文章描述 #}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>文章描述(限 65 字)</label>
+                                    <input type="text" class="form-control" placeholder="" id="article-add-description">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {# 编辑器 #}
+                    <div class="box-header">
+                        <h3 class="box-title"><small>内容</small></h3>
+                    </div>
+                    <div class="box-body">
+    					<form>
+                            <div type="text/plain" id="myEditor" style="width:100%;height:240px;"></div>
+    					</form>
+                    </div>
+
+                    <div class="box-footer">
+                        <button class="btn btn-default" id="article-add-canel">取消</button>
+                        <button class="btn btn-info pull-left" id="article-add-submit">添加</button>
+                    </div>
+                </div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+
+        <!--略缩图图片-->
+        <script type="text/template" id="snapshats-img-tpl">
+            <span class="snapshots__img-wrap">
+                <img src="<%= data %>">
+                <a href="javascript:void(0);" class="snapshots__img-remove">删除</a>
+            </span>
+        </script>
+
+        <!--文章类型-->
+        <script type="text/template" id="article-add-type-tpl">
+            <% for(var prop in data) { %>
+                <option data-id="<%= prop %>"><%= data[prop] %></option>
+            <% } %>
+        </script>
+
+        <!--文章作者-->
+        <script type="text/template" id="article-add-author-tpl">
+            <% _.each(data, function(val, index) { %>
+                <option><%= val.name %></option>
+            <% }) %>
+        </script>
+
+        <!--文章标签-->
+        <script type="text/template" id="article-add-tag-tpl">
+            <% _.each(data, function(val, index) { %>
+                <option><%= val.name %></option>
+            <% }) %>
+        </script>
+    </div>
+{% endblock %}

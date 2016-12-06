@@ -1,0 +1,243 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>财务管理</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>财务管理</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#info" data-toggle="tab">财务信息</a>
+                    </li>
+                    <li>
+                        <a href="#record" data-toggle="tab">财务记录</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="info" style="overflow: hidden;">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <p>公司账户余额（单位：元）</p>
+                                        <h3 id="balance">0</h3>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa fa-yen"></i>
+                                    </div>
+                                    <a href="/#proj_name#/html/manage/finance/recharge.html" class="small-box-footer">
+                                        充值 <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 box-toolbar last">
+                            <div class="form-inline">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="请输入客户名称/ID" id="info-customer">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="info-search">搜索</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="info-list"></div>
+                    </div>
+                    <div class="tab-pane" id="record" style="overflow: hidden;">
+                        <div class="col-xs-12 box-toolbar last">
+                            <div class="form-inline">
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="选择日期" style="width: 183px;">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="record-search">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="record-export">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="record-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <!--财务管理-->
+    <script type="text/template" id="info-list-tpl">
+        <table class="table table-borderd table-hover tab-table">
+            <thead>
+                <tr>
+                    <th>客户名称</th>
+                    <th>产品名称</th>
+                    <th>创建时间</th>
+                    <th>账户 ID</th>
+                    <th style="text-align: right;">账户余额</th>
+                    <th>投放平台</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td><%= val.customName %></td>
+                        <td><%= val.productName %></td>
+                        <td><%= val.posttime_str %></td>
+                        <td><%= val.customId %></td>
+                        <td style="text-align: right;"><%= (val.balance / 100).toFixed(2) %></td>
+                        <td><%= val.platforms %></td>
+                        <td>
+                            <a href="/#proj_name#/html/manage/finance/increase.html?id=<%= encodeURIComponent(val.customId) %>&name=<%= encodeURIComponent(val.customName) %>" type="button" class="btn btn-xs btn-success">转入资金</a>
+                            <a href="/#proj_name#/html/manage/finance/decrease.html?id=<%= encodeURIComponent(val.customId) %>&name=<%= encodeURIComponent(val.customName) %>" type="button" class="btn btn-xs btn-success">转出资金</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <!--财务记录-->
+    <script type="text/template" id="record-list-tpl">
+        <table class="table table-borderd table-hover tab-table">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th style="text-align: right;">充值</th>
+                    <th style="text-align: right;">向客户转入</th>
+                    <th style="text-align: right;">由客户转出</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td><%= val.date === null ? '-' : val.date %></td>
+                        <td style="text-align: right;"><%= val.selfIncrease === null ? '-' : (val.selfIncrease / 100).toFixed(2) %></td>
+                        <td style="text-align: right;"><%= val.customIncrease === null ? '-' : (val.customIncrease / 100).toFixed(2) %></td>
+                        <td style="text-align: right;"><%= val.customDecrease === null ? '-' : (val.customDecrease / 100).toFixed(2) %></td>
+                        <td style="text-align: right;"><%= val.memo === null ? '-' : val.memo %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-finance-list.js"></script>
+{% endblock %}

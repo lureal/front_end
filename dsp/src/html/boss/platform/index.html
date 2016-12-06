@@ -1,0 +1,136 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+	{% include '../../modules/header.html' %}
+	{% include '../../modules/sidebar.html' %}
+
+	<div class="content-wrapper">
+		<section class="content-header">
+			<h1>平台配置</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i>平台配置</a></li>
+			</ol>
+		</section>
+
+		<section class="content">
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li role="presentation" class="active">
+						<a href="#weibo" data-toggle="tab" aria-expanded="true">微博WAX</a>
+					</li>
+
+					<!-- 腾讯ADX没有数据，为方便以后增加功能，暂时先做tab样式，先隐藏 -->
+					<!-- <li role="presentation">
+						<a href="#tengxun" data-toggle="tab" aria-expanded="true">腾讯ADX</a>
+					</li> -->
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade active in" id="weibo">
+						<div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>竞价url </label>
+                                        <input type="text" class="form-control" id="bidding-url">
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>竞赢通知url </label>
+                                        <input type="text" class="form-control" id="bidding-notice">
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>qps </label>
+                                        <input type="number" class="form-control" id="qps" min=0>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>关闭竞价 </label>
+                                        <div class="radio" id="bid">
+                                            <label>
+                                                <input type="radio" name="Bid" id="closeBid" value="true"><span>是</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="Bid" id="openBid" value="false"><span>否</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>              										  
+						</div> 
+                        <div class="box-footer">
+                            <button class="btn btn-info pull-left" id="commit">提交</button>
+                        </div>                               
+					</div>
+
+					<!-- 腾讯ADX tab 暂时用不上 -->
+					<!-- <div class="tab-pane fade" id="tengxun">
+						<div class="box-body">
+							<div class="row platform-config">
+								<div class="form-group ">
+									<label class="control-label col-sm-2">竞价url </label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="tengxun-bidding-url">
+									</div>
+								</div>
+							</div>
+							<div class="row platform-config">
+								<div class="form-group">
+									<label class="control-label col-sm-2">竞赢通知url</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" id="tengxun-bidding-notice">
+									</div>
+								</div>
+							</div>
+							<div class="row platform-config">
+								<div class="form-group">
+									<label class="control-label col-sm-2">qps</label>
+									<div class="col-sm-5">
+										<input type="number" class="form-control" id="tengxun-qps">
+									</div>
+								</div>  
+							</div>  
+							<div class="row platform-config">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">关闭竞价</label>
+                                    <div class="col-sm-5">
+                                        <label>
+                                        	<input type="checkbox" name="closeBid" id="tengxun-closeBid">
+                                        </label>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="row platform-config">
+                                <div class="form-group">
+                                    <div class="col-sm-5 col-sm-offset-2">
+                                    	<button class="btn btn-default" id="tengxun-cancel">取消</button>
+                                        <button class="btn btn-info pull-right" id="tengxun-commit">提交</button>
+                                    </div>
+                                </div>  
+                            </div>                         							  
+						</div>                                
+					</div> -->
+				</div>
+		    </div>
+		</section>
+	</div>
+
+	{% include '../../modules/copyright.html' %}
+	{% include '../../modules/modal.html' %}
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/boss-platform.js"></script>
+{% endblock %}

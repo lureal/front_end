@@ -1,0 +1,116 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="stream-parner-list">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>换量合作方管理</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">换量合作方管理</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">换量合作方列表</h3>
+								<div class="box-tools">
+									<a href="/#proj_name#/html/stream-parner/add.html" type="button" class="btn btn-block btn-primary btn-sm">添加换量合作方</a>
+								</div>
+							</div>
+							<div class="box-body" id="stream-parner-list-wrap"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+
+        {# 合作方列表 #}
+        <script type="text/template" id="stream-parner-list-tpl">
+			<table id="stream-parner-list-table" class="table table-borderd table-hover">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>产品名称</th>
+						<th>平台</th>
+						<th>合作方式</th>
+						<th>联系方式</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(data.streampartners, function(val, index) { %>
+						<tr>
+							<td><%= val.id %></td>
+							<td><%= val.productName %></td>
+							<td><%= val.platform %></td>
+							<td><%= val.content %></td>
+							<td><%= val.contact %></td>
+							<td>
+								<button data-id="<%= val.id %>" id="stream-parner-list-detail" type="button" class="btn btn-xs btn-success">查看详情</button>
+								<button data-id="<%= val.id %>" id="stream-parner-list-moveup" type="button" class="btn btn-xs btn-warning">上移</button>
+								<button data-id="<%= val.id %>" id="stream-parner-list-movedown" type="button" class="btn btn-xs btn-warning">下移</button>
+								<button data-id="<%= val.id %>" id="stream-parner-list-delete" type="button" class="btn btn-xs btn-danger" data-id="<%= val.id %>">删除</button>
+							</td>
+						</tr>
+					<% }); %>
+        		</tbody>
+			</table>
+			<% if(data.pageCount > 1) { %>
+			<nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                   		var end = data.pageCount - 1;
+                  		var start = 2;
+                  		var pagenum = 7;
+                  		if(data.pageCount > pagenum) {
+                  			var left = data.page - start;
+                  			var right = end- data.page > 2 ? 2:end- data.page;
+                  			if(left<2) {
+                  				end = start + 4;
+                  			} else if(right<2){
+                  				start = end - 4;
+                  			} else {
+                  				start = data.page - 2;
+                  				end = data.page + 2;
+                  			}
+    	              	}
+                    	for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                   	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+			</nav>
+			<% } %>
+        </script>
+    </div>
+{% endblock %}

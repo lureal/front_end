@@ -1,0 +1,428 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+
+<div class="wrapper manage-delivert-effect">
+
+
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+
+        </section>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box w-box" id="data">
+                        <div class="box-header w-box-header">
+                            <h3 class="box-title">数据列表</h3>
+                        </div>
+                        <div class="w-box-tool form-inline">
+                            <div class="w-table-tool" id="data-tool">
+                                <div class="form-group w-tool-item">
+                                    <label class="w-tool-name">产品名</label>
+                                    <input type="text" class="w-tool-input w-tool-item-input" placeholder="请输入产品名" data-field="keyword" data-type="input" data-errmsg="请输入产品名称" data-isRequire="0">
+                                </div>
+                                <div class="form-group w-tool-item w-datepicker">
+                                    <label class="w-tool-name">开始日期</label>
+                                    <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                                </div>
+                                <div class="form-group w-tool-item w-datepicker">
+                                    <label class="w-tool-name">结束日期</label>
+                                    <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                                </div>
+                                <!--<div class="form-group w-tool-item">
+                                    <label class="w-tool-name">时间</label>
+                                    <input type="text" placeholder="请选择日期" class="w-tool-input w-tool-item-datepicker" id="datepicker" data-field="startDate,endDate" data-type="date" data-errmsg="请选择日期" data-isRequire="0">
+                                </div>-->
+                                <div class="form-group w-tool-item">
+                                    <label class="w-tool-name">消耗情况</label>
+                                    <select required class="form-control w-tool-input w-tool-item-select" data-field="type" data-type="select" data-errmsg="请选择消耗情况" data-isRequire="0">
+                                        <option value="" disabled selected style="color: $e5e5e5;">选择消耗情况</option>
+                                        <option value="1">有消耗</option>
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+                                <button type="button" name="button" class="w-btn table-tool-btn" id="data-search">搜索</button>
+                                <button type="button" name="button" class="w-btn table-tool-btn" id="data-export">导出</button>
+                            </div>
+                        </div>
+                        <div class="box-body w-box-body table-responsive w-table-collapse-tr" id="data-table"></div>
+                        <div class="box-footer clearfix w-pager">
+                            <div class="pull-right" id="data-pager">
+                                <button class="w-previous pull-left">
+                                    <i class="fa fa-chevron-circle-left"></i>
+                                </button>
+                                <div class="pull-left clearfix">
+                                    <input type="text" class="w-page-now form-control pull-left" value="1">
+                                    <span class="w-allpage pull-left">
+                                        /
+                                        <span>1</span>
+                                    </span>
+                                </div>
+                                <button class="w-next pull-left">
+                                    <i class="fa fa-chevron-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# 数据列表模板 #}
+    <script type="text/template" id="data-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <th>产品名</th>
+                    <th>金额（元）</th>
+                    <th>互动情况</th>
+                    <th>今日实时消耗（元）</th>
+                    <th>所选时段消耗（元）</th>
+                    <th>操作</th>
+                </tr>
+                <% if (records.length < 1) { %>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                <% } else { %>
+                    <% _.each(records, function(data, index) { %>
+                        <tr>
+                            <td><%= data.customId %></td>
+                            <td><%= data.productName %></td>
+                            <td>
+                                现金金额：<%= data.balance %><br>
+                                当前限额：<%= data.quota === null ? 0 : data.quota %>
+                            </td>
+                            <td>
+                                互动量：<%= data.interactCount === null ? 0 : data.interactCount %><br>
+                                互动率：<%= data.interactRatio === null ? 0 : data.interactRatio %>
+                            </td>
+                            <td><%= data.rtConsume %></td>
+                            <td><%= data.consume === null ? 0 : data.consume %></td>
+                            <td>
+                                <a target="_blank" href="/dsp/delivery/overview/index?cid=<%= data.customId %>" class="enter-account">进入账号</a><br>
+                                <a target="_blank" href="/wdsp/overview/index?cid=<%= data.customId %>" class="enter-account">进入账号（新版）</a><br>
+                                <a href="javascript:void(0);" class="accordion-toggle view-detail" data-toggle="collapse" data-target="#collapse-tr-<%= index %>" aria-expanded="false">
+                                    查看详情<i class="fa fa-caret-down"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr class="w-table-collapse-row">
+                            <td colspan="7" style="padding: 0 !important;">
+                                <div class="accordian-body collapse" id="collapse-tr-<%= index %>">
+                                    <div class="detail-ctn clear">
+                                        <div class="company">
+                                            公司名：<%= data.customName %>
+                                        </div>
+                                        <div class="platform">
+                                            已开通平台：<%= data.platforms %>
+                                        </div>
+                                        <div class="time">
+                                            创建时间：<%= data.time %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } %>
+            </tbody>
+        </table>
+    </script>
+
+    {# =============================之前的代码，注释=========================== #}
+    {#
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>投放管理</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 投放管理</a></li>
+            </ol>
+        </section>
+        <section class="content" >
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active">
+                        <a href="#effect" data-toggle="tab">效果数据</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#cuslist" data-toggle="tab">客户列表</a>
+                    </li>
+                </ul>
+    			<div id="myTabContent" class="tab-content">
+
+    				<!-- 效果数据 -->
+            		<div class="tab-pane fade in active" id="effect">
+            			<div class="row">
+    		                <div class="col-xs-12">
+    		                    <div class="box1">
+    		                        <div class="box-header1">
+                                        <div class="col-xs-12 box-toolbar last">
+                                            <div class="form-inline">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control pull-right active" id="search-datapicker" placeholder="选择日期" style="width: 183px;">
+                                                </div>
+
+                                                <!-- 搜索按钮 -->
+                                                <div class="form-group">
+                                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+                                                </div>
+                                            </div>
+                                        </div>
+    		                        </div>
+
+    		                        <div class="box-body">
+    		                            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    		                                <div class="row">
+    		                                    <div class="col-sm-12" id="delivery-effect">
+
+    		                                    </div>
+    		                                </div>
+    		                            </div>
+    		                        </div>
+    		                    </div>
+    		                </div>
+    		        	</div>
+            		</div>
+
+            		<!-- 客户列表-->
+            		<div class="tab-pane fade" id="cuslist">
+            			<div class="row">
+    		                <div class="col-xs-12">
+    		                    <div class="box1">
+    		                       <div class="box-header1">
+    									<div class="col-sm-3 search-allocustomer">
+    										<input type="text" name="search-delivery" class="form-control" id="search-delivery" placeholder="客户名称/ID" style="margin-left:10px;">
+    									</div>
+    									<button class="btn btn-info" id="cuslist-search">查询</button>
+    								</div>
+    		                        <div class="box-body">
+    		                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    		                                <div class="row">
+    		                                    <div class="col-sm-12" id="delivery-cuslist">
+    		                                    </div>
+    		                                </div>
+    		                            </div>
+    		                        </div>
+    		                    </div>
+    		                </div>
+    		        	</div>
+            		</div>
+            	</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- effect列表数据 -->
+	<script type="text/template" id="delivery-effect-tpl">
+		<table id="example1" class="table table-bordered table-hover dataTable" role="grid">
+			<thead>
+			    <tr role="row">
+			        <th tabindex="0" rowspan="1" colspan="1">客户名称</th>
+			        <th tabindex="0" rowspan="1" colspan="1">产品名</th>
+			        <th tabindex="0" rowspan="1" colspan="1">账户ID</th>
+			        <th tabindex="0" rowspan="1" colspan="1">已开通平台</th>
+			        <th tabindex="0" rowspan="1" colspan="1">互动量 </th>
+			        <th tabindex="0" rowspan="1" colspan="1">互动率</th>
+			        <th tabindex="0" rowspan="1" colspan="1">所选时段消耗</th>
+			        <th tabindex="0" rowspan="1" colspan="1">操作</th>
+			    </tr>
+			</thead>
+			<tbody>
+				<% _.each(data.records, function(val, index) { %>
+				    <tr role="row" class="odd">
+
+				        <td><%= val.customName%></td>
+				        <td><%= val.productName ?  val.productName : '--'%></td>
+				        <td><%= val.customId ? val.customId :'--'%></td>
+				        <td><%= val.platforms ? val.platforms :'--'%></td>
+				        <td><%= val.interactCount ? val.interactCount :'--'%></td>
+                        <% if(val.interactRatio == null ) { %>
+                            <td>--</td>
+                        <% } else { %>
+                            <td><%= (val.interactRatio *100 ).toFixed(2)%>%</td>
+                        <% } %>
+                        <% if(val.consume == null ) { %>
+                            <td>--</td>
+                        <% } else { %>
+                            <td><%= (val.consume)/100 %></td>
+                        <% } %>
+				        <td ><a data-customId="<%= val.customId%>" target="_blank" href="/#proj_name#/html/delivery/overview/index.html?cid=<%= val.customId %>">进入账户</a>
+                        </td>
+				    </tr>
+				<% }); %>
+			</tbody>
+		</table>
+
+		<% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+		<% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+                <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }
+                    for(var i = start; i <= end; i++) {
+                %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+                <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+	</script>
+
+	<!-- customer列表数据 -->
+	<script type="text/template" id="delivery-cuslist-tpl">
+		<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+			<thead>
+			    <tr role="row">
+			        <th tabindex="0" rowspan="1" colspan="1">客户名称</th>
+			        <th tabindex="0" rowspan="1" colspan="1">产品名</th>
+			        <th tabindex="0" rowspan="1" colspan="1">账户ID</th>
+			        <th tabindex="0" rowspan="1" colspan="1">已开通平台 </th>
+			        <th tabindex="0" rowspan="1" colspan="1">创建时间</th>
+			        <th tabindex="0" rowspan="1" colspan="1">现金金额</th>
+			        <th tabindex="0" rowspan="1" colspan="1">当前限额</th>
+			        <th tabindex="0" rowspan="1" colspan="1">今日实时消耗</th>
+			        <th tabindex="0" rowspan="1" colspan="1">操作</th>
+			    </tr>
+			</thead>
+			<tbody>
+				<% _.each(data.records, function(val, index) { %>
+				    <tr role="row" class="odd">
+				        <td><%= val.customName%></td>
+				        <td><%= val.productName ?  val.productName : '--'%></td>
+				        <td><%= val.customId ? val.customId :'--'%></td>
+				        <td><%= val.platforms ? val.platforms :'--'%></td>
+				        <td><%= val.posttime_str ? val.posttime_str :'--'%></td>
+                        <% if (val.balance == null ) { %>
+                            <td>--</td>
+                        <% } else { %>
+                            <td style="text-align: right;"><%= val.balance/100 %></td>
+                        <% } %>
+
+				        <% if(val.quota == null ) { %>
+                            <td>--</td>
+                        <% } else { %>
+                            <td><%= (val.quota)/100 %></td>
+                        <% } %>
+				        <% if(val.consume == null ) { %>
+                            <td>--</td>
+                        <% } else { %>
+                            <td><%= (val.consume)/100 %></td>
+                        <% } %>
+				        <td >
+                            <a data-customId="<%= val.customId%>" target="_blank" href="/#proj_name#/html/delivery/overview/index.html?cid=<%= val.customId %>" id="enter">进入账户</a>
+                        </td>
+				    </tr>
+				<% }); %>
+			</tbody>
+		</table>
+
+        <% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+		<% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+                <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }
+                    for(var i = start; i <= end; i++) {
+                %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+                <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+	</script>
+    #}
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-delivery-effect.js"></script>
+{% endblock %}

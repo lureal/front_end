@@ -1,0 +1,48 @@
+{% extends '../layouts/user.html' %}
+
+{%  block body %}
+<body style="background: #d2d6de;">
+    <div class="forget-in">
+        <div class="row">
+            <div class="forget-in-logo">
+                <div class="forget-in-title">
+                    WeAD移动广告平台
+                </div>
+            </div>
+        </div>
+        <div class="forget-in-form">
+            <div class="forget-in-form-title">
+                <span class="form-title">找回密码</span>
+            </div>
+
+            <form id="validate-form">
+                <div class="form-group has-feedback" >
+                    <input type="text" class="form-control" name="username" id="username" placeholder="用户">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="row login-word">
+                    <div class="col-xs-4 col-xs-offset-8">
+                        <div class="sign-btn">
+                            <a class="btn btn-primary btn-block"  id="forget-submit">确认</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row forget-word">
+                    <a href="/#proj_name#/user/login">登录</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/validate/validate.min.js"></script>
+    <script src="/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/#proj_name#/js/user.js"></script>
+</body>
+{% endblock %}

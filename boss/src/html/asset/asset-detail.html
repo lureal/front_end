@@ -1,0 +1,117 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>记录详情</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/product-list.html"><i class="fa fa-dashboard"></i>产品管理</a></li>
+                <li>
+                    记录详情
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>物品名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>数量</label>
+                                <input type="number" class="form-control" placeholder="" id="count">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>单价</label>
+                                <input type="number" class="form-control" placeholder="" id="price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>物品级别</label>
+                                <select class="select2 form-control" id="grade" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="snapshats" id="pic"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="snapshats" id="pic"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>备注</label>
+                                <input type="text" class="form-control" placeholder="" id="memo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">更新</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+     <!-- 上传图片详情模板-->
+    <script type="text/template" id="file-tpl">
+        <form class="file-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+            <div class="row">
+                <div class="form-group">
+                    <label><%= title %><span style="color: red;">*</span></label>
+                    <div class="input-group">
+                        <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                        <br>
+                        <a class="snapshats-link" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                            <img class="snapshats-preview" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                        </a>
+                        <br>
+                        <p class="file-submit" type="submit"></p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </script>
+
+     <!-- 物品级别 -->
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/asset-asset-detail.js"></script>
+{% endblock %}

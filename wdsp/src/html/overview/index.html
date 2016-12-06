@@ -1,0 +1,322 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">信息概览</a>
+        </li>
+    </ol>
+</section>
+<section class="content overview">
+
+    {# cards #}
+    <div class="row" id="cards">
+        <div class="col-md-4 col-sm-12 col-xs-12 card">
+            <div class="info-box"></div>
+        </div>
+    </div>
+
+    {# 主要内容显示区域 #}
+    <div id="cards-ctn"></div>
+
+    {# 废弃, 旧数据信息
+    <!--<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="data">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">数据信息</h3>
+                </div>
+                <div class="w-box-tool form-inline">
+                    <div class="w-table-tool" id="data-tool">
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                        </div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="data-search">搜索</button>
+                    </div>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="data-table"></div>
+                <div class="w-chart">
+                    <div class="w-chart-tool form-inline">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">内容</label>
+                            <div class="w-dropdown-normal" data-open="0" data-target="#select-item" data-limit="2">
+                                <a href="javascript:void(0);" class="w-select-btn">
+                                    请选择两个选项<i class="fa fa-sort-down"></i>
+                                </a>
+                                <div class="w-select-main">
+                                    <ul class="w-select-lists">
+                                        <li class="no-data">当前没数据</li>
+                                    </ul>
+                                    <div class="w-select-footer">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-success">确认</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group w-tool-item w-dropdown-selected" id="select-item" style="display: none;"></div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="data-generate-chart">生成图表</button>
+                    </div>
+                </div>
+                <div class="chart" id="chart" style="display: none;"></div>
+            </div>
+        </div>
+    </div>-->
+    #}
+</section>
+
+{# 首次进入页面开户弹窗 #}
+<script type="text/template" id="create-aptitude1-tpl">
+    <div class="input-modal">
+        <h2 class="modal-diy-title">欢迎来到 WeAD！</h2>
+        <div class="modal-diy-body">
+            <p>完成开户流程后，即可开通各广告服务现在就去开户吧！</p>
+        </div>
+        <div class="modal-diy-btn">
+            <a href="/#proj_name#/html/aptitude/edit.html" class="w-btn w-btn-primary">立即开户</a>
+        </div>
+    </div>
+</script>
+
+{# 请先完成开户流程弹窗 #}
+<script type="text/template" id="create-aptitude2-tpl">
+    <div class="input-modal">
+        <h2 class="modal-diy-title">请先完成开户流程</h2>
+        <div class="modal-diy-btn">
+            <a href="/#proj_name#/html/aptitude/edit.html" class="w-btn w-btn-primary">立即开户</a>
+        </div>
+    </div>
+</script>
+
+{# card模板 #}
+<script type="text/template" id="card-tpl">
+    
+    <% _.each(data.records, function(item) { %>
+        <div class="col-md-4 col-sm-12 col-xs-12 card">
+            <div class="info-box" data-id="<%= item.platformId %>">
+
+                <!-- 敬请期待 -->
+                <% if (item.platformId === -1) { %>
+                    <div class="card-close" style="display: none;">
+                        <i class="fa fa-question-circle-o"></i>
+                        敬请期待
+                    </div>
+
+                <!-- 有实际的内容 -->
+                <% } else { %>
+                    <div class="card-open">
+                        <h3><%= item.platformName %></h3>
+
+                        <!-- 立即开通 -->
+                        <% if(item.status === -1) { %>
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary open-now open-service" data-id="<%= item.platformId %>" data-open="0">立即开通</a>
+
+                        <!-- 正在审核 -->
+                        <% } else if(item.status === 0) { %>
+                            <span class="review">正在审核</span>
+
+                        <!-- 已经开通 -->
+                        <% } else if(item.status === 1) { %>
+                            <span class="opened"><i class="fa fa-check"></i>已开通</span>
+
+                        <!-- 重新开通 -->
+                        <% } else { %>
+                            <a href="javascript:void(0);" class="w-btn w-btn-red reopen open-service" data-id="<%= item.platformId %>">重新开通</a>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% }); %>
+
+    {# 废弃, 旧 card 逻辑
+    <!--<% _.each(platform, function(item) { %>
+        <div class="col-md-4 col-sm-12 col-xs-12 card" style="<%= item.id === -1 ? 'display: none' : 'display: block' %>">
+            <div class="info-box">
+
+                <% if (item.id === -1) { %>
+                    <div class="card-close">
+                        <i class="fa fa-question-circle-o"></i>
+                        敬请期待
+                    </div>
+
+                <% } else { %>
+                    <div class="card-open">
+                        <a href="javascript: void(0);" data-id="<%= item.id %>" class="card-item">
+                            <h3><%= item.name %></h3>
+                            <div>
+                                <span>投放中：<%= item.validCount %></span>
+                                <span>待审核：<%= item.verifyingCount %></span>
+                                <span>未通过：<%= item.invalidCount %></span>
+                            </div>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    <% }); %>-->
+    #}
+</script>
+
+{# 微博广告模板 #}
+<script type="text/template" id="weibo-tpl">
+    
+    {# 服务介绍 #}
+    <div class="row intro">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">服务介绍</h3>
+                </div>
+                <div class="box-body w-box-body" id="intro"></div>
+            </div>
+        </div>
+    </div>
+
+    {# 资质详情 #}
+    <div class="row detail">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="detail">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">资质详情</h3>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="detail-table"></div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="detail-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+{# 微博服务介绍 #}
+<script type="text/template" id="intro-tpl">
+    <% _.each(intros, function(val) { %>
+        <div class="row intro-row">
+            <div class="col-md-12">
+                <p><%= val.title %></p>
+                <a href="/external/business/fansIntroduce.do" class="w-btn w-btn-success intro-detail">查看详情</a>
+            </div>
+        </div>
+    <% }); %>
+</script>
+
+{# 微博资质详情 #}
+<script type="text/template" id="detail-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th width=150>服务</th>
+                <th>申请公司（网站）</th>
+                <th width=150>审核状态</th>
+                <th width=150>操作</th>
+            </tr>
+
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(val) { %>
+                    <tr class="<%= val.status === 2 ? 'tr-danger' : '' %>">
+                        <td width="150"><%= val.platformName %></td>
+                        <td><%= val.customName %></td>
+                        <td width=150>
+                            <% if (val.status === 0) { %>
+                                正在审核
+                            <% } else if (val.status === 2) { %>
+                                审核失败
+                            <% } else { %>
+                                审核通过
+                            <% } %>
+                        </td>
+                        <td width=150>
+                            <% if (val.status === 2) { %>
+                                <a href="javascript:void(0);" class="detail-btn open-service" data-id="<%= val.type %>">重新开通</a>
+                            <% } else { %>
+                                <a href="javascript:void(0);" data-platformId="<%= val.platformId %>" class="detail-btn service-detail">查看资质</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+
+<!-- 数据信息模板 -->
+<!--<script type="text/template" id="data-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>曝光量</th>
+                <th>互动量</th>
+                <th>互动率</th>
+                <th>互动成本（元）</th>
+                <th>点击量</th>
+                <th>点击率</th>
+                <th>点击均价（元）</th>
+                <th>消耗（元）</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                <tr>
+            <% } else { %>
+                <% _.each(records, function(record) { %>
+                    <tr>
+                        <td><%= record.showCount === null ? '-' : record.showCount %></td>
+                        <td><%= record.interactCount === null ? '-' : record.interactCount %></td>
+                        <td><%= record.interactRatio === null ? '-' : record.interactRatio %></td>
+                        <td><%= record.interactPrice === null ? '-' : record.interactPrice %></td>
+                        <td><%= record.clickCount === null ? '-' : record.clickCount %></td>
+                        <td><%= record.clickRatio === null ? '-' : record.clickRatio %></td>
+                        <td><%= record.clickPrice === null ? '-' : record.clickPrice %></td>
+                        <td><%= record.consume === null ? '-' : record.consume %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>-->
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/overview.js"></script>
+{% endblock %}

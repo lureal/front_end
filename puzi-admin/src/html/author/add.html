@@ -1,0 +1,83 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="author-add">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>添加作者</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">作者管理</li>
+					<li class="active">添加作者</li>
+				</ol>
+			</section>
+
+			<section class="content" id="author-add-content">
+				<div class="box box-default">
+	        		<div class="box-header with-border">
+	        			<h3 class="box-title">添加作者</h3>
+	        		</div>
+	        		<div class="box-body">
+	        			<div class="row">
+        					<div class="col-md-6">
+	        					<div class="form-group">
+	        						<label>作者名称</label>
+	        						<input type="text" class="form-control" placeholder="" id="author-add-name">
+	        					</div>
+	        				</div>
+	        			</div>
+	        			<div class="row">
+        					<div class="col-md-6">
+	        					<div class="form-group">
+	        						<label>作者描述</label>
+	        						<input type="text" class="form-control" placeholder="" id="author-add-description">
+	        					</div>
+	        				</div>
+	        			</div>
+	        			<div class="row">
+	        				<div class="col-md-6">
+	        					<div class="form-group">
+	        						<label>是否专栏作者</label>
+	        						<div class="radio" >
+                                        <label>
+                                            <input type="radio" name="specified-author"  value="true"><span>是</span>
+                                        </label>
+                                        
+                                        <label>
+                                            <input type="radio" name="specified-author"  value="false" checked="checked"><span>否</span>
+                                        </label>
+                                    </div>
+	        					</div>
+	        				</div>
+	        			</div>
+	        			<div class="row">
+        					<div class="col-md-12">
+	        					<form id="img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/author/upload.do">
+	        						<label>添加头像(添加头像规格110x110   大小建议10KB以内)</label>
+									<div class="input-group">
+										<input type="file" name="snapshotFile" id="img_input" accept="image/*">
+										<br>
+                                        <img id="author-preview" class="author-preview" src="/#proj_name#/img/none.png" alt="" />
+                                        <br>
+										<button id="author-add-image" class="btn btn-primary btn-sm" type="submit">上传头像</button>
+									</div>
+	        					</form>
+	        				</div>
+	        			</div>
+	        		</div>
+
+	        		<div class="box-footer">
+						<button class="btn btn-default" id="author-add-canel">取消</button>
+						<button class="btn btn-info pull-left" id="author-add-submit" data-img="">添加</button>
+	        		</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+    </div>
+{% endblock %}

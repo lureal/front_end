@@ -1,0 +1,37 @@
+{% extends '../layouts/user.html' %}
+{% block content %}
+<div class="user-active resetpwd-expire">
+
+    {# 背景图 #}
+    <img class="bg" src="/#proj_name#/img/bg.jpg" alt="wead" />
+
+    {# 主体 #}
+    <div class="ctn">
+        <div class="wrap">
+
+            {# 头部 #}
+            <div class="header">
+                <img class="logo" src="/#proj_name#/img/logo-lg.png" alt="wead" />
+            </div>
+
+            {# 主体 #}
+            <div class="body" id="body">
+                <div class="active-success">
+                    <h2 class="detail-title">该链接已过期</h2>
+                    <div class="detail-btn">
+                        <a style="display:block" class="w-btn w-btn-primary back" href="/#proj_name#/html/user/login.html">返回首页</a>
+                    </div>
+                </div>
+            </div>
+
+            {# 其他信息，联系客服、copyright 等等 #}
+            <div class="footer">
+                <div class="contact">如有任何疑问，请 <a href="http://p.qiao.baidu.com//im/index?siteid=6768606&ucid=10452001" target="_blank">联系客服</a></div>
+                <div class="copyright">粤ICP备15014511号 Copyright © 2016 WESDOM. All Rights Reserved</div>
+                <div class="company">深圳赚友科技有限公司</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/#proj_name#/js/resetpwd-expire.js"></script>
+{% endblock %}

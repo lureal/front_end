@@ -1,0 +1,32 @@
+.content-header .w-breadcrumb {
+    background: transparent;
+    float: none;
+    position: static;
+    padding: 0;
+
+    // 更改字体样式
+    > li > a {
+        color: #39414d;
+        font-size: 14px;
+    }
+
+    // 更改最后一个项样式
+    .active > a {
+        cursor: text;
+    }
+
+    // 更改向右图标为 font-awesome
+    > li + li:before {
+        content: '\f105';
+        font: normal normal normal 14px/1 FontAwesome;
+    }
+}
+
+// 小屏幕下的表现
+@media (max-width: 768px) {
+    .content-header .w-breadcrumb {
+        > li {
+            line-height: 1.5;
+        }
+    }
+}

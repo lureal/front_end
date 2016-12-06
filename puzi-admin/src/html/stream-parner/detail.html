@@ -1,0 +1,121 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="stream-parner-detail">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>换量合作方详情</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">换量合作方管理</li>
+					<li class="active">换量合作方详情</li>
+				</ol>
+			</section>
+
+			<section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">换量合作方详情</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+
+                        {# 换量合作方产品名称 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>产品名称（限 25 个字）</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {# 换量合作方平台 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>平台（限 25 个字）</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-platform">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {# 换量合作方产品类型 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>产品类型（限 25 个字）</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-type">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {# 换量合作方联系方式 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>联系方式</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-contact">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {# 换量合作方产品阶段 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>产品阶段（限 25 个字）</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-productStage">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {# 换量合作方跳转链接 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>跳转链接</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-link">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {# 换量合作方内容 #}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>合作方式（限 25 个字）</label>
+                                <input type="text" class="form-control" placeholder="" id="stream-parner-detail-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>上传图片(换量图片规格120x120   大小建议10KB以内)</label>
+                            <form id="stream-parner-img_form" class="form-group" enctype="multipart/form-data" method="POST" action="/admin/streampartner/upload.do">
+                                <div class="input-group">
+                                    <input type="file" name="streamFile" id="stream-parner-img_input" accept="image/*">
+                                    <br>
+                                    <img id="stream-parner-detail-image-preview" class="img-preview" src="" alt="" />
+                                    <br>
+                                    <button id="stream-parner-detail-image" class="btn btn-primary btn-sm" type="submit">上传图片</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button class="btn btn-default" id="stream-parner-detail-canel">取消</button>
+                    <button class="btn btn-info pull-left" id="stream-parner-detail-submit">更新</button>
+                </div>
+            </div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+    </div>
+{% endblock %}

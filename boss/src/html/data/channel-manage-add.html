@@ -1,0 +1,249 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper" id="manage">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加渠道商</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 添加渠道商</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom" id="manage-add">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>渠道商名称</label>
+                                        <div class="form-group">
+                                            <input type="text" name="" class="form-control" id="channel-name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>渠道经理</label>
+                                        <div class="form-group">
+                                            <select class="form-control select2" id="channel-manage" style="width: 100%"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>地区</label>
+                                        <div class="form-group">
+                                            <select class="form-control select2" id="area" style="width: 100%"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>级别</label>
+                                        <div class="form-group">
+                                            <select class="form-control select2" id="level" style="width: 100%"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>自营产品</label>
+                                        <div class="form-group">
+                                            <input type="text" name="" class="form-control" id="self-product">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>主要客户</label>
+                                        <div class="form-group">
+                                            <input type="text" name="" class="form-control" id="customer">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>合作方向</label>
+                                        <div class="form-group">
+                                            <input type="text" name="" class="form-control" id="cooperation">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>主要行业</label>
+                                        <div class="form-group">
+                                            <input type="text" name="" class="form-control" id="industry">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>拓展进度</label>
+                                        <div class="form-group">
+                                            <select class="form-control select2" id="expand-process" style="width: 100%">   
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            <!-- 建立联系 -->
+                            <div class="connect" style="display: none;">
+                            </div>
+
+                            <!-- BD资源 -->
+                            <div class="BD-resource z-hidden">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>合作产品</label>
+                                            <input type="text" name="" class="form-control" id="cooperate-industry">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>开发区域</label>
+                                            <input type="text" name="" class="form-control" id="deleveop-area">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>走单政策</label>
+                                            <input type="text" name="" class="form-control" id="policy">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- 已合作 -->
+                            <div class="cooperation z-hidden" id="cooperation" >
+                                <div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>是否预开户</label>
+                                                <select class="form-control select2" id="advance-account" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>是否垫票</label>
+                                                <select class="form-control select2" id="is-ticket" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>是否垫款</label>
+                                                <select class="form-control select2" id="is-cash" style="width: 100%;"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="javascript:void(0);" class="btn btn-default btn-sm add-line" id="add-bussiness-line">添加业务线</a>
+                                </div>
+                                <div class="bussiness">
+                                    <div style="margin-top: 20px; margin-left: 15px;"  class="add-bussiness-line cooperation-parent" id="bussiness-line-wrap">
+                                        <div class="row">
+                                            <div class="form-inline bussiness-line">
+                                                <div class="col-sm-5 col-xs-12">
+                                                    <div class="form-group">
+                                                    <label>业务线：</label>
+                                                    <select class="select2 form-control  bussiness-line-select" data-bussiness-select="bussiness-line" id="bussiness-line" style="width: 183px;">
+                                                    </select>
+                                                    <label>合作结算方式：</label>
+                                                    <a href="javascript:void(0);" class="btn btn-default add">添加</a>
+                                                </div>
+                                                </div>
+                                                <div class="col-sm-7 col-xs-12 bussiness-line-add" id="bussiness-line-add">
+                                                    <div class="form-group statement-type" id="cooperation-add">
+                                                        <select class="select2 form-control  reback-select" data-reback-select="reback" id="reback" style="width: 183px;"></select>
+                                                        <select class="select2 form-control  discount-select" style="width: 183px;" data-discount-select="discount" id="discount"></select>
+                                                        <input type="text" name="" class="form-control rebate" style="width: 183px; display: inline;" id="rebate">
+                                                        <a href="javascript:void(0);" class="btn btn-default  delete-all">删除</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <a href="javascript:void(0);" class="btn btn-info btn-sm" id="submit">提交</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+
+    <!--  拓展进度-->
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!--  级别-->
+    <script type="text/template" id="level-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 渠道经理 -->
+    <script type="text/template" id="channel-manage-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    {# 业务线模板 #}
+    <script type="text/template" id="bussiness-line-tpl">
+        <div class="row">
+            <div class="form-inline bussiness-line bussiness-line<%= index %>">
+                <div class="col-md-5">
+                    <div class="form-group">
+                    <label>业务线：</label>
+                    <select class="select2 form-control bussiness-line-select" id="bussiness-line<%= index %>" data-bussiness-select="bussiness-line<%= index %>" style="width: 183px;">
+                    </select>
+                    <label>合作结算方式：</label>
+                    <a href="javascript:void(0);" class="btn btn-default add">添加</a>
+                </div>
+                </div>
+                <div class="col-md-7 bussiness-line-add" id="bussiness-line-add">
+                    <div class="form-group statement-type" id="cooperation-add">
+                        <select class="select2 form-control reback-select" data-reback-select="reback<%= index%>" style="width: 183px;" id="reback<%= index%>"></select>
+                        <select class="select2 form-control discount-select" data-discount-select="discount<%= index%>" style="width: 183px;" id="discount<%= index%>"></select>
+                        <input type="text"  class="form-control rebate" style="width: 183px; display: inline; " id="rebate<%= index %>">
+                        <a href="javascript:void(0);" class="btn btn-default delete-all">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    {# 结算方式模板 #}
+    <script type="text/template" id="statement-tpl">
+        <div class="form-group statement-type statement-type<%= index %>">
+            <select class="select2 form-control reback-select" id="reback<%= index%>" style="width: 183px;" data-reback-select="reback<%= index%>"></select>
+            <select class="select2 form-control discount-select" id="discount<%= index%>" style="width: 183px;" data-discount-select="discount<%= index%>"></select>
+            <input type="text"  class="form-control rebate" style="width: 183px; display: inline;" id="rebate">
+            <a href="javascript:void(0);" class="btn btn-default delete">删除</a>
+        </div>
+    </script>
+ 
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/data-channel-manage-add.js"></script>
+{% endblock %}

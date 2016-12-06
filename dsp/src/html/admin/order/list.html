@@ -1,0 +1,108 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+	{% include '../../modules/header.html' %}
+	{% include '../../modules/sidebar.html' %}
+
+	<div class="content-wrapper">
+		<section class="content-header">
+			<h1>订单管理</h1>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#"><i class="fa fa-dashboard"></i>订单管理</a>
+				</li>
+			</ol>
+		</section>
+
+		<section class="content">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="box">
+						<div class="col-xs-12 box-toolbar last">
+							<div class="form-inline">
+								<div class="form-group">
+									<select>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<select>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<a href="javascript:void(0);" type="button" class="btn btn-default btn-sm">搜索</a>
+								</div>
+							</div>
+							<button class="btn btn-default" id="test">test</button>
+						</div>
+						<div class="box-body" id="order">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+	</div>
+</div>
+
+	{% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+	<script type="text/template" id="order-tpl">
+		<table class="table table-responsive">
+			<thead>
+				<th>广告订单名称</th>
+				<th>订单ID</th>
+				<th>所属组</th>
+				<th>定价</th>
+				<th>实际出价</th>
+				<th>出价范围</th>
+				<th>出价模式</th>
+				<th>操作</th>
+				<th>状态</th>
+			</thead>
+			<tbody>
+				<% _.each(data.records, function(val,index) { %>
+					<tr>
+						<td><%= val. orderName%></td>
+						<td><%= val. orderId%></td>
+						<td><%= val. groupName%></td>
+						<td><%= val. price %></td>
+						<td><%= val. bidPrice %></td>
+						<td><%= val. priceRange %></td>
+						<td><%= val. modeName%></td>
+						<td>修改操作模式</td>
+						<td><%= val. orderName%></td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</script>
+
+
+	<!-- 修改出价方式弹出框 -->
+	<script type="text/template" id="modify-order">
+		<div class="form-inline">
+			<div class="form-group">
+				<div class="col-sm-4 control-label">出价方式</div>
+				<div class="col-sm-8">
+					<select>
+						<option>1</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</script>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/admin-order.js"></script>
+{% endblock %}

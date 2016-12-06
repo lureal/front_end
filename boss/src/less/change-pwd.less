@@ -1,0 +1,109 @@
+
+// 公共样式
+* {
+	box-sizing: border-box !important;
+}
+
+body {
+	font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, "Microsoft Yahei", Arial, sans-serif;
+	background: #fafafa;
+	margin: 0;
+}
+
+// 主要内容
+.main {
+    height: 304px;
+    left: 50%;
+    margin-left: -186px;
+    margin-top: -222px;
+    position: absolute;
+    top: 50%;
+    width: 372px;
+
+    // 标题
+    .name {
+        color: #525666;
+    	font-size: 18px;
+    	text-align: center;
+    }
+
+    // 实际表单
+    .form {
+        background-color: #fff;
+
+        .title {
+            text-align: center;
+            font-size: 15px;
+            color: #29cc29;
+            padding-top: 20px;
+        }
+
+        input {
+            border: 1px solid #ededed;
+        	display: block;
+        	height: 40px;
+        	margin: 15px 54px;
+        	outline: none;
+        	padding-left: 13px;
+        	width: 260px;
+
+            &:focus {
+            	border-color: #29cc29;
+            }
+        }
+
+        button {
+            border-style: none;
+            background-color: #29cc29;
+            color: #fff;
+            display: block;
+            font-size: 15px;
+            height: 40px;
+            margin: 0 54px;
+            outline: none;
+            width: 260px;
+
+            &:hover {
+                opacity: 0.75;
+            }
+        }
+
+        .back {
+            padding: 15px 0 24px;
+            padding-right: 56px;
+            text-align: right;
+
+            a {
+                color: #525666;
+                font-size: 13px;
+                opacity: .5;
+                text-decoration: none;
+
+                &:hover {
+                    color: #29cc29;
+                }
+            }
+        }
+    }
+}
+
+// 版权信息
+.copyright {
+    bottom: 30px;
+    color: #525666;
+	display: block;
+	font-size: 13px;
+	opacity: .5;
+	position: absolute;
+	text-align:center;
+	width: 100%;
+}
+.copyright a {
+    color: #525666;
+	font-size: 13px;
+	text-decoration:none;
+}
+
+.conpany{
+	margin: 3px;
+}

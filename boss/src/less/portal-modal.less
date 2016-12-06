@@ -1,0 +1,36 @@
+// 提示框
+.w-tip {
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+
+    .w-tip-dialog {
+        left: 0;
+        margin-top: -35px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 50%;
+        z-index: 10001;
+    }
+
+    .w-tip-content {
+        border-radius: 4px;
+        background: #39414d;
+        color: #fff;
+        display: inline-block;
+        font-size: 18px;
+        height: 70px;
+        line-height: 70px;
+        min-width: 150px;
+        padding: 0 20px;
+
+        i {
+            margin-right: 8px;
+        }
+    }
+}

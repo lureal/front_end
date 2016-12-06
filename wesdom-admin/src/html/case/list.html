@@ -1,0 +1,154 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>案例</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>案例</a></li>
+            </ol>
+        </section>
+
+        <!--案例列表-->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">案例列表</h3>
+                            <div class="box-tools">
+                                <a href="/#proj_name#/html/case/add.html" type="button" class="btn btn-primary btn-sm">添加案例</a>
+                            </div>
+                        </div>
+                        <div class="box-body" id="case">
+                            <div class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--显示案例列表-->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">首页案例展示列表</h3>
+                        </div>
+                        <div class="box-body" id="show-case">
+                            <div class="overlay">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>标题</th>
+                    <th>图标</th>
+                    <th>案例类型</th>
+                    <th>案例描述</th>
+                    <!-- <th>微信标题</th>
+                    <th>微信描述</th> -->
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.cases, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.title %></td>
+                        <td><img src="<%= val.icon %>" alt="<%= val.title %>"></td>
+                        <td><%= val.typeName %></td>
+                        <td><%= val.description %></td>
+                        <!-- <td><%= val.wxTitle%></td>
+                        <td><%= val.wxDescription%></td> -->
+                        <td><%= val.posttime_str %></td>
+                        <td>
+                            <button data-id="<%= val.id %>" data-type="<%= val.type %>" type="button" class="btn btn-xs btn-info add2show">添加到首页案例展示</button>
+                            <a href="/#proj_name#/case/detail?id=<%= val.id %>" type="button" class="btn btn-xs btn-success">查看详情</a>
+                            <button data-id="<%= val.id %>" type="button" class="btn btn-xs btn-danger delete">删除</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <% for(var i = 0; i < data.pageCount; i++) { %>
+                <li class="<%= (i + 1) === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i + 1 %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>"><%= i + 1 %></a>
+                </li>
+                <% } %>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+
+    </script>
+
+    <script type="text/template" id="show-list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>标题</th>
+                    <th>图标</th>
+                    <th>案例类型</th>
+                    <th>案例描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.title %></td>
+                        <td><img src="<%= val.icon %>" alt="<%= val.title %>"></td>
+                        <td><%= val.typeName %></td>
+                        <td><%= val.description %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/case-list.js"></script>
+
+
+
+{% endblock %}

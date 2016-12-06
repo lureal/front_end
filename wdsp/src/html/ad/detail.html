@@ -1,0 +1,497 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-detail">
+
+    {# 订单数据 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="data">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">订单数据</h3>
+                </div>
+
+                {# 图表工具 #}
+                <div class="w-chart">
+                    <div class="w-chart-tool form-inline">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">内容</label>
+                            <div class="w-dropdown-normal" data-open="0" data-target="#select-item" data-limit="2">
+                                <a href="javascript:void(0);" class="w-select-btn">
+                                    请选择两个选项<i class="fa fa-sort-down"></i>
+                                </a>
+                                <div class="w-select-main">
+                                    <ul class="w-select-lists">
+                                        <li class="no-data">当前没数据</li>
+                                    </ul>
+                                    <div class="w-select-footer">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-success">确认</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" id="select-chart-start-date">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" id="select-chart-end-date">
+                        </div>
+                        <div class="form-group w-tool-item w-dropdown-selected" id="select-item" style="display: none;"></div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="data-generate-chart">生成图表</button>
+                    </div>
+                </div>
+
+                {# 实际图表 #}
+                <div class="chart" id="chart" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    {# 订单信息 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">订单信息</h3>
+                </div>
+
+                {# 基本信息 #}
+                <div class="col-md-6 col-sm-12 col-xs-12 w-box-body w-form w-form-readonly">
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">广告组</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="group" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">广告订单</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="bill" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">广告ID</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="orderId" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">投放日期</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="date" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">投放时间</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="time" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">出价（元）</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="bid-price" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">订单限额（元）</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <input id="quota" type="text" class="form-control w-field-input" name="name" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row">
+                        <div class="w-field">
+                            <label class="col-sm-2 col-md-4 w-field-title">定向用户</label>
+                            <div class="col-sm-10 col-md-8 w-field-content">
+                                <textarea id="user" class="form-control w-field-input user-field" row=1 readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix clearfix">
+                        <div class="col-sm-10 col-md-8 col-sm-offset-2 col-md-offset-4">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary col-xs-12 col-sm-12 col-md-12" id="edit">编辑</a>
+                        </div>
+                    </div>
+                </div>
+
+                {# 广告预览 #}
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="weibo-preview"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{# 微博广告预览 - 微博 feed #}
+<script type="text/template" id="weibo-feed-preview-tpl">
+    <div class="feed-preview">
+
+        {# 微博头部 #}
+        <header>
+            <p>
+                <img src="/#proj_name#/img/topline.png">1万微博用户关注了
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+
+        {# 微博内容 #}
+        <div class="preview-main">
+            <div class="preview-main-header">
+                <div class="summary">
+
+                    {# 微博用户头像 #}
+                    <span class="summary-header"></span>
+
+                    {# 微博用户名称 #}
+                    <h2>微博名称</h2>
+
+                    {# 微博标识 #}
+                    <p>来自微博 weibo.com</p>
+                </div>
+                <div class="follow">
+
+                    {# 关注按钮 #}
+                    <button class="w-btn">
+                        <i class="fa fa-plus"></i>
+                        关注
+                    </button>
+                </div>
+            </div>
+
+            {# 微博内容 #}
+            <p><%= data.ad.text %></p>
+
+            {# 微博配图 #}
+            <% if (data.ad.picUrls && data.ad.picUrls.length > 0) { %>
+                <ul class="preview-main-imgs clearfix">
+                    <% _.each(data.ad.picUrls, function(val, index) { %>
+                        <li>
+                            <img src="<%= val %>">
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 微博广告预览 - banner #}
+<script type="text/template" id="weibo-banner-preview-tpl">
+    <div class="banner-preview">
+        <div class="banner">
+            <a href="<%= data.ad.landingpageUrl ? data.ad.langingpageUrl : 'javascript:void(0);' %>">
+                <img src="<%= data.ad.picUrl ? data.ad.picUrl : '/#proj_name#/img/weibo-banner-preview.png' %>" alt="推广图片区域">
+            </a>
+        </div>
+        <div class="shadow-weibo">
+            <img src="/#proj_name#/img/wesdom-weibo.png" alt="微思敦微博">
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 微博广告预览 - 品速Card #}
+<script type="text/template" id="weibo-card-preview-tpl">
+    <div class="card-preview">
+
+        {# 微博头部 #}
+        <header>
+            <p>
+                <img src="/#proj_name#/img/topline.png">推荐
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+
+        {# 微博内容 #}
+        <div class="preview-main">
+            <div class="preview-main-header">
+                <div class="summary">
+
+                    {# 微博用户头像 #}
+                    <span class="summary-header"></span>
+
+                    {# 微博用户名称 #}
+                    <h2>微博名称</h2>
+
+                    {# 微博标识 #}
+                    <p>来自微博 weibo.com</p>
+                </div>
+                <div class="follow">
+
+                    {# 关注按钮 #}
+                    <button class="w-btn">
+                        <i class="fa fa-plus"></i>
+                        关注
+                    </button>
+                </div>
+            </div>
+
+            {# 微博内容 #}
+            <p><%= data.ad.text %></p>
+
+            {# card #}
+            <div class="spread-area">
+
+                {# card 图片，如果有视频，点击播放视频 #}
+                {# TODO: 暂时没时间做这个功能 #}
+                <a href="javascript:void(0);" class="spread-area-img">
+                    <img class="spread-img" src="<%= data.ad.picUrl ? data.ad.picUrl : '/#proj_name#/img/spread-img.png' %>" alt="推广图片区域">
+                </a>
+
+                {# card 描述，点击跳转链接 #}
+                <a href="<%= data.ad.landingpageUrl ? data.ad.landingpageUrl : 'javascript:void(0);' %>" class="spread-area-desc" target="_blank">
+                    <span class="spread-summary">
+                        <span class="spread-title"><%= data.ad.cardTitle %></span>
+                        <span class="spread-desc"><%= data.ad.cardDesc %></span>
+                    </span>
+                </a>
+
+                {# 按钮区域（只有当前是活动才有按钮区域） #}
+                <% if (data.ad.cardType === 1 || data.ad.cardType === 3) { %>
+
+                    {# 无 #}
+                    <% if (data.ad.cardButtonType === 'none') { %>
+
+                    {# 参与 #}
+                    <% } else if (data.ad.cardButtonType === 'join') { %>
+                        <a href="<%= data.ad.cardButtonUrl %>" class="card-btn" target="_blank">
+                            <img src="/#proj_name#/img/card-join.png" alt="参与">
+                        </a>
+
+                    {# 购买 #}
+                    <% } else if (data.ad.cardButtonType === 'buy') { %>
+                        <a href="<%= data.ad.cardButtonUrl %>" class="card-btn" target="_blank">
+                            <img src="/#proj_name#/img/card-buy.png" alt="购买">
+                        </a>
+
+                    {# 下载 #}
+                    <% } else { %>
+                        <a href="<%= data.ad.cardButtonUrl %>" class="card-btn" target="_blank">
+                            <img src="/#proj_name#/img/card-download.png" alt="下载">
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+<script type="text/template" id="weibo-grid-preview-tpl">
+    <div class="feed-preview">
+
+        {# 微博头部 #}
+        <header>
+            <p>
+                <img src="/#proj_name#/img/topline.png">1万微博用户关注了
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+
+        {# 微博内容 #}
+        <div class="preview-main">
+            <div class="preview-main-header">
+                <div class="summary">
+
+                    {# 微博用户头像 #}
+                    <span class="summary-header"></span>
+
+                    {# 微博用户名称 #}
+                    <h2>微博名称</h2>
+
+                    {# 微博标识 #}
+                    <p>来自微博 weibo.com</p>
+                </div>
+                <div class="follow">
+
+                    {# 关注按钮 #}
+                    <button class="w-btn">
+                        <i class="fa fa-plus"></i>
+                        关注
+                    </button>
+                </div>
+            </div>
+
+            {# 微博内容 #}
+            <p><%= data.ad.text %></p>
+
+            {# 微博配图 #}
+            <% if (data.ad.picUrls && data.ad.picUrls.length > 0) { %>
+                <ul class="preview-main-imgs clearfix">
+                    <% _.each(data.ad.picUrls, function(val, index) { %>
+
+                        <!-- 4张图 -->
+                        <% if (data.ad.picUrls.length === 4) { %>
+                            <li style="width: 50%;">
+                                <img src="<%= val %>">
+                            </li>
+
+                        <!-- 6张图和9张图 -->
+                        <% } else { %>
+                            <li>
+                                <img src="<%= val %>">
+                            </li>
+                        <% } %>
+
+                    <% }); %>
+                </ul>
+            <% } %>
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 广告组模板 #}
+<script type="text/template" id="dimension-platform-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>投放平台</th>
+                <th>曝光量</th>
+                <th>互动情况</th>
+                <th>点击情况</th>
+                <th>下载量</th>
+                <th>消耗（元）</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(record, index) { %>
+                    <tr>
+                        <td><%= record.name %></td>
+                        <td><%= record.showCount %></td>
+                        <td>
+                            <span>互动量：<%= record.interactCount %></span><br>
+                            <span>互动率：<%= record.interactRatio %></span><br>
+                            <span>互动成本（元）：<%= record.interactPrice %></span>
+                        </td>
+                        <td>
+                            <span>点击量：<%= record.clickCount %></span><br>
+                            <span>点击率：<%= record.clickRatio %></span><br>
+                            <span>点击成本（元）：<%= record.clickPrice %></span>
+                        </td>
+                        <td><%= record.downloadCount %></td>
+                        <td><%= record.consume %></td>
+                    <tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-detail.js"></script>
+{% endblock %}

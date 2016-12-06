@@ -1,0 +1,613 @@
+* {
+    box-sizing: border-box !important;
+}
+body {
+    background: #ebebeb;
+    font-family: "PingFangSC-Reguler", "Helvetica Neue", Helvetica, "Microsoft Yahei", Arial, sans-serif;
+    margin: 0;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "PingFangSC-Reguler", "Helvetica Neue", Helvetica, "Microsoft Yahei", Arial, sans-serif;
+}
+
+// loading
+#loading {
+    height: 20px;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    position: fixed;
+    top: 50%;
+    width: 20px;
+}
+
+// 包含块:让内容剧中
+.wrap {
+    margin: auto;
+    width: 1080px;
+
+    &:before,
+    &:after {
+        clear: both;
+        content: '';
+        display: table;
+    }
+}
+
+// 顶部横栏
+.b-navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 0 #d9d9d9;
+    position: relative;
+    height: 50px;
+    width: 100%;
+
+    // logo
+    .logo {
+        background: #fff;
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 140px;
+
+        img {
+            height: 22px;
+            width: 118px;
+        }
+    }
+
+    .nav {
+        float: right;
+
+        &:before,
+        &:after {
+            display: table-cell;
+            content: '';
+            clear: both;
+        }
+    }
+
+    .navbar-fix,
+    .navbar-change {
+        float: right;
+
+        li {
+            float: left;
+            position: relative;
+        }
+
+        a {
+            color: #525666;
+            display: block;
+            font-size: 13px;
+            padding: 16px;
+            text-decoration: none;
+
+            &:hover {
+                color: #39414d;
+            }
+        }
+    }
+
+    // 变动导航
+    .navbar-change {}
+
+    // 固定导航
+    .navbar-fix {
+        .email a:hover {
+            color: #525666;
+            cursor: default;
+        }
+    }
+
+    // 隐藏菜单
+    .navbar-hidden {
+        display: none;
+        left: 50%;
+        margin-left: -65px;
+        min-width: 120px;
+        position: absolute;
+        padding-top: 10px;
+        z-index: 100;
+
+        ul {
+            border: 1px solid #efefef;
+            background: #fff;
+            text-align: center;
+
+            li {
+                display: block;
+                float: none;
+            }
+
+            &:before {
+                content: '';
+                border-width: 8px;
+                border-style: solid;;
+                border-color: transparent transparent #fff transparent;
+                left: 50%;
+                margin-left: -4px;
+                position: absolute;
+                top: -4px;
+            }
+        }
+    }
+
+    .navbar-hidden-toggle:hover {
+        .navbar-hidden {
+            display: block;
+        }
+    }
+}
+
+// 主要内容
+.b-content {
+    // background: #fff;
+    // margin: 54px 0 0 155px;
+    margin: 0;
+    position: relative;
+
+    .title {
+        background: #ebebeb;
+        height: 57px;
+        padding-left: 30px;
+        & > h4 {
+            color:  #39414c;
+            font-size: 18px;
+            line-height: 57px;
+            margin: 0;
+            margin-top: 2px;
+            padding: 0;
+        }
+    }
+    .mcontent {
+        background-color: #fff;
+        border-radius: 4px;
+    }
+    .content-title {
+        border-bottom: 1px solid #ebebeb;
+        color:  #39414c;
+        padding-left: 30px;
+        & > h4 {
+            color:  #39414c;
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0;
+        }
+    }
+    .content-search {
+        border-bottom: 1px solid #ebebeb;
+        height: 80px;
+        line-height: 80px;
+        padding-left: 30px;
+        .notice-add {
+            border-radius: 4px;
+            background: #29cc29;
+            color: #fff;
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            width: 90px;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        #feedback-type {
+            height: 41px;
+            margin-left: 10px;
+            width: 241px;
+        }
+        #keyword {
+            border-radius: 4px;
+            border-color: #eeeeee;
+            height: 41px;
+            margin-left: 590px;
+            width: 241px;
+
+        }
+        .search {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            color: #999999;
+            display: inline-block;
+            height: 39px;
+            font-size: 15px;
+            line-height: 36px;
+            margin-left: 15px;
+            text-align: center;
+            width: 90px;
+            &:hover {
+                background-color: #fafafa;
+            }
+        }
+    }
+    .box {
+        border: 0;
+        box-shadow: 0 1px 1px #fff;
+        margin: 0;
+        .box-body {
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            padding: 0px;
+        }
+    }
+    .box-footer {
+        border-top: 0;
+        background-color: transparent;
+        padding: 15px;
+    }
+
+    .content-detail {
+        overflow: hidden;
+        p {
+            padding: 0;
+            margin: 0;
+            position: relative;
+            left: 12px;
+        }
+        .content-table-title {
+            background: #fafafa;
+            font-size: 14px;
+            height: 40px;
+            line-height: 40px;
+            .person {
+                color: #75839a;
+                padding-left: 30px;
+                width: 210px;
+            }
+            .detail {
+                color: #75839a;
+                width: 120px;
+                // padding-left: 20px;
+            }
+            .operate {
+                color: #75839a;
+                width: 210px;
+                // right: 210px;
+                // position: absolute;
+            }
+            // padding-left: 27px;
+            & > th {
+                line-height: 40px;
+                padding: 0;
+            }
+        }
+        .content-normal {
+            border-bottom: 1px solid #ededed;
+            border-top: 1px solid #ededed;
+            .normal-person {
+                display: inline-block;
+                padding-left: 30px;
+                width: 750px;
+                & > a {
+                    color:  #8794a7;
+                    height: 60px;
+                    line-height: 62px;
+                    &:hover {
+                        color: #39414d;
+                    }
+                }
+            }
+            .detail-date {
+                color: #acb5c2;
+                line-height: 62px;
+            }
+            .normal-question {
+                padding-left: 20px;
+            }
+            .normal-answer {
+                a {
+                   color: #acb5c2;
+                   font-size: 14px;
+                   height: 60px;
+                   line-height: 60px;
+                   padding-right: 30px;
+                   &:hover {
+                        color: #39414d;
+                   }
+                }
+                // position: absolute;
+                // right: 20px;
+            }
+        }
+    }
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>th,
+    .table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td{
+        // padding: 20px 0;
+        padding: 0;
+        border: 0;
+    }
+    .table .content-answer  {
+        border-top: 5px solid white;
+        & > td {
+            height: 45px;
+            max-width: 400px;
+            line-height: 45px;
+            padding: 0;
+        }
+    }
+    .table .content-answer:nth-last-child(1) {
+        padding-bottom: 27px;
+        background-color: red;
+    }
+    .content-answer-para {
+        background: #fafafa;
+    }
+
+   // 表格中的分页
+    .w-pager {
+        // padding-top: 15px;
+        padding-bottom: 15px;
+
+        // 向前翻页按钮
+        .w-previous {}
+
+        // 向后翻页按钮
+        .w-next {}
+
+        .w-previous,
+        .w-next {
+            background: #fff;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #ccc;
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 0;
+            padding: 7px 15px;
+            text-align: center;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+            &:focus {
+                outline: none;
+            }
+
+            // 鼠标移动上去改变字体颜色
+            &:hover {
+                color: #29cc29;
+            }
+        }
+
+        // 实际的分页内容，包含当前分页数和总页数
+        > div > div {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        // 当前分页
+        .w-page-now {
+            border: 1px solid #f2f2f2;
+            border-radius: 4px;
+            color: #29cc29;
+            font-size: 14px;
+            height: 30px;
+            margin-right: 10px;
+            padding: 0;
+            text-align: center;
+            width: 30px;
+
+            // 焦点聚焦时状态
+            &:focus {
+                border-color: #1a8cff;
+            }
+        }
+
+        // 总分页
+        .w-allpage {
+            color: #999;
+            font-size: 14px;
+        }
+    }
+}
+
+
+// 脚部
+.b-footer {
+    padding: 50px 0 30px 0;
+    .copyright {
+        color: #75839a;
+        opacity: 0.5;
+    }
+    p {
+        color: #525666;
+        font-size: 13px;
+        margin: 0;
+        text-align: center;
+        & + p {
+            margin-top: 7px;
+        }
+    }
+}
+
+// 弹出窗
+.modal {
+    #myModal {
+
+    }
+
+    .modal-dialog {
+        margin: 300px auto;
+        width: 380px;
+    }
+
+    // 主要的内容块
+    .modal-content {
+        border-radius: 4px;
+        height: 214px;
+        width: 380px;
+        .modal-header {
+            border: 0;
+            height: 50px;
+            .modal-title {
+                font-size: 15px;
+                margin-left: 30px;
+                height: 30px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    // 实际内容块
+    .modal-body {
+        color: #75839a;
+        font-size: 14px;
+        padding: 0;
+        text-align: center;
+        .submit-input {
+            height: 80px;
+            margin-left: 30px;
+            width: 422px;
+        }
+    }
+
+    // 右上角叉叉按钮
+    button.close {
+        color: #75839a;
+        height: 50px;
+        line-height: 1;
+        outline: none;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50px;
+    }
+
+    // 底部按钮
+    .modal-footer {
+        border-top: 0;
+        text-align: center;
+        // padding: 0 0 35px 0;
+        .submit {
+            background-color: #29cc29;
+            left: 79px;
+            &:hover {
+                opacity: .8;
+            }
+        }
+        .submit,
+        .cancel {
+            border-radius: 5px;
+            bottom: 38px;
+            color: #fff;
+            display: inline-block;
+            height: 40px;
+            text-align: center;
+            position: absolute;
+            line-height: 40px;
+            width: 90px;
+        }
+        .cancel {
+            border: 1px solid #e6e6e6;
+            background-color: #fff;
+            color: #adadad;
+            right: 79px;
+            &:hover {
+                background-color: #fafafa;
+            }
+        }
+    }
+}
+
+// 提示框
+.w-tip {
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+
+    .w-tip-dialog {
+        left: 0;
+        margin-top: -35px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 50%;
+        z-index: 10001;
+    }
+
+    .w-tip-content {
+        border-radius: 4px;
+        background: #39414d;
+        color: #fff;
+        display: inline-block;
+        font-size: 18px;
+        height: 70px;
+        line-height: 70px;
+        min-width: 150px;
+        padding: 0 20px;
+
+        i {
+            margin-right: 8px;
+        }
+    }
+}
+
+// 错误提示
+.modal-fensitong-capital.modal-diy-body {
+    &.error {
+
+        input {
+            border-color: #f64d46;
+        }
+
+        .error-tip {
+            display: block;
+        }
+    }
+    // 错误信息
+    .error-tip {
+        bottom: -10px;
+        display: none;
+        color: #f64d46;
+        line-height: 1;
+        left: 18px;
+        margin: 0;
+        position: relative;
+    }
+}
+
+// 修改弹出窗按钮样式
+#modal-onebtn__btn {
+    background: #29cc29;
+    border: 0;
+    color: #fff;
+    height: 40px;
+    outline: 0;
+
+    &:hover {
+        opacity: .75;
+    }
+}

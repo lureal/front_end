@@ -1,0 +1,119 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<body>
+    <div class="wrapper">
+        {% include '../../modules/header.html' %}
+        {% include '../../modules/sidebar.html' %}
+        <div class="content-wrapper">
+            <section class="content-header">
+               <h1>权限管理</h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> 权限管理</a></li>
+                    <li><a href="#">客户详情</a></li>  
+                </ol> 
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                    <div class="row" id="customer-info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+                <div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-body">
+								<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+									<div class="row">
+										<div class="col-sm-12" id="customer-detail">
+											
+										</div>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+  				</div>
+            </section>
+        </div>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+    
+    <!-- 用户详情 -->
+    <script type="text/template" id="customer-detail-tpl">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+            <thead>
+                <tr role="row">
+                    <th tabindex="0" rowspan="1" colspan="1">客户名称</th>
+                    <th tabindex="0" colspan="1">产品名称</th>
+                    <th tabindex="0" rowspan="1" colspan="1">账户ID</th>
+                    <th tabindex="0" rowspan="1" colspan="1">创建日期</th>
+                    <th tabindex="0" rowspan="1" colspan="1">账户余额</th>
+                    <th tabindex="0" rowspan="1" colspan="1">投放运营</th>
+                    <th tabindex="0"  rowspan="1" colspan="1">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            	<% _.each(data.records, function(val,index) { %>
+	                <tr role="row" class="odd">
+	                    <td data-id="<%= val.userId %>"><%= val.customName %></td>
+	                    <td><%= val.productName %></td>
+	                    <td data-userId="<%= val.userId %>">
+	                    	<%= val.customId %>
+	                    </td>
+	                    <td><%= val.posttime_str %></td>
+	                    <td><%= (val.balance)/100 %></td>
+	                    <td><%= val.operators %></td>
+	                    <td><a class="btn btn-info cancel-connection" data-id="<%= val.customId%>">取消关联</a></td>
+	                </tr>
+	            <% }); %>
+            </tbody>       
+    	</table>
+        
+        <% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+    </script>
+
+    <!-- 用户信息列表 -->
+    <script type="text/template" id="customer-info-tpl">
+    	<div class="col-sm-8">
+    		<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+				<thead>
+	    			<tr role="row">
+	    			    <th tabindex="0" rowspan="1" colspan="1">人员</th>
+	    			    <th tabindex="0" colspan="1">录入时间</th>
+	    			    <th tabindex="0" rowspan="1" colspan="1">登录账号</th>
+	    			    <th tabindex="0" rowspan="1" colspan="1" >角色</th>
+	    			</tr>
+				</thead>
+				<tbody>
+					<tr role="row" class="odd">
+					    <td><%= data.name%></td>
+					    <td><%= data.posttime_str%></td>
+					    <td><%= data.username%></td>
+					    <td><%= data.role%></td>
+					</tr>
+				</tbody>            
+            </table>
+    	</div>
+		<div class="col-sm-4">
+			<a href="/#proj_name#/manage/auth/allocustomer?id=<%= data.userId %>" class="btn btn-info pull-right" id="allocation-customer">分配客户</a>
+		</div>
+    </script>
+    
+</body>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-auth-cusdetail.js"></script>
+{% endblock %}

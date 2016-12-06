@@ -1,0 +1,222 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="article-list">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>文章管理</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">文章管理</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">文章列表</h3>
+								<div class="box-tools">
+									<a href="/#proj_name#/html/article/add.html" type="button" class="btn btn-primary btn-sm">添加文章</a>
+									<a href="/#proj_name#/html/article/type.html" type="button" class="btn btn-primary btn-sm">标签管理</a>
+								</div>
+							</div>
+                            <div class="col-xs-12 box-toolbar last">
+                                <div class="form-inline">
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="文章标题" id="article-list-title">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="作者名称" id="article-list-author">
+                                    </div>
+
+                                    <!-- 搜索按钮 -->
+                                    <div class="form-group">
+                                        <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="article-list-search">搜索</a>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="box-body" id="article-list-wrap"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">热门文章列表</h3>
+							</div>
+							<div class="box-body" id="article-hot-list-wrap"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+
+        {# 正常文章 #}
+        <script type="text/template" id="article-list-tpl">
+			<table id="article-list-table" class="table table-borderd table-hover">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>标题</th>
+						<th>作者</th>
+						<th>类型</th>
+						<th>时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(data.articles, function(val, index) { %>
+						<tr>
+							<td><%= val.id %></td>
+							<td><%= val.title %></td>
+							<td><%= val.authorName %></td>
+							<td><%= val.typeName %></td>
+							<td><%= val.posttime_str %></td>
+							<td>
+								<button data-id="<%= val.id %>" id="article-list-detail" type="button" class="btn btn-xs btn-success">查看详情</button>
+								<button id="article-list-addhot" type="button" class="btn btn-xs btn-info" data-id="<%= val.id %>">添加热门文章</button>
+								<button id="article-list-delete" type="button" class="btn btn-xs btn-danger" data-id="<%= val.id %>">删除</button>
+							</td>
+						</tr>
+					<% }); %>
+        		</tbody>
+			</table>
+			<% if(data.pageCount > 1) { %>
+			<nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                   		var end = data.pageCount - 1;
+                  		var start = 2;
+                  		var pagenum = 7;
+                  		if(data.pageCount > pagenum) {
+                  			var left = data.page - start;
+                  			var right = end- data.page > 2 ? 2:end- data.page;
+                  			if(left<2) {
+                  				end = start + 4;
+                  			} else if(right<2){
+                  				start = end - 4;
+                  			} else {
+                  				start = data.page - 2;
+                  				end = data.page + 2;
+                  			}
+    	              	}
+                    	for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                   	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+			</nav>
+			<% } %>
+        </script>
+
+        {# 热门文章 #}
+        <script type="text/template" id="article-hot-list-tpl">
+			<table id="article-list-table" class="table table-borderd table-hover">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>标题</th>
+						<th>作者</th>
+						<th>类型</th>
+						<th>时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(data, function(val, index) { %>
+						<tr>
+							<td><%= val.id %></td>
+							<td><%= val.title %></td>
+							<td><%= val.authorName %></td>
+							<td><%= val.typeName %></td>
+							<td><%= val.posttime_str %></td>
+							<td>
+								<button data-id="<%= val.id %>" id="article-hoy-list-top" type="button" class="btn btn-xs btn-default">置顶</button>
+								<button data-id="<%= val.id %>" id="article-hoy-list-moveup" type="button" class="btn btn-xs btn-success">上移</button>
+								<button data-id="<%= val.id %>" id="article-hoy-list-movedown" type="button" class="btn btn-xs btn-warning" data-id="<%= val.id %>">下移</button>
+							</td>
+						</tr>
+					<% }); %>
+        		</tbody>
+			</table>
+			<% if(data.pageCount > 1) { %>
+			<nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                   		var end = data.pageCount - 1;
+                  		var start = 2;
+                  		var pagenum = 7;
+                  		if(data.pageCount > pagenum) {
+                  			var left = data.page - start;
+                  			var right = end- data.page > 2 ? 2:end- data.page;
+                  			if(left<2) {
+                  				end = start + 4;
+                  			} else if(right<2){
+                  				start = end - 4;
+                  			} else {
+                  				start = data.page - 2;
+                  				end = data.page + 2;
+                  			}
+    	              	}
+                    	for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                   	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+			</nav>
+			<% } %>
+        </script>
+    </div>
+{% endblock %}

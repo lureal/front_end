@@ -1,0 +1,163 @@
+{% extends '../../../layouts/admin.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/admin/customer/index.html">
+                    <i class="fa fa-home"></i>客户列表
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" id="breadcrumb-company"></a>
+            </li>
+        </ol>
+    </section>
+    <section class="content admin-service-data">
+
+        {# 公司名名称 #}
+        <div class="row company-name">
+            <div class="col-md-12 col-sm-12 col-xs-12" id="box-company"></div>
+        </div>
+
+        {# 导航条 #}
+        <div class="row content-nav">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <a href="/#proj_name#/html/admin/customer/fensitong/aptitude.html" class="content-nav-link">
+                    <i class="fa fa-file-text"></i>资质<span class="notice-num" id="aptitude-notice-num" style="display: none;">2</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="content-nav-finance" style="display: none;">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-folder"></i>财务<i class="fa fa-caret-down"></i>
+                </a>
+                <ul>
+                    <li style="display: none;">
+                        <a href="/#proj_name#/html/admin/customer/fensitong/capital.html" class="content-nav-link">
+                            <i class="fa fa-database"></i>资金
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#proj_name#/html/admin/customer/fensitong/invoice.html" class="content-nav-link">
+                            <i class="fa fa-tags"></i>发票<span class="notice-num" id="invoice-notice-num" style="display: none;">2</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" id="content-nav-data" style="display: none;">
+                <a href="javascript:void(0);" class="active" data-active="1">
+                    <i class="fa fa-pie-chart move-left5"></i>数据
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12" style="display: none;">
+                <a href="/#proj_name#/html/admin/customer/fensitong/account.html" class="content-nav-link">
+                    <i class="fa fa-flag move-left5"></i>账户
+                </a>
+            </div>
+        </div>
+
+        {# 数据导入 #}
+        <div class="row import-data-title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>数据导入</h2>
+            </div>
+        </div>
+        <div class="row import-data">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-inline tools">
+                    <div class="form-group clearfix w-datepicker">
+                        <label>选择日期</label>
+                        <input autocomplete="off" type="text" class="form-control" name="name" id="import-data-datepicker">
+                    </div>
+                    <div class="search">
+                        <button type="button" class="w-btn w-btn-primary">
+                            数据导入
+                        </button>
+                        <input type="file" accept="*/*" id="import-data">
+                    </div>
+                    <div class="template">
+                        <a href="/external/manage/downloadDataTemplate.do" class="w-btn w-btn-primary">查看数据模板</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# 历史数据 #}
+        <div class="row history-data-title">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2>历史数据 <span>（默认展示最新一周的数据，如需查看更多数据，请根据日期查询）</span></h2>
+            </div>
+        </div>
+
+        {# 历史数据 #}
+        <div class="row history-data" id="data">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-inline tools">
+                    <div class="form-group clearfix w-datepicker">
+                        <label>开始日期</label>
+                        <input autocomplete="off" type="text" class="form-control" name="name" id="data-start-date">
+                    </div>
+                    <div class="form-group clearfix w-datepicker">
+                        <label>结束日期</label>
+                        <input autocomplete="off" type="text" class="form-control" name="name" id="data-end-date">
+                    </div>
+                    <button type="button" class="w-btn w-btn-success search" id="data-search">数据查询</button>
+                    <button type="button" class="w-btn w-btn-success export" id="data-export">导出表格</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="w-collapse panel-group" id="data-table" role="tablist" aria-multiselectable="true"></div>
+            </div>
+        </div>
+    </section>
+
+    {# collapse 内容模板 #}
+    <script type="text/template" id="data-tpl">
+        <% _.each(records, function(record, index) { %>
+            <div class="w-panel panel">
+                <div class="w-panel-heading panel-heading" role="tab" id="collapse-head-<%= index %>">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-body-<%= index %>" aria-expanded="true" aria-controls="collapse-body-<%= index %>">
+                            <%= record.date %>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-body-<%= index %>" class="w-panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-head-<%= index %>">
+                    <div class="panel-body">
+                        <% _.each(record.tables, function(table, index) { %>
+                            <div class="table-responsive w-table">
+                                <h3 class="table-name">
+                                    <%= table.title %>
+                                    <a href="javascript:void(0);" class="table-del" data-id="<%= table.id %>">删除</a>
+                                </h3>
+                                <table class="table">
+                                    <tbody>
+                                        <% _.each(table.content, function(item, index) { %>
+                                            <% if (index === 0) { %>
+                                                <tr>
+                                                    <% for (var prop in item) { %>
+                                                        <th><%= item[prop] %></th>
+                                                    <% } %>
+                                                </tr>
+                                            <% } else { %>
+                                                <tr>
+                                                    <% for (var prop in item) { %>
+                                                        <td><%= item[prop] %></td>
+                                                    <% } %>
+                                                </tr>
+                                            <% } %>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-fensitong-data.js"></script>
+{% endblock %}

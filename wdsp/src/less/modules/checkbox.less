@@ -1,0 +1,32 @@
+.w-checkbox {
+    float: left;
+    margin-right: 5px;
+
+    > span {
+        border-radius: 2px;
+        border: 1px solid #738399;
+        float: left;
+        height: 18px;
+        line-height: 15px;
+        overflow: hidden;
+        text-align: center;
+        width: 18px;
+
+        .fa {
+            display: none;
+            font-size: 12px;
+        }
+    }
+
+    &.active {
+        > span {
+            border-color: #3388ff;
+            background: #3388ff;
+            color: #fff;
+
+            .fa {
+                display: inline-block;
+            }
+        }
+    }
+}

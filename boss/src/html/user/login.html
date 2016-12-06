@@ -1,0 +1,44 @@
+{% extends '../layouts/user.html' %}
+{% block head %}
+<link rel="stylesheet" href="/#proj_name#/css/login.css">
+{% endblock %}
+
+{% block body %}
+<body>
+
+    {# 主体 #}
+    <div class="main">
+        <div class="pic">
+            <img class="show-pic" src="/#proj_name#/img/user-pic.png">
+        </div>
+        <div class="login-form">
+            <div class="logo">
+                <img src="/#proj_name#/img/login-logo.png" srcset="/#proj_name#/img/login-logo@2x.png">
+            </div>
+            <div class="form-user">
+                <i class="fa fa-user"></i>
+                <input class="input-user" type="text" placeholder="邮箱" name="login-email" id="username">
+            </div>
+            <div class="form-password">
+                <i class="fa fa-lock"></i>
+                <input class="input-password" type="password" placeholder="密码" name="password" id="password">
+            </div>
+            <button id="login-submit" type="submit">登录</button>
+            <a class="forget" href="/#proj_name#/html/user/reset-pwd.html">忘记密码?</a>
+        </div>
+    </div>
+
+    {# 版权信息 #}
+    <div class="copyright">
+        <p>
+            <a class="number" href="http://www.miitbeian.gov.cn/" target="_blank">鄂 ICP备15001665号 </a> Copyright © 2016 Wesdom. All Rights Reserved
+        </p>
+        <!-- <p class="conpany">武汉微思敦网络技术有限公司 版权所有</p> -->
+    </div>
+
+    {% include '../modules/modal.html' %}
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/#proj_name#/js/user-login.js"></script>
+</body>
+{% endblock %}

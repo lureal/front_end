@@ -1,0 +1,105 @@
+/*!
+ * 投放系统数据概览页面（delivery/overview/index）
+ */
+
+// 数据概览顶部数据统计
+.overview-count-ad {
+    
+    // 复原控件样式
+    .info-box-content {
+        margin-left: 0;
+        #overview-count-title {
+            .active {
+                a {
+                    background: #fff;
+                    border-top-color: #fff;
+                    color: #dd4b39;
+                }
+                
+            }
+        }
+        #overview-count-data {
+            margin-top: 10px;
+            margin-left: 15px;
+
+            span {
+                padding-right:  10px;
+            }
+        }
+        .ovplatform-btn {
+            background: #64C398;
+            height:90px;
+            margin-left: -3px;
+            padding: 40px 5px;
+            text-align: center;
+            width:50px;
+            position: absolute;
+            right: 15px;
+            top: 0px;
+
+            & > i {
+                color: white;
+            }
+        }
+    }
+    .z-hidden {
+        display: none;
+    }
+}
+
+// 数据概览主体
+#overview {
+    padding: 10px 30px;
+
+    // 主体数据行
+    .platform-data {
+        border: 1px solid #efefef;
+        margin-top: 10px;
+
+        // 标题
+        .title {
+            margin-bottom: 0;
+            padding: 5px;
+        }
+
+        .chart-stastic {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        // 数据
+        .data {
+            font-size: 14px;
+            list-style: none;
+            min-height: 300px;
+            max-height: 255px;
+            // overflow-y: scroll;
+            padding: 0 10px 0 0;
+
+            li {
+                margin: 5px 0;
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        // 图表
+        .chart {
+            background: #efefef;
+            min-height: 300px;
+            min-width: 850px;
+            .form-group {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.z-hidden {
+    display: none;
+}
+
+
+
+

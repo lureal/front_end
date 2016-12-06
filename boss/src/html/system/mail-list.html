@@ -1,0 +1,196 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>通讯录</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i>通讯录
+                    </a>
+                </li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3" id="system-address-book">
+                </div>
+                <div class="col-md-9" id="system-address-list">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="system-address-book-tpl">
+        <div class="box box-solid">
+            <div class="box-header with-border" style="line-height: 1;">
+                <h3 class="box-title">
+                    部门
+                </h3>
+                <div class="box-tools">
+                    <button id="company" style="line-height: 16px; color: #97a0b3; outline: none;" class="btn btn-box-tool">查看全公司通讯录</button>
+                </div>
+            </div>
+            <div class="box-body no-padding menuFlag">
+                <%_ .each(data.departs[0].children, function(val, index) { %>
+                    <ul class="sidebar-menu first-menu-open treeview-menu">
+                        <li class="first-treeview ">
+                            <a href="#" data-departId="<%= val.id %>" data-label="<%= val.label%>">
+                                <% if(val.children.length > 0 ) { %>
+                                   <i class="fa fa-plus"></i>
+                                <% } else { %>
+                                    <i class="fa fa-user"></i>
+                                <% } %>
+                                <span><%= val.label%></span>
+                            </a>
+                             <% _.each(val.children, function(secondVal, index) { %>
+                                <ul class="treeview-menu second-menu-open z-hidden"  style="padding-left: 20px;">
+                                    <li class="active second-treeview">
+                                        <a href="#" data-departId="<%= secondVal.id %>" data-label="<%= secondVal.label%>">
+                                            <% if(secondVal.children.length > 0) { %>
+                                               <i class="fa fa-plus"></i>
+                                            <% } else { %>
+                                                <i class="fa fa-user"></i>
+                                            <% } %>
+                                            <span><%= secondVal.label %></span>
+                                        </a>
+                                        <% _.each(secondVal.children, function(thirdVal, index) { %>
+                                            <ul class="treeview-menu third-menu-open z-hidden">
+                                                <li class="active third-treeview" >
+                                                    <a href="#" data-departId="<%= thirdVal.id %>" data-label="<%= thirdVal.label%>">
+                                                        <i class="fa fa-user"></i>
+                                                        <span><%= thirdVal.label %></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                         <% }); %>
+                                    </li>
+                                </ul>
+                            <% }); %>
+                        </li>
+                    </ul>
+                <% }); %>
+            </div>
+        </div>
+    </script>
+
+    <!-- 通讯录列表数据 -->
+    <script type="text/template" id="system-address-list-tpl">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">通讯录</h3>
+                <div class="box-tools pull-right">
+                    <div class="input-group" style="width: 180px;">
+                        <input type="text" class="form-control input-sm" placeholder="输入姓名或者电话" id="name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default input-sm" type="button" id="search-btn">搜索</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <div class="table-responsive mailbox-meassages">
+                    <table class="table table-hover table-striped" style="margin-bottom: 0;">
+                        <thead>
+                            <tr>
+                                <th>头像</th>
+                                <th>姓名</th>
+                                <th>部门</th>
+                                <th>职位</th>
+                                <th>电话</th>
+                                <th>邮箱</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% _.each(data.users, function(val, index) { %>
+                                <tr>
+                                    <td>
+
+                                        <span style="border-radius: 50%; display: inline-block; height: 30px; overflow: hidden; width: 30px;">
+                                            <% if(val.icon === null) { %>
+                                                <img src="/#proj_name#/img/none.png" alt="微思敦" style="width: 100%;">
+                                            <% } else { %>
+                                            <img src="<%= val.icon%>" alt="微思敦" style="width: 100%;">
+                                            <% } %>
+                                        </span>
+                                    </td>
+                                    <td class="mail-name"><%= val.name%></td>
+                                    <td class="mail-subject"><%= val.depart%></td>
+                                    <td class="mailbox-attachment"><%= val.position%></td>
+                                    <td class="mailbox-phone"><%= val.phone%></td>
+                                    <td class="mailbox-date"><%= val.email%></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="box-footer no-padding">
+                <% if(data.users.length === 0) { %>
+                    <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+                <% } %>
+                <div class="mailbox-controls" style="overflow: hidden;">
+                    <div class="pull-right">
+                        <% if(data.pageCount > 1) { %>
+                            <nav>
+                                <ul class="pagination pull-right table-pageination">
+                                    <li>
+                                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                                    </li>
+                                   <% if(data.pageCount > 2) {
+                                        var end = data.pageCount - 1;
+                                        var start = 2;
+                                        var pagenum = 7;
+                                        if(data.pageCount > pagenum) {
+                                            var left = data.page - start;
+                                            var right = end- data.page > 2 ? 2:end- data.page;
+                                            if(left<2) {
+                                                end = start + 4;
+                                            } else if(right<2){
+                                                start = end - 4;
+                                            } else {
+                                                start = data.page - 2;
+                                                end = data.page + 2;
+                                            }
+                                        }
+                                        for(var i = start; i <= end; i++) {
+                                   %>
+                                    <li class="<%= i === data.page ? 'active' : '' %>">
+                                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                                    </li>
+                                   <% } }%>
+                                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-mail-list.js"></script>
+{% endblock %}

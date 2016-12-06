@@ -1,0 +1,19 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>首页</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+				</ol>
+			</section>
+        </div>
+        
+        {% include '../modules/copyright.html' %}
+    </div>
+{% endblock %}

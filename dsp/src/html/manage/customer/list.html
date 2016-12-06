@@ -1,0 +1,199 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>客户管理</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>客户管理</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">客户列表</h3>
+                            <div class="box-tools">
+                                <a href="/#proj_name#/html/manage/customer/add.html" type="button" class="btn btn-primary btn-sm" id="create">创建新客户</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 box-toolbar last">
+                            <div class="form-inline">
+
+                                <div class="form-group">
+                                    <select id="platform" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <select id="people" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+
+                                    <!--暂时隐藏导出功能-->
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="export" style="display: none;">导出</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body" id="customer"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>客户名称</th>
+                    <th>产品名</th>
+                    <th style="text-align: right;">余额（元）</th>
+                    <th>运营人员</th>
+                    <th>投放平台（点击查看详情）</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td><%= val.customId %></td>
+                        <td><%= val.customName %></td>
+                        <td><%= val.productName %></td>
+                        <td style="text-align: right;"><%= (val.balance / 100).toFixed(2) %></td>
+                        <td><%= val.operators %></td>
+                        <td>
+                            <% _.each(val.platforms, function(platform, index) { %>
+                                <div>
+                                    <a href="javascript:void(0);" type="button" class="view-platform btn btn-default btn-xs" style="margin: 5px 0;" data-name="<%= encodeURIComponent(platform.name) %>" data-reason="<%= encodeURIComponent(platform.reason) %>" data-status="<%= encodeURIComponent(platform.status) %>" data-customerid="<%= platform.platformCustomId %>"><%= platform.name %>（<%= platform.status === 0 ? '未送审' : (platform.status === 1 ? '审核中' : (platform.status === 2 ? '审核通过' : '审核失败')) %>）</a>
+                                </div>
+                            <% }); %>
+                        </td>
+                        <td><%= val.posttime_str %></td>
+                        <td>
+                            <a href="/#proj_name#/html/manage/customer/detail.html?id=<%= val.customId %>" type="button" class="btn btn-xs btn-success">编辑</a>
+                            <a href="/#proj_name#/html/manage/customer/censorship.html?id=<%= val.customId %>" type="button" class="btn btn-xs btn-success">送审</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="platform-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>客户 ID</label>
+                        <input type="text" class="form-control" value="<%= id %>" placeholder="" id="id" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>平台名称</label>
+                        <input type="text" class="form-control" value="<%= name %>" placeholder="" id="name" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>审核状态</label>
+                        <input type="text" class="form-control" value="<%= status === 0 ? '未送审' : (status === 1 ? '审核中' : (status === 2 ? '审核通过' : '审核失败')) %>" placeholder="" id="status" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <% if(status === 3) { %>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>审核不通过原因</label>
+                        <input type="text" class="form-control" value="<%= reason %>" placeholder="" id="reason" disabled>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-customer-list.js"></script>
+{% endblock %}

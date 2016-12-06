@@ -1,0 +1,83 @@
+.finance {
+    .card {
+        .info-box {
+            border-radius: 4px;
+            box-shadow: none;
+            height: 120px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        i {
+            background: #1a8cff;
+            border-radius: 50%;
+            display: none;
+            height: 60px;
+            left: 30px;
+            margin-top: -30px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 60px;
+
+            &:after {
+                color: #fff;
+                content: "\f1c0";
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: 27px;
+                display: inline-block;
+                line-height: 60px;
+            }
+        }
+
+        .info-box > div {
+            padding-top: 28px;
+
+            h3,
+            p {
+                color: #303640;
+                line-height: 1.2;
+                margin: 0;
+            }
+
+            h3 {
+                font-size: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            p {
+                font-size: 30px;
+                margin-top: 7px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        // 有 icon 的 card
+        &.card-with-icon {
+            .info-box {
+                padding-left: 120px;
+
+                h3,
+                p {
+                    color: #1a8cff;
+                }
+            }
+
+            i {
+                display: block;
+            }
+        }
+        
+        // 获取发票按钮
+        .get-invoice-btn {
+            bottom: 23px;
+            position: absolute;
+            right: 30px;
+        }
+    }
+}

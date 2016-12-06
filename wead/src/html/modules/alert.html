@@ -1,0 +1,71 @@
+
+{# tip #}
+<div class="w-tip" id="tip">
+    <div class="w-tip-dialog">
+        <span class="w-tip-content" id="tip-content">
+            <i class="fa fa-check"></i>
+        </span>
+    </div>
+</div>
+
+{# 有两个按钮的弹出框 #}
+<div class="modal fade" id="modal-dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="modal-dialog-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="w-btn w-btn-primary" id="modal-dialog-btn">确定</button>
+                <button type="button" class="w-btn w-btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# 只有一个按钮的弹出框 #}
+<div class="modal fade" id="modal-confirm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="modal-confirm-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="w-btn w-btn-primary" id="modal-confirm-btn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# 提供完全定制的弹出框 #}
+<div class="modal fade" id="modal-diy">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="modal-diy-body"></div>
+        </div>
+    </div>
+</div>
+
+{# 图片预览弹窗 #}
+<div class="modal fade modal-image-preview" id="modal-image-preview">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <table>
+                <tr>
+                    <td>
+                        <img src="" alt="图片预览" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>部门管理</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 部门管理</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <!-- <h3 class="box-title">部门管理列表</h3> -->
+                            <div class="box-tools">
+                                <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm export-btn" id="export" style="display: none;">导出</a>
+                                <a href="javascript:void(0);" type="button" class="btn btn-primary btn-sm sync-btn" id="sync" style="display: none;"><i class="fa fa-spin fa-refresh" style="display: none;"></i> 同步数据</a>
+                            </div>
+                        </div>
+
+                        <div class="box-body" id="depart"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <!--<th>部门代码</th>-->
+                    <th>部门名称</th>
+                    <th>上级部门</th>
+                    <th>层级</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.departs, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <!--<td><%= val.code %></td>-->
+                        <td><%= val.name %></td>
+                        <td><%= val.parentDepart %></td>
+                        <td><%= val.depth %></td>
+                        <td>
+                            <a href="/#proj_name#/system/depart-list-user?id=<%= val.id %>" type="button" class="btn btn-xs btn-success userunderdepart-btn" style="display: none;">查看部门下用户</a>
+                            <a href="/#proj_name#/system/depart-list-add?id=<%= val.id%>" class="btn btn-xs btn-info add-director setdepart-btn" data-id="<%= val.id%>" style="display: none;">
+                                设置主管
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.departs.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}	
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-depart-list.js"></script>
+{% endblock %}

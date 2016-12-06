@@ -1,0 +1,145 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="/#proj_name#/html/service/index.html">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">数据统计</a>
+        </li>
+    </ol>
+</section>
+<section class="content data-info-overview">
+
+    {# 顶部导航 #}
+    <div class="content-nav row">
+        <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="">
+            <a href="javascript:void(0);" class="active" data-active="1">
+                <i class="fa fa-th"></i>信息概览<i class="fa fa-caret-down"></i>
+            </a>
+            <ul id="content-sub-nav"></ul>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/data/overview.html" class="content-nav-link">
+                <i class="fa fa-files-o"></i>数据概览<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/data/people.html" class="content-nav-link">
+                <i class="fa fa-file-o"></i>人群数据<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+    </div>
+
+    {# 数据信息 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="data">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">数据信息</h3>
+                </div>
+                <div class="w-box-tool form-inline">
+                    <div class="w-table-tool" id="data-tool">
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                        </div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="data-search">搜索</button>
+                    </div>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="data-table"></div>
+                <div class="w-chart">
+                    <div class="w-chart-tool form-inline">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">内容</label>
+                            <div class="w-dropdown-normal" data-open="0" data-target="#select-item" data-limit="2">
+                                <a href="javascript:void(0);" class="w-select-btn">
+                                    请选择两个选项<i class="fa fa-sort-down"></i>
+                                </a>
+                                <div class="w-select-main">
+                                    <ul class="w-select-lists">
+                                        <li class="no-data">当前没数据</li>
+                                    </ul>
+                                    <div class="w-select-footer">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-success">确认</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group w-tool-item w-dropdown-selected" id="select-item" style="display: none;"></div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="data-generate-chart">生成图表</button>
+                    </div>
+                </div>
+
+                {# 实际图表 #}
+                <div class="chart" id="chart" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 内部导航下拉项模板 #}
+<script type="text/template" id="content-nav-tpl">
+    <% _.each(navs, function(nav, index) { %>
+        <li>
+            <a href="javascript:void(0);" data-type="<%= nav.type %>" class="info-overview-nav content-nav-link"><%= nav.content %></a>
+        </li>
+    <% }); %>
+</script>
+
+<!-- 数据信息模板 -->
+<script type="text/template" id="data-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>曝光量</th>
+                <th>互动量</th>
+                <th>互动率</th>
+                <th>互动成本（元）</th>
+                <th>点击量</th>
+                <th>点击率</th>
+                <th>点击均价（元）</th>
+                <th>消耗（元）</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                <tr>
+            <% } else { %>
+                <% _.each(records, function(record) { %>
+                    <tr>
+                        <td><%= record.showCount === null ? '-' : record.showCount %></td>
+                        <td><%= record.interactCount === null ? '-' : record.interactCount %></td>
+                        <td><%= record.interactRatio === null ? '-' : record.interactRatio %></td>
+                        <td><%= record.interactPrice === null ? '-' : record.interactPrice %></td>
+                        <td><%= record.clickCount === null ? '-' : record.clickCount %></td>
+                        <td><%= record.clickRatio === null ? '-' : record.clickRatio %></td>
+                        <td><%= record.clickPrice === null ? '-' : record.clickPrice %></td>
+                        <td><%= record.consume === null ? '-' : record.consume %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/data-info-overview.js"></script>
+{% endblock %}

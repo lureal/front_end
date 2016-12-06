@@ -1,0 +1,89 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="feed-send">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>发送订阅</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">发送订阅</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">发送订阅</h3>
+							</div>
+							<div class="box-body" id="feed-list-wrap">
+    		        			<div class="row">
+    	        					<div class="col-md-6">
+    		        					<div class="form-group">
+    		        						<label>邮件标题</label>
+    		        						<input type="text" class="form-control" placeholder="邮件标题" id="feed-send-title">
+    		        					</div>
+    		        				</div>
+
+                    				{# 活动时间 #}
+                                    <!--
+                    				<div class="col-md-6">
+                    					<div class="form-group">
+                    						<label>邮件发送时间</label>
+            								<div class="input-group">
+            									<div class="input-group-addon">
+            										<i class="fa fa-calendar"></i>
+            									</div>
+            									<input type="text" class="form-control pull-right" id="feed-send-time">
+            								</div>
+                    					</div>
+                    				</div>
+                                    -->
+    		        			</div>
+                            </div>
+
+                    		{# 编辑器 #}
+                    		<div class="box-header">
+                    			<h3 class="box-title"><small>活动内容</small></h3>
+                    		</div>
+            				<div class="box-body">
+            					<form>
+                                    <script type="text/plain" id="myEditor" style="width:100%;height:240px;"></script>
+            					</form>
+            				</div>
+
+                    		{# 发送测试邮件 #}
+                    		<div class="box-header">
+                    			<h3 class="box-title"><small>是否发送一封测试邮件到你自己的邮箱</small></h3>
+                    		</div>
+            				<div class="box-body">
+                                <div class="row">
+                					<div class="col-xs-12 col-md-12">
+                					    <div class="form-inline">
+                                            <div class="form-group">
+                    					        <input type="text" class="form-control" placeholder="你的邮箱地址" id="feed-send-test-email">
+                                            </div>
+                                            <button class="btn btn-info" id="feed-send-preview">发送测试邮件</button>
+                					    </div>
+                					</div>
+                                </div>
+            				</div>
+                            <div class="box-footer">
+                                <button class="btn btn-default" id="feed-send-canel">取消</button>
+                                <button class="btn btn-info pull-left" id="feed-send-btn">发送</button>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+    </div>
+{% endblock %}

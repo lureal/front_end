@@ -1,0 +1,185 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-group">
+
+    {# 顶部导航 #}
+    <div class="content-nav row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="javascript:void(0);" class="content-nav-link active">
+                <i class="fa fa-files-o"></i>广告组<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/ad/bill.html" class="content-nav-link">
+                <i class="fa fa-file-o"></i>广告订单<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu">
+            <a href="javascript:void(0);">
+                <i class="fa fa-bullseye"></i>投放维度<i class="fa fa-caret-down move-right20"></i>
+            </a>
+            <ul>
+                <li>
+                    <a href="/#proj_name#/html/ad/dimension-platform.html" class="content-nav-link">
+                        <i class="fa fa-television"></i><span class="move-right30">投放平台</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/#proj_name#/html/ad/dimension-subject.html" class="content-nav-link">
+                        <i class="fa fa-th"></i><span class="move-right30">投放主体</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-nav-btn">
+            <button class="w-btn w-btn-primary" id="create-ad">创建新广告</button>
+        </div>
+    </div>
+
+    {# 广告组列表 #}
+    <div class="row">
+        <div class="ccol-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="group">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">广告组</h3>
+                </div>
+                <div class="w-box-tool form-inline">
+                    <div class="w-table-tool" id="group-tool">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">名称</label>
+                            <input type="text" class="w-tool-input w-tool-item-input" placeholder="请输入名称" data-field="keyword" data-type="input" data-errmsg="请输入名称" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">状态</label>
+                            <select required class="form-control w-tool-input w-tool-item-select" data-field="type" data-type="select" data-errmsg="请选择状态" data-isRequire="0">
+                                <option value="" disabled selected style="color: $e5e5e5;">请选择</option>
+                                <option value="0">停用</option>
+                                <option value="1">启用</option>
+                            </select>
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                        </div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="group-search">搜索</button>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="group-export" style="display: none;">导出</button>
+                    </div>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="group-table"></div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="group-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 广告组模板 #}
+<script type="text/template" id="group-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>名称</th>
+                <th>曝光量</th>
+                <th>互动情况</th>
+                <th>点击情况</th>
+                <th>消耗（元）</th>
+                <th>广告组日限额（元）</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(record, index) { %>
+                    <tr>
+                        <td><%= record.groupName %></td>
+                        <td><%= record.showCount %></td>
+                        <td>
+                            <span>互动量：<%= record.interactCount %></span><br>
+                            <span>互动率：<%= record.interactRatio %></span><br>
+                            <span>互动成本（元）：<%= record.interactPrice %></span>
+                        </td>
+                        <td>
+                            <span>点击量：<%= record.clickCount %></span><br>
+                            <span>点击率：<%= record.clickRatio %></span><br>
+                            <span>点击成本（元）：<%= record.clickPrice %></span>
+                        </td>
+                        <td><%= record.consume %></td>
+                        <td>
+                            <span class="quota clearfix" data-isEdit="0">
+                                <input type="text" value="<%= record.quota %>" readonly="readonly">
+                                <button data-id="<%= record.groupId %>">修改</button>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="active-group" style="display: <%= record.status !== 0 ? 'inline-block' : 'none' %>">
+                                <i class="fa fa-check"></i> 已启用
+                            </span>
+                            <span class="stop-group" style="display: <%= record.status === 0 ? 'inline-block' : 'none' %>">
+                                <i class="fa fa-clock-o"></i> 已暂停
+                            </span>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" class="toggle" data-status="<%= record.status %>" data-id="<%= record.groupId %>">
+                                <% if (record.status !== 0) { %>
+                                    停用
+                                <% } else { %>
+                                    启用
+                                <% } %>
+                            </a><br>
+                            <a href="javascript:void(0);" class="del" data-id="<%= record.groupId %>">删除</a>
+                        </td>
+                    <tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-group.js"></script>
+{% endblock %}

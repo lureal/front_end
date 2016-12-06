@@ -1,0 +1,173 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper" id="channel">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>贡献客户</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 贡献客户</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header" style="font-size: 20px;">
+
+                        </div>
+                        <div class="col-xs-12 box-toolbar table-toolbar last">
+                            <div class="form-inline">
+
+                                <!-- 渠道商名称、ID -->
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="" placeholder="请输入渠道商名称、ID" id="channel-name">
+                                </div>
+
+                                <!-- 选择日期 -->
+                                <div class="form-group">
+                                    <input type="" name="" id="datepaker" class="form-control" placeholder="选择日期" style="width: 183px;">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm search-btn" id="search">搜索</a>
+                                     <a href="javascript:void(0);" type="button" class="btn btn-primary btn-sm export-btn" id="export">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title" id="product-chart-name">行业图表统计 <span class="customer-contributer"></span></h3>
+                                    </div>
+                                    <div id="product-chart">
+                                    </div>
+                                </div>
+                                <div class="col-md-6" >
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title" id="industry-chart-name">产品图表统计</h3>
+                                    </div>
+                                    <div id="industry-chart">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="table-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 渠道商管理模板 -->
+    <script type="text/template" id="table-list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>平台ID</th>
+                    <th>产品名称</th>
+                    <th>客户名称</th>
+                    <th>开户时间</th>
+                    <th>所属行业</th>
+                    <th>所属区域</th>
+                    <th>运营经理</th>
+                    <th>返点</th>
+                    <th>消耗金额</th>
+                    <th style="text-align: right;">续费金额</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.custList, function(val, index) { %>
+                    <tr>
+                        <td><%= val.platformId %></td>
+                        <td><%= val.productName %></td>
+                        <td><%= val.name %></td>
+                        <td><%= val.openDate %></td>
+                        <td><%= val.industry %></td>
+                        <td><%= val.area %></td>
+                        <td><%= val.adviser %></td>
+                        <td><%= val.rebate %></td>
+                        <td><%= val.consume %></td>
+                        <td><%= val.recharge %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+        <% if(data.custList.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }   
+                    for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <!--  拓展进度-->
+    <script type="text/template" id="expand-process-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/report-contribute-customer.js"></script>
+{% endblock %}

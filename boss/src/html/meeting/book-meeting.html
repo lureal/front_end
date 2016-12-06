@@ -1,0 +1,144 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper" id="book-meeting">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>会议室</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 预定会议室</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="nav-tabs-custom" id="meeting">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 会议室模板 -->
+    <script type="text/template" id="meeting-tpl">
+        <ul class="nav nav-tabs" >
+            <% _.each(data.meetingRooms, function(val, index) { %>
+                <li role="presentation" class="<%= index === 0 ? 'active' : '' %>">
+                    <a href="#<%= val.id%>" data-toggle="tab" aria-expanded="true" data-index="<%= index%>"><%= val.name%></a>
+                </li>
+            <% });%>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <% _.each(data.meetingRooms, function(val, index) { %>
+                <div class="tab-pane <%= index === 0 ? 'active' : '' %>" id="<%= val.id%>" data-id="<%= val.id%>" data-name="<%= val.name%>" data-notice="<%= val.notice%>" data-roomid="<%= val.id%>" data-index="<%= index%>">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="box box-default">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-bullhorn"></i>
+                                    <h3 class="box-title">公告</h3>
+                                    <!-- <button type="button" class="btn btn-box-tool pull-right" data-widget="remove"><i class="fa fa-times"></i></button> -->
+                                </div>
+                                <div class="callout">
+                                    <h4><%= val.notice %></h4>
+                                    <a class="btn btn-sm btn-info pull-right z-hidden notice-btn " href="javascript:void(0);" style="bottom: 30px;position: relative;" id="edit<%= index%>" data-id="<%= val.id%>">编辑</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="meeting-room<%=index%>">
+                    </div>
+                </div>
+             <% });%>
+        </div>
+    </script>
+
+    <script type="text/template" id="modal-tpl" data-type="" data-id="" data-today="" data-days="" data-dateType="" style="width: 300px;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12" style="position: relative; z-index: 300;">
+                    <div class="row">
+                        <div class="col-md-12 bootstrap-timepicker" style="position: relative; z-index: 300; padding-left: 25px;">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label  style="margin-top: 8px;">开始时间</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-9">
+                                <div class="input-group">
+                                    <input id="time-start" type="text" class="form-control timepicker" placeholder="开始时间">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 bootstrap-timepicker" style="position: relative; z-index: 200; padding-left: 25px;">
+                            <div class="col-md-3">
+                                <label style="margin-top: 8px;">结束时间
+                                </label>
+                            </div>
+                            <div class="form-group col-md-9">
+                                <div class="input-group">
+                                    <input id="time-end" type="text" class="form-control timepicker" placeholder="结束时间">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="modal-submit" type="button" class="btn btn-primary">提交</button>
+        </div>
+    </script>
+
+    <!--编辑通告弹框-->
+    <script type="text/template" id="edit-modal-tpl" data-type="" data-id="" data-today="" data-days="" data-dateType="">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                    <div class="col-md-12" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                   <input type="text" class="form-control edit-notice" value ="" id="edit-notice">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="edit-modal-submit" type="button" class="btn btn-primary">提交</button>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/meeting-book-meeting.js"></script>
+{% endblock %}

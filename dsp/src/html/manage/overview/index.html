@@ -1,0 +1,273 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>信息概览</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 信息概览</a></li>
+            </ol>
+        </section>
+        <section class="content" >
+        	<div class="overview-info" >
+		        <div class="row">
+		            <div class="col-md-4" id="overview-list">
+		            </div>
+		            <div class="col-md-3 col-md-offset-2" id="overview-consumption">
+		            </div>
+		        </div>
+		        <div class="row">
+	                <div class="col-xs-12">
+	                    <div class="box">
+	                        <div class="box-header">
+                                <div class="col-xs-12 box-toolbar last">
+                                    <div class="form-inline">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control pull-right active" id="search-datapicker" placeholder="选择日期" style="width: 183px;" value="">
+                                        </div>
+
+                                        <!-- 搜索按钮 -->
+                                        <div class="form-group">
+                                            <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+                                            <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="export">导出</a>
+                                        </div>
+                                    </div>
+                                </div> 
+	                        </div>
+	                        <div class="box-body">
+	                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+	                                <div class="row">
+	                                    <div class="col-sm-12" id="overview-table">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+		        </div>
+		    </div>
+        </section>
+    </div>
+
+
+{% include '../../modules/copyright.html' %}
+{% include '../../modules/modal.html' %}
+	
+	<!-- 有效客户 -->
+	<script type="text/template" id="overview-list-tpl">
+        <div class="overview-info-user">
+            <span>有效客户</span>
+        </div>
+        <div class="overview-info-quanity">
+            <span class="overview-info-qword"><%= data.validCount %></span><span>家</span>
+        </div>
+        <div class="overview-info-user">
+            <span>待审核客户</span>
+        </div>
+        <div class="overview-info-quanity">
+            <span class="overview-info-qword"><%= data.verifyingCount %></span><span>家</span>
+        </div>  
+	</script>
+
+	<!--  实时消耗 -->
+	<script type="text/template" id="overview-consumption-tpl">
+		<span class="consumption">今日实时消耗</span>
+            <div class="consumption-value">
+               <%= (data.consume)/100 %>
+            </div>
+	</script>
+
+	<!-- 列表数据 -->
+	<script type="text/template" id="overview-table-tpl">
+		<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+			<thead>
+			    <tr role="row">
+			        <th tabindex="0" rowspan="1" colspan="1">投放平台</th>
+			        <th tabindex="0" rowspan="1" colspan="1">曝光量</th>
+			        <th tabindex="0" rowspan="1" colspan="1">互动量</th>
+			        <th tabindex="0" rowspan="1" colspan="1">互动率</th>
+			        <th tabindex="0" rowspan="1" colspan="1">点击量 </th>
+			        <th tabindex="0" rowspan="1" colspan="1">点击率</th>
+			        <th tabindex="0" rowspan="1" colspan="1">下载量</th>
+			        <th tabindex="0" rowspan="1" colspan="1">下载率</th>
+			        <th tabindex="0" rowspan="1" colspan="1">总消耗量</th>
+			        <th tabindex="0" rowspan="1" colspan="1">互动均价</th>
+			        <th tabindex="0" rowspan="1" colspan="1">点击均价</th>
+			    </tr>
+			</thead>
+			<tbody>
+				<% _.each(data.records, function(val, index) { %>
+				    <tr role="row" class="odd">
+                        <% if(val.platformName == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= val.platformName %></td>
+                        <% } %>
+                        <% if(val.showCount == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= val.showCount %></td> 
+                        <% } %>
+				        <% if(val.interactCount == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= val.interactCount %></td> 
+                        <% } %>
+				        <% if(val.interactRatio == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= (val.interactRatio*100).toFixed(2) %>%</td>
+                        <% } %>
+				         <% if(val.clickCount == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= val.clickCount  %></td> 
+                        <% } %>
+				        <% if(val.clickRatio == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= (val.clickRatio *100).toFixed(2) %>%</td> 
+                        <% } %>
+				         <% if(val.downloadCount == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= val.downloadCount %></td>
+                        <% } %>
+				         <% if(val.downloadRatio == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= (val.downloadRatio * 100).toFixed(2) %>%</td>
+                        <% } %>
+				        <% if(val.consume == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= (val.consume)/100 %></td> 
+                        <% } %>
+				         <% if(val.interactPrice == null ) { %>
+                            <td>--</td>
+                        <% } else { %>
+                            <td><%= (val.interactPrice)/100 %></td> 
+                        <% } %>
+				        <% if(val.clickPrice == null ) { %>
+                            <td>--</td> 
+                        <% } else { %>
+                            <td><%= (val.clickPrice)/100 %></td>
+                        <% } %>
+				    </tr>
+				<% }); %>    
+			</tbody>    
+		</table>
+
+        <% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+		<% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+                <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }
+                    for(var i = start; i <= end; i++) {
+                %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+                <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+	</script>
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+<script src="/#proj_name#/js/manage-overview.js"></script>
+{% endblock %}
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+    
+                

@@ -1,0 +1,166 @@
+{% extends '../../layouts/default.html' %}
+
+{%  block content %}
+<body>
+
+	<div class="wrapper">
+
+		{% include '../../modules/header.html' %}
+		{% include '../../modules/sidebar.html' %}
+
+		<div class="content-wrapper">
+			<section class="content-header">
+				<h1>权限管理</h1>
+				<ol class="breadcrumb">
+					<li>
+						<a href="#"><i class="fa fa-dashboard"></i> 客户管理</a>
+					</li>
+				</ol>
+			</section>
+			<section class="content">
+				<form class="form-horizontal">
+                    <div class="col-sm-3">
+						<div class="form-group ">
+							<label for="management-person" class="col-sm-4 control-label">管理人员</label>
+							<div class="col-sm-6">
+								<select class="form-control select2" id="manage-person" style="width:100%">
+								</select>
+							</div>
+						</div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="role" class="col-sm-4 control-label">角色</label>
+                            <div class="col-sm-7">
+	                            <select class="form-control select2" id="manage-role" style="width:100%">
+	                            </select>
+                        	</div>
+                    	</div>
+                    </div>
+					<a href="javascript:void(0)" class="btn btn-default" id="auth-search">查询</a>
+					<a class="btn btn-info" id="createRole" href="./createrole">创建角色</a>
+            	</form>
+            	<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-body">
+								<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+									<div class="row">
+										<div class="col-sm-12" id="auth-list">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	{% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+    				
+	<script type="text/template" id="auth-list-tpl">
+		<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+			<thead>
+				<tr role="row">
+					<th tabindex="0" rowspan="1" colspan="1">登录账号</th>
+					<th tabindex="0" colspan="1">人员</th>
+					<th tabindex="0" colspan="1">角色</th>
+					<th tabindex="0" rowspan="1" colspan="1">权限</th>
+					<th tabindex="0" rowspan="1" colspan="1">客户</th>
+					<th tabindex="0" rowspan="1" colspan="1">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(data.records, function(val, index) { %>
+					<tr role="row" class="odd">
+						<td><%= val.username %></td>
+						<td><%= val.name %></td>
+						<td><%= val.role%></td>
+						<td><%= val.permissions%></td>
+						<td>
+							<a href="/#proj_name#/manage/auth/cusdetail?id=<%= val.userId%>">查看详情</a>
+						</td>
+						<td>
+							<a href="/#proj_name#/manage/auth/createrole?id=<%= val.userId%>" type="button" class="btn btn-xs btn-success modify">修改</a>
+							<a data-id="<%= val.userId %>" type="button" class="btn btn-xs btn-danger delete">删除</a>
+						</td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+
+		<% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+		<% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+                <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }
+                    for(var i = start; i <= end; i++) {
+                %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+                <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+	</script>
+
+	<!-- 管理人员 -->
+	<script type="text/template" id="manage-person-tpl">
+		<% for(var prop in data) { %>
+			<option value="<%= prop%>"><%= data[prop] %></option>
+		<% } %>
+	</script>
+
+	<!-- 角色 -->
+	<script type="text/template" id="manage-role-tpl">
+		<% for(var prop in data) { %>
+			<option value="<%= prop%>"><%= data[prop] %></option>
+		<% } %>
+	</script>
+	
+</body>
+{%  endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-auth-list.js"></script>
+{% endblock %}

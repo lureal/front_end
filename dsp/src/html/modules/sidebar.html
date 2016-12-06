@@ -1,0 +1,120 @@
+{# 侧边栏模块 #}
+
+<aside class="main-sidebar">
+	<section class="sidebar">
+		<ul class="sidebar-menu" id="sidebar-menu"></ul>
+	</section>
+	<section class="copyright">
+		<p style="position:absolute; bottom: 30px; left: 33px; color: #9E9E9E">微思敦移动营销版权所有</p>
+	</section>
+</aside>
+
+{# 管理系统侧边栏模板 #}
+<script type="text/template" id="manage-sidebar-tpl">
+	<li class="header">导航</li>
+	<li class="<%= active === 'overview' ? 'active' : '' %>">
+		<a href="/#proj_name#/html/manage/overview/index.html">
+			<i class="fa fa-dashboard"></i><span>信息概览</span>
+		</a>
+	</li>
+
+	<% _.each(data, function(val) { %>
+
+		{# 客户管理 #}
+		<% if(val === '1') { %>
+			<li class="<%= active === 'customer' ? 'active' : '' %>">
+				<a href="/#proj_name#/html/manage/customer/list.html">
+					<i class="fa fa-users"></i><span>客户管理</span>
+				</a>
+			</li>
+		<% } %>
+
+		{# 权限管理 #}
+		<% if(val === '2') { %>
+			<li class="<%= active === 'auth' ? 'active' : '' %>">
+				<a href="/#proj_name#/html/manage/auth/list.html">
+					<i class="fa fa-lock"></i><span>权限管理</span>
+				</a>
+			</li>
+		<% } %>
+
+		{# 财务管理 #}
+		<% if(val === '3') { %>
+			<li class="<%= active === 'finance' ? 'active' : '' %>">
+				<a href="/#proj_name#/html/manage/finance/list.html">
+					<i class="fa fa-yen"></i><span>财务管理</span>
+				</a>
+			</li>
+		<% } %>
+
+		{# 投放管理 #}
+		<% if(val === '4') { %>
+			<li class="<%= active === 'delivery' ? 'active' : '' %>">
+				<a href="/#proj_name#/html/manage/delivery/effect.html">
+					<i class="fa fa-crosshairs"></i><span>投放管理</span>
+				</a>
+			</li>
+		<% } %>
+
+	<% }); %>
+</script>
+
+{# 管理系统侧边栏模板 #}
+<script type="text/template" id="delivery-sidebar-tpl">
+	<li class="header">导航</li>
+	<li class="<%= active === 'overview' ? 'active' : '' %>">
+		<a data-ah_href="/#proj_name#/html/delivery/overview/index.html">
+			<i class="fa fa-dashboard"></i><span>信息概览</span>
+		</a>
+	</li>
+	<li class="<%= active === 'ad' ? 'active' : '' %>">
+		<a data-ah_href="/#proj_name#/html/delivery/ad/list.html">
+			<i class="fa fa-send"></i><span>广告管理</span>
+		</a>
+	</li>
+	<li class="<%= active === 'statis' ? 'active' : '' %>">
+		<a data-ah_href="/#proj_name#/html/delivery/statis/list.html">
+			<i class="fa fa-bar-chart"></i><span>数据统计</span>
+		</a>
+	</li>
+	<li class="<%= active === 'finance' ? 'active' : '' %>">
+		<a data-ah_href="/#proj_name#/html/delivery/finance/list.html">
+			<i class="fa fa-yen"></i><span>财务信息</span>
+		</a>
+	</li>
+	<li class="<%= active === 'operate' ? 'active' : '' %>">
+		<a data-ah_href="/#proj_name#/html/delivery/log/index.html">
+			<i class="fa fa-eye"></i><span>操作日志</span>
+		</a>
+	</li>
+</script>
+
+{# 后台侧边栏 #}
+<script type="text/template" id="boss-sidebar-tpl">
+	<li class="header">导航</li>
+	<li class="<%= active === 'system' ? 'active' : '' %>">
+		<a href="/#proj_name#/html/boss/system/index.html">
+			<i class="fa fa-cogs"></i><span>系统配置</span>
+		</a>
+	</li>
+	<li class="<%= active === 'platform' ? 'active' : '' %>">
+		<a href="/#proj_name#/html/boss/platform/index.html">
+			<i class="fa fa-wrench"></i><span>平台配置</span>
+		</a>
+	</li>
+	<li class="<%= active === 'bill' ? 'active' : '' %>">
+		<a href="/#proj_name#/html/boss/bill/index.html">
+			<i class="fa fa-shopping-cart"></i><span>订单管理</span>
+		</a>
+	</li>
+	<li class="<%= active === 'warn' ? 'active' : '' %>">
+		<a href="/#proj_name#/html/boss/warn/index.html">
+			<i class="fa fa-warning"></i><span>报警管理</span>
+		</a>
+	</li>
+	<li class="<%= active === 'money' ? 'active' : '' %>">
+		<a href="/#proj_name#/html/boss/settlement/index.html">
+			<i class="fa fa-yen"></i><span>结算管理</span>
+		</a>
+	</li>
+</script>

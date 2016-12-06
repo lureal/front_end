@@ -1,0 +1,195 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">创建新广告</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-promotion-info">
+
+    {# 订单数据 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <ul class="content-progress clearfix">
+                <li class="active reedit">
+                    <div class="progress-step">
+                        <span>1</span>
+                    </div>
+                    <div class="progress-title">
+                        填写基本信息
+                        <a href="/#proj_name#/html/ad/weibo/base-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active reedit">
+                    <div class="progress-step">
+                        <span>2</span>
+                    </div>
+                    <div class="progress-title">
+                        设置推广信息
+                        <a href="/#proj_name#/html/ad/weibo/promotion-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active reedit">
+                    <div class="progress-step">
+                        <span>3</span>
+                    </div>
+                    <div class="progress-title">
+                        设置定向范围
+                        <a href="/#proj_name#/html/ad/weibo/orientation.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>4</span>
+                    </div>
+                    <div class="progress-title">
+                        设置投放时间
+                        <a href="/#proj_name#/html/ad/weibo/time-to-market.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>5</span>
+                    </div>
+                    <div class="progress-title">完成</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {# 设置投放时间 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box complete-wrap">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">第4步：设置投放时间</h3>
+                </div>
+                <div class="box-body w-box-body w-form w-form-readonly">
+                    <div class="form-horizontal clearfix w-row w-datepicker" data-type="input" data-id="startDate" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">投放开始日期</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input id="start-date" type="text" placeholder="请选择日期" class="form-control w-field-input">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请选择投放开始日期</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row w-datepicker" data-type="input" data-id="endDate" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">投放结束日期</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input id="end-date" type="text" placeholder="请选择日期" class="form-control w-field-input">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请选择投放结束日期</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="radio" data-id="timeArea" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">分段时间</label>
+                            <div class="col-sm-4 w-field-content w-field-radio" id="time">
+                                <span class="pull-left">
+                                    <label>
+                                        <input type="radio" name="invoice-header" value="0" checked>全时段
+                                    </label>
+                                </span>
+                                <span class="pull-left">
+                                    <label>
+                                        <input type="radio" name="invoice-header" value="1">特定时间段
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="startTime" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title"></label>
+                            <div class="col-sm-4 w-field-content">
+                                <input id="start-time" type="text" class="form-control w-field-input" name="name" placeholder="开始时间" readonly>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请选择开始时间</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="endTime" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title"></label>
+                            <div class="col-sm-4 w-field-content">
+                                <input id="end-time" type="text" class="form-control w-field-input" name="name" placeholder="结束时间" readonly>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请选择结束时间</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="select" data-id="bidWay" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">出价方式</label>
+                            <div class="col-sm-4 w-field-content w-field-select">
+                                <select class="form-control w-field-input" id="bid-way"></select>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请选择出价方式</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="bidPrice" data-validate="empty,money">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">出价（元）</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="请填写出价">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写出价金额</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="quota" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">订单限额（元）</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="请填写订单限额">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写订单限额（元）</p>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="submit">确认</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 选择下拉框模板 #}
+<script type="text/template" id="select-tpl">
+    <% for (var prop in data) { %>
+        <option value="<%= prop %>"><%= data[prop] %></option>
+    <% } %>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-weibo-timetomarket.js"></script>
+{% endblock %}

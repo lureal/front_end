@@ -1,0 +1,148 @@
+{% extends '../layouts/user.html' %}
+{% block anotherHead %}
+<link rel="stylesheet" href="/#proj_name#/css/new-login.css">
+{% endblock %}
+
+{%  block body %}
+<body class="user-login" style="display: none;">
+    <div class="user-login" style="display: block;">
+
+        {# 背景图 #}
+        <img class="bg" src="/#proj_name#/img/login-bg.jpg" alt="wead" />
+
+        {# 主体 #}
+        <div class="ctn">
+            <div class="wrap">
+
+                {# 头部 #}
+                <div class="header">
+                    <img class="logo" src="/#proj_name#/img/logo-lg.png" alt="wead" />
+                </div>
+
+                {# 主体 #}
+                <div class="body">
+                    <div class="username">
+                        <input class="form-control" type="text" placeholder="用户" id="username">
+                        <p class="error-tip"></p>
+                    </div>
+                    <div class="password">
+                        <input class="form-control" type="password" placeholder="密码" id="password">
+                        <p class="error-tip"></p>
+                    </div>
+                    <button type="button" class="w-btn login" id="login-submit">登录</button>
+                    <div class="other clearfix">
+                        <a href="javascript:void(0);" class="pull-right forget-pwd" id="forget-pwd">忘记密码？</a>
+                    </div>
+                </div>
+
+                {# 其他信息，联系客服、copyright 等等 #}
+                <div class="footer">
+                    <div class="copyright">粤ICP备15014511号 Copyright © 2016 WeAD. All Rights Reserved</div>
+                    <div class="contact">如有任何疑问，请 <a href="http://p.qiao.baidu.com//im/index?siteid=6768606&ucid=10452001" target="_blank">联系客服</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% include '../modules/modal.html' %}
+
+    {# 提示框 #}
+    <div class="w-tip" id="tip">
+        <div class="w-tip-dialog">
+            <span class="w-tip-content" id="tip-content">
+                <i class="fa fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    {# 提供完全定制的弹出框 #}
+    <div class="modal fade" id="modal-diy">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="modal-diy-body"></div>
+            </div>
+        </div>
+    </div>
+    {# 找回密码模板 #}
+    <script type="text/template" id="find-pwd-tpl">
+        <div class="find-pwd-modal">
+            <h2 class="modal-diy-title">找回密码</h2>
+            <div class="modal-diy-body">
+                <div>
+                    <input type="text" class="form-control" placeholder="请填写邮箱" id="modal-findpwd-email">
+                    <p class="error-tip"></p>
+                </div>
+            </div>
+            <div class="modal-diy-footer">
+                <button class="w-btn w-btn-primary" id="modal-findpwd">申请找回密码</button>
+            </div>
+        </div>
+    </script>
+    
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/validate/validate.min.js"></script>
+    <script src="/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/#proj_name#/js/user.js"></script>
+</body>
+{% endblock %}
+
+{#
+{%  block body %}
+<body style="overflow:hidden;">
+
+    <!-- 背景大图 -->
+    <img class="bg" src="/#proj_name#/img/bg.jpg" alt="WeAD移动广告平台">
+    
+    <div class="sign-in">
+        <div class="row">
+            <div class="sign-in-logo">
+                <div class="sign-in-title">
+                    <img src="/#proj_name#/img/logo.png">
+                </div>
+            </div>
+        </div>
+        <div class="sign-in-form">
+            <form id="validate-form">
+                <div class="form-group has-feedback" >
+                    <span class="form-control-feedback">
+                        <img src="/#proj_name#/img/ic_user.png" style="padding-bottom: 3px;"></span>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="用户">
+                </div>
+
+                        <div class="form-group has-feedback">
+                            <span class="form-control-feedback">
+                                <img src="/#proj_name#/img/fa-lock.png" style="padding-bottom: 3px;"></span>
+                            </span>
+                            <input type="password"  class="form-control" name="password" id="password" placeholder="密码">
+                        </div>
+                        <div class="form-group">
+                            <a class="form-control" href="javascript:void(0)" id="login-submit">登录</a>
+                        </div>
+                        <div class="form-group sign-word pull-right">
+                            <a href="/#proj_name#/user/forgetpwd">忘记密码?</a>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p><a href="http://www.miitbeian.gov.cn/" target="_blank" style="color: #b5b5b5;">粤ICP备15014511号</a> Copyright © 2016 WESDOM. All Rights Reserved 深圳赚友科技有限公司
+        </p>
+    </div>
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/validate/validate.min.js"></script>
+    <script src="/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/#proj_name#/js/user.js"></script>
+</body>
+{% endblock %}
+#}

@@ -1,0 +1,85 @@
+{% extends '../../layouts/admin.html' %}
+{% block content %}
+    <section class="content admin-customer">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box" id="customers">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">客户列表</h3>
+                    </div>
+                    <div class="box-body w-box-body table-responsive w-table" id="customers-table"></div>
+                    <div class="box-footer clearfix w-pager" id="customers-pager">
+                        <div class="pull-right">
+                            <button class="w-previous pull-left">
+                                <i class="fa fa-chevron-circle-left"></i>
+                            </button>
+                            <div class="pull-left clearfix">
+                                <input type="text" class="w-page-now form-control pull-left" value="1">
+                                <span class="w-allpage pull-left">
+                                    /
+                                    <span>15</span>
+                                </span>
+                            </div>
+                            <button class="w-next pull-left">
+                                <i class="fa fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/template" id="customers-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>客户名称</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                <% if (records.length < 1) { %>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                <% } %>
+                <% _.each(records, function(val) { %>
+                    <tr>
+                        <td><%= val.customName %></td>
+                        <td>
+                            <% if (val.status === 0) { %>
+                                <i class="fa fa-clock-o"></i>等待审核
+                            <% } else if (val.status === 2) { %>
+                                <i class="fa fa-close"></i>审核不通过
+                            <% } else { %>
+                                <i class="fa fa-check"></i>已开通
+                            <% } %>
+                        </td>
+                        <td class="opera">
+                            <% if (val.status === 0) { %>
+
+                                <!-- 第一次修改 -->
+                                <% if (val.again === 0) { %>
+                                    <a href="/#proj_name#/html/admin/customer/fensitong/review.html?id=<%= val.customId %>&userId=<%= val.customId %>&company=<%= encodeURIComponent(val.customName) %>&pid=<%= val.platformId %>" class="review">审核</a>
+
+                                <!-- 审核修改 -->
+                                <% } else { %>
+                                    <a href="/#proj_name#/html/admin/customer/fensitong/aptitude.html?id=<%= val.customId %>&userId=<%= val.customId %>&company=<%= encodeURIComponent(val.customName) %>&pid=<%= val.platformId %>" class="enter">进入账户<label class="notice-num" style="display: none;">10</label></a>
+
+                                <% } %>
+                            <% } else if (val.status === 2) { %>
+                                <a href="/#proj_name#/html/admin/customer/fensitong/aptitude.html?id=<%= val.customId %>&userId=<%= val.customId %>&f=1&company=<%= encodeURIComponent(val.customName) %>&pid=<%= val.platformId %>" class="enter">查看账户<label class="notice-num" style="display: none;">10</label></a>
+                            <% } else { %>
+                                <a href="/#proj_name#/html/admin/customer/fensitong/aptitude.html?id=<%= val.customId %>&userId=<%= val.customId %>&company=<%= encodeURIComponent(val.customName) %>&pid=<%= val.platformId %>" class="enter">进入账户<label class="notice-num" style="display: none;">10</label></a>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-customer.js"></script>
+{% endblock %}

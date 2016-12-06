@@ -1,0 +1,216 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">查看资质</a>
+        </li>
+    </ol>
+</section>
+<section class="content service-weibo-first">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">微博广告资质</h3>
+                </div>
+                <div class="box-body w-box-body w-form w-form-readonly" id="weibo-first" data-haveicp="0">
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="weiboAccount" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">微博登录账号</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="微博账号，如邮箱/会员账号/手机号">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的微博登录账号</p>
+                        </div>
+                    </div>
+                    <div id="uid-wrap">
+                        <div class="form-horizontal clearfix w-row" data-type="input" data-id="weiboUids" data-validate="empty">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">微博UID</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input readonly type="text" class="form-control w-field-input" name="name" placeholder="微博UID，如326339018">
+                                </div>
+                            </div>
+                            <div class="w-field-error clearfix">
+                                <p class="col-sm-10 col-sm-offset-2">请填写正确的微博UID</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="select" data-id="waxTradeId" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">微博广告行业</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="company" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">公司名称</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="您的公司名称，如微梦创科网络有限公司">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的公司名称</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="url" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">网站URL</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="公司网址，如http://www.weibo.com">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的网站URL</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="contact" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">联系人姓名</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="您的姓名，如张三">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的联系人姓名</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="contactNumber" data-validate="empty,mobile">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">联系电话</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="格式：区号－电话或手机号">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的联系电话</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="contactSite" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">通信地址</label>
+                            <div class="col-sm-4 w-field-content">
+                                <textarea readonly class="form-control w-field-input" row=1 placeholder="公司地址，如深圳市南山区威新软件园"></textarea>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的通信地址</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="select" data-id="tradeId" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">平台开户行业</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-validate="empty">
+                        <div class="w-field w-img-field img-preview">
+                            <label class="col-sm-2 w-field-title">营业执照</label>
+                            <div class="col-sm-4 w-upload-preview clearfix" id="upload-business-license">
+                                <div class="col-sm-12 w-field-content">
+                                    <img src="" alt="上传图片" class="preview-thumbnail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" id="icp-readonly" style="display: none;" data-validate="empty">
+                        <div class="w-field w-img-field img-preview">
+                            <label class="col-sm-2 w-field-title">ICP 备案</label>
+                            <div class="col-sm-4 w-upload-preview clearfix" id="upload-icp-license-preview">
+                                <div class="col-sm-12 w-field-content">
+                                    <img src="" alt="上传图片" class="preview-thumbnail">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="other-license" style="display: none;">
+                        <div class="form-horizontal clearfix w-row" data-validate="empty">
+                            <div class="w-field w-img-field img-preview">
+                                <label class="col-sm-2 w-field-title">其他资质</label>
+                                <div class="col-sm-4 w-upload-preview clearfix" id="upload-other-license-preview">
+                                    <div class="col-sm-12 w-field-content">
+                                        <img src="" alt="上传图片" class="preview-thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="salesEmail" data-validate="empty,email">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">联系邮箱</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input readonly type="text" class="form-control w-field-input" name="name" placeholder="您的商务经理邮箱">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的邮箱地址</p>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="next">申请修改</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 选择下拉框模板 #}
+<script type="text/template" id="select-tpl">
+    <% for (var prop in data) { %>
+        <option value="<%= prop %>"><%= data[prop] %></option>
+    <% } %>
+</script>
+
+{# 添加 uid 下拉框 #}
+<script type="text/template" id="uid-tpl">
+    <div class="form-horizontal clearfix w-row" data-type="input" data-id="weiboUids" data-validate="empty">
+        <div class="w-field">
+            <label class="col-sm-2 w-field-title"></label>
+            <div class="col-sm-4 w-field-content">
+                <input readonly value="<%= val %>" type="text" class="form-control w-field-input" name="name" placeholder="微博UID，如326339018">
+            </div>
+        </div>
+        <div class="w-field-error clearfix">
+            <p class="col-sm-10 col-sm-offset-2">请填写正确的微博UID</p>
+        </div>
+    </div>
+</script>
+
+{# 其他资质 #}
+<script type="text/template" id="other-license-tpl">
+    <% _.each(otherLicenses, function(item) { %>
+        <div class="form-horizontal clearfix w-row" data-validate="empty">
+            <div class="w-field w-img-field img-preview">
+                <label class="col-sm-2 w-field-title"></label>
+                <div class="col-sm-4 w-upload-preview clearfix">
+                    <div class="col-sm-12 w-field-content">
+                        <img src="<%= item.url %>" alt="上传图片" class="preview-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/service-weibo-aptitude.js"></script>
+{% endblock %}

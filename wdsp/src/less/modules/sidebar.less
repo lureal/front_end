@@ -1,0 +1,117 @@
+.main-sidebar {
+    background: #303640;
+    margin-top: 60px;
+    min-height: 100%;
+    padding-top: 0;
+    width: 120px;
+
+    // 一级菜单
+    .sidebar-menu > li > a {
+        color: #99aecc;
+        font-size: 14px;
+        height: 55px;
+        line-height: 31px;
+        line-height: 55px;
+        padding: 0;
+        text-align: center;
+
+        > img {
+            height: 14px;
+            margin-top: -3px;
+            margin-right: 2px;
+
+            &.normal {
+                display: inline-block;
+            }
+
+            &.active {
+                display: none;
+            }
+        }
+
+        > span span {
+            display: inline-block;
+            width: 1em;
+        }
+    }
+    
+    // 导航激活和鼠标移动到导航上状态
+    .sidebar-menu li.w-active > a,
+    .sidebar-menu li > a:hover {
+
+        > img {
+            &.normal {
+                display: none;
+            }
+            &.active {
+                display: inline-block;
+            }
+        }
+    }
+
+    // 重置菜单右侧三角形触发时动画的旋转方向
+    .sidebar-menu li.active > a > .fa-angle-right {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    // 子菜单
+    .treeview-menu {
+        background: #13161a;
+        li > a {
+            color: #99aecc;
+            font-size: 14px;
+            height: 55px;
+            line-height: 31px;
+            line-height: 55px;
+            padding: 0;
+            text-align: center;
+        }
+    }
+
+    // 鼠标移动到菜单项时字体颜色改变
+    .sidebar-menu li:not(.active) > a:hover,
+    .sidebar-menu .w-active > a {
+        background: #13161a;
+        color: #fff;
+    }
+    .sidebar-menu .active > a {
+        background: #13161a;
+    }
+    .sidebar-menu .w-sub-active {
+        color: #fff;
+    }
+}
+
+// 小屏幕
+@media (max-width: 767px) {
+
+    // 避免工具栏覆盖左侧栏元素
+    .main-sidebar {
+        margin-top: 120px;
+
+        // 为了关闭通知能有一个过度效果
+        transition: margin-top .5s ease, transform .3s ease-in-out,width .3s ease-in-out;
+    }
+
+    // 调整小屏幕左侧栏移动尺寸
+    .sidebar-open .content-wrapper,
+    .sidebar-open .right-side,
+    .sidebar-open .main-footer {
+        -webkit-transform: translate(120px, 0);
+        -ms-transform: translate(120px, 0);
+        -o-transform: translate(120px, 0);
+        transform: translate(120px, 0);
+    }
+}
+
+// 非小屏幕
+@media (min-width: 768px) {
+    .main-sidebar {
+
+        // 为了关闭通知能有一个过度效果
+        transition: margin-top .5s ease;
+    }
+}

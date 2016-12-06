@@ -1,0 +1,218 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>添加资源</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>资源</a></li>
+                <li><a href="#">添加资源</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">添加资源</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>资源标题（8个字符以内）</label>
+                                <input type="text" class="form-control" placeholder="" id="title">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>资源描述（8个字符以内）</label>
+                                <input type="text" class="form-control" placeholder="" id="description" maxlength="8">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>资源类型</label>
+                                <select id="type" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>微信标题</label>
+                                <input type="text" class="form-control" placeholder="" id="weixin-title" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>微信描述</label>
+                                <input type="text" class="form-control" id="weixin-description">
+                            </div>
+                        </div>
+                    </div>
+                    <label>资源图标大小（尺寸：200*200像素）</label>
+                    <div class="row snapshats" id="snapshats">
+                        
+                    </div>
+
+                    {# 资源详情 #}
+                    <div class="header">
+                        <h3 class="box-title"><small>资源内容</small></h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>内容块一</label>
+                                    <input type="text" class="form-control" placeholder="标题" id="content1-title">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="content1-ctn" class="form-control" placeholder="内容">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row content2" id="content2">
+                            <div class="col-md-6">
+                                <label>内容块二</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="标题" id="content2-title">
+                                </div>
+                                <div class="section">
+                                    <div class="list">
+                                        <div>
+                                            <label><small>列表项（最多 23 个字）</small></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control content2-list" placeholder="列表项">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-sm add-list" data-target="content2">添加列表项</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row content3" id="content3">
+                            <div class="col-md-6">
+                                <label>内容块三</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="content3-title" placeholder="标题">
+                                </div>
+                                <div class="section">
+                                    <div class="paragraph">
+                                        <div>
+                                            <label><small>段落</small></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control paragraph-title" placeholder="标题">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control paragraph-ctn" placeholder="内容">
+                                        </div>
+                                        <label>资源图片（尺寸：500*888像素）</label>
+                                        <div class="row snapshats paragraph1-snapshats"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-sm add-paragraph" data-target="content3" data-counter="1">添加段落</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row content4" id="content4">
+                            <div class="col-md-6">
+                                <label>内容块四</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="标题" id="content4-title">
+                                </div>
+                                <div class="section">
+                                    <div class="list">
+                                        <div>
+                                            <label><small>列表项（最多 23 个字）</small></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control case-content-ctn content4-list" placeholder="列表项">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-sm add-list" data-target="content4" data-counter="1">添加列表项</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button class="btn btn-default" id="canel">取消</button>
+                        <button class="btn btn-info pull-left" id="submit">添加</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="snapshots-tpl">
+        <form class="snapshats-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+           <div class="form-group">
+               <label><%= title %></label>
+               <div class="input-group">
+                   <input type="file" name="<%= name %>" class="snapshats-input" accept="image/*">
+                   <br>
+                   <img class="snapshats-preview" src="/#proj_name#/img/none.png" alt="资源图标" />
+                   <br>
+                   <button class="snapshats-submit btn btn-primary btn-sm" type="submit" data-img="">上传图片</button>
+               </div>
+           </div>
+        </form>
+    </script>
+
+    <!--内容块二内容块四列表项-->
+    <script type="text/template" id="content-list-tpl">
+        <div class="list">
+            <div>
+                <label><small>列表项（最多 23 个字）</small></label>
+                <button class="btn btn-xs pull-right btn-danger del-list">删除</button>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control <%= target %>-list" placeholder="列表项">
+            </div>
+        </div>
+    </script>
+
+    <!--内容块三段落-->
+    <script type="text/template" id="paragraph-tpl">
+        <div class="paragraph paragraph<%= counter %>">
+            <div>
+                <label><small>段落</small></label>
+                <button class="btn btn-xs pull-right btn-danger del-paragraph">删除</button>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control paragraph-title" placeholder="标题">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control paragraph-ctn" placeholder="内容">
+            </div>
+            <div class="row snapshats paragraph<%= counter %>-snapshats"></div>
+        </div>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/resource-add.js"></script>
+{% endblock %}

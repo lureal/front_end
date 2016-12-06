@@ -1,0 +1,188 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+	{% include '../modules/header.html' %}
+	{% include '../modules/sidebar.html' %}
+
+	<div class="content-wrapper">
+
+		<section class="content-header">
+			<h1>公司介绍</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i>公司介绍</a></li>
+			</ol>
+			<div class="box-tools pull-right">
+				<a href="/wesdom-admin/introduce/addtitle" type="button" class="btn btn-primary btn-sm">更新页面描述</a>
+			</div>
+		</section>
+
+		<!--公司大事件列表-->
+		<section class="content">
+			<div class="row" id="dev_event">
+				<div class="col-xs-12">
+					<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">发展大事记</h3>
+							<div class="box-tools">
+								<a href="/#proj_name#/html/introduce/add.html" type="button" class="btn btn-primary btn-sm">新增</a>
+							</div>
+						</div>
+						<div class="box-body" id="delvelop">
+							<div class="overlay">
+								<i class="fa fa-refresh fa-spin"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--显示关于我们列表-->
+		<section class="content">
+			<div class="row" id="about_us">
+				<div class="col-xs-12">
+					<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">关于我们图片列表</h3>
+							<div class="box-tools">
+								<a href="/#proj_name#/html/introduce/addpic.html" type="button" class="btn btn-primary btn-sm">新增</a>
+							</div>
+						</div>
+						<div class="box-body" id="show-aboutlist">
+							<div class="overlay">
+								<i class="fa fa-refresh fa-spin"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	{% include '../modules/copyright.html' %}
+	{% include '../modules/modal.html' %}
+
+	<script type="text/template" id="list-tpl">
+		<table class="table table-borderd table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>标题</th>
+					<th>描述</th>
+					<th>小图缩略图</th>
+					<th>大图缩略图</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(data.events, function(val, index) { %>
+					<tr>
+						<td><%= val.id %></td>
+						<td><%= val.title %></td>
+						<td><%= val.description %></td>
+						<td>
+							<img src="<%= val.snapshot[0] %>" alt="<%= val.title %>">
+						</td>
+						<td>
+							<img src="<%= val.snapshot[1] %>" alt="<%= val.title %>">
+						</td>
+						<td>
+                            <button data-id="<%= val.id %>" data-direction="1" type="button" class="btn btn-xs btn-info move">前移</button>
+                            <button data-id="<%= val.id %>" data-direction="2" type="button" class="btn btn-xs btn-info move">后移</button>
+							<a href="/#proj_name#/introduce/detail?id=<%= val.id %>" type="button" class="btn btn-xs btn-success">查看详情</a>
+							<button data-id="<%= val.id %>" type="button" class="btn btn-xs btn-danger event-delete">删除</button>
+						</td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+
+		<% if(data.pageCount > 1) { %>
+		<nav>
+			<ul class="pagination pull-right table-pageination">
+				<li>
+					<a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+
+				<% for(var i = 0; i < data.pageCount; i++) { %>
+				<li class="<%= (i + 1) === data.page ? 'active' : '' %>">
+					<a class="page" href="javascript:void(0);" data-page="<%= i + 1 %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>"><%= i + 1 %></a>
+				</li>
+				<% } %>
+
+				<li>
+					<a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<% } %>
+
+	</script>
+
+	<script type="text/template" id="show-list-tpl">
+		<table class="table table-borderd table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>标题</th>
+					<th>缩略图</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(data.pics, function(val, index) { %>
+					<tr>
+						<td><%= val.id %></td>
+						<td><%= val.title %></td>
+						<td>
+							<img src="<%= val.snapshot[0] %>" alt="<%= val.title %>">
+						</td>
+						<td>
+                            <button data-id="<%= val.id %>" data-direction="1" type="button" class="btn btn-xs btn-info move">前移</button>
+                            <button data-id="<%= val.id %>" data-direction="2" type="button" class="btn btn-xs btn-info move">后移</button>
+							<a href="/#proj_name#/introduce/detailpic?id=<%= val.id %>" type="button" class="btn btn-xs btn-success">查看详情</a>
+							<button data-id="<%= val.id %>" type="button" class="btn btn-xs btn-danger about-delete">删除</button>
+						</td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+
+		<% if(data.pageCount > 1) { %>
+		<nav>
+			<ul class="pagination pull-right table-pageination">
+				<li>
+					<a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+
+				<% for(var i = 0; i < data.pageCount; i++) { %>
+				<li class="<%= (i + 1) === data.page ? 'active' : '' %>">
+					<a class="page" href="javascript:void(0);" data-page="<%= i + 1 %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>"><%= i + 1 %></a>
+				</li>
+				<% } %>
+
+				<li>
+					<a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<% } %>
+	</script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/introduce-list.js"></script>
+
+
+
+{% endblock %}

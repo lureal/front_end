@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>客户后台</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	{% block head %}
+	<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/dist/css/skins/skin-blue.min.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/dist/css/AdminLTE.min.css">
+	{% endblock %}
+	<!--[if lt IE 9]>
+	<script src="/vendor/html5shiv/dist/html5shiv.min.js"></script>
+	<script src="/vendor/respond/dest/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body class="skin-blue sidebar-mini">
+    <div id="app"></div>
+
+	{% block content %}{% endblock %}
+	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/vendor/moment/min/moment.min.js"></script>
+    <script src="/vendor/vue/dist/vue.min.js"></script>
+    <script src="/#proj_name#/js/build.js"></script>
+	{% block js %}{% endblock %}
+</body>
+</html>

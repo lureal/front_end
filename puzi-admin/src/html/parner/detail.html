@@ -1,0 +1,53 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="parner-detail">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>合作方详情</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">合作方管理</li>
+					<li class="active">合作方详情</li>
+				</ol>
+			</section>
+
+			<section class="content" id="parner-detail-content">
+				<div class="box box-default">
+	        		<div class="box-header with-border">
+	        			<h3 class="box-title">合作方详情</h3>
+	        		</div>
+	        		<div class="box-body">
+	        			<div class="row">
+        					<div class="col-md-6">
+	        					<div class="form-group">
+	        						<label>合作方名称</label>
+	        						<input type="text" class="form-control" placeholder="" id="parner-detail-name">
+	        					</div>
+	        				</div>
+	        			</div>
+	        			<div class="row">
+        					<div class="col-md-6">
+	        					<div class="form-group">
+	        						<label>合作方跳转链接</label>
+	        						<input type="text" class="form-control" placeholder="" id="parner-detail-link">
+	        					</div>
+	        				</div>
+	        			</div>
+	        		</div>
+
+	        		<div class="box-footer">
+						<button class="btn btn-default" id="parner-detail-canel">返回</button>
+						<button class="btn btn-info pull-left" id="parner-detail-submit">更新</button>
+	        		</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+    </div>
+{% endblock %}

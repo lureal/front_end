@@ -1,0 +1,249 @@
+{#
+    企业介绍活动页
+#}
+
+{% extends '../layouts/default.html' %}
+
+{% block head %}
+<title>微思敦 | APP整合营销专家</title>
+<link rel="stylesheet" href="/vendor/fullpage.js/jquery.fullPage.css">
+<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="/vendor/animate.css/animate.min.css"> -->
+<link rel="stylesheet" href="/#proj_name#/css/introduct.css">
+
+{% endblock %}
+
+{% block content %}
+
+{# loading #}
+<div class="loading">
+    <i><i class="loader"></i></i>
+    <img src="/#proj_name#/img/loading.png" alt="微思敦" />
+    <span>0%</span>
+</div>
+
+{# 首页 #}
+<div class="first-page" style="display: none;">
+    <img class="logo" src="/#proj_name#/img/wesdom-logo.png" alt="微思敦，专注移动互联网营销" />
+    <div class="main">
+        <img class="main-icon-left" src="/#proj_name#/img/main-icon-left.png" alt="微思敦，专注移动互联网营销" />
+        <img class="main-icon-right" src="/#proj_name#/img/main-icon-right.png" alt="微思敦，专注移动互联网营销" />
+        <!-- <img class="main-icon" src="/#proj_name#/img/first-page-icon.png" alt="微思敦，专注移动互联网营销" /> -->
+        <img class="main-line" src="/#proj_name#/img/first-page-line.png" alt="微思敦，专注移动互联网营销" />
+        <!-- <img class="main-img" src="/#proj_name#/img/first-page-main.png" alt="微思敦，专注移动互联网营销" /> -->
+        <img class="main-circle" src="/#proj_name#/img/circle.png" alt="微思敦，专注移动互联网营销" />
+        <img class="main-left-hand" src="/#proj_name#/img/left-hand.png" alt="微思敦，专注移动互联网营销" />
+        <img class="main-right-hand" src="/#proj_name#/img/right-hand.png" alt="微思敦，专注移动互联网营销" />
+        <a class="enter" id="enter" href="javascript:void(0);"></a>
+    </div>
+</div>
+
+{# main #}
+<div class="wrapper" style="display:none;">
+    <div id="fullpage">
+        <div class="section service">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的服务</h1>
+            <ul class="service-list">
+                <li class="service-list-app">
+                    <img src="/#proj_name#/img/app-submit.png" alt="微思敦服务" />
+                    <p>APP上架</p>
+                </li>
+                <li class="service-list-optimization">
+                    <img src="/#proj_name#/img/optimization.png" alt="微思敦服务" />
+                    <p>应用市场优化</p>
+                </li>
+                <li class="service-list-service">
+                    <img src="/#proj_name#/img/seed-user.png" alt="微思敦服务" />
+                    <p>种子用户获取</p>
+                </li>
+                <li class="service-list-newusr">
+                    <img src="/#proj_name#/img/laxin.png" alt="微思敦服务" />
+                    <p>快速拉新</p>
+                </li>
+                <li class="service-list-wake">
+                    <img src="/#proj_name#/img/user-wake.png" alt="微思敦服务" />
+                    <p>用户唤醒</p>
+                </li>
+                <li class="service-list-roi">
+                    <img src="/#proj_name#/img/roi.png" alt="微思敦服务" />
+                    <p>ROI达成</p>
+                </li>
+            </ul>
+        </div>
+        <div class="section social">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的资源-<span>社交网络</span></h1>
+            <div class="tool"></div>
+            <div class="main">
+                <img src="/#proj_name#/img/social-bg.png" alt="微思敦社交网络" />
+            </div>
+        </div>
+        <div class="section media">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的资源-<span>网络媒体</span></h1>
+            <div class="tool"></div>
+            <div class="main">
+                <img src="/#proj_name#/img/media-bg.png" alt="微思敦网络媒体" />
+            </div>
+        </div>
+        <div class="section app">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的资源-<span>应用市场</span></h1>
+            <div class="tool"></div>
+            <div class="main">
+                <img src="/#proj_name#/img/app-bg.png" alt="微思敦应用市场" />
+            </div>
+        </div>
+        <div class="section rule1">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的策略</h1>
+            <img class="rule1-font" src="/#proj_name#/img/rule1-font.png" alt="AABR四维营销法则" />
+            <img class="rule1-img" src="/#proj_name#/img/rule1-img.png" alt="AABR四维营销法则" />
+        </div>
+        <div class="section rule">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的策略</h1>
+            <div class="main">
+                <!-- <img class="main-img" src="/#proj_name#/img/rule.png" alt="微思敦营销法则" /> -->
+                <img class="main-img-1" src="/#proj_name#/img/rule-1.png" alt="微思敦营销法则" />
+                <img class="main-img-2" src="/#proj_name#/img/rule-2.png" alt="微思敦营销法则" />
+                <img class="main-img-3" src="/#proj_name#/img/rule-3.png" alt="微思敦营销法则" />
+                <img class="main-img-4" src="/#proj_name#/img/rule-4.png" alt="微思敦营销法则" />
+                <img class="main-rule-line" src="/#proj_name#/img/rule-line.png" alt="微思敦营销法则" />
+
+                <a class="seed rule-btn" data-toggle="0" href="javascript:void(0);"></a>
+                <img class="active seed-active" src="/#proj_name#/img/circle-yellow.png" alt="AABR四维营销法则" />
+
+                <a class="grewth rule-btn" data-toggle="1" href="javascript:void(0);"></a>
+                <img class="active grewth-active" src="/#proj_name#/img/circle-red.png" alt="AABR四维营销法则" />
+
+                <a class="quickly rule-btn" data-toggle="2" href="javascript:void(0);"></a>
+                <img class="active quickly-active" src="/#proj_name#/img/circle-gray.png" alt="AABR四维营销法则" />
+
+                <a class="mature rule-btn" data-toggle="3" href="javascript:void(0);"></a>
+                <img class="active mature-active" src="/#proj_name#/img/circle-blue.png" alt="AABR四维营销法则" />
+            </div>
+        </div>
+        <div class="section customer-list1">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的客户</h1>
+            <div class="main">
+                <img src="/#proj_name#/img/customer-1.png" alt="微思敦客户" />
+            </div>
+        </div>
+        <div class="section customer-list2">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的客户</h1>
+            <div class="main">
+                <img src="/#proj_name#/img/customer-2.png" alt="微思敦客户" />
+            </div>
+        </div>
+        <div class="section customer-list3">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">我们的客户</h1>
+            <div class="main">
+                <img src="/#proj_name#/img/customer-3.png" alt="微思敦客户" />
+            </div>
+        </div>
+        <div class="section contact">
+            <img class="top-logo" src="/#proj_name#/img/top-logo.png" alt="微思敦，专注移动互联网营销">
+            <h1 class="title">微思敦，APP整合营销专家</h1>
+
+            <div class="qrcode">
+                <img src="/#proj_name#/img/qrcode.png" alt="微思敦二维码" />
+            </div>
+
+            <ul>
+                <li class="contact-phone"><a href="tel:4000035180"><i class="fa fa-phone"></i>400 003 5180</a></li>
+                <li class="contact-qq"><i class="fa fa-qq"></i>400 003 5180</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+{# 种子期1 #}
+<div class="modal seed-modal1">
+    <div class="modal-main">
+        <img class="modal-img" src="/#proj_name#/img/modal-seed.png" alt="种子期" />
+        <img class="modal-circle" src="/#proj_name#/img/modal-circle.png" alt="发育期" />
+        <img class="modal-hand" src="/#proj_name#/img/modal-hand.png" alt="发育期" />
+
+        <a class="detail" data-target="seed-modal2" href="javascript:void(0);"></a>
+
+        <div class="modal-close">
+            <a href="javascript:void(0);" data-id="0"></a>
+        </div>
+    </div>
+</div>
+
+{# 钟子期2 #}
+<div class="modal seed-modal2">
+    <div class="modal-main">
+        <img class="modal-img" src="/#proj_name#/img/modal-seed2.png" alt="种子期" />
+
+        <div class="modal-close">
+            <a href="javascript:void(0);" data-id="0"></a>
+        </div>
+    </div>
+</div>
+
+{# 发育期1 #}
+<div class="modal grewth-modal1">
+    <div class="modal-main">
+        <img class="modal-img" src="/#proj_name#/img/modal-grewth1.png" alt="发育期" />
+        <img class="modal-circle" src="/#proj_name#/img/modal-circle.png" alt="发育期" />
+        <img class="modal-hand" src="/#proj_name#/img/modal-hand.png" alt="发育期" />
+
+        <a class="detail" data-target="grewth-modal2" href="javascript:void(0);"></a>
+
+        <div class="modal-close">
+            <a href="javascript:void(0);" data-id="1"></a>
+        </div>
+    </div>
+</div>
+
+{# 发育期2 #}
+<div class="modal grewth-modal2">
+    <div class="modal-main">
+        <img class="modal-img" src="/#proj_name#/img/modal-grewth2.png" alt="发育期" />
+
+        <div class="modal-close">
+            <a href="javascript:void(0);" data-id="1"></a>
+        </div>
+    </div>
+</div>
+
+{# 快速生长期1 #}
+<div class="modal quickly-modal1">
+    <div class="modal-main">
+        <img class="modal-img" src="/#proj_name#/img/modal-quickly.png" alt="快速生长期" />
+
+        <div class="modal-close">
+            <a href="javascript:void(0);" data-id="2"></a>
+        </div>
+    </div>
+</div>
+
+{# 开花结果期1 #}
+<div class="modal mature-modal1">
+    <div class="modal-main">
+        <img class="modal-img" src="/#proj_name#/img/modal-mature.png" alt="开花结果期" />
+
+        <div class="modal-close">
+            <a href="javascript:void(0);" data-id="3"></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?_v=201504072015"></script>
+<script src="/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/vendor/fullpage.js/vendors/jquery.easings.min.js"></script>
+<script src="/vendor/fullpage.js/vendors/jquery.slimscroll.js"></script>
+<script src="/vendor/fullpage.js/jquery.fullPage.min.js"></script>
+<script src="/#proj_name#/js/introduct.js"></script>
+{% endblock %}

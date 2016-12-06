@@ -1,0 +1,253 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>广告</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>广告管理</a></li>
+                <li><a href="#">广告</a></li>
+            </ol>
+        </section>
+        <section class="content ad-step3" id="delivery-ad-step3">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">广告</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <h3 class="col-md-12" style="color: #d2d6de; margin-top: 5px;">基础定向</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>用户年龄</label>
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <input type="number" id="min-age" class="form-control" value="1" min="1">
+                                    </div>
+                                    <div class="form-group">至</div>
+                                    <div class="form-group">
+                                        <input type="number" id="max-age" class="form-control" value="1" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="sex"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>用户地域</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                    <input type="input" class="form-control" id="input-search" placeholder="搜索...">
+                                </div>
+                                <div style="border: 1px solid #efefef; max-height: 200px; overflow-y: scroll;">
+                                    <div id="area"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="visibility: hidden;">全选按钮</label>
+                            <div class="form-group">
+                                <button class="btn btn-default" id="checkAll">全选</button>
+                                <button class="btn btn-default" id="uncheckAll">取消全选</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>兴趣</label>
+                                <div style="border: 1px solid #efefef; max-height: 200px; overflow-y: scroll;">
+                                    <div id="interest"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>用户的生活状态</label>
+                            <div style="border: 1px solid #efefef; max-height: 200px; overflow-y: scroll;">
+                                <div id="lifes"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>用户偏好的APP</label>
+                                <div style="border: 1px solid #efefef; max-height: 200px; overflow-y: scroll;">
+                                    <div id="app"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>指定用户UID(输入多个UID时，请用英文“,”隔开。例如：12345,67890) </label>
+                                <select class="js-example-tags form-control  select2" id="step3-UID" multiple="multiple">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3 class="col-md-12" style="color: #d2d6de;">网络定向</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="system"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="internet"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3 class="col-md-12" style="color: #d2d6de;">基础设置</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>投放日期</label>
+                                <input type="text" class="form-control" id="date" placeholder="选择日期" style="min-width: 183px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="time"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 bootstrap-timepicker" style="position: relative; z-index: 300; padding-left: 25px;">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input id="time-start" type="text" class="form-control timepicker" placeholder="开始时间" disabled>
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 bootstrap-timepicker" style="position: relative; z-index: 200; padding-left: 25px;">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input id="time-end" type="text" class="form-control timepicker" placeholder="结束时间" disabled>
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>出价方式</label>
+                                <select id="price-type" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>出价</label>
+                                <input type="number" class="form-control" value="0" id="price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>订单限额</label>
+                                <input type="number" class="form-control" value="0" id="bill-limit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>曝光回调(选填)</label>
+                                <input type="text" class="form-control" id="exposure">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>点击回调(选填)</label>
+                                <input type="text" class="form-control" id="click-exposure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer" style="position: fixed; bottom: 0;opacity: .7;background: gray;width: 100%;margin-left: -15px; padding-left: 20px;z-index:999;">
+                    <button class="btn btn-default" id="canel">上一步</button>
+                    <button class="btn btn-info pull-left" id="submit">下一步</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="checkbox-tpl">
+        <label><%= title %></label>
+        <% for(var prop in data) { %>
+            <div class="checkbox" style="margin-left: 10px;">
+                <label>
+                    <input type="checkbox" name="<%= name %>" value="<%= prop %>">
+                    <span style="color: #403e3e"><%= data[prop] %></span>
+                </label>
+            </div>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="radio-tpl">
+        <label><%= title %></label>
+        <% for(var prop in data) { %>
+            <div class="radio" style="margin-left: 10px;">
+                <label>
+                    <input type="radio" name="<%= name %>" value="<%= prop %>">
+                    <span style="color: #403e3e"><%= data[prop] %></span>
+                </label>
+            </div>
+        <% } %>
+    </script>
+
+    <!-- uid 列表模板 -->
+    <script type="text/template" id="uid-list-tpl">
+        <% for(var prop in data) { %>
+            <li data-id="<%= prop %>">
+                <a href="javascript:void(0);" data-mid="<%= data[prop] %>"><%= data[prop] %></a>
+            </li>
+        <% } %>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-ad-step3.js"></script>
+{% endblock %}

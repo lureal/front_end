@@ -1,0 +1,107 @@
+.manage-delivert-effect {
+
+    // 更改 placeholder 颜色
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: #e5e5e5 !important;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color: #e5e5e5 !important;
+       opacity: 1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: #e5e5e5 !important;
+       opacity: 1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: #e5e5e5 !important;
+    }
+
+    // 按钮的一般
+    .w-btn {
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 0;
+        min-width: 90px;
+        padding: 11px 6px;
+        text-align: center;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        white-space: nowrap;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    // 表格头工具栏按钮
+    .table-tool-btn {
+        border: 1px solid #ccc;
+        background: #fff;
+        color: #999;
+        margin-top: 20px;
+        width: 90px;
+
+        &:hover {
+            background: #fafafa;
+            color: #999;
+        }
+
+        & + .table-tool-btn {
+            margin-left: 12px;
+
+        }
+    }
+
+    // 表格中的行
+    .w-table-collapse-tr tbody > tr > td {
+        line-height: 1.7;
+
+        .fa {
+            margin-left: 5px;
+        }
+    }
+
+    // 表格中的隐藏行
+    .w-table-collapse-row {
+
+        td > div {
+            overflow: hidden;
+            padding: 0 30px;
+        }
+
+        .detail-ctn > div {
+            background: #f5f9ff;
+            float: left;
+            margin-top: 22px;
+            margin-bottom: 22px;
+            overflow: hidden;
+            padding: 15px;
+            text-overflow: ellipsis;
+            white-space: normal;
+            width: 33.333333%;
+        }
+    }
+
+    // 进入账号
+    .enter-account {
+        color: #3388ff;
+        font-size: 14px;
+    }
+
+    // 查看详情按钮
+    .view-detail {
+        color: #738399;
+        font-size: 14px;
+    }
+}

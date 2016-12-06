@@ -1,0 +1,250 @@
+
+.ad-detail {
+    > .row + .row {
+        margin-top: 30px;
+    }
+
+    // 订单信息
+    .user-field {
+        min-height: 120px;
+    }
+
+    // 微博预览
+    .weibo-preview {
+        word-wrap: break-word;
+
+        .feed-preview,
+        .banner-preview,
+        .card-preview {
+            background: #fff;
+            border: 2px solid #f2f2f2;
+            margin: 20px auto;
+            padding: 0 6px;
+            width: 280px;
+        }
+
+        // banner 预览
+        .banner-preview {
+
+            .banner {
+                margin: 0 -6px;
+
+                // 预览链接
+                a {
+                    display: block;
+
+                    // 预览图片
+                    img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+
+            // 虚假微博
+            .shadow-weibo {
+                padding-top: 10px;
+            }
+        }
+
+        // 品速 Card
+        .card-preview {
+
+            .spread-area {
+                position: relative;
+            }
+
+            // card 图片
+            .spread-area-img {
+                display: block;
+                margin-top: 5px;
+            }
+
+            // card 描述
+            .spread-area-desc {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .card-btn {
+                bottom: 0;
+                margin-bottom: 0;
+                margin-top: 0;
+                position: absolute;
+                padding: 10px;
+                right: 5px;
+            }
+
+            // 推广图片
+            .spread-img {
+                width: 100%;
+            }
+
+            // 推广文字描述区域
+            .spread-summary {
+                background: #f7f7f7;
+                display: block;
+                line-height: 1;
+                padding: 13px 9px 8px;
+
+                > span {
+                    display: block;
+                }
+
+                // 推广标题
+                .spread-title {
+                    color: #4f4f4f;
+                    font-size: 14px;
+                }
+
+                // 推广描述
+                .spread-desc {
+                    color: #7b7b7b;
+                    font-size: 12px;
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        // 微博头部
+        header {
+            border-bottom: 1px solid #f7f7f7;
+            color: #737373;
+            font-size: 12px;
+            line-height: 12px;
+            padding: 12px 10px 10px;
+
+            p {
+                margin: 0;
+
+                img {
+                    margin-right: 5px;
+                    position: relative;
+                    top: -2px;
+                    width: 12px;
+                }
+            }
+
+            // 关闭按钮
+            .fa-close {
+                color: #e7e7e7;
+                float: right;
+            }
+        }
+
+        // 微博内容
+        .preview-main {
+            padding-left: 8px;
+            padding-right: 8px;
+
+            // 内容头部
+            .preview-main-header {
+                padding: 9px 0 9px;
+                position: relative;
+
+                // 大概信息
+                .summary {
+                    .summary-header {
+                        background: #cfcfcf;
+                        border-radius: 50%;
+                        float: left;
+                        height: 30px;
+                        width: 30px;
+                    }
+
+                    h2 {
+                        color: #fea362;
+                        font-weight: normal;
+                        font-size: 15px;
+                        margin: 0;
+                        padding-left: 40px;
+                    }
+
+                    p {
+                        color: #939393;
+                        font-size: 12px;
+                        line-height: 1.5;
+                        margin: 0;
+                        padding-left: 40px;
+                    }
+                }
+
+                // 关注按钮
+                .follow {
+                    button {
+                        border: 1px solid #f1f1f1;
+                        background: #fff;
+                        color: #ff8a31;
+                        font-size: 12px;
+                        line-height: 1;
+                        min-width: 0;
+                        padding: 5px 7px;
+                        position: absolute;
+                        right: 0;
+                        top: 9px;
+                    }
+                }
+            }
+
+            // 微博内容
+            > p {
+                color: #333;
+                font-size: 12px;
+                margin: 0;
+            }
+
+            // 微博配图
+            .preview-main-imgs {
+                list-style: none;
+                margin: 0 -3px;
+                padding: 0;
+                padding-bottom: 10px;
+
+                li {
+                    float: left;
+                    height: 78px;
+                    margin-top: 10px;
+                    overflow: hidden;
+                    padding: 0 3px;
+                    width: 33.33333333%;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        // 微博脚部
+        .preview-main-footer {
+            border-top: 1px solid #f7f7f7;
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+
+            a {
+                color: #a7a7a7;
+                float: left;
+                font-size: 12px;
+                position: relative;
+                width: 33.33333333%;
+
+                img {
+                    position: relative;
+                    top: -1px;
+                    width: 15px;
+                }
+
+                & + a:after {
+                    border-left: 1px solid #f7f7f7;
+                    content: '';
+                    height: 14px;
+                    left: 0;
+                    margin-top: -7px;
+                    position: absolute;
+                    top: 50%;
+                }
+            }
+        }
+    }
+}

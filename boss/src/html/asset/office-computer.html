@@ -1,0 +1,307 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>办公电脑管理</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i>办公电脑管理</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#asset-device" data-toggle="tab" role="tab" data-tab="device">配备情况</a>
+                                    </li>
+                                     <li>
+                                        <a href="#asset-computer" data-toggle="tab" role="tab" data-tab="computer">电脑明细</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="active tab-pane" role="tabpanel" id="asset-device">
+                                        <div class="box-toolbar table-toolbar last">
+                                            <div class="form-inline">
+
+                                                <!-- 公司配备 -->
+                                                <div class="form-group">
+                                                    <select id="computer-device" class="form-control select2" style="width: 183px;"></select>
+                                                </div>
+
+                                                <!-- 输入姓名-->
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" value="" placeholder="输入姓名" id="name">
+                                                </div>
+
+                                                <!-- 搜索按钮 -->
+                                                <div class="form-group">
+                                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm search-btn" id="device-search">搜索</a>
+                                                </div>
+
+                                                <!-- 导出按钮 -->
+                                                <div class="form-group">
+                                                    <a href="javascript:void(0);" type="button" class="btn btn-primary btn-sm export-btn" id="export">导出</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="device">
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="asset-computer" role="tabpanel">
+                                        <div class="box-header">
+                                            <div class="box-tools">
+                                                <a href="javascript:void(0);" class="btn btn-warning btn-sm download-btn" id="download" style="display: inline-block;">下载模板</a>
+                                                <a href="/boss/asset/office-computer-import" class="btn btn-info btn-sm import-btn" id="import">导入</a>
+                                                <a href="javascript:void(0);" class="btn btn-primary btn-sm export-btn" id="computer-export">导出</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 box-toolbar table-toolbar last">
+                                            <div class="form-inline">
+
+                                                <!-- 已分配 -->
+                                                <div class="form-group">
+                                                    <select id="computer-allot" class="form-control select2" style="width: 100%;"></select>
+                                                </div>
+
+                                                <!-- 输入编号-->
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" value="" placeholder="输入编号" id="number">
+                                                </div>
+
+                                                <!-- 搜索按钮 -->
+                                                <div class="form-group">
+                                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm search-btn" id="computer-search">搜索</a>
+                                                </div>
+
+                                                <!-- 新增按钮 -->
+                                                <div class="form-group">
+                                                    <a href="/boss/asset/office-computer-add" type="button" class="btn btn-info btn-sm add-btn" id="add">新增</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="computer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="device-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>职务</th>
+                    <th>在职状态</th>
+                    <th>配备方式</th>
+                    <th>品牌</th>
+                    <th>电脑编号</th>
+                    <th>电源</th>
+                    <th>鼠标</th>
+                    <th>电脑包</th>
+                    <th style="text-align: right;">其他配件</th>
+                    <th style="text-align: right;">时间</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.allots, function(val, index) { %>
+                    <tr>
+                        <td><%= val.username %></td>
+                        <td><%= val.position %></td>
+                        <td><%= val.status %></td>
+                        <td><%= val.type%></td>
+                        <td><%= val.trademark %></td>
+                        <td><%= val.number %></td>
+                        <td><%= val.power %></td>
+                        <td><%= val.mouse%></td>
+                        <td><%= val.bag%></td>
+                        <td style="text-align: right;"><%= val.other%></td>
+                        <td style="text-align: right;"><%= val.dealtime%></td>
+                        <td style="text-align: right;"><%= val.remarktype  %></td>
+                        <td>
+                            <a href="/boss/asset/office-computer-detail?id=<%=val.userid %>"  class="btn btn-sm btn-success" id="detail">详情</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.allots.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }
+                    for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+
+    </script>
+
+    <script type="text/template" id="computer-tpl">
+        <div class="box-body">
+            <table class="table table-borderd table-hover">
+                <thead>
+                    <tr>
+                        <th>电脑编号</th>
+                        <th>品牌</th>
+                        <th>电脑型号</th>
+                        <th>使用人员</th>
+                        <th>职务</th>
+                        <th>办公区域</th>
+                        <th>采购时间</th>
+                        <th>分配情况</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% _.each(data.computer, function(val, index) { %>
+                        <tr>
+                            <td><%= val.number %></td>
+                            <td><%= val.trademark %></td>
+                            <td><%= val.model %></td>
+                            <td><%= val.username %></td>
+                            <td><%= val.position %></td>
+                            <td><%= val.area %></td>
+                            <td><%= val.posttime %></td>
+                            <td><%= val.status %></td>
+                            <td><%= val.remark %></td>
+                            <td>
+                                <a href="/boss/asset/office-computer-add?id=<%= val.id %>"  class="btn btn-sm btn-success" id="detail">详情</a>
+                                <% if(val.status !== '已分配') { %>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger" data-id="<%= val.id %>" id="computer-delete">删除</a>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+
+            <% if(data.computer.length === 0) { %>
+            <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+            <% } %>
+
+            <% if(data.pageCount > 1) { %>
+            <nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                   <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                        var end = data.pageCount - 1;
+                        var start = 2;
+                        var pagenum = 7;
+                        if(data.pageCount > pagenum) {
+                            var left = data.page - start;
+                            var right = end- data.page > 2 ? 2:end- data.page;
+                            if(left<2) {
+                                end = start + 4;
+                            } else if(right<2){
+                                start = end - 4;
+                            } else {
+                                start = data.page - 2;
+                                end = data.page + 2;
+                            }
+                        }
+                        for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <% } %>
+        </div>
+    </script>
+
+    <!-- 类型 -->
+    <script type="text/template" id="computer-device-tpl">
+        <option value="clear">清除选项</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/asset-office-computer.js"></script>
+{% endblock %}

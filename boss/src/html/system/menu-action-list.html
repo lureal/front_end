@@ -1,0 +1,75 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>菜单权限</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/system/menu-list.html"><i class="fa fa-dashboard"></i>菜单管理</a></li>
+                <li>
+                    菜单权限
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <!-- <h3 class="box-title">菜单权限</h3> -->
+                    <div class="box-tools">
+                        <a id="add-action" href="javascript:void(0);" type="button" class="btn btn-primary btn-sm">添加菜单权限</a>
+                    </div>
+                </div>
+                <div class="box-body" id="action"></div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- action 列表 -->
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                    <th>编码</th>
+                    <th>URL</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.actions, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.name %></td>
+                        <td><%= val.code %></td>
+                        <td><%= val.url %></td>
+                        <td>
+                            <a href="javascript:void(0);" data-id="<%= val.id %>" data-name="<%= val.name %>" data-url="<%= encodeURIComponent(val.url) %>" data-code="<%= val.code %>" type="button" class="btn btn-xs btn-success detail-action">查看详情</a>
+                            <button data-id="<%= val.id %>" type="button" class="btn btn-xs btn-danger delete-action">删除</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.actions.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-menu-action-list.js"></script>
+{% endblock %}

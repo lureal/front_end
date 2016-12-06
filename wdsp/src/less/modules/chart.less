@@ -1,0 +1,106 @@
+.w-chart {
+
+    // 工具栏
+    .w-chart-tool {
+        padding: 2px 0 22px 30px;
+
+        // 工具栏项
+        .w-tool-item {
+            margin-right: 27px;
+            margin-top: 20px;
+        }
+
+        // 工具栏项名称
+        .w-tool-name {
+            color: #75839a;
+            font-size: 14px;
+            font-weight: normal;
+            margin-right: 10px;
+        }
+
+        // 工具栏项 input 框
+        .w-tool-input {
+            border-radius: 4px;
+            border: 1px solid #eee;
+            height: 40px;
+            outline: none;
+            padding-left: 10px;
+        }
+
+        // 为不同类型的项设置不同的宽度
+        // 文本输入框
+        .w-tool-item-input {
+            min-width: 150px;
+        }
+
+        // 单选框
+        .w-tool-item-select {
+            min-width: 140px;
+
+            &:required:invalid {
+                color: #e5e5e5;
+            }
+            option[value=""][disabled] {
+                display: none;
+            }
+            option {
+                color: black;
+            }
+        }
+
+        // 日期选择
+        .w-tool-item-datepicker {
+            color: #75839a;
+            font-size: 14px;
+            min-width: 100px;
+            width: 130px;
+        }
+
+        // 定制下拉选择框
+        .w-dropdown-normal {
+            display: inline-block;
+        }
+
+        // 定制下拉框选中的元素
+        .w-dropdown-selected {
+            span {
+                background: #e8f3fe;
+                border-radius: 4px;
+                color: #1b8cfa;
+                display: inline-block;
+                font-size: 13px;
+                height: 34px;
+                line-height: 34px;
+                min-width: 110px;
+                padding: 0 15px;
+                position: relative;
+
+                & + span {
+                    margin-left: 13px;
+                }
+
+                .fa {
+                    cursor: pointer;
+                    font-size: 12px;
+                    margin-top: -16px;
+                    position: absolute;
+                    padding: 10px;
+                    right: 0;
+                    top: 50%;
+                }
+            }
+        }
+
+        // 按钮
+        .w-tool-btn {
+            border-color: #ccc;
+            font-size: 15px;
+            margin-top: 20px;
+        }
+    }
+
+    // 内容栏
+    .w-chart-table {
+
+    }
+}

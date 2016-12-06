@@ -1,0 +1,206 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+	{% include '../../modules/header.html' %}
+	{% include '../../modules/sidebar.html' %}
+
+	<div class="content-wrapper">
+		<section class="content-header">
+			<h1>结算管理</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i>结算管理</a></li>
+			</ol>
+		</section>
+		<section class="content">
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li role="presentation" class="active">
+						<a href="#weibo" data-toggle="tab" aria-expanded="true">微博WAX</a>
+					</li>
+
+					<!-- 腾讯ADX没有数据，为方便以后增加功能，暂时先做tab样式，先隐藏 -->
+					<!-- <li role="presentation">
+						<a href="#tengxun" data-toggle="tab" aria-expanded="true">腾讯ADX</a>
+					</li> -->
+				</ul>
+				<div id="settlement" class="tab-content">
+					<div class="tab-pane fade active in" id="weibo">
+						<div class="box-body">
+							<div class="col-xs-12 box-toolbar last">
+								<div class="form-inline">
+									<div class="input-group">
+									    <input type="text" class="form-control pull-right active" id="search-datepicker" placeholder="选择日期" style="width: 183px;">
+									</div>
+
+									<!-- 搜索按钮 -->
+									<div class="form-group">
+									    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+									</div>
+									<div class="form-group">
+									    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="export">导出</a>
+									</div>
+								</div>
+							</div>
+							<div class="row" id="settlement-data">
+							</div>   
+							<div id="settlement-table">
+							</div>							                                              
+						</div>                                
+					</div>
+
+					<!-- 腾讯ADX tab 暂时用不上 -->
+					<!-- <div class="tab-pane fade" id="tengxun">
+						<div class="box-body">
+							<div class="col-xs-12 box-toolbar last">
+								<div class="form-inline">
+									<div class="input-group">
+									    <input type="text" class="form-control pull-right active" id="tx-search-datepicker" placeholder="选择日期" style="width: 183px;">
+									</div>
+
+									<!-- 搜索按钮 -->
+									<!-- <div class="form-group">
+									    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="tx-search">搜索</a>
+									</div>
+								</div>
+							</div>
+							<div class="row" id="tx-settlement-data">
+							</div>   
+							<div class="col-xs-12 box-toolbar last">
+								<div class="form-inline"> -->
+									
+									<!-- 搜索按钮 -->
+									<!-- <div class="form-group">
+									    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="tx-export">导出</a>
+									</div>
+								</div>
+							</div> 
+							<div id="tx-settlement-table">
+							</div>	                        
+						</div>                                
+					</div> -->  
+				</div>
+			</div>
+		</section>
+	</div> 
+
+	{% include '../../modules/copyright.html' %}
+	{% include '../../modules/modal.html' %}
+
+	<script type="text/template" id="settlement-data-tpl">
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="info-box settle-info">
+				<span class="info-box-icon bg-aqua"><i class="fa fa-lemon-o"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">平台方结算消耗(元)</span>
+					<span class="info-box-number"><%= (data. platformSettleAccountConsume) /100%></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="info-box settle-info">
+				<span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">我方结算消耗(元)</span>
+					<span class="info-box-number"><%= (data.selfSettleAccountConsume)/100%></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="info-box settle-info">
+				<span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">结算差异(元)</span>
+					<span class="info-box-number"><%= (data.settleAccountDifferenceConsume)/100%></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="info-box settle-info">
+				<span class="info-box-icon bg-yellow"><i class="fa fa-server"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">服务费(元)</span>
+					<span class="info-box-number"><%= (data.serviceChargeDifferenceConsume)/100%></span>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/template" id="settlement-table-tpl">
+		<table class="table table-responsive table-bordered table-hover tab-table">
+			<thead>
+				<th>日期</th>
+				<th>平台方结算(元)</th>
+				<th>我方结算(元)</th>
+				<th>结算差异(元)</th>
+				<th>服务费(元)</th>
+			</thead>
+			<tbody>
+				<% _.each(data.account, function(val, index) { %>
+					<tr role="row" class="odd">
+						<td><%= val.posttime ||'--'%></td>
+						<td><%= (val.platformSettleAccount )/100 || '--'%></td>
+						<td><%= (val.selfSettleAccount)/100 || '--'%></td>
+						<td><%= (val.settleAccountDifference)/100 || '--'%></td>
+						<td><%= (val.serviceCharge)/100 || '--'%></td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table> 
+
+		<% if(data.account.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+		<% if(data.pageCount > 1) { %>
+	        <nav>
+	            <ul class="pagination pull-right table-pageination">
+	                <li>
+	                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+	                        <span aria-hidden="true">&laquo;</span>
+	                    </a>
+	                </li>
+									<li class="<%= 1 === data.page ? 'active' : '' %>">
+	                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+	                </li>
+	               <% if(data.pageCount > 2) {
+	               		var end = data.pageCount - 1;
+	              		var start = 2;
+	              		var pagenum = 7;
+	              		if(data.pageCount > pagenum) {
+	              			var left = data.page - start;
+	              			var right = end- data.page > 2 ? 2:end- data.page;
+	              			if(left<2) {
+	              				end = start + 4;
+	              			} else if(right<2){
+	              				start = end - 4;
+	              			} else {
+	              				start = data.page - 2;
+	              				end = data.page + 2;
+	              			}
+		              	}	
+	                	for(var i = start; i <= end; i++) {
+	               %>
+	                <li class="<%= i === data.page ? 'active' : '' %>">
+	                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+	                </li>
+	               <% } }%>
+	               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+	                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+	                </li>
+	                <li>
+	                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+	                        <span aria-hidden="true">&raquo;</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </nav>
+        <% } %>
+	</script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/boss-settlement.js"></script>
+{% endblock %}

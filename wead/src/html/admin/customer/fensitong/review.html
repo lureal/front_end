@@ -1,0 +1,151 @@
+{% extends '../../../layouts/admin.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li>
+                <a href="/#proj_name#/html/service/index.html">
+                    <i class="fa fa-home"></i>客户列表
+                </a>
+            </li>
+            <li class="active">
+                <a href="javascript:void(0);" id="breadcrumb-company">
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content admin-customer-review">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title" id="box-company"></h3>
+                    </div>
+                    <div class="box-body w-box-body w-form w-form-readonly">
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">微博登录账号</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="account" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">微博UID</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="uid" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">联系人姓名</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="contact" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">公司（网站）名称</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="companyName" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">网站URL</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="url" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">通信地址</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <textarea id="address" class="form-control w-field-input" row=1 readonly></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">联系电话</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="contactNumber" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">行业</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="industry" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field w-img-field">
+                                <label class="col-sm-2 w-field-title">营业执照／微博截图</label>
+                                <div class="col-sm-4 clearfix w-download-preview" id="pic-download-preview">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <img src="" alt="上传图片" class="preview-thumbnail">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 w-field-content" id="pic">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-success" id="download">下载</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field">
+                                <label class="col-sm-2 w-field-title">商务经理邮箱</label>
+                                <div class="col-sm-4 w-field-content">
+                                    <input id="email" type="text" class="form-control w-field-input" name="name" value="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="normal-invoice">
+                            <div class="form-horizontal clearfix w-row">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title label-blue">审核操作</label>
+                                    <div class="col-sm-4 w-field-content w-field-radio" id="pass-status">
+                                        <span class="pull-left">
+                                            <label>
+                                                <input type="radio" name="is-review-pass" value="0" checked>通过
+                                            </label>
+                                        </span>
+                                        <span class="pull-left">
+                                            <label>
+                                                <input type="radio" name="is-review-pass" value="1">不通过
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" id="not-pass-reason" style="display: none;">
+                                <div class="w-field">
+                                    <label class="col-sm-2 w-field-title"></label>
+                                    <div class="col-sm-4 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="请填写资质不通过的详细原因"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-form-footer clearfix clearfix">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="confirm">确认</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-fensitong-review.js"></script>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>充值管理</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 充值管理</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <!-- <h3 class="box-title">充值管理列表</h3> -->
+                            <div class="box-tools">
+                                <a href="/#proj_name#/html/data/recharge-import.html" type="button" class="btn btn-info btn-sm import-btn" id="import" style="display: none;">导入</a>
+                                <a href="/#proj_name#/html/data/recharge-add.html" type="button" class="btn btn-primary btn-sm add-btn" style="display: none;">添加充值记录</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 box-toolbar last table-toolbar" style="display: none;">
+                            <div class="form-inline">
+
+                                <!-- 客户名称 -->
+                                <div class="form-group">
+                                  <div class="input-group">
+                                      <input type="text" class="form-control" value="" placeholder="输入客户名称" id="name">
+                                  </div>
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm search-btn" id="search" style="display: none;">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm export-btn" id="export" style="display: none;">导出</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body" id="recharge"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>合同日期</th>
+                    <th>合同号</th>
+                    <th>平台ID</th>
+                    <th>客户名称</th>
+                    <th>有无代理</th>
+                    <th>合同金额</th>
+                    <th>回款金额</th>
+                    <th>回款日期</th>
+                    <th>折扣</th>
+                    <th>赠送金额</th>
+                    <th>充值金额</th>
+                    <th>划拨日期</th>
+                    <th>服务费</th>
+                    <th>开户费</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.recharges, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.contractDate %></td>
+                        <td><%= val.contractId %></td>
+                        <td><%= val.platformId %></td>
+                        <td><%= val.custName %></td>
+                        <td><%= val.agent %></td>
+                        <td style="text-align: right;"><%= val.contractAmount %></td>
+                        <td style="text-align: right;"><%= val.paymentAmount %></td>
+                        <td><%= val.paymentDate %></td>
+                        <td><%= val.discount %></td>
+                        <td style="text-align: right;"><%= val.donate %></td>
+                        <td style="text-align: right;"><%= val.chargeAmount %></td>
+                        <td><%= val.allotDate %></td>
+                        <td style="text-align: right;"><%= val.serviceCharge %></td>
+                        <td style="text-align: right;"><%= val.openCharge %></td>
+                        <td><%= val.memo %></td>
+                        <td>
+                            <a href="/#proj_name#/data/recharge-detail?id=<%= val.id %>" type="button" class="btn btn-xs btn-success detail-btn" style="display: none;">查看详情</a>
+                            <button data-id="<%= val.id %>" type="button" class="btn btn-xs btn-danger delete del-btn" style="display: none;">删除</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.recharges.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}	
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/data-recharge-list.js"></script>
+{% endblock %}

@@ -1,0 +1,368 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">创建新广告</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-orientation">
+
+    {# 订单数据 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <ul class="content-progress clearfix">
+                <li class="active reedit">
+                    <div class="progress-step">
+                        <span>1</span>
+                    </div>
+                    <div class="progress-title">
+                        填写基本信息
+                        <a href="/#proj_name#/html/ad/weibo/base-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active reedit">
+                    <div class="progress-step">
+                        <span>2</span>
+                    </div>
+                    <div class="progress-title">
+                        设置推广信息
+                        <a href="/#proj_name#/html/ad/weibo/promotion-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>3</span>
+                    </div>
+                    <div class="progress-title">
+                        设置定向范围
+                        <a href="/#proj_name#/html/ad/weibo/orientation.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="progress-step">
+                        <span>4</span>
+                    </div>
+                    <div class="progress-title">
+                        设置投放时间
+                        <a href="/#proj_name#/html/ad/weibo/time-to-market.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="progress-step">
+                        <span>5</span>
+                    </div>
+                    <div class="progress-title">完成</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {# 设置投放时间 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box complete-wrap">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">第3步：设置定向范围</h3>
+                </div>
+                <div class="box-body w-box-body w-form w-form-readonly">
+                    <div class="form-horizontal clearfix w-row age" data-type="" data-id="" data-validate="" id="age">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">年龄</label>
+                            <div class="col-sm-1 w-field-content">
+                                <input type="text" class="form-control w-field-input min-age" name="name" placeholder="" id="start-age">
+                            </div>
+                            <div class="col-sm-1 line-word">
+                                至
+                            </div>
+                            <div class="col-sm-1 w-field-content">
+                                <input type="text" class="form-control w-field-input max-age" name="name" placeholder="" id="end-age">
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">请填写正确的年龄（必须为数字且开始年龄必须小于结束年龄）</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">性别</label>
+                            <div class="col-sm-4 w-field-content checkbox-items" id="sex">
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="0">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    不限
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="1">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    男
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="2">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    女
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="3">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    未知
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">地域</label>
+                            <div class="col-sm-4 w-field-content">
+                                <div class="w-dropdown-normal w-dropdown-complex" data-open="0" data-target="#area-select-item" data-limit="0" id="area-dropdown">
+                                    <a href="javascript:void(0);" class="w-select-btn">
+                                        请选择两个选项<i class="fa fa-sort-down"></i>
+                                    </a>
+                                    <div class="w-select-main">
+                                        <ul class="w-select-lists">
+                                            <li class="no-data">当前没数据</li>
+                                        </ul>
+                                        <div class="w-select-footer clearfix">
+                                            <div class="pull-left select-all">
+                                                <span class="w-checkbox">
+                                                    <input type="checkbox" value="-10086">
+                                                    <span>
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                                                </span>
+                                                全选
+                                            </div>
+                                            <a href="javascript:void(0);" class="w-btn w-btn-success pull-right">确认</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal selected-items" id="area-select-item" style="display: none;"></div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">兴趣</label>
+                            <div class="col-sm-4 w-field-content">
+                                <div class="w-dropdown-normal w-dropdown-complex" data-open="0" data-target="#interest-select-item" data-limit="0" id="interest-dropdown">
+                                    <a href="javascript:void(0);" class="w-select-btn">
+                                        请选择两个选项<i class="fa fa-sort-down"></i>
+                                    </a>
+                                    <div class="w-select-main">
+                                        <ul class="w-select-lists">
+                                            <li class="no-data">当前没数据</li>
+                                        </ul>
+                                        <div class="w-select-footer clearfix">
+                                            <div class="pull-left select-all">
+                                                <span class="w-checkbox">
+                                                    <input type="checkbox" value="-10086">
+                                                    <span>
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                                                </span>
+                                                全选
+                                            </div>
+                                            <a href="javascript:void(0);" class="w-btn w-btn-success pull-right">确认</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal selected-items" id="interest-select-item" style="display: none;"></div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">人生状态</label>
+                            <div class="col-sm-4 w-field-content">
+                                <div class="w-dropdown-normal w-dropdown-complex" data-open="0" data-target="#life-select-item" data-limit="0" id="life-dropdown">
+                                    <a href="javascript:void(0);" class="w-select-btn">
+                                        请选择两个选项<i class="fa fa-sort-down"></i>
+                                    </a>
+                                    <div class="w-select-main">
+                                        <ul class="w-select-lists">
+                                            <li class="no-data">当前没数据</li>
+                                        </ul>
+                                        <div class="w-select-footer clearfix">
+                                            <div class="pull-left select-all">
+                                                <span class="w-checkbox">
+                                                    <input type="checkbox" value="-10086">
+                                                    <span>
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                                                </span>
+                                                全选
+                                            </div>
+                                            <a href="javascript:void(0);" class="w-btn w-btn-success pull-right">确认</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal selected-items" id="life-select-item" style="display: none;"></div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">用户偏好</label>
+                            <div class="col-sm-4 w-field-content">
+                                <div class="w-dropdown-normal w-dropdown-complex" data-open="0" data-target="#like-select-item" data-limit="0" id="like-dropdown">
+                                    <a href="javascript:void(0);" class="w-select-btn">
+                                        请选择两个选项<i class="fa fa-sort-down"></i>
+                                    </a>
+                                    <div class="w-select-main">
+                                        <ul class="w-select-lists">
+                                            <li class="no-data">当前没数据</li>
+                                        </ul>
+                                        <div class="w-select-footer clearfix">
+                                            <div class="pull-left select-all">
+                                                <span class="w-checkbox">
+                                                    <input type="checkbox" value="-10086">
+                                                    <span>
+                                                        <i class="fa fa-check"></i>
+                                                    </span>
+                                                </span>
+                                                全选
+                                            </div>
+                                            <a href="javascript:void(0);" class="w-btn w-btn-success pull-right">确认</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal selected-items" id="like-select-item" style="display: none;"></div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">用户UID</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="text" class="form-control w-field-input" name="name" placeholder="请填写用户UID（多个 uid 用 , 分割）" id="uid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">系统</label>
+                            <div class="col-sm-4 w-field-content checkbox-items" id="system">
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="0">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    不限
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="2">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    Android
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="1">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    ios
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="" data-id="" data-validate="">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">网络</label>
+                            <div class="col-sm-4 w-field-content checkbox-items" id="wifi">
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="0">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    不限
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="1">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    Wi-Fi
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="2">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    2G
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="3">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    3G
+                                </span>
+                                <span>
+                                    <span class="w-checkbox">
+                                        <input type="checkbox" value="4">
+                                        <span>
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                    </span>
+                                    4G
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="submit">下一步</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-weibo-orientation.js"></script>
+{% endblock %}

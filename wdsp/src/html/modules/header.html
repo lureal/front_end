@@ -1,0 +1,75 @@
+<header class="main-header">
+
+    {# Logo #}
+    <a href="#" class="logo">
+        <span class="logo-mini"><img src="/#proj_name#/img/logo.png" alt="WeAD"></span>
+        <span class="logo-lg"><img src="/#proj_name#/img/logo.png" alt="WeAD"></span>
+    </a>
+
+    {# Header Navbar #}
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="javascript:void(0);" class="email" id="notice-username"></a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" id="navbar-real-time" data-isFire="0">
+                        <i class="fa fa-bolt"></i>
+                        <span class="name">实时数据</span>
+                    </a>
+                    <ul class="sub-nav-custom real-time">
+                        <li class="real-time-loading" id="loading">
+                            <img src="/#proj_name#/img/loading.gif" alt="loading" />
+                        </li>
+                        <li class="real-time-detail" style="display: none;">余额：<span id="real-time-balance">0</span> 元</li>
+                        <li class="real-time-detail" style="display: none;">今日实时消耗：<span id="real-time-consume">0</span> 元</li>
+                        <li class="real-time-detail" style="display: none;">
+                            每日限额：<span id="real-time-limit">0</span> 元
+                            <a href="javascript:void(0);" id="real-time-edit-quota">修改限额</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="open-aptitude" style="display: none;">
+                    <a href="/#proj_name#/html/aptitude/edit.html">
+                        <i class="fa fa-send w-icon-sm"></i>
+                        <span class="name">开户</span>
+                    </a>
+                </li>
+                <li id="view-aptitude" style="display: none;">
+                    <a href="/#proj_name#/html/aptitude/detail.html">
+                        <i class="fa fa-inbox"></i>
+                        <span class="name">查看资质</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/#proj_name#/html/notice/index.html">
+                        <i class="fa fa-bell"></i>
+                        <span class="name">通知</span>
+                        <span class="label label-danger notice-num" id="notice-num"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-cog"></i>
+                        <span class="name">设置</span>
+                    </a>
+                    <ul class="sub-nav">
+                        <li>
+                            <a href="/#proj_name#/html/settle/reset-pwd.html">修改密码</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" id="logout">
+                        <i class="fa fa-sign-out"></i>
+                        <span class="name">退出</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

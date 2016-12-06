@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WeAD移动广告平台</title>
+        <meta name="renderer" content="webkit">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    	<!--[if IE]>
+    	<script src="/vendor/html5shiv/dist/html5shiv.min.js"></script>
+    	<script src="/vendor/respond/dest/respond.min.js"></script>
+    	<![endif]-->
+
+        {#
+            IE 10, 11, edge 对 media query 支持不是很完善，具体表现在刚进入屏幕时执
+            行了 media query 设置小屏幕的 css 代码。并且 IE html 注释版本判定只支持
+            IE 9，IE 9 以上并不支持，所以这里新增识别 IE 9 以上以及 Edge 浏览器，让
+            他们强制使用 respond.min.js
+        #}
+        <script>
+            var ua = navigator.userAgent, head, link;
+            if(/rv:11.0/i.test(navigator.userAgent) ||/MSIE 10/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
+                head = document.getElementsByTagName('head')[0];
+                html5shiv = document.createElement('script');
+                html5shiv.src = '/vendor/html5shiv/dist/html5shiv.min.js';
+                respond = document.createElement('script');
+                respond.src = '/vendor/respond/dest/respond.min.js';
+                head.appendChild(respond);
+                head.appendChild(html5shiv);
+            }
+        </script>
+
+        {% block head %}
+    	<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    	<link rel="stylesheet" href="/vendor/AdminLTE/dist/css/AdminLTE.min.css">
+    	<link rel="stylesheet" href="/vendor/AdminLTE/plugins/iCheck/flat/blue.css">
+        <link rel="stylesheet" href="/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css">
+    	<link rel="stylesheet" href="/vendor/AdminLTE/plugins/datepicker/datepicker3.css">
+    	<link rel="stylesheet" href="/#proj_name#/css/app.css">
+
+        {# script 放在这里避免 IE edge 闪烁 #}
+        <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/vendor/highcharts/highcharts.js"></script>
+    	<script src="/vendor/AdminLTE/dist/js/app.min.js"></script>
+    	<script src="/vendor/underscore/underscore-min.js"></script>
+    	<script src="/vendor/moment/min/moment.min.js"></script>
+        <script src="/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="/vendor/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+    	<script src="/vendor/AdminLTE/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+        <script src="/vendor/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+        <script src="/vendor/Sortable/Sortable.min.js"></script>
+        {% endblock %}
+        {% block otherNeedInHead %}{% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            {% include '../modules/header.html' %}
+            {% include '../modules/notice.html' %}
+            {% include '../modules/sidebar.html' %}
+            <div class="content-wrapper">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        {% include '../modules/alert.html' %}
+
+        <script>
+
+            // [http://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize](stackoverflow)
+            function h(e) {
+                $(e).css({'height':'auto','overflow-y':'hidden'}).height(e.scrollHeight);
+            }
+
+            $('textarea').each(function () {
+                h(this);
+            }).on('input', function () {
+                h(this);
+            });
+        </script>
+
+        {# 修改限额模板 #}
+        <script type="text/template" id="navbar-edit-quota-tpl">
+            <div class="input-modal">
+                <h2 class="modal-diy-title">每日限额（元）</h2>
+                <div class="modal-diy-body">
+                    <input type="text" class="form-control modal-diy-input" id="modal-edit-quota-input">
+                    <p class="error-tip">请输入正确的金额</p>
+                </div>
+                <div class="modal-diy-btn">
+                    <button class="w-btn w-btn-primary" id="modal-edit-quota-btn">确认修改</button>
+                </div>
+            </div>
+        </script>
+
+        {# 正常状态下拉框模板 #}
+        <script type="text/template" id="dropdown-normal-tpl">
+            <% _.each(records, function(record, index) { %>
+                <li>
+                    <span class="w-checkbox">
+                        <input type="checkbox" value="<%= record.val %>" data-name="<%= record.name %>">
+                        <span>
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </span>
+                    <%= record.name %>
+                </li>
+            <% }); %>
+        </script>
+
+        {# 复杂状态下拉框模板 #}
+        <script type="text/template" id="dropdown-complex-tpl">
+            <% _.each(records, function(record, index) { %>
+                <li>
+                    <a href="javascript:void(0);" class="dropdown-toggle open-ul">
+                        <span class="dropdown-close">
+                            <i class="fa fa-minus"></i>
+                        </span>
+                        <span class="dropdown-open">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                    </a>
+                    <span class="w-checkbox">
+                        <input type="checkbox" value="<%= record.areaId %>" data-name="<%= record.name %>">
+                        <span>
+                            <i class="fa fa-check"></i>
+                        </span>
+                    </span>
+                    <%= record.name %>
+                    <ul>
+                        <% _.each(record.childAreas, function(subRecord, index) { %>
+                            <li>
+                                <span class="w-checkbox">
+                                    <input type="checkbox" value="<%= subRecord.areaId %>" data-name="<%= subRecord.name %>">
+                                    <span>
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                </span>
+                                <%= subRecord.name %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </li>
+            <% }); %>
+        </script>
+
+        {# 多图片上传中的上传项未上传状态的模板 #}
+        <script type="text/template" id="multi-upload-item-tpl">
+            <div class="multi-upload-item add">
+                <div class="add-wrap">
+                    <input type="file" access="image/*">
+                    <i class="fa fa-plus"></i>
+                </div>
+                <div class="upload-wrap">
+                    <img src="" alt="上传图片">
+                    <button class="multi-upload-del">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+            </div>
+        </script>
+
+        {# 多图片上传中的上传项未上传状态的模板 #}
+        <script type="text/template" id="multi-upload-item-upload-tpl">
+            <div class="multi-upload-item upload" data-url="<%= url %>">
+                <div class="add-wrap">
+                    <input type="file" access="image/*">
+                    <i class="fa fa-plus"></i>
+                </div>
+                <div class="upload-wrap">
+                    <img src="<%= url %>" alt="上传图片">
+                    <button class="multi-upload-del">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+            </div>
+        </script>
+
+        {# 多图片选择上传中的上传项未上传状态模板 #}
+        <script type="text/template" id="multi-upload-select-item-tpl">
+            <div class="multi-upload-item add">
+                <div class="add-wrap">
+                    <input type="file" access="image/*" multiple>
+                    <i class="fa fa-plus"></i>
+                </div>
+                <div class="upload-wrap">
+                    <img src="" alt="上传图片">
+                    <button class="multi-upload-del">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+            </div>
+        </script>
+
+        <script src="/#proj_name#/js/common.js"></script>
+        {% block js %}{% endblock %}
+    </body>
+</html>

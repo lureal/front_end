@@ -1,0 +1,113 @@
+
+// modules level
+@import "./modules/alert.less";
+@import "./modules/header.less";
+@import "./modules/sidebar.less";
+@import "./modules/notice.less";
+@import "./modules/content-header.less";
+@import "./modules/content.less";
+@import "./modules/button.less";
+@import "./modules/box.less";
+@import "./modules/table.less";
+@import "./modules/breadcrumb.less";
+@import "./modules/form.less";
+@import "./modules/collapse.less";
+@import "./modules/datepicker.less";
+
+// page level
+@import "./pages/service/index.less";
+@import "./pages/service/fensitong/aptitude.less";
+@import "./pages/service/fensitong/first.less";
+@import "./pages/service/fensitong/second.less";
+@import "./pages/service/fensitong/third.less";
+@import "./pages/settle/info.less";
+@import "./pages/settle/reset-pwd.less";
+@import "./pages/notice/index.less";
+@import "./pages/finance/detail.less";
+@import "./pages/finance/invoice.less";
+@import "./pages/data/index.less";
+
+@import "./pages/admin/customer/index.less";
+@import "./pages/admin/customer/review.less";
+@import "./pages/admin/customer/aptitude.less";
+@import "./pages/admin/customer/account.less";
+@import "./pages/admin/customer/data.less";
+@import "./pages/admin/customer/capital.less";
+@import "./pages/admin/customer/invoice.less";
+@import "./pages/admin/message/index.less";
+@import "./pages/admin/log/index.less";
+
+@import "./pages/user/login.less";
+@import "./pages/user/active.less";
+@import "./pages/user/resetpwd.less";
+
+// 重置整体合模型
+* {
+    box-sizing: border-box !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #f5f5f5;
+    font: 14px Microsoft YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+//  重置 h* 字体
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Microsoft YaHei, 'Microsoft YaHei', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+// 更改 placeholder 颜色
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #e5e5e5 !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #e5e5e5 !important;
+   opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #e5e5e5 !important;
+   opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #e5e5e5 !important;
+}
+
+// 设置主要包含块背景颜色
+.content-wrapper {
+    background: #f5f5f5;
+}
+
+// 屏幕宽度大于 768 像素
+@media (min-width: 768px) {
+    .content-wrapper {
+        margin-left: 120px;
+    }
+}
+
+// tools
+// -----------------------------------------------------------------------------
+.margin-right5 {
+    margin-right: 5px;
+}
+
+// 用户选择 select 时的操作
+.w-select-in {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}

@@ -1,0 +1,155 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>环评打分</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 部门得分情况</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body" id="score">
+                            <div class="pull-right">
+                                <a href="./staff-score" class="btn btn-sm btn-info z-hidden staff-score">主管评分</a>
+                                <a href="./depart-score" class="btn btn-sm btn-info z-hidden depart-score">环评打分</a>
+                            </div>
+                            <div class="col-xs-12 box-toolbar last">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <select class="form-control select2" id="score-date" style="width:100%">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- 搜索按钮 -->
+                                    <div class="form-group">
+                                        <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <a href="./suggest" class="btn btn-info btn-sm">环评建议</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" id="director">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="director-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th style="width: 7%;">时间</th>
+                    <th style="width: 7%;">姓名</th>
+                    <th style="width: 7%;">能力(自评)</th>
+                    <th style="width: 7%;">态度(自评)</th>
+                    <th style="width: 7%;">能力(主管)</th>
+                    <th style="width: 7%;">态度(主管)</th>
+                    <th style="width: 7%;">能力(环评)</th>
+                    <th style="width: 7%;">态度(环评)</th>
+                    <th style="width: 7%;">评价得分</th>
+                    <th style="width: 7%;">奖金发放系数</th>
+                    <th style="width: 30%;">工作建议</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.grades, function(val, index) { %>
+                    <tr>
+                        <td style="width: 7%;"><%= val.dataDate || "--" %></td>
+                        <td style="width: 7%;"><%= val.userName || "--"%></td>
+                        <td style="width: 7%;"><%= val.myAbilityScore || "--"%></td>
+                        <td style="width: 7%;"><%= val.myAttitudeScore || "--"%></td>
+                        <td style="width: 7%;"><%= val.mgrAbilityScore || "--"%></td>
+                        <td style="width: 7%;"><%= val.mgrAttitudeScore || "--"%></td>
+                        <td style="width: 7%;"><%= val.othAbilityScore || "--"%></td>
+                        <td style="width: 7%;"><%= val.othAbilityScore || "--"%></td>
+                        <td style="width: 7%;"><%= val.score || "--"%></td>
+                        <td style="width: 7%;"><%= val.coefficient || "--"%></td>
+                        <td style="width: 30%;"><%= val.suggest || "--"%></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.grades.length === 0) { %>
+            <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+            <nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                        var end = data.pageCount - 1;
+                        var start = 2;
+                        var pagenum = 7;
+                        if(data.pageCount > pagenum) {
+                            var left = data.page - start;
+                            var right = end- data.page > 2 ? 2:end- data.page;
+                            if(left<2) {
+                                end = start + 4;
+                            } else if(right<2){
+                                start = end - 4;
+                            } else {
+                                start = data.page - 2;
+                                end = data.page + 2;
+                            }
+                        }
+                        for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>
+    </script>
+
+    <!-- 季度下拉框 -->
+    <script type="text/template" id="score-date-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/grade-score-list.js"></script>
+{% endblock %}

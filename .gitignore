@@ -1,0 +1,14 @@
+.settings*
+**.settings*
+**target**
+.project
+.classpath
+*node_modules*
+*dev-dist*
+*test-dist*
+*dist*
+!vendor/*/dist*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.idea

@@ -1,0 +1,160 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>办公家具明细</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i>办公家具明细
+                    </a>
+                </li>
+            </ol>
+        </section>
+        <section class="content content-have-auth">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="col-xs-12 box-toolbar table-toolbar">
+                            <div class="form-inline">
+
+                                <!-- 区域选择 -->
+                                <div class="form-group">
+                                    <select id="area" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 输入名称 -->
+                                <div class="form-group">
+                                    <input id="name" class="form-control" type="text">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm search-btn" id="search">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-warning btn-sm download-btn" id="download" style="display: inline-block;">下载模板</a>
+                                    <a href="/boss/asset/office-furniture-import" type="button" class="btn btn-info btn-sm import-btn" id="import" >导入</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-primary btn-sm export-btn" id="export" >导出</a>
+                                    <a href="/boss/asset/office-furniture-add" type="button" class="btn btn-info btn-sm add-btn" id="add" data-id="<%=val.id%>">新增</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="furniture">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 模板数据 -->
+    <script type="text/template" id="furniture-tpl">
+        <table class="table table-hover table-striped" style="margin-bottom: 0;">
+            <thead>
+                <tr>
+                    <th style="width: 14%;">物品名称</th>
+                    <th style="width: 14%;">数量</th>
+                    <th style="width: 14%;">区域</th>
+                    <th style="width: 14%;">图片</th>
+                    <th style="width: 14%;">备注</th>
+                    <th style="width: 14%;">时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.furnitures, function(val, index) { %>
+                    <tr>
+                        <td style="width: 14%;"><%= val.name%></td>
+                        <td style="width: 14%;"><%= val.amount%></td>
+                        <td style="width: 14%;"><%= val.area%></td>
+                        <td style="width: 14%;">
+                            <span style="border-radius: 50%; display: inline-block; height: 30px; overflow: hidden; width: 30px;">
+                                <img src="<%= val.img%>" alt="微思敦" style="width: 100%;">
+                            </span>
+                        </td>
+                        <td style="width: 14%;"><%= val.remark%></td>
+                        <td style="width: 14%;"><%= val.posttime%></td>
+                        <td style="width: 16%;">
+                            <a href="/boss/asset/office-furniture-add?id=<%= val.id%>" class="btn btn-sm btn-success" id="detail">详情</a>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-danger" id="delete" data-id="<%= val.id%>">删除</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.furnitures.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }
+                    for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <!-- 区域 -->
+    <script type="text/template" id="area-tpl">
+        <option value="clear">清除选项</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/asset-office-furniture.js"></script>
+{% endblock %}

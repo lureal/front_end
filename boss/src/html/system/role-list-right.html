@@ -1,0 +1,45 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>角色下权限</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/system/role-list.html"><i class="fa fa-dashboard"></i>角色管理</a></li>
+                <li>
+                    角色下权限
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <!-- <div class="box-header with-border">
+                    <h3 class="box-title">角色下权限</h3>
+                </div> -->
+                <div class="box-body">
+                    <div>
+                        <div class="col-md-6 block-style" id="tree"></div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">分配</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-role-list-right.js"></script>
+{% endblock %}

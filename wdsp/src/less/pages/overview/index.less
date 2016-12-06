@@ -1,0 +1,239 @@
+.overview {
+    
+    // 设置 card 样式
+    .card {
+        > div {
+            border-radius: 4px;
+            box-shadow: none;
+            cursor: pointer;
+            height: 100px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        // 当前有提供这个服务
+        .card-open {
+            h3 {
+                color: #303640;
+                font-size: 20px;
+                height: 100px;
+                line-height: 100px;
+                margin: 0;
+                padding-left: 30px;
+            }
+
+            // 立即开通和重新开通
+            .open-now,
+            .reopen {
+                margin-top: -20px;
+                position: absolute;
+                right: 30px;
+                top: 50%;
+            }
+
+            // 正在审核和已开通
+            .review,
+            .opened {
+                color: #1a8cff;
+                font-size: 16px;
+                line-height: 1;
+                margin-top: -8px;
+                position: absolute;
+                right: 30px;
+                top: 50%;
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        // 敬请期待
+        .card-close {
+            color: #ccc;
+            font-size: 20px;
+            height: 100%;
+            line-height: 100px;
+            padding-left: 80px;
+            width: 100%;
+            position: relative;
+
+            i {
+                font-size: 36px;
+                color: #ccc;
+                left: 30px;
+                line-height: 1;
+                margin-top: -18px;
+                position: absolute;
+                top: 50%;
+            }
+        }
+    }
+
+    // 服务介绍样式
+    .intro {
+        margin-bottom: 30px;
+        position: relative;
+
+        .intro-row {
+            border-bottom: 1px solid #f5f5f5;
+            min-height: 70px;
+
+            > div {
+                min-height: 70px;
+            }
+
+            p {
+                color: #738399;
+                font-size: 14px;
+                height: 70px;
+                line-height: 70px;
+                margin: 0;
+                overflow: hidden;
+                padding-left: 30px;
+                padding-right: 120px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        // 查看详情按钮
+        .intro-detail {
+            margin-top: -20px;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+        }
+    }
+
+    /*// 设置 card 样式
+    .card {
+        display: none;
+        
+        > div {
+            border-radius: 4px;
+            box-shadow: none;
+            height: 100px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        // 当前有提供这个服务
+        .card-open {
+            height: 100%;
+
+            > a {
+                display: block;
+                height: 100%;
+            }
+
+            h3 {
+                color: #1b8cfa;
+                font-size: 20px;
+                line-height: 1;
+                margin: 0;
+                padding: 25px 0 17px 30px;
+            }
+
+            // 统计信息
+            div {
+                color: #738399;
+                font-size: 14px;
+                line-height: 1;
+                padding-left: 30px;
+
+                span + span {
+                    margin-left: 16px;
+                }
+            }
+        }
+
+        // 敬请期待
+        .card-close {
+            color: #ccc;
+            font-size: 20px;
+            height: 100%;
+            line-height: 100px;
+            padding-left: 80px;
+            width: 100%;
+            position: relative;
+
+            i {
+                font-size: 36px;
+                color: #ccc;
+                left: 30px;
+                line-height: 1;
+                margin-top: -18px;
+                position: absolute;
+                top: 50%;
+            }
+        }
+    }*/
+
+    /*// 图表样式
+    .chart {
+        padding: 45px;
+    }*/
+}
+
+// 第一次进入开户弹窗
+.overview-create-aptitude1-modal {
+
+    .input-modal {
+
+        // 标题
+        .modal-diy-title {
+            color: #3b8cff;
+            font-size: 20px;
+            padding: 40px 0 15px;
+        }
+
+        // 内容
+        .modal-diy-body {
+            padding: 0 65px;
+
+            p {
+                color: #75839a;
+                font-size: 14px;
+                line-height: 1.857142;
+                margin: 0;
+                text-align: center;
+            }
+        }
+
+        // 按钮
+        .modal-diy-btn {
+            padding-top: 18px;
+
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+// 点击其他按钮开户弹窗
+.overview-create-aptitude2-modal {
+    .input-modal {
+        
+        // 标题
+        .modal-diy-title {
+            color: #3b8cff;
+            font-size: 20px;
+            padding: 40px 0 15px;
+        }
+
+        // 按钮
+        .modal-diy-btn {
+            padding-top: 18px;
+
+            a {
+                display: block;
+            }
+        }
+    }
+}

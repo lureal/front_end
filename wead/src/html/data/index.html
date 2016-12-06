@@ -1,0 +1,119 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li class="active">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-home"></i>数据中心
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content data" id="data">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-inline tools">
+                    <div class="form-group clearfix w-datepicker">
+                        <label>开始日期</label>
+                        <input autocomplete="off" type="text" class="form-control" name="name" id="data-start-date">
+                    </div>
+                    <div class="form-group clearfix w-datepicker">
+                        <label>结束日期</label>
+                        <input autocomplete="off" type="text" class="form-control" name="name" id="data-end-date">
+                    </div>
+                    <button type="button" class="w-btn w-btn-primary search" id="data-search">数据查询</button>
+                    <button type="button" class="w-btn w-btn-success export" id="data-export">导出表格</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="w-collapse panel-group" id="data-table" role="tablist" aria-multiselectable="true"></div>
+            </div>
+        </div>
+    </section>
+
+    {# collapse 内容模板 #}
+    <script type="text/template" id="data-tpl">
+        <% _.each(records, function(record, index) { %>
+            <div class="w-panel panel">
+                <div class="w-panel-heading panel-heading" role="tab" id="collapse-head-<%= index %>">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-body-<%= index %>" aria-expanded="true" aria-controls="collapse-body-<%= index %>">
+                            <%= record.date %>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-body-<%= index %>" class="w-panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-head-<%= index %>">
+                    <div class="panel-body">
+                        <% _.each(record.tables, function(table, index) { %>
+                            <div class="table-responsive w-table">
+                                <h3 class="table-name"><%= table.title %></h3>
+                                <table class="table">
+                                    <tbody>
+                                        <% _.each(table.content, function(item, index) { %>
+                                            <% if (index === 0) { %>
+                                                <tr>
+                                                    <% for (var prop in item) { %>
+                                                        <th><%= item[prop] %></th>
+                                                    <% } %>
+                                                </tr>
+                                            <% } else { %>
+                                                <tr>
+                                                    <% for (var prop in item) { %>
+                                                        <td><%= item[prop] %></td>
+                                                    <% } %>
+                                                </tr>
+                                            <% } %>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+    <script type="text/template">
+        <% _.each(collapses, function(collapse, index) { %>
+            <div class="w-panel panel">
+                <div class="w-panel-heading panel-heading" role="tab" id="collapse-head-<%= index %>">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-body-<%= index %>" aria-expanded="true" aria-controls="collapse-body-<%= index %>">
+                            <%= collapse.title %>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-body-<%= index %>" class="w-panel-body panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-head-<%= index %>">
+                    <div class="panel-body">
+                        <% _.each(collapse.tables, function(table, index) { %>
+                            <div class="table-responsive w-table">
+                                <h3 class="table-name"><%= table.name %></h3>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <% _.each(table.trs, function(tr, index) { %>
+                                                <th><%= tr %></th>
+                                            <% }); %>
+                                        </tr>
+                                        <% _.each(table.tds, function(td, index) { %>
+                                            <tr>
+                                                <% for (var i in td) { %>
+                                                    <td><%= td[i] %></td>
+                                                <% } %>
+                                            </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/data.js"></script>
+{% endblock %}

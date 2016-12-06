@@ -1,0 +1,321 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>数据统计</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>数据统计</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#overview" data-toggle="tab">数据概览</a>
+                    </li>
+                    <li>
+                        <a href="#crowd" data-toggle="tab">人群数据</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="overview" style="overflow: hidden;">
+                        <div class="col-xs-12 box-toolbar last">
+                            <div class="form-inline">
+
+                                <!--投放平台-->
+                                <div class="form-group">
+                                    <select id="overview-platform-select" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!--投放位置-->
+                                <div class="form-group">
+                                    <select id="overview-local" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!--日期-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control pull-right" id="overview-datepicker" placeholder="选择日期" style="width: 183px;">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="overview-search">搜索</a>
+                                </div>
+
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="overview-export">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="overview-list"></div>
+                    </div>
+                    <div class="tab-pane" id="crowd" style="overflow: hidden;">
+                        <div class="row">
+                            <div class="col-xs-12 box-toolbar last">
+                                <div class="form-group pull-left">
+                                    <label id="platformName"></label>
+                                </div>
+                                <div class="form-inline">
+
+                                    <!--投放平台-->
+                                    <div class="form-group">
+                                        <select id="crowd-platform-select" class="form-control select2" style="width: 100%;"></select>
+                                    </div>
+
+                                    <!--广告组-->
+                                    <div class="form-group">
+                                        <select id="crowd-group" class="form-control select2" style="width: 100%;"></select>
+                                    </div>
+
+                                    <!--日期-->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control pull-right" id="crowd-datepicker" placeholder="选择日期" style="width: 183px;">
+                                    </div>
+
+                                    <!-- 搜索按钮 -->
+                                    <div class="form-group">
+                                        <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="crowd-search">搜索</a>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="crowd-export">导出</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="crowd-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <!--数据概览-->
+    <script type="text/template" id="overview-list-tpl">
+        <table class="table table-borderd table-hover tab-table">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th style="text-align: right;">消耗（元）</th>
+                    <th>曝光量</th>
+                    <th>互动量</th>
+                    <th>互动率</th>
+                    <th>加关注</th>
+                    <th>转发</th>
+                    <th>点赞</th>
+                    <th>收藏</th>
+                    <th>点击短链接</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td><%= val.name %></td>
+                        <td style="text-align: right;"><%= (val.consume / 100).toFixed(2) %></td>
+                        <td><%= val.showCount %></td>
+                        <td><%= val.interactCount %></td>
+                        <td><%= (val.interactRatio * 100).toFixed(2) %>%</td>
+                        <td><%= val.followCount %></td>
+                        <td><%= val.repostCount %></td>
+                        <td><%= val.likeCount %></td>
+                        <td><%= val.commentCount %></td>
+                        <td><%= val.urlClickCount %></td>
+                        <td>
+                            <% if(val.id !== null) { %>
+                                <a href="javascript:void(0);" data-id="<%= val.id %>" type="button" class="btn btn-xs btn-success generate-chart">生成图表</a>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+        <div id="overview-chart-wrap"></div>
+    </script>
+
+    <!--人群数据-->
+    <script type="text/template" id="crowd-list-tpl">
+        <div class="row">
+            <div class="col-xs-12 box-toolbar last">
+                <div class="form-inline">
+
+                    <div class="form-group">
+
+                        <!--渲染单选框-->
+                        <% for(var prop in checkData) { %>
+
+                            <% if(prop === '0') { %>
+                                <label class="radio">
+                                    <input class="chartShowRadio" type="radio" name="optionsRadios" value="<%= prop %>" checked><%= checkData[prop] %>
+                                </label>
+                            <% } else { %>
+                                <label class="radio">
+                                    <input class="chartShowRadio" type="radio" name="optionsRadios" value="<%= prop %>"><%= checkData[prop] %>
+                                </label>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="crowd-show-table">展示</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="crowd-map" style="border: 1px solid #efefef; width: 600px; height: 400px; margin: auto;"></div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-default btn-sm generate-table" data-type="map" style="margin-top: 10px;">生成表格</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <div id="crowd-sex-pie" style="width: 600px; height: 400px; margin: auto;"></div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-default btn-sm generate-table" data-type="sex" style="margin-top: 10px;">生成表格</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <div id="crowd-age-pie" style="width: 600px; height: 400px; margin: auto;"></div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-default btn-sm generate-table" data-type="age" style="margin-top: 10px;">生成表格</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="crowd-chart-table"></div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="overview-chart-tpl">
+        <div class="row">
+            <div class="col-md-12 form-inline">
+                <div class="form-group" style="margin-right: 10px">
+                    <select id="overview-chart-select" multiple class="form-control select2" style="width: 260px;"></select>
+                </div>
+                <button class="btn btn-default" id="overview-generate-chart">生成图表</button>
+                <button class="btn btn-default" id="overview-export-chart">导出所有数据</button>
+            </div>
+            <div class="col-md-12">
+                <div class="overview-chart" id="overview-chart"></div>
+            </div>
+        </div>
+        <div class="chart-data table-responsive">
+            <table class="table table-borderd table-hover tab-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <% _.each(data.yName, function(val, index) { %>
+                            <th><%= val %></th>
+                        <% }) %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% _.each(data.records, function(val, index) { %>
+                        <tr>
+                            <% _.each(val, function(_val, _index) { %>
+                                <td><%= _val %></td>
+                            <% }) %>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </script>
+
+    <script type="text/template" id="crowd-chart-table-tpl">
+        <div class="chart-data table-responsive">
+            <table class="table table-borderd table-hover tab-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <% _.each(data.yName, function(val, index) { %>
+                            <th><%= val %></th>
+                        <% }) %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% _.each(data.records, function(val, index) { %>
+                        <tr>
+                            <% _.each(val, function(_val, _index) { %>
+                                <td><%= _val %></td>
+                            <% }) %>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-statis-list.js"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+/*!
+ * 定制列表头部工具栏目
+ *
+ * 例：
+ * 可以为父元素类名为 .box，并且自身类名为 .box-header 的元素后添加一个或多个相邻元素，
+ * 并设置类名为 .box-toolbar 如:
+ *
+ * <div class="box">
+ *   <div class="box-header"></div>
+ *   <div class="box-toolbar"></div>
+ * </div>
+ *
+ * 类名为 .box-toolbar 的标签可以添加多个，但是确保最后一个有一个 .last 的类名
+ * .box-toolbar 标签下面的类名为 .select2 的元素最小宽度为 150px
+ */
+
+.box-toolbar {
+    margin: 20px 0 0;
+
+    &.last {
+        margin-bottom: 10px;
+    }
+
+    > div {
+        float: right;
+    }
+
+    .form-group {
+        margin-left: 10px;
+    }
+
+    .select2 {
+        min-width: 150px;
+    }
+}

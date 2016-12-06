@@ -1,0 +1,194 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>考勤管理</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 考勤管理</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="col-xs-12 box-toolbar last table-toolbar" style="display: none;">
+                            <div class="form-inline pull-left">
+                                <div class="form-group">
+                                    <strong>考勤周期为上月26日-当月25日</strong>
+                                </div>
+                            </div>
+                            <div class="form-inline">
+
+                                <!-- 员工名称 -->
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="员工名称" value="" id="name">
+                                </div>
+
+                                <!-- 部门 -->
+                                <div class="form-group">
+                                    <select id="depart" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 日期选择 -->
+                                <div class="form-group">
+                                  <div class="input-group">
+                                      <input type="text" class="form-control pull-right" id="datapicker" placeholder="选择日期" style="width: 183px;">
+                                  </div>
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm search-btn" id="search" style="display: none;">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm export-btn" id="export" style="display: none;">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="manage"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 销售顾问变动日志列表 -->
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>部门</th>
+                    <th>姓名</th>
+                    <th>事假</th>
+                    <th>年假</th>
+                    <th>调休</th>
+                    <th>旷工</th>
+                    <th>病假</th>
+                    <th>丧假</th>
+                    <th>婚假</th>
+                    <th>剩余年假</th>
+                    <th>剩余调休</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.attendances, function(val, index) { %>
+                    <tr>
+                        <td><%= val.departName %></td>
+                        <td><%= val.userName %></td>
+                        <td><%= val.leaves %></td>
+                        <td><%= val.holiday %></td>
+                        <td><%= val.dayoff %></td>
+                        <td><%= val.absence %></td>
+                        <td><%= val.sick %></td>
+                        <td><%= val.death %></td>
+                        <td><%= val.wedding %></td>
+                        <td><%= val.holidayRemain %></td>
+                        <td><%= val.dayoffRemain %></td>
+                        <td>
+                            <a class="btn btn-default btn-xs" href="/#proj_name#/html/attendance/edit.html?id=<%= val.userId %>&month=<%= val.month %>&name=<%= val.userName%>" alt="BOSS 后台">修改</a>
+                            <button type="button" class="btn btn-default btn-xs add-attendance" data-id="<%= val.userId %>">增加调休</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.attendances.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <!-- 类型 -->
+    <script type="text/template" id="type-tpl">
+        <option value="clear">清除选项</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="add-attendance-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12 bootstrap-timepicker" style="position: relative; z-index: 300;">
+                    <div class="form-group">
+                        <label>天数</label>
+                        <input class="form-control" type="number" id="add-days">
+                    </div>
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input class="form-control" type="text" id="add-memo">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="add-modal-submit" type="button" class="btn btn-primary">提交</button>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/attendance-manage.js"></script>
+{% endblock %}

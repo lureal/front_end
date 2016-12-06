@@ -1,0 +1,56 @@
+{# 弹出窗模块 #}
+
+{# 底部没有按钮的弹出窗 #}
+<div class="modal fade" id="modal-nobtn">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modal-nobtn__title"></h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-nobtn__ctn"></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{# 底部有一个按钮的弹出窗 #}
+<div class="modal fade" id="modal-onebtn">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modal-onebtn__title"></h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-onebtn__ctn"></p>
+			</div>
+			<div class="modal-footer">
+				<button id="modal-onebtn__btn" type="button" class="btn pull-right">button1</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{# 底部有两个按钮的弹出窗 #}
+<div class="modal fade" id="modal-twobtn">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="mdoal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modal-twobtn__title"></h4>
+			</div>
+			<div class="modal-body">
+				<p id="modal-twobtn__ctn"></p>
+			</div>
+			<div class="modal-footer">
+				<button id="modal-twobtn__btn1" type="button" class="btn pull-left">button1</button>
+				<button id="modal-twobtn__btn2" type="button" class="btn pull-right">button2</button>
+			</div>
+		</div>
+	</div>
+</div>

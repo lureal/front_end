@@ -1,0 +1,158 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">数据统计</a>
+        </li>
+    </ol>
+</section>
+<section class="content data-overview">
+
+    {# 顶部导航 #}
+    <div class="content-nav row">
+        <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="">
+            <a href="javascript:void(0);">
+                <i class="fa fa-th"></i>信息概览<i class="fa fa-caret-down"></i>
+            </a>
+            <ul id="content-sub-nav"></ul>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="javascript:void(0);" class="content-nav-link active" data-active="1">
+                <i class="fa fa-files-o"></i>数据概览<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/data/people.html" class="content-nav-link">
+                <i class="fa fa-file-o"></i>人群数据<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+    </div>
+
+    {# 数据概览列表 #}
+    <div class="row">
+        <div class="ccol-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="overview">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">数据概览</h3>
+                </div>
+                <div class="w-box-tool form-inline">
+                    <div class="w-table-tool" id="overview-tool">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">投放平台</label>
+                            <select id="platform" required class="form-control w-tool-input w-tool-item-select" data-field="platformId" data-type="select" data-errmsg="请选择投放平台" data-isRequire="1">
+                            </select>
+                        </div>
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">投放位置</label>
+                            <select required class="form-control w-tool-input w-tool-item-select" data-field="placementId" data-type="select" data-errmsg="请选择投放位置" data-isRequire="1">
+                                <!--<option value="1" checked>banner</option>-->
+                                <option value="2" checked>feed</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                        </div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="overview-search">搜索</button>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="overview-export">导出</button>
+                    </div>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="overview-table"></div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="overview-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 数据概览模板 #}
+<script type="text/template" id="overview-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>日期</th>
+                <th>曝光量</th>
+                <th>互动情况</th>
+                <th>加关注</th>
+                <th>转发</th>
+                <th>点赞</th>
+                <th>收藏</th>
+                <th>点击短链接</th>
+                <th>消耗（元）</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(record, index) { %>
+                    <tr>
+                        <td><%= record.name %></td>
+                        <td><%= record.showCount %></td>
+                        <td>
+                            <span>互动量：<%= record.interactCount %></span><br>
+                            <span>互动率：<%= record.interactRatio %></span><br>
+                        </td>
+                        <td><%= record.followCount %></td>
+                        <td><%= record.repostCount %></td>
+                        <td><%= record.likeCount %></td>
+                        <td><%= record.commentCount %></td>
+                        <td><%= record.urlClickCount %></td>
+                        <td><%= record.consume %></td>
+                    <tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+
+{# 内部导航下拉项模板 #}
+<script type="text/template" id="content-nav-tpl">
+    <% _.each(navs, function(nav, index) { %>
+        <li>
+            <a href="javascript:void(0);" data-type="<%= nav.type %>" class="info-overview-nav content-nav-link"><%= nav.content %></a>
+        </li>
+    <% }); %>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/data-overview.js"></script>
+{% endblock %}

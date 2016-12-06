@@ -1,0 +1,74 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>我的记录</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 我的记录</li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">剩余假期</div>
+                        </div>
+                        <div class="box-body">
+                            <div>剩余年假：<span id="dayoff-remain"></span> 天</div>
+                            <div style="margin-top: 10px;">剩余调休：<span id="holiday-remain"></span> 天</div>
+                        </div>
+                    </div>
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">出勤情况</div>
+                        </div>
+                        <div class="box-body">
+                            <!-- <div>请假：<span id="leaves"></span> 天</div> -->
+                            <div style="margin-top: 10px;" class="color-bar bg-green">旷工：<span id="absence"></span> 天</div>
+                            <div style="margin-top: 10px; background-color: #FFC107;" class="color-bar">年假：<span id="vacation" ></span> 天</div>
+                            <div style="margin-top: 10px;" class="color-bar bg-aqua">调休：<span id="dayoff"></span> 天</div>
+                            <div style="margin-top: 10px;" class="color-bar bg-yellow">事假：<span id="leaves"></span> 天</div>
+                            <div style="margin-top: 10px; background-color: #9E9E9E;" class="color-bar">丧假：<span id="death"></span> 天</div>
+                            <div style="margin-top: 10px; background-color: #F44336;" class="color-bar">婚假：<span id="wedding"></span> 天</div>
+                            <div style="margin-top: 10px; background-color: #009688;" class="color-bar">病假：<span id="sick"></span> 天</div>
+                        </div>
+                    </div>
+                    <!-- <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div class="box-title">色值对照</div>
+                        </div>
+                        <div class="box-body">
+                            <div class="color-bar bg-green">旷工</div>
+                            <div class="color-bar bg-yellow">事假</div>
+                            <div class="color-bar bg-aqua">调休</div>
+                            <div class="color-bar" style="background-color: #FFC107;">年假</div>
+                            <div class="color-bar" style="background-color: #9E9E9E;">丧假</div>
+                            <div class="color-bar" style="background-color: #F44336;">婚假</div>
+                            <div class="color-bar" style="background-color: #009688;">病假</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-md-9">
+                    <div class="box box-primary">
+                        <div class="box-body" id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/attendance-my-record.js"></script>
+{% endblock %}

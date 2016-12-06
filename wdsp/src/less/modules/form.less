@@ -1,0 +1,508 @@
+.w-form {
+
+    // 表单中的每一行
+    .w-row {
+        margin: 15px 0;
+
+        // 当有错误时
+        &.w-error {
+            .w-field-input {
+                border-color: #ff4d4d;
+                &:focus {
+                    border-color: #ff4d4d;
+                }
+            }
+            .w-field-error {
+                display: block;
+            }
+        }
+    }
+
+    // 每一个字段
+    .w-field {
+        min-height: 40px;
+        position: relative;
+
+        // 多图片上传
+        &.multi-img-field {
+
+            // 多图片上传顶部提示
+            .multi-upload-tip {
+                color: #738399;
+                font-size: 14px;
+                line-height: 1.5;
+                padding-top: 9px;
+            }
+
+            // 上传的项的包含块
+            .multi-upload-items {
+                margin-left: -9px;
+                margin-right: -9px;
+                overflow: hidden;
+
+                > div {
+                    float: left;
+                }
+            }
+
+            // 上传的项
+            .multi-upload-item {
+
+                // 添加状态
+                &.add {
+                    .add-wrap {
+                        display: block;
+                    }
+                    .upload-wrap {
+                        display: none;
+                    }
+                }
+
+                // 上传状态
+                &.upload {
+                    .add-wrap {
+                        display: none;
+                    }
+                    .upload-wrap {
+                        display: block;
+                    }
+                }
+
+                // 添加图片包含块
+                .add-wrap {
+                    border: 1px dashed #f5f5f5;
+                    height: 90px;
+                    margin: 18px 9px 0;
+                    overflow: hidden;
+                    position: relative;
+                    width: 90px;
+
+                    // 上传图片的 input
+                    [type="file"] {
+                        bottom: 0;
+                        cursor: pointer;
+                        height: 200px;
+                        outline: none;
+                        position: absolute;
+                        right: 0;
+                        width: 200px;
+                        z-index: 10;
+                    }
+
+                    // 添加图标
+                    .fa-plus {
+                        color: #ccc;
+                        font-size: 20px;
+                        left: 50%;
+                        margin-left: -10px;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -10px;
+                        z-index: 9;
+                    }
+                }
+
+                // 已经上传了的图片的包含块
+                .upload-wrap {
+                    cursor: pointer;
+                    height: 90px;
+                    margin: 18px 9px 0;
+                    position: relative;
+                    width: 90px;
+
+                    img {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    button {
+                        background: none;
+                        border: 0;
+                        color: #fb3939;
+                        line-height: 1;
+                        outline: none;
+                        position: absolute;
+                        padding: 8px;
+                        right: 0;
+                        top: 0;
+
+                        &:hover {
+                            color: #fb3939;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 单图片上传
+        &.single-img-field {
+
+            // 单图片上传顶部提示
+            .single-upload-tip {
+                color: #738399;
+                font-size: 14px;
+                line-height: 1.5;
+                padding-top: 9px;
+            }
+
+            // 上传的项的包含块
+            .single-upload-items {
+                margin-left: -9px;
+                margin-right: -9px;
+                overflow: hidden;
+
+                > div {
+                    float: left;
+                }
+            }
+
+            // 上传的项
+            .single-upload-item {
+
+                // 添加状态
+                &.add {
+                    .add-wrap {
+                        display: block;
+                    }
+                    .upload-wrap {
+                        display: none;
+                    }
+                }
+
+                // 上传状态
+                &.upload {
+                    .add-wrap {
+                        display: none;
+                    }
+                    .upload-wrap {
+                        display: block;
+                    }
+                }
+
+                // 添加图片包含块
+                .add-wrap {
+                    border: 1px dashed #f5f5f5;
+                    height: 90px;
+                    margin: 18px 9px 0;
+                    overflow: hidden;
+                    position: relative;
+                    width: 90px;
+
+                    // 上传图片的 input
+                    [type="file"] {
+                        bottom: 0;
+                        cursor: pointer;
+                        height: 200px;
+                        outline: none;
+                        position: absolute;
+                        right: 0;
+                        width: 200px;
+                        z-index: 10;
+                    }
+
+                    // 添加图标
+                    .fa-plus {
+                        color: #ccc;
+                        font-size: 20px;
+                        left: 50%;
+                        margin-left: -10px;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -10px;
+                        z-index: 9;
+                    }
+                }
+
+                // 已经上传了的图片的包含块
+                .upload-wrap {
+                    cursor: pointer;
+                    height: 90px;
+                    margin: 18px 9px 0;
+                    position: relative;
+                    width: 90px;
+
+                    img {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    button {
+                        background: none;
+                        border: 0;
+                        color: #fb3939;
+                        line-height: 1;
+                        outline: none;
+                        position: absolute;
+                        padding: 8px;
+                        right: 0;
+                        top: 0;
+
+                        &:hover {
+                            color: #fb3939;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 单视频上传
+        &.single-video-field {
+
+            // 单视频上传顶部提示
+            .single-upload-tip {
+                color: #738399;
+                font-size: 14px;
+                line-height: 1.5;
+                padding-top: 9px;
+            }
+
+            // 上传的 [type="file"]
+            [type="file"] {
+                margin-top: 15px;
+            }
+        }
+
+        &.img-preview {
+            .preview-thumbnail {
+                cursor: pointer;
+                width: 100px;
+            }
+        }
+    }
+
+    // 字段提示
+    .w-field-tip {
+        color: #999;
+        font-size: 13px;
+        margin-left: -15px;
+        margin-top: 15px;
+        position: relative;
+
+        p {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+    }
+
+    // 错误提示
+    .w-field-error {
+        color: #ff4d4d;
+        display: none;
+        font-size: 13px;
+        margin-left: -15px;
+        margin-top: 15px;
+        position: relative;
+
+        p {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+    }
+
+    // 勾选
+    .w-field-check {
+        background: #fff;
+        color: #b8e62e;
+        margin-top: -7px;
+        font-size: 14px;
+        height: 24px;
+        line-height: 1;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+    }
+
+    // 每一个字段的标题
+    .w-field-title {
+        color: #738399;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 40px;
+        margin: 0;
+        overflow: hidden;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    // 每一个字段的内容
+    .w-field-content {
+        margin-left: -15px;
+    }
+
+    // 每一个字段内容下的 input
+    .w-field-input {
+        border: 1px solid #eee;
+        border-radius: 4px;
+        color: #738399;
+        font-size: 14px;
+        min-height: 40px;
+        padding: 0 12px;
+
+        // 焦点聚焦时状态
+        &:focus {
+            border-color: #1a8cff;
+        }
+
+        // 只读 input 的样式
+        &[readonly] {
+            background: #f5f5f5;
+
+            // 焦点聚焦时状态
+            &:focus {
+                border-color: #eee;
+            }
+        }
+    }
+
+    // .w-field-input 设置在 textarea 上的情况
+    textarea.w-field-input {
+        height: 40px;
+        padding-top: 10px;
+        resize: vertical;
+    }
+
+    // .w-field-input 设置在 select 上的情况
+    select.w-field-input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    // 定制 select 下三角形
+    .w-field-select {
+        position: relative;
+
+        &::after {
+            content: "\f0d7";
+            color: #ccc;
+            font: normal normal normal 14px/1 FontAwesome;
+            height: 100%;
+            padding: 12px 8px;
+            position: absolute;
+            pointer-events: none;
+            right: 15px;
+            top: 0;
+            text-align: center;
+            width: 10%;
+            z-index: 1;
+        }
+    }
+
+    // 定制表单中的单选框
+    .w-field-radio {
+        input,
+        label {
+            margin: 0;
+        }
+
+         > span + span {
+             margin-left: 28px;
+         }
+
+        // 单选框文字
+        label {
+            color: #738399;
+            font-weight: normal;
+            font-size: 14px;
+        }
+
+        // 单选框圆圈
+        div {
+            margin-right: 5px;
+            margin-top: -2px;
+        }
+    }
+
+    // 脚部
+    .w-form-footer {
+        margin-bottom: 35px;
+        > div {
+            left: -15px;
+            position: relative;
+        }
+    }
+}
+
+// 只提供查看功能的表单
+.w-form-readonly {
+
+    // 图像字段
+    .img-field {
+
+    }
+
+    // 表单内容
+    .w-field-content {
+        > span {
+            display: block;
+            line-height: 40px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+
+    .w-form {
+        .w-field {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// 小屏幕时表单的表现
+@media (max-width: 768px) {
+    .w-form {
+        .w-field {
+            margin-bottom: 0;
+        }
+
+        .w-field-tip {
+            margin-left: 15px;
+        }
+
+        .w-field-title {
+            text-align: left;
+            padding-left: 30px;
+            padding-right: 30px;
+            width: auto;
+
+            &.placeholder-file-title {
+                display: none;
+            }
+        }
+
+        // 每一个字段的内容
+        .w-field-content {
+            margin-left: 0;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .w-field-error {
+            padding-left: 30px;
+        }
+
+        .w-field-check {
+            right: 40px;
+        }
+
+        .w-field-select {
+            &::after {
+                right: 20px;
+            }
+        }
+
+        .w-form-footer {
+            margin-top: 15px;
+
+            > div {
+                left: 0;
+                margin-left: 15px;
+                position: static;
+            }
+        }
+    }
+}

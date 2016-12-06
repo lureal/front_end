@@ -1,0 +1,132 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Banner（如果需上传视频，请将视频转交给服务端人员）</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>Banner</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">修改Banner</h3>
+                </div>
+                <div class="box-body">
+
+                    <div id="banner"></div>
+
+                    <div class="box-footer">
+                        <button class="btn btn-info pull-left" id="submit">更新</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="tpl">
+
+        <% for(var i = 1; i <= 3; i++) { %>
+
+            <div class="header">
+                <h3 class="box-title"><small>Banner<%= i %></small></h3>
+            </div>
+            <div class="box-body banner-wrap">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>类型（图片或者视频）</small></label>
+                            <select id="banner<%= i %>-type" class="form-control select2" style="width: 100%;">
+                                <option value="1">图片</option>
+                                <option value="2">视频</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>中心图链接（可不填写，如果不填写则代表不希望有跳转链接）</small></label>
+                            <input type="text" class="form-control link" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row video">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>视频地址（pc）</small></label>
+                            <input type="text" class="form-control video-link" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>视频地址（mobile）</small></label>
+                            <input type="text" class="form-control video-link-mb" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>描述</small></label>
+                            <input type="text" class="form-control description" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 背景图 -->
+                <div class="row banner<%= i %>-bg-snapshats bg-snapshats-wrap"></div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>中心图宽度（最宽不超过520px）</small></label>
+                            <input type="number" class="form-control image-width" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><small>中心图高度（最高不超过600px）</small></label>
+                            <input type="number" class="form-control image-height" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <!-- 中心图 -->
+                <div class="row banner<%= i %>-snapshats snapshats-wrap"></div>
+
+            </div>
+        <% } %>
+
+    </script>
+
+    <script type="text/template" id="snapshots-tpl">
+        <form class="snapshats-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+           <div class="form-group">
+               <label><small><%= title %></small></label>
+               <div class="input-group">
+                   <input type="file" name="<%= name %>" class="snapshats-input" accept="image/*">
+                   <br>
+                   <img class="snapshats-preview" src="<%= icon %>" alt="<%= title %>" />
+                   <br>
+                   <% if(icon === '/#proj_name#/img/none.png') { %>
+                       <button class="snapshats-submit btn btn-primary btn-sm" type="submit" data-img="">上传图片</button>
+                   <% } else { %>
+                       <button class="snapshats-submit btn btn-primary btn-sm" type="submit" data-img="<%= icon %>">重新上传图片</button>
+                   <% } %>
+               </div>
+           </div>
+        </form>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/banner.js"></script>
+{% endblock %}

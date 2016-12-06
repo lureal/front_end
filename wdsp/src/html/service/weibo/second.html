@@ -1,0 +1,52 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">开通微博广告</a>
+        </li>
+    </ol>
+</section>
+<section class="content service-weibo-second">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box w-box-primary">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">第2步：存入粉丝通开户金额</h3>
+                </div>
+                <div class="box-body w-box-body">
+                    <div class="row">
+                        <div class="col-md-4 company">
+                            <p>公司名称：武汉微思敦网络技术有限公司</p>
+                        </div>
+                        <div class="col-md-6 bank">
+                            <p>开户行账号：招商银行青岛路支行  127907002210201</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 tip">
+                            <p>注意：存入金额，请咨询您的客户经理</p>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix">
+                        <div class="col-md-4">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="next">我已存入开户金，下一步</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/service-weibo-second.js"></script>
+{% endblock %}

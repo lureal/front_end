@@ -1,0 +1,182 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>现有资产</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 现有资产</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-tools">
+                                <a href="/#proj_name#/html/asset/add-asset.html" type="button" class="btn btn-primary btn-sm add-btn" style="display: none;">新增记录</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 box-toolbar last table-toolbar" style="display: none;">
+                            <div class="form-inline">
+
+                                <!-- 物品名称 -->
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="物品名称" value="" id="name">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm search-btn" id="search" style="display: none;">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm export-btn" id="export" style="display: none;">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="asset"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 销售顾问变动日志列表 -->
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <!-- <th>id</th> -->
+                    <th style="width: 10%;">物品名称</th>
+                    <th style="width: 10%;">单价</th>
+                    <th style="width: 6%;">总数量</th>
+                    <th style="width: 10%;">剩余数量</th>
+                    <th style="width: 14%;">图片</th>
+                    <th style="width: 10%;">最后修改时间</th>
+                    <th style="width: 10%;">物料级别</th>
+                    <th style="width: 20%;">备注</th>
+                    <th style="width: 10%;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.assets, function(val, index) { %>
+                    <tr>
+                        <!-- <td><%= val.id %></td> -->
+                        <td style="width: 10%;"><%= val.name %></td>
+                        <td style="width: 10%;"><%= val.price %></td>
+                        <td style="width: 6%;"><%= val.cnt %></td>
+                        <td style="width: 10%;"><%= val.unused %></td>
+                        <td style="width: 14%;">
+                            <% if(val.image === null) { %>
+                                <a href="javascript:void(0);">
+                            <% } else { %>
+                                <a href="<%= val.image %>" target="_blank">
+                            <% } %>
+                            <img src="<%= val.image %>" width="40" height= 40>
+                            </a>
+                        </td>
+                        <td style="width: 10%;"><%= val.lmodify %></td>
+                        <td style="width: 10%;"><%= val.grade %></td>
+                        <td style="width: 20%;"><%= val.memo %></td>
+                        <td style="width: 10%;">
+                            <a href="/#proj_name#/asset/asset-detail?id=<%= val.id %>" type="button" class="btn btn-xs btn-default detail-btn" style="display: none;">修改</a>
+                            <button data-id="<%= val.id %>" type="button" class="btn btn-xs btn-danger delete del-btn" style="display: none;">删除</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.assets.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="modal-tpl" data-type="" data-id="" data-today="" data-days="" data-dateType="">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                    <div class="col-md-12" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="text-align: center;">物品总数量</h4>
+                                <div class="form-group">
+                                <label>调整:</label>
+                                    <input type="number" class="form-control" name="" id="number">
+                                    <h4>正数为增加，负数为减少</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+             <button id="cancel" type="button" class="btn btn-default">取消</button>
+            <button id="submit" type="button" class="btn btn-primary pull-left">提交</button>
+        </div>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/asset-exist-asset.js"></script>
+{% endblock %}

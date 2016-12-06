@@ -1,0 +1,3758 @@
+[33mcommit 62dca2162a9433e73bc9319b5b4c193257e232ce[m
+Merge: 8cdd8a0 baf44b6
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Aug 9 18:13:03 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 8cdd8a03a2b1cc19f1fce3583c9fa4736fe6ef02[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Aug 9 18:12:44 2016 +0800
+
+    boss 领用记录添加增删改
+
+[33mcommit baf44b62d52bcb689146248b5157ac2fbca667fb[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Aug 9 10:33:22 2016 +0800
+
+    提交修改环评建议页面
+
+[33mcommit 2af4f09604cfa74df30ce53f0f5779e15d55dc06[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Aug 8 15:13:21 2016 +0800
+
+    dsp 广告第二步 MID 添加类似于百度搜索时显示的下拉框
+
+[33mcommit f79d6b33086d822f97506d6a20d648e9be109e0a[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Aug 8 11:23:29 2016 +0800
+
+    puzi-admin 限制分页
+
+[33mcommit ca395df45a12920712846f43e39461ed72e7ec89[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Aug 8 11:04:10 2016 +0800
+
+    puzi-admin 铺子后台优化
+
+[33mcommit 80867f4556bb1c40ef6b405432bcfc5a90c518c5[m
+Merge: c04cb99 ec59fae
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Aug 5 15:59:34 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit c04cb99e3d9b95bc526b86b66252872b550e21c2[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Aug 5 15:59:14 2016 +0800
+
+    wesdom 后台区分首页 banner pc 视频和手机视频
+
+[33mcommit ec59fae67bf2c95ee33c3367590d7aed4124c70b[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Aug 4 15:42:12 2016 +0800
+
+    列表去掉微信标题、微信描述展示
+
+[33mcommit c61d78dd55c961a89409b8afff8589ebdbf54728[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Aug 4 15:11:14 2016 +0800
+
+    修复管理后台更改微信标题、微信描述
+
+[33mcommit 28b11527f094470a73b0cb26360510dfda196b47[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 17:34:18 2016 +0800
+
+    修改 dsp 文件
+
+[33mcommit 15d970cdda55ec1c89f0a60505cb6096f97b5b35[m
+Merge: eefbaec 8a7de65
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 15:15:39 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit eefbaec1560c9ea60d20751870549efaa26538a8[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 15:15:22 2016 +0800
+
+    boss 修改考勤 bug
+
+[33mcommit 8a7de65efae5a82008ccdfc6fbaeef9f38b3a0b4[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Aug 3 15:15:05 2016 +0800
+
+    修复环评校验bug,添加官网客户案例、资源案例的添加微信标题、微信描述字段
+
+[33mcommit d979c68dd8fb0930a5992234499f2d59d23dd788[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 14:30:35 2016 +0800
+
+    boss 修改考勤 bug
+
+[33mcommit 5cc7e54be5216f8738ca32044961eb0e09060587[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 13:19:11 2016 +0800
+
+    dsp 修改步骤2
+
+[33mcommit 7830e0efaf9f1173a8708f6bfaa4ef0e9aaf7491[m
+Merge: 66007a0 416de90
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 09:49:18 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 66007a08be9700a8c01b1cb69d384823de204bf9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Aug 3 09:48:56 2016 +0800
+
+    boss 修改产品管理显示不出搜索栏 bug
+
+[33mcommit 416de90dfd610af215fa830bd21c57f855fdb873[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 17:42:47 2016 +0800
+
+    修复环评校验bug
+
+[33mcommit dd63c25d4785edd5c1701a8c7bdebd2a3fa94673[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 17:34:58 2016 +0800
+
+    修复环评校验bug
+
+[33mcommit 316a43343ed144f95accb35d12684de1f3819d4f[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 17:25:30 2016 +0800
+
+    修复环评校验bug
+
+[33mcommit 75f077dd917ba16077e93aa6633f3a6a66b5e9b6[m
+Merge: 79fa66e 27e91e0
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 16:16:31 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 79fa66ea17e15f6c43f13733e1269ad30768693b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 16:16:16 2016 +0800
+
+    boss 考勤修改 bug
+
+[33mcommit 27e91e05a709652698e1571fbc4b9158456705dd[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 16:01:31 2016 +0800
+
+    修复环评校验bug
+
+[33mcommit ed858a81194ff8f692be6b871e727d6318158771[m
+Merge: 1476f8d adbd496
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 15:31:45 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 1476f8d49ef9f61d14f1567538f08644da63fd8f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 15:31:03 2016 +0800
+
+    boss 秀姑考勤 bug
+
+[33mcommit adbd4961a14d06647ff4ebeebaf5b5d35b965eaf[m
+Merge: 27e48f6 f8bef05
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jul 29 14:41:55 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 27e48f65ea07b8a6be34fba114de620250e1ae6a[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 14:41:24 2016 +0800
+
+    修复环评校验bug,页面样式有误
+
+[33mcommit f8bef0559dc57d1c5a3e59458f3b5b8d6fb6a368[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 11:44:14 2016 +0800
+
+    修改考勤
+
+[33mcommit 4758f5bbd4a2fa1b6fe33af483e2e40654785a31[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 10:49:58 2016 +0800
+
+    在投放系统，信息概览页面和操作日志页面请求加上customId字段
+
+[33mcommit 3930ccf733ebc756154d5daa1a9015e551957385[m
+Merge: c4e4178 4d4da19
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 10:35:21 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit c4e4178a23090877f882ec031d1b01c663b81851[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 10:35:05 2016 +0800
+
+    dsp 修改图表文案
+
+[33mcommit 4d4da1982c0ae78a2f9d906775dc2a6d2b4b2956[m
+Merge: b7dc345 806bd06
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jul 29 10:26:27 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit b7dc345f3f959cfcdd9f4ece7b664d834d2733d9[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 29 10:26:20 2016 +0800
+
+    增加投放系统，信息概览页面的数据校验
+
+[33mcommit 806bd06c026a71a5e950eeb4c99b0c661c0162e1[m
+Merge: afc73a4 9920f39
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 10:24:46 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit afc73a45748be1583c80f24be7f8d33560de5a88[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 29 10:24:25 2016 +0800
+
+    wesdom-admin 限制文章资讯标题字数
+
+[33mcommit 9920f3949d491dafa9acacf1f1014d86a383498b[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 28 18:14:09 2016 +0800
+
+    环评模块添加保存校验数据操作
+
+[33mcommit 2e225de0c1cfb787b654b2cc94d02ba94d86c404[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 28 17:28:06 2016 +0800
+
+    设置主管页面添加权限操作，环评模块添加保存校验数据操作
+
+[33mcommit 99f336076bf890f7ad36676e8b48dcb8c62890b5[m
+Merge: f094e09 f94558d
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 28 17:16:25 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit f094e09799f7a602268374090257ac9f72ab5aa5[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 28 17:16:04 2016 +0800
+
+    提交考勤
+
+[33mcommit f94558d17a98531dbf8851e76070a68acb881319[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 28 14:33:46 2016 +0800
+
+    平台设置，关闭开启互换
+
+[33mcommit db3c3e9c1a0c22811d6c9143f455e05d09f44647[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 28 11:00:18 2016 +0800
+
+    修复结算管理、投放页面的bug
+
+[33mcommit 7fec1850caff5b2f67c08fb4a108c9ebdb0673cc[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 28 10:10:24 2016 +0800
+
+    结算页面，页面结构调整
+
+[33mcommit 4da46b8ec20b8123caa515665d2199115487ee16[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 28 09:36:50 2016 +0800
+
+    修复环评查询分页bug
+
+[33mcommit 40bc26ee72c3374c0f896b5c3983d20b6f8abef5[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 28 09:32:14 2016 +0800
+
+    修复系统配置bug
+
+[33mcommit 74dbe564d91d98fe4a2fcd7a1c04bf8a4077718e[m
+Author: jintian <jintian@wesdom.me>
+Date:   Wed Jul 27 18:04:09 2016 +0800
+
+    修改合并伙伴图标为非必输
+
+[33mcommit 71831cc3199ce53aede77846b70d91eab60767ce[m
+Merge: b2f3179 3734903
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 27 17:50:08 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit b2f3179edad96f67203bb22f37f0eb30b6a3e30e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 27 17:49:51 2016 +0800
+
+    dsp 修改弹出框
+
+[33mcommit 3734903f3d60d3c85cbb119647c43971ce97ce86[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 17:15:52 2016 +0800
+
+    修复分页bug
+
+[33mcommit f4ced645185477677deff9df882231de8bc1de29[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 27 16:54:33 2016 +0800
+
+    提交设置主管html页面，js文件
+
+[33mcommit c56a217d52d3625cbf3b938d94f7b74c02f6b658[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 16:42:06 2016 +0800
+
+    优化代码
+
+[33mcommit 5b8c75a68caff1d4b96ea2d8c7b8566135c0d0ce[m
+Merge: 9eb9ce7 0aa70fa
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 27 16:36:07 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 9eb9ce7cc82214e610be953d2f790ada5d4f8ed3[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 16:35:58 2016 +0800
+
+    增加主管评分，环评打分校验
+
+[33mcommit 0aa70fafe0477fe1f6254dd924fa79b4bf06fff8[m
+Merge: 2985557 b2f4329
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 27 15:35:52 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 29855573da938dbd1f06b9d41f4714302991ccf0[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 27 15:35:31 2016 +0800
+
+    dsp 修改广告订单bug
+
+[33mcommit b2f43298756d5b6b96fabcddce50ceb66883ad23[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 15:24:54 2016 +0800
+
+    修复信息投放页面bug
+
+[33mcommit 3c6b8e508bd4c0cee2d90c5f0b79da67b4b9d5be[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 14:43:10 2016 +0800
+
+    添加部门管理，设置主管页面
+
+[33mcommit ff05bdffef037c39abb0d554d83b53770dd00ba2[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 14:35:29 2016 +0800
+
+    添加部门管理，设置主管页面，以及环评页面样式修改，以及数据校验
+
+[33mcommit c08233f9d845882e2286274300f8824377a4e59d[m
+Merge: 309d20b c2a9ea3
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 27 14:30:31 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 309d20b2469d65a2f427d14da68542c0e5b66d0e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 27 14:30:09 2016 +0800
+
+    dsp 修改定向用户显示
+
+[33mcommit c2a9ea3f99d2451b1623e8d6d56a055609c1ffe2[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 27 11:55:14 2016 +0800
+
+    修复投放系统信息概览页面的bug
+
+[33mcommit da4ecfeaac45668d060c59464518b2fefea5b4d8[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 27 10:05:33 2016 +0800
+
+    增加投放系统的信息概览校验
+
+[33mcommit 60f0f928da8d276bebbb79586bb132e07d728fa6[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 27 09:43:35 2016 +0800
+
+    修复投放系统的信息概览页面的bug
+
+[33mcommit c25494b2c1f6c4e1ec70aae7df1bc1df31079610[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 27 09:14:05 2016 +0800
+
+    修复管理系统中的权限管理中的bug
+
+[33mcommit 2570b8a7ca049f2b633f27c66be6bce2e3818e06[m
+Merge: 4ae4aa6 fc965d0
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jul 26 19:24:49 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 4ae4aa6ab2399a255886939db8eef044e24fe3ae[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 19:24:13 2016 +0800
+
+    添加管理模块，环评列表，环评建议，环评部门，环评员工
+
+[33mcommit fc965d0ebf41dfc471e701c563adadc8ee5309cd[m
+Merge: c1de1d9 b7d2868
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 17:54:55 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit c1de1d9f7b69a26a0f1f45fbcc86098468b78f4e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 17:54:11 2016 +0800
+
+    boss 添加我的记录
+
+[33mcommit b7d286896207167d96b1336e89033a5df4c89fa3[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 17:11:45 2016 +0800
+
+    更改报警管理模块开启，关闭接口传值互换
+
+[33mcommit 88605da7c021a9bbb7b6deab3283100c19bb4ca4[m
+Merge: 08c075d 86d0078
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 15:53:58 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 08c075d0a047e3df7601942038317fcc1ea98589[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 15:53:43 2016 +0800
+
+    dsp 修改 bug
+
+[33mcommit 86d0078e8f5a649abaab0235019382161be0f2c4[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 15:50:39 2016 +0800
+
+    增加投放系统首页概览校验
+
+[33mcommit cd2cae1121604e69a8c904a15f0cacc0e888c5d7[m
+Merge: 0b729e7 422b071
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jul 26 14:56:55 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 0b729e7281c3e67d83030aa2bf024e33cd4934b7[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 14:56:44 2016 +0800
+
+    修复投放系统的信息概览页面bug
+
+[33mcommit 422b071b3738a417f733383f51fa7f988980405e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 14:54:13 2016 +0800
+
+    boss 添加考勤管理列表
+
+[33mcommit 4d94be80537c88cff900f86da7ddebc472d3844c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 14:22:29 2016 +0800
+
+    dsp 转移 cn-all.js 修改统计bug
+
+[33mcommit ffdaf23ac297292c11e38f23c1c6a39ec3ccb169[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 14:11:23 2016 +0800
+
+    dsp 修改登陆 bug
+
+[33mcommit 883a687ee80cb2af6daee71c8494abd1f5974473[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 12:08:09 2016 +0800
+
+    找回删除的文件
+
+[33mcommit 19a88ca61b4928b58d886ff69335e2bb46198ee2[m
+Merge: a646194 a7e9740
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 12:03:14 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit a64619492bf971efddd4d94b9b3df0f336e54c63[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 12:02:50 2016 +0800
+
+    boss 考勤管理 10%
+
+[33mcommit a7e9740dce685c787a307b02eb86af907351dbe2[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 11:47:56 2016 +0800
+
+    修复结算管理的bug
+
+[33mcommit 64f300ed47fee6501ea0887799080782d2a7b2ff[m
+Merge: 044b25b 68942be
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jul 26 11:46:20 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 044b25bb3aae9bac462f1cdfdca2c0fc21ae2f35[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 11:45:57 2016 +0800
+
+    修复结算管理的bug
+
+[33mcommit 68942be476c90abaa0b82fb3f182f80ad05d5b7d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 10:57:49 2016 +0800
+
+    boss 修改我的记录字段错误
+
+[33mcommit fa39a516b58e9e2676597ef109a10c12aae5bea0[m
+Merge: 4e3f1b3 d299823
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 10:10:25 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 4e3f1b3ca2be76753ced1dc8ecafbee2a93f2c92[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 10:10:07 2016 +0800
+
+    boss 修改数据统计 bug
+
+[33mcommit d299823b63a5d23c39d6d314b6ddc0b7a92191bd[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Tue Jul 26 10:09:35 2016 +0800
+
+    修复环评，我的得分bug,添加less样式
+
+[33mcommit e3708d22acc36b2220087ac4afa976e862df20ad[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 09:54:51 2016 +0800
+
+    boss 资产修改 bug
+
+[33mcommit bf181e662dc07655bde3e4c65db32705fc6fa09c[m
+Merge: d4a8748 9c21c45
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 09:50:09 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit d4a874816babbaafbbbd90928cb458410a72fb1b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 26 09:49:50 2016 +0800
+
+    boss 调整统计数据当分页数为 1 时也能显示
+
+[33mcommit 9c21c45e0e09cb2193d378f98fab1a04cef4730c[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Mon Jul 25 19:19:06 2016 +0800
+
+    提交环评，我的得分，主管评分列表，主管得分列表
+
+[33mcommit cc81e42ee1fe54d1a30dd5c6c9b0bd7e223f7d88[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 25 10:35:06 2016 +0800
+
+    更改注释
+
+[33mcommit cfd59b9f1b69008d6aff42ee81d5171a71102af3[m
+Merge: b903cb4 7da797b
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 25 10:21:18 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit b903cb48c6d6fe83024a3b6d2152d757bd67a1f5[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 25 10:20:56 2016 +0800
+
+    添加环评，考勤基本内容，文件
+
+[33mcommit 7da797b117421df3b942fd79c3a08c56fb230d6f[m
+Merge: 23bf464 b929d03
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 25 09:46:43 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 23bf464b90947693434e091a6a706845cfe4d1ab[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Mon Jul 25 09:46:22 2016 +0800
+
+    优化系统配置的分页功能
+
+[33mcommit b929d03c870c25973ef5cafa62863415fe417e71[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 15:43:35 2016 +0800
+
+    boss 资产管理修改字段错误
+
+[33mcommit 4e6525650390c0792443fa60d10a0f9b036d646d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 15:39:45 2016 +0800
+
+    boss 资产管理修改字段错误
+
+[33mcommit 29aa0f62af9658246be61159d8ed2c2412459da5[m
+Merge: b72ab9d f32394d
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 15:18:43 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit b72ab9d97b2ad57491481be60d9dbb8e557674df[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 15:18:28 2016 +0800
+
+    添加资产管理
+
+[33mcommit f32394d6e664074ad1d1f6fbe6f138b5647f556a[m
+Merge: b109b07 59e98b8
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jul 22 11:58:18 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit b109b070784fba30860732b5bee5f6cb24c0f248[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 22 11:58:06 2016 +0800
+
+    修复通讯录分页bug，更换图标
+
+[33mcommit 59e98b8d5fa1537fff7fc9d37e4944a58b481462[m
+Merge: 6454f20 f4fc80f
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 09:57:23 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 6454f20badf4b944fbb754194ffa8cade77d8656[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 09:57:07 2016 +0800
+
+    dsp 修改低优先级 bug
+
+[33mcommit f4fc80fa5a6e3151fd7bf62b251aa3ab7fe2c13a[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Fri Jul 22 09:39:52 2016 +0800
+
+    优化通讯录的代码
+
+[33mcommit fd97d6461b1b5ddc9c8ec0060f7b06d85a5d45d7[m
+Merge: 1b7f41a 942e3a1
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 09:36:38 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 1b7f41ad8abd590396d5bd2eb4f0f0dab4b79770[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 22 09:36:14 2016 +0800
+
+    dsp 修改客户管理
+
+[33mcommit 942e3a1558e0eed09165f32b08f535d9f4e58c06[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 21 19:18:31 2016 +0800
+
+    提交通讯录模块
+
+[33mcommit 806850151f27e9e55ecc579975979de8d8ee8d96[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 17:29:43 2016 +0800
+
+    修改订单
+
+[33mcommit 2af11653c7e58c744adbec91f4d507304308d7bf[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 16:59:02 2016 +0800
+
+    dsp 图表去除插件名称
+
+[33mcommit a0b8aaf7fbcfe170b5ab02416d7f9bda892f3557[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 16:52:04 2016 +0800
+
+    dsp 修改弹出窗 bug
+
+[33mcommit 08e44623050f10c73b297d07cc08c1fad4ce7f59[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 16:41:11 2016 +0800
+
+    dsp 修改添加广告订单第四步和订单详情
+
+[33mcommit cc16ff87d98fce605fa877159b12ca27bf9cca64[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 16:32:29 2016 +0800
+
+    dsp 修复广告订单视觉问题
+
+[33mcommit 2c1fca18fb726611d4d2dd3f24a3e8bfb192952e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 16:29:42 2016 +0800
+
+    dsp 修复图表出不来
+
+[33mcommit 9155ceee164494101ec7e1675daf5b8fd0bf6d67[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 15:36:35 2016 +0800
+
+    dsp 订单列表启用停用功能优化
+
+[33mcommit e0d4d5f3f810f016d3097c789185e90c02855559[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 14:51:55 2016 +0800
+
+    dsp 修改 bug
+
+[33mcommit db820f3e42b629441b047be6144d3ab184c6d683[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 14:25:30 2016 +0800
+
+    修改时间控件bug
+
+[33mcommit 758681b6b44c76157fd916fa767927746a7e3a97[m
+Merge: edf30f0 af68352
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 14:08:04 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit edf30f047c44bdd4b7de96717244f18168b41a6b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 14:07:49 2016 +0800
+
+    dsp 修改订单 bug
+
+[33mcommit af683525da54c98ccd92e440840225b2ecde71de[m
+Merge: 857916a 640d651
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 21 09:29:00 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 857916a69aab7afd3a52bab22ca4038f4fc3d647[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Thu Jul 21 09:28:50 2016 +0800
+
+    提交结算管理的导出接口字段
+
+[33mcommit 640d651b8d57a5c2a4b596c1390b1fa9d7be6e6b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jul 21 09:18:32 2016 +0800
+
+    dsp 后台修改 bug
+
+[33mcommit 910910d1faee4ade94d9250ddcddbaf54b52db97[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 21 09:09:42 2016 +0800
+
+    添加结算管理导出的平台id字段
+
+[33mcommit 07f6b01458112909d0a3b2007cbb6a0159fea3c3[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 20 17:48:31 2016 +0800
+
+    添加页面分页信息
+
+[33mcommit c14951ce995d0968b3da481744e12d88d4ef6ad9[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 20 17:39:51 2016 +0800
+
+    修复通讯录页面样式
+
+[33mcommit 41f01229c01b775100ceed707fd99123a87ef48b[m
+Author: zhujun <zhujun@wesdom.me>
+Date:   Wed Jul 20 17:02:12 2016 +0800
+
+    修复投放系统信息概览页面的bug
+
+[33mcommit 6cf15723313fbaa50922f7895c7ca923e850b600[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Wed Jul 20 15:02:25 2016 +0800
+
+    添加通讯录代码
+
+[33mcommit f8617bfb550fe591e09b6712358490b11c781c67[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Wed Jul 20 11:32:36 2016 +0800
+
+    修改投放系统的首页概览页面
+
+[33mcommit 8190016697b2dbd06457cca7deb56e0cdbb1ec2f[m
+Merge: f8d0d2d 4dc2e36
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 20 09:20:36 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit f8d0d2db9afe5f1101b427b43fe2d6d8e7e8558e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 20 09:20:05 2016 +0800
+
+    dsp 修改广告管理广告组 bug
+
+[33mcommit 4dc2e36aebd178745abfb8e373da70e54190dbe3[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 19 11:16:28 2016 +0800
+
+    添加用户管理删除框
+
+[33mcommit c70d5ee0773ae4e41de9be93deaa9fe1c8b9bd5c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 19 11:00:33 2016 +0800
+
+    地域初始化收起所有下拉框
+
+[33mcommit a5b20f613173627b561986a5542d5c15b92ce320[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 19 10:52:41 2016 +0800
+
+    dsp 删除按钮添加确认取消弹窗
+
+[33mcommit a60d3a7ea268797522007ab6cca4605b13570763[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 19 10:19:29 2016 +0800
+
+    修复弹出框 bug
+
+[33mcommit 9a918c1bc0edbbdf51f823c1fb579cdac2596dea[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 19 10:08:46 2016 +0800
+
+    修复分页 bug
+
+[33mcommit 46d6c8fad6291a3fe1f9ffde96610a7914148884[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 19 09:44:20 2016 +0800
+
+    boss 通讯录基础代码
+
+[33mcommit 01ba9fb74e6103e4baa5443211f12d73413390ce[m
+Merge: 14dd360 29a4b31
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 17:12:31 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 14dd3606ddc5370878d780824fa0b0197f8c0e72[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 17:12:10 2016 +0800
+
+    修改数据统计
+
+[33mcommit 29a4b31c94a0d377a4567f221ff488418a01b123[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jul 18 16:55:48 2016 +0800
+
+    优化代码
+
+[33mcommit 6b6daf94a64333bf8cbe54455b1582d4fc85e79d[m
+Merge: fe6b155 1f07c01
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 18 15:09:57 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit fe6b155ed2b69fffda84484293cb3475c20b5c75[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jul 18 14:15:15 2016 +0800
+
+    将订单管理字段分转化成元
+
+[33mcommit 1f07c019044672b065bc5021feaef2d6acc59b62[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 14:49:45 2016 +0800
+
+    数据统计修改 bug
+
+[33mcommit 37c972baab04bd50b3c7f727bb2c1d1b7919b9c6[m
+Merge: 927ce58 2596156
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 14:38:15 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 927ce58382f2e347263c53dedd4a4df05bafdc1f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 14:37:16 2016 +0800
+
+    提交分页新模块
+
+[33mcommit 25961569888857aa860261b470c42502c4e23108[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jul 18 14:15:15 2016 +0800
+
+    修改管理后台的结算模块命名规范，优化代码
+
+[33mcommit 1aeae96a79de61b2038c1f7adac3064935e8bca9[m
+Merge: 18216f8 e09dbc0
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 18 11:53:12 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 18216f844a8c17702159b204072f19d25381b8fd[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jul 18 11:52:58 2016 +0800
+
+    提交管理后台的结算模块，修复订单管理模块的bug
+
+[33mcommit e09dbc036947562096f38a7a82bfc6dda7f98f3e[m
+Merge: 09f686c 9877b92
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 11:42:43 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 09f686cdff22e699bd591783f1dcd08589c00698[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 18 11:42:21 2016 +0800
+
+    添加分页工具 pagination
+
+[33mcommit 9877b92558fb1fe385b5f573f7d7529d16a73cb6[m
+Merge: 18d8bbe 6e8a9cb
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jul 15 18:42:49 2016 +0800
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 18d8bbe0387f251ea0fefb20089cc8cd7858030b[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 18:42:38 2016 +0800
+
+    提交管理后台的结算模块，修复管理系统中的投放页面的bug
+
+[33mcommit 6e8a9cbfd38cdf5fb343878ac0de62fbb441ac41[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 15 18:23:53 2016 +0800
+
+    dsp 排bug
+
+[33mcommit 5fa530a5e01bec13eabdec2fe1c2f1a628fc80f8[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jul 15 18:18:52 2016 +0800
+
+    dsp 排bug 高优先级 1234 解决
+
+[33mcommit f7dee53630b9eadc33e9dbd1cda75416433d3d43[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 16:50:42 2016 +0800
+
+    修复高中优先级bug
+
+[33mcommit 6aa63c3600fd24a80967cede25e14e30820a6f58[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 15:27:45 2016 +0800
+
+    更改平台设置和报警管理模块的布局
+
+[33mcommit cba5f2e36acc4baa2b5f15b620666fb5092a5448[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 15:27:06 2016 +0800
+
+    更改平台设置和报警管理模块的布局
+
+[33mcommit 66bf05700cf72b7a87ddf581b8bc478ccf1ea6be[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 13:34:19 2016 +0800
+
+    修复产品经理提出的bug，并提交后台管理系统的系统配置模块
+
+[33mcommit 7f0f9e61b52c30bc3f4ca77dd0bda4d343b1e799[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jul 15 13:31:47 2016 +0800
+
+    fix bug
+
+[33mcommit db90afacf5022d5060fc74766621b5799a3da037[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 11:10:34 2016 +0800
+
+    修改报警管理模块，平台设置模块代码
+
+[33mcommit 0a223b7dcd1c461081d4ffefdf8b76ae944d3a2b[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 11:09:14 2016 +0800
+
+    提交报警管理模块，平台设置模块代码
+
+[33mcommit f0b65410131701e61e244083ddf6e6976a4c9e9d[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Fri Jul 15 09:09:51 2016 +0800
+
+    提交报警管理模块
+
+[33mcommit aafc84931b6b69ea1712e63601900bda3b4e14b6[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Thu Jul 14 20:55:13 2016 +0800
+
+    提交报警平台功能模块
+
+[33mcommit ad41939ccb49a1b2773c8cfa72b9382176051c10[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 14 16:01:43 2016 +0800
+
+    提交报警模块
+
+[33mcommit 05f2ecde7d316426242253d82ec8d046bd12a9a9[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Thu Jul 14 16:01:04 2016 +0800
+
+    提交后台管理系统平台模块和报警配置模块
+
+[33mcommit 35c7384f554f7763f41480ffb1d6660ba3dbe5a4[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 14 11:38:58 2016 +0800
+
+    更改后台管理系统的的订单管理模块的校验
+
+[33mcommit a71b2eb1393809105354f003479f7acc392446d9[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 14 11:21:44 2016 +0800
+
+    更改后台管理中的订单管理模块中的数据验证以及合并html中的模板
+
+[33mcommit 60662e7468bb75f059a1b738d37b629b65693bfb[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 14 10:35:58 2016 +0800
+
+    ““提交管理后台bill.less文件
+
+[33mcommit 94601ebe53ae9ea40c5cb243fd187056ccea9665[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Thu Jul 14 10:30:17 2016 +0800
+
+    修复订单管理模块样式不美观，和js校验，弹框，代码规范问题
+
+[33mcommit 58e55ea64bcf1afc5d6a3bbe8b190e5544310361[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Thu Jul 14 09:11:13 2016 +0800
+
+    提交后台管理系统订单管理模块
+
+[33mcommit de162ee64e13e52f429ce1594d05dedcfd68ff58[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Wed Jul 13 20:01:22 2016 +0800
+
+    管理后台订单管理模块完成
+
+[33mcommit 091313b6edd147f7eecd5e4c6c0ece81e8de8374[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 18:15:46 2016 +0800
+
+    微思敦官网公司介绍添加前后移动
+
+[33mcommit 02172ed6e42c8a2757710baed1dc5347d22dee1c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 18:13:14 2016 +0800
+
+    微思敦后台关于我们图片移动
+
+[33mcommit 0a6b8c2c84a2f0d1f84c231f4b1fe9119dcd078e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 18:00:04 2016 +0800
+
+    boss 修改 bug
+
+[33mcommit 4a3087b7820763877ca30f101cac2cfd3bbf143c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 17:42:40 2016 +0800
+
+    boss 修复我的客户明细bug
+
+[33mcommit 921f3805bb840a38613b36f5356a31298d32cecb[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 17:37:10 2016 +0800
+
+    boss 删除添加“是否确是否删除弹窗
+
+[33mcommit fe12a24bb333ad3e8723b9222b92614261f0bb0f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 17:20:55 2016 +0800
+
+    boss 修改 bug
+
+[33mcommit a4dedc2aedf8ee16c6c9b005e1a1e80c5fccc6c9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 14:36:55 2016 +0800
+
+    提交后台整体架构
+
+[33mcommit 59c9c32ff54ff0d086c7b603e9ef31304dfc3c1e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jul 13 11:56:57 2016 +0800
+
+    dsp 修改登录功能，区分不同用户跳转到不同系统
+
+[33mcommit 28a7d74db972548212d1723730330f94aec3a60b[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Wed Jul 13 10:04:54 2016 +0800
+
+    增加投放系统的信息概览页面的校验y轴的数据
+
+[33mcommit da8bc5eab7dc202e224e4820380fdd3a9181de11[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jul 12 17:47:49 2016 +0800
+
+    修复投放系统里的信息概览页面
+
+[33mcommit 850b562a0d256667ddd3dc57e4eeffb9b3ad74ae[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 12 16:41:49 2016 +0800
+
+    修改投放系统的信息图表中的字段展示顺序
+
+[33mcommit 85cd64ecfc85334efb4c16bf01e547f4c0728a41[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 12 15:44:40 2016 +0800
+
+    修改投放系统的信息概览页面的样式问题
+
+[33mcommit a5b6b40dc2243397053e0729497b0a2a4b347ec0[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 12 15:15:23 2016 +0800
+
+    修改投放系统的信息概览页面的样式问题
+
+[33mcommit 2a77f00138613a397d506b35678c3be55b85ce53[m
+Merge: ff01ac7 41bedec
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 12 10:49:21 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit ff01ac70bd71116792a6d19c626eebe8e8dd7777[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jul 12 10:49:05 2016 +0800
+
+    dsp 修改 bug
+
+[33mcommit 41bedec53ca87947c480626b815d8e4758d63d6a[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 12 10:08:44 2016 +0800
+
+    修复投放系统的信息概览页面显示信息问题
+
+[33mcommit ab96473bb6620ffdfb0ebf8c3389858751d92eb0[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 12 09:55:47 2016 +0800
+
+    修复投放系统的信息概览页面bug
+
+[33mcommit a22f9dcfe096a2c18ca25247c9e5067a54b83f9f[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Tue Jul 12 09:06:14 2016 +0800
+
+    修复管理系统的信息概览页面bug
+
+[33mcommit 6494c1b2960bef99ecad1a29a04750546342c008[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 18:43:31 2016 +0800
+
+    fix bug
+
+[33mcommit 13586bc23e7bae77d8f7654ec52583fa1f849225[m
+Merge: f40030c ba0ca9e
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 18:19:46 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+[33mcommit ba0ca9e77884f1cc283345247eed3c23de064e33[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 18:09:36 2016 +0800
+
+    修复投放系统中的信息概览模块的bug
+
+[33mcommit ea8869f248703815baf4ba873e7b861377884e12[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 11 17:58:45 2016 +0800
+
+    dsp 更换地域插件
+
+[33mcommit f40030cba6ddb0168c9e5f59d6229dad1d7d821b[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jul 11 17:25:25 2016 +0800
+
+    调整投放系统中的信息概览模块的样式
+
+[33mcommit 96b9b39e7cdf4f183577a92b2ce69dc26bfc54e7[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 11 16:19:56 2016 +0800
+
+    修改出价单位
+
+[33mcommit b2c606dd0a38635f207616b83907a96d2b9ad5b4[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 11 16:06:57 2016 +0800
+
+    修复 css 写错
+
+[33mcommit 3a4536015c102c471d1ca1d9157b9f60844a7544[m
+Merge: 14fb770 2f3a9fc
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 11 15:43:37 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 14fb77003f3e301b496bd97339bf89d47df4a8cb[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 11 15:43:19 2016 +0800
+
+    修改 bug
+
+[33mcommit 2f3a9fcc6d783ad800649d885fb5edadfe194b3d[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jul 11 15:29:34 2016 +0800
+
+    修复管理系统的信息概览模块的字段
+
+[33mcommit 09f06a8c3d8dd25128ccdd25ff3f953afcdff533[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 11:33:08 2016 +0800
+
+    修复管理系统的投放管理模块和分配客户的bug
+
+[33mcommit b10aa0f936f0ab2fce7eca38df0d1d40e201c92f[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 10:40:32 2016 +0800
+
+    修复管理系统的投放管理模块
+
+[33mcommit 34412dc04ae8e17e696d7593610bc8c280a0e93d[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 09:55:56 2016 +0800
+
+    修复管理系统的投放管理模块bug
+
+[33mcommit 4cebaa1c227b59d6a91c25e43f3ee3df576dc5ac[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 09:14:31 2016 +0800
+
+    解决数字精度问题
+
+[33mcommit cda38c468693ba151ffa948c714408f749c7534a[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jul 11 08:59:19 2016 +0800
+
+    提交投放系统信息概览页面
+
+[33mcommit 1ca1b1f852234211b31ecba55234e6c591420765[m
+Author: jintian <jintian@wesdom.me>
+Date:   Fri Jul 8 19:03:36 2016 +0800
+
+    修改官网关于我们修改页面
+
+[33mcommit 1a459c5eafeb1d6f3d1e476a34ba2b9bf0325cf7[m
+Author: jintian <jintian@wesdom.me>
+Date:   Fri Jul 8 15:58:16 2016 +0800
+
+    修改资讯日期展示
+
+[33mcommit b3cdd1bca2a9fea2563d99098ad974eba95166bd[m
+Author: jintian <jintian@wesdom.me>
+Date:   Fri Jul 8 11:32:38 2016 +0800
+
+    修改boss系统翻页
+
+[33mcommit d72e44be889d7b8ada42c0bb6d37eb94730e8d9a[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 17:59:43 2016 +0800
+
+    提交关于我们对图片的限制说明
+
+[33mcommit b669f914f76502cfb4a48f517f72d42862077dd5[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 15:57:23 2016 +0800
+
+    提交首页banner的图片限制说明
+
+[33mcommit 44b19adc58263024534bee3b105a1bdeda887881[m
+Merge: 2a0d9c3 2b61f62
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 15:52:29 2016 +0800
+
+    增加关于介绍页的图片限制说明
+
+[33mcommit 2a0d9c3e095e2ab3419df7143a6059eea4e79c14[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 15:50:36 2016 +0800
+
+    更改每个页面对图片的限制说明
+
+[33mcommit 2b61f62f9714b7a4c6a20cf93305d1c90f12422f[m
+Author: jintian <jintian@wesdom.me>
+Date:   Thu Jul 7 11:04:43 2016 +0800
+
+    修改公司介绍列表
+
+[33mcommit 344b19343352b45e78bcc43269417334c78cfb0d[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 10:37:15 2016 +0800
+
+    添加关于我们对图片限制的说明
+
+[33mcommit 35d135a6f79457915c265e4d2b97465bde0c5c4c[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 10:14:54 2016 +0800
+
+    解决冲突
+
+[33mcommit 5ce2d8c1b0a2c73e1f25facc4eb1a0deeb8ab531[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jul 7 10:04:42 2016 +0800
+
+    添加微思敦官网对图片的限制说明
+
+[33mcommit 7a3ccba78571758786d8174df5dae6a07ca939be[m
+Merge: 4749ef5 7538cec
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 6 18:43:23 2016 +0800
+
+    解决冲突
+
+[33mcommit 7538cec786a6c88d11a767455389b7082a473d39[m
+Author: jintian <jintian@wesdom.me>
+Date:   Wed Jul 6 18:11:10 2016 +0800
+
+    修复作者置顶问题
+
+[33mcommit 2edd510da577487c14b9d5508c660fa2e0d29356[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 6 18:04:16 2016 +0800
+
+    fix bug
+
+[33mcommit 963fa1f811503435755f920d6f39dae088425388[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 6 16:52:35 2016 +0800
+
+    提交置顶按钮
+
+[33mcommit 2d1ed0f876912dff4dcf45bbbbff221e3aa9c787[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 6 16:41:47 2016 +0800
+
+    增加置顶按钮
+
+[33mcommit c4ef62051a207a4ba8a8b4f03315a2ba488728c0[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 6 16:29:00 2016 +0800
+
+    添加置顶按钮
+
+[33mcommit af29c1d330005e9638c68aae7741a4460acd8959[m
+Author: jintian <jintian@wesdom.me>
+Date:   Wed Jul 6 15:00:29 2016 +0800
+
+    修改公司简介页面
+
+[33mcommit 1b667c992118cda5296fd558b01c315a7e49d714[m
+Author: jintian <jintian@wesdom.me>
+Date:   Wed Jul 6 10:38:26 2016 +0800
+
+    修改boss系统时间控件和官网管理后台公司简介页面
+
+[33mcommit 4749ef5b7e1869a0cbb5c9f351080acb7f298fe2[m
+Merge: adf8a0b ae5f1a3
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jul 6 08:49:54 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit adf8a0b3ea93044541e34a464e539c648c879bc9[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jul 5 22:39:40 2016 +0800
+
+    修改关于我们接口
+
+[33mcommit ae5f1a3e0873b095fbf9b68e04c2609045f24198[m
+Author: jintian <jintian@wesdom.me>
+Date:   Tue Jul 5 16:42:07 2016 +0800
+
+    修改时间控件
+
+[33mcommit 5ff2095f307d8e6fbb70114b09c88cc36b0a16d0[m
+Author: jintian <jintian@wesdom.me>
+Date:   Tue Jul 5 15:37:26 2016 +0800
+
+    修改客户必输项
+
+[33mcommit 841f73adbd87fbd40b6de3becaa30e94c7e170ef[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 4 14:50:51 2016 +0800
+
+    dsp 广告组下订单添加修改预算
+
+[33mcommit 25d22040be2072b46ebeaaf4741bf2cbd6bfbe1e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 4 14:39:39 2016 +0800
+
+    git 忽略 window 产生的缓存
+
+[33mcommit 3364939d2303564459c404e6161c42b1dca0b5cd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jul 4 14:28:00 2016 +0800
+
+    修改 bug
+
+[33mcommit 4fd293b86911281cbaaf9ba09d0a66803c4b732a[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 30 18:22:42 2016 +0800
+
+    fix bug
+
+[33mcommit acbc54bbc59c5119809dc95824fa0efe7208a13c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 30 18:16:54 2016 +0800
+
+    dsp 修改数据统计
+
+[33mcommit 70b4a04040a142ce4d426874238818f0900ea55a[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 30 18:00:42 2016 +0800
+
+    dsp 修改数据统计
+
+[33mcommit 270092004547ba1a38e7309d77a4bd5645d5fa43[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 30 17:56:37 2016 +0800
+
+    dsp 修改数据统计
+
+[33mcommit 0f5b84672d6b02a21dc9c142c29a72f8e6e76978[m
+Merge: 38e2d09 1a394f3
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 30 17:06:37 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 38e2d09a18403def6045e01e45036bb25af30a5c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 30 17:06:12 2016 +0800
+
+    dsp 数据统计人群数据
+
+[33mcommit 1a394f322bdbe326edb90521ae1f30952f3c5312[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 30 10:44:42 2016 +0800
+
+    fix bug
+
+[33mcommit 6a71cd49a6cf44c95e7301625f6a53e55ccb2c31[m
+Merge: 79fe01b da8b6aa
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 30 09:19:40 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 79fe01b1e608f9f1a8aaded21a69a1566db02948[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 23:52:49 2016 +0800
+
+    dsp remove vendor/vendor
+
+[33mcommit da8b6aaebb082fbf580460c06518574c74fa9ac8[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Wed Jun 29 22:54:07 2016 +0800
+
+    更改官网后台侧导航栏排列需求
+
+[33mcommit 687644f8de4296485bb3974b404e57d849fa80da[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 18:02:33 2016 +0800
+
+    dsp 修改统计图表人群数据
+
+[33mcommit 169bce9a8b064b483dc3c18bf649ff4f2e9d3a77[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 15:57:14 2016 +0800
+
+    数据统计更改图表头
+
+[33mcommit 80ab73bbc74ca68676fb07bd6f45720f4ca2a3c2[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 15:45:43 2016 +0800
+
+    数据统计数据概览 100%
+
+[33mcommit d74628a1904d5daf7607126cd228630508b3a8e8[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 14:51:54 2016 +0800
+
+    dsp 修改数据统计
+
+[33mcommit 65e8d9ffa5cc8d532d6d62cee48908aae193f6d5[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 11:14:30 2016 +0800
+
+    修改数据统计
+
+[33mcommit b0ea95515f28b4125f2b95ac61ec28a85802b3db[m
+Merge: 9ed6874 5c15fcb
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 09:46:10 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 9ed6874cde7c50f6e09ad4be264238e399ec957a[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 29 09:45:31 2016 +0800
+
+    dsp 数据统计图表
+
+[33mcommit 5c15fcbe8e4cef52c4822769f34234ee7b3855a1[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 28 17:17:29 2016 +0800
+
+    提交关于我们模块图片上传更改
+
+[33mcommit ba108b250c804b08088274dd7e03a42b2699d1fd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 28 16:08:22 2016 +0800
+
+    广告详情添加图表
+
+[33mcommit f5e6afa04a1d7d3d0e5f9d306c0c6060851be886[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 27 17:33:10 2016 +0800
+
+    dsp 广告详情，广告管理的投放平台和投放主体
+
+[33mcommit 7770512a850a2a7f6e7329b5f6f6dcf8e79276ea[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 24 17:28:21 2016 +0800
+
+    dsp 广告管理广告详情 90%
+
+[33mcommit 4ff9c220101721c05bd843cb28f58ee880399e8e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 24 15:13:33 2016 +0800
+
+    修改添加广告显示默认数据，修改实时数据无限制的时候展示修改按钮
+
+[33mcommit 90fac34d9c5da2830aed11e7a6ed464f63ada6d3[m
+Merge: 01d7940 3f545e7
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 24 10:57:07 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 01d794058e493a8a44ff80b563ef2b09f9037af1[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 24 10:56:29 2016 +0800
+
+    dsp 添加广告修改提交字段名称
+
+[33mcommit 3f545e7c62d2c7ec781f4beac0677e5cc4bdd5a2[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 24 10:28:05 2016 +0800
+
+    fix bug
+
+[33mcommit a68f144c736e0a12e34e939b0c12bea6f7905630[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 24 09:57:47 2016 +0800
+
+    dsp 实时数据服务器返回null展展示   不限制
+
+[33mcommit 18d4a354b0e42ca7348435348ddac34d6f121f03[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 24 09:47:52 2016 +0800
+
+    dsp 每日限额 bug，公司充值账户负数，导出，替换默认图片
+
+[33mcommit 0bf3c568e524aaf8d5fc0cfdddf48691b767d40f[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 19:08:42 2016 +0800
+
+    fix bug
+
+[33mcommit 31362120d489b416745814af1ce9c9a25e069585[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 15:51:54 2016 +0800
+
+    fix bug
+
+[33mcommit d5350a874450ad1c73a3e39d1ee509ea89f247b4[m
+Merge: dd16743 99ac46d
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 23 15:19:38 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit dd167439e90312d407a71ca950be943829421ad8[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 23 15:18:30 2016 +0800
+
+    dsp 修改 bug
+
+[33mcommit 99ac46d867db95e9556e738bfac7672574174383[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 11:08:32 2016 +0800
+
+    fix bug
+
+[33mcommit 71a9a948a8a452dfd3a89983ab9d0c3a77152372[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 10:44:06 2016 +0800
+
+    fix bug
+
+[33mcommit f34cf5b012648477a8cbf6ab6eb64fecc96e3513[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 10:11:21 2016 +0800
+
+    fix bug
+
+[33mcommit 3bd59096b8c67db5c343d8f1eacc4fee508db37e[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 09:49:32 2016 +0800
+
+    添加微思敦官网的公司介绍模块页
+
+[33mcommit d76a8fab04b2cc4d2129f0d46f0e6125ec9de285[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 23 09:14:29 2016 +0800
+
+    添加投放系统的侧导航栏
+
+[33mcommit 562c5762e01ceca4bdaf7566bf438af9b915f56d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 22 16:31:42 2016 +0800
+
+    dsp 添加财务信息
+
+[33mcommit 18467b3524d9d63eba46ea0a71cb460310ed8ff6[m
+Merge: 13d29b3 33f4caa
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 22 15:47:35 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 13d29b364bf3d062757402227205946a8517da70[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 22 15:47:04 2016 +0800
+
+    dsp 完成广告管理添加广告
+
+[33mcommit 33f4caa0c470c7b56a119e2aa01b4b77d222ad1f[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 22 15:06:48 2016 +0800
+
+    将洞察文章更改为营销资讯
+
+[33mcommit 36cc593e5d95bfef9a7dbca6a12838a9efe17df3[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 22 10:32:54 2016 +0800
+
+    fix bug
+
+[33mcommit 86ae52b2e905e81d47976b9886c05df6256fc212[m
+Merge: 945f937 ca85a55
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 21 16:43:51 2016 +0800
+
+    fix bug
+
+[33mcommit 945f937cacb0dfc11da7d7a550ae2e13528b0a3e[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 21 16:37:53 2016 +0800
+
+    fix bug
+
+[33mcommit ca85a559ae57a43f5a5e10c4ecb3229401fc7e93[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 21 16:33:53 2016 +0800
+
+    dsp 添加广告 98%
+
+[33mcommit 6437e8219e33b35bd5f3936543e981da2cef4137[m
+Merge: 6d9da49 79acfba
+Author: Aaron Hsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 21 13:22:42 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 6d9da49a538dfa594c899908fbb2e351bcdbdf44[m
+Author: Aaron Hsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 21 13:22:14 2016 +0800
+
+    修改步骤3提交信息
+
+[33mcommit 79acfbad21c3622b07b0dbcdc712015e20a49045[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 21 10:59:43 2016 +0800
+
+    fix bug
+
+[33mcommit 2f0b8ef8c3a7eb0c244de5ff4c979da6abd0acf8[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 21 10:21:55 2016 +0800
+
+    fix bug
+
+[33mcommit 0bc2ec703e4edcf640bcc95a4a08a3ed3424c17c[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 21 10:15:22 2016 +0800
+
+    fix bug
+
+[33mcommit 748f3b8f5f5c7444627aa34b2d34c0886a960c0c[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jun 20 19:57:35 2016 +0800
+
+    在职位详情页面添加职位app图标
+
+[33mcommit 43b55d083c271039a68ff26cb82c0a3740d82945[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jun 20 19:46:22 2016 +0800
+
+    fix bug
+
+[33mcommit ab66ed7e31e9b835317f291f1139f352a3097b45[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 20 17:53:47 2016 +0800
+
+    添加广告步骤3 95％
+
+[33mcommit e3f6968ca700837811a7727ebe0251d846cd50e6[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 20 16:34:47 2016 +0800
+
+    dsp 添加广告步骤3 80％
+
+[33mcommit 86c31d359ac501f2ff5fab7128dc329ebbd8f228[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 20 16:02:44 2016 +0800
+
+    dip 修改 header
+
+[33mcommit bd0b2996ecb85c3e12c07a4aeb7c908875d5c90d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 20 14:56:36 2016 +0800
+
+    dsp 添加广告步骤完成步骤2
+
+[33mcommit 6ae8e697240fefbdadb11ab68a54a89066c235d9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 20 12:08:47 2016 +0800
+
+    dsp  添加广告 60%
+
+[33mcommit f9dd8f356be1d15e61facd71ad1756eb0f41713d[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 20:17:45 2016 +0800
+
+    fix bug
+
+[33mcommit 7300750396c1448802bd874fe57dd9317955a6e5[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 20:03:57 2016 +0800
+
+    fix bug
+
+[33mcommit 09d5bdc6f71e672b38a77288e9e35842bff84366[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 19:42:52 2016 +0800
+
+    fix bug
+
+[33mcommit 4399d70a2b6855ee466072f4b982c8f727cc7f9c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 17:00:52 2016 +0800
+
+    添加广告 40%
+
+[33mcommit 677dcfa24e2de3b666cd8c2320bc785bdc68c4b4[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 16:42:27 2016 +0800
+
+    增加修改密码页面的提示框，初始化投放系统的功能url
+
+[33mcommit a097a882e51fc293b0c2d68e16b89f17f16f0b10[m
+Merge: ca72d8e 9329e90
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 16:07:42 2016 +0800
+
+    fix bug，添加找回密码forgetpwd页面
+
+[33mcommit ca72d8efe1837e65f50c316b187dc5cfbbe2804c[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 16:06:58 2016 +0800
+
+    fix bug ,添加找回密密码forgetpwd页面
+
+[33mcommit 9329e90195502a4c9341dbe6df0adb68d788c6d3[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 16:03:37 2016 +0800
+
+    修改 select2 模块，让模块请求能够传参数
+
+[33mcommit 1a479bd11ad110800b09210c7820c69fb5ee4632[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 15:55:24 2016 +0800
+
+    dsp 修复 url.initLink 模块 bug
+
+[33mcommit a4453607ac53417fc1d1073967bc112dcd221232[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 15:50:51 2016 +0800
+
+    dsp 修复 urler.js bug
+
+[33mcommit df99809f58d0df29a4038eb0f3aec617e2e08ff9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 15:34:48 2016 +0800
+
+    添加 url.link 模块，用于自动在跳转链接后面添加 cid  -> customId
+
+[33mcommit fadce8081ae4e04b18d9f08e84185bbbeb29e496[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 14:39:02 2016 +0800
+
+    投放系统广告管理 -> 添加广告（30%）
+
+[33mcommit 6930bed4b0dfe7b3a897423f103e3aff69db75f3[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 14:20:56 2016 +0800
+
+    fix bug
+
+[33mcommit dfdf1d7b9351dd76ba02a1e3196f409e1b4d8c18[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 11:21:21 2016 +0800
+
+    fix bug
+
+[33mcommit a0ff6939af5e2aa6f65ace4435f4696be2e95889[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 10:52:24 2016 +0800
+
+    fix bug
+
+[33mcommit af2c94df6e077a03514a00fe9c3fded6d1fe0f34[m
+Merge: 6597837 c69e58d
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 09:18:57 2016 +0800
+
+    改回sidebaｒ页面
+
+[33mcommit 65978375dfd02316ba0647bf14e094b8fe82c2a6[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Fri Jun 17 09:18:29 2016 +0800
+
+    改回sidebar页面
+
+[33mcommit c69e58d774c2e3ab05b11b98d894e4cf3194fb24[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 09:17:12 2016 +0800
+
+    修改菜单权限
+
+[33mcommit c1bfc066296e64761add0adb70c20b09ace921fd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 17 09:09:54 2016 +0800
+
+    更改开发代码，让项目能够启动
+
+[33mcommit 499131b47f207b221d9f281629f245ad4d4f4a5f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 16 18:09:12 2016 +0800
+
+    修改广告列表，添加广告10%
+
+[33mcommit 83a2dc01687ff26953ee37a65ccce68298f916a7[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 16 17:32:15 2016 +0800
+
+    fix bug
+
+[33mcommit 9a28b978f4297dcda6fa8918ac7536f3e3c8fee9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 16 15:58:07 2016 +0800
+
+    广告管理列表 80%
+
+[33mcommit 48e8f8a770d57d8ba40e9c9733686d3d10b5eae8[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 16 15:05:31 2016 +0800
+
+    更改登录页跳转页面,更正sidebar页面
+
+[33mcommit 0eeeb900549c0116158a26cb38a138484328f5e7[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 16 14:50:54 2016 +0800
+
+    修改创建角色页面的bug
+
+[33mcommit 76f8950437ec0433d5703a1b1aeff31f83374bb7[m
+Merge: a32cab6 4c957e5
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 16 13:03:04 2016 +0800
+
+    fix bug
+
+[33mcommit a32cab69005ad3a1ab8c858356c5633cce8692f1[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 16 13:02:32 2016 +0800
+
+    在sidebar页面添加导航信息概览，fix bug
+
+[33mcommit 4c957e56bf9e1c2e66e7bc911363b0cedb764417[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 16 11:42:43 2016 +0800
+
+    修改金额 bug，添加广告管理事件
+
+[33mcommit 37363f6701bff6dc273de53fa1522137a15008a3[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 16 10:50:24 2016 +0800
+
+    修改 dsp bug
+
+[33mcommit 8d629eb6fb0c3a630dd6471a52bd5addff9e93fc[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Thu Jun 16 10:46:07 2016 +0800
+
+    管理系统的信息概览模块，页面显示百分比并保留俩位小数
+
+[33mcommit ad0fc2c053999abcbb1135123a34cd7bcbec112b[m
+Merge: a7321e1 e4326eb
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 16 10:22:05 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit a7321e172bf723f689f80fd3e67f3e7d9c5720fd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 16 10:21:59 2016 +0800
+
+    boss 系统改 bug，dap 系统改 bug
+
+[33mcommit e4326eb8694d85c37c24029b2325414c2d00d28d[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 19:46:19 2016 +0800
+
+    修复管理系统接口参数 以及投放系统信息概览模块完成50%
+
+[33mcommit 68ea6cc0574e4aa962eb3913eecdb83bcfb8fa8d[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 18:02:44 2016 +0800
+
+    更改页面td的宽度
+
+[33mcommit 7ac8d5dc153dd1dd588eb4110cec9693a4aa3a0d[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 17:55:15 2016 +0800
+
+    调整页面td的宽度
+
+[33mcommit d7537442f531982af6600ea005c5a32503c2932b[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 17:05:50 2016 +0800
+
+     将页面的二级标题去掉
+
+[33mcommit 96a1d5b7b2efe4c2d7c76b9c238b2275bc191709[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 16:19:18 2016 +0800
+
+    更改页面显示宽度
+
+[33mcommit 508cf2f32f33086359c60463df36e8f612b1b450[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 16:01:04 2016 +0800
+
+    修改页面文案
+
+[33mcommit 95cd321e658a630be967e4e6921c4f113b7ff682[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 15:41:46 2016 +0800
+
+    修改页面右对齐，以及页面文案
+
+[33mcommit 6ba7fa4dd35ebc4aee3a44e2b3a90a7ba337db68[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 11:11:04 2016 +0800
+
+    更改文案，将作者名称改成客户名称，产品线改成业务线
+
+[33mcommit 8b796502675d99d7a12d60b5f71ee075b355e304[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Wed Jun 15 10:16:56 2016 +0800
+
+    更改td显示右对齐需求,更改td的宽度，更改页面显示文案需求，将产品线改成业务线
+
+[33mcommit a49743b2aed315a5d986ab259e1c74c7d7b2f353[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 20:18:02 2016 +0800
+
+    修改请求参数，提交投放系统的信息概览模块
+
+[33mcommit 7b5fe8b105d1d1960a63aef6a2d01ef22f69d326[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 18:01:10 2016 +0800
+
+    修正请求参数错误
+
+[33mcommit 6350799e0c8f24953d971183fb10040ea2b0986e[m
+Merge: 545ecd1 ffe3d10
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 17:28:13 2016 +0800
+
+    提交请求参数错误
+
+[33mcommit 545ecd18203b2b146071f510dbe24a8d38594ca0[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 17:27:06 2016 +0800
+
+    修改请求参数错误
+
+[33mcommit ffe3d10600fa930cc9fd931ba95fe12248caa8c7[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 14 17:12:58 2016 +0800
+
+    dsp 投放系统，广告管理 30%
+
+[33mcommit ab58d5490f22b987ba07b0235d5e25441bb8e150[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 16:36:21 2016 +0800
+
+    管理模块增加提交前校验请求
+
+[33mcommit cba085bbadd6d0f62cb76bf6cc6221c7d93f15ff[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 16:18:41 2016 +0800
+
+     隐藏洞察页面的阅读数字段
+
+[33mcommit 90a69f7d902ca8901faf4d2c8cca39e512ac98cc[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 16:04:57 2016 +0800
+
+    wesdom 官网洞察文章添加页面，详情页面，添加文章标识字段
+
+[33mcommit 25ff4621a41d58f6af403ae25d9a687b32f28741[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Tue Jun 14 14:58:22 2016 +0800
+
+    更改boss系统侧导航栏
+
+[33mcommit bfa6cf4a5a125e0c9d0e38435791ad0f9d7d1ad9[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jun 13 23:20:59 2016 +0800
+
+    在管理系统的权限模块，概览模块，添加id组件
+
+[33mcommit 9bf19d68df3c4307b550b61381f0e3e725e007a5[m
+Author: zhujunliu <zhujun@wesdom.me>
+Date:   Mon Jun 13 23:10:23 2016 +0800
+
+    优化代码格式
+
+[33mcommit 67b4c23b328051dc721c5d2051c84cdbb6d6113a[m
+Author: liuzhujun <liuzhujun0123@163.com>
+Date:   Mon Jun 13 19:30:03 2016 +0800
+
+    提交投放系统的数据日志模块
+
+[33mcommit 6b0110fb769cf27f817d6915df26290ae3382fcd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 13 18:18:16 2016 +0800
+
+    boss 修复 bug
+
+[33mcommit fd89598931f4517b5005797bb273a936b805b407[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 13 16:55:29 2016 +0800
+
+    添加 dsp 平台公共代码，头部，侧边栏
+
+[33mcommit 4b3e9d7ee9f8437e5c116d0aa03ab9e6b154f520[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 13 15:20:21 2016 +0800
+
+    boss 系统修复 bug
+
+[33mcommit 2b0fb000246fe0d31ae5053edb95d5d14cf1b662[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 13 15:02:08 2016 +0800
+
+    boss 系统修复 bug
+
+[33mcommit e5170254ace4563bfead1228f2c901ad1d0947e8[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Sun Jun 12 10:25:15 2016 +0800
+
+    修改 boss 没登录跳转链接
+
+[33mcommit c4fb4fb30991d5eb893504133c8f3ac4a61df0f8[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Sun Jun 12 09:54:11 2016 +0800
+
+    更改主题为定制的红色
+
+[33mcommit 94534e8a607ae353dc060c74b3c3ae30279f447e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 16:19:10 2016 +0800
+
+    dsp 充值金额设置为分
+
+[33mcommit d199068a6441821125abd5a917e765a664457d0b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 16:18:16 2016 +0800
+
+    dsp 金额设置为分
+
+[33mcommit 231a8642ee1d0ae237ae408de1652cf3d2e119e6[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 16:07:01 2016 +0800
+
+    boss充值管理接口错误
+
+[33mcommit 44db941c84f628e5c70415b5a606f6b8dcdbd57b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 16:01:50 2016 +0800
+
+    boss 页面权限修改后返回菜单名不见了
+
+[33mcommit 630d75cfb1d4d741559e68146eb792857be5ac13[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 15:51:21 2016 +0800
+
+    修复 bug
+
+[33mcommit f9cf29ea0841ba43ad1d8de4b05bb4599b32ac81[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 15:36:14 2016 +0800
+
+    dsp 添加 code
+
+[33mcommit b20b9f14da440b620d3962bdcc2738b9f1b89b1c[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 15:32:52 2016 +0800
+
+    dsp 系统修改
+
+[33mcommit 1f000e71a11b2ff9ba6c8ffa420fa50f8d2c7462[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 14:35:53 2016 +0800
+
+    boss 修改为人员分配权限的树结构
+
+[33mcommit 46aad75e824b4291622ef3fa4e27f585437f4779[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 14:17:13 2016 +0800
+
+    dsp 财务管理修复 bug
+
+[33mcommit be5463b08661d77da26f617c673e9406f2fd769f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 14:12:46 2016 +0800
+
+     dsp 财务管理 100%，客户详情携带 id 提交数据
+
+[33mcommit a64cf83ecdb93a3bb86577fbc44fc4810e47fb18[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 12:01:12 2016 +0800
+
+    boss 系统 fix bug
+
+[33mcommit c9d3f1fc626e22142aa2b56603ad4d1bcfa6bc42[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 8 11:07:19 2016 +0800
+
+    boss 系统修复显示 bug
+
+[33mcommit 606f37b2c63d19a8c6ebcbda306dd647288e6688[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 7 18:19:43 2016 +0800
+
+    微思敦介绍页修改弹窗背景色
+
+[33mcommit e77cf9c092c3068aec91e555dbc7babb2aa385cc[m
+Merge: acfe996 b498845
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 7 17:26:11 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit acfe9969a70b7e631b3bd58351af8c75e307a6bd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Jun 7 17:26:05 2016 +0800
+
+    添加权限管理
+
+[33mcommit b498845cea91719909747aaa31169a589deb25bf[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Tue Jun 7 14:44:46 2016 +0800
+
+    提交投放管理模块
+
+[33mcommit 94490b83e6a814a3b32aa48b4708d92caa62d052[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Tue Jun 7 10:10:19 2016 +0800
+
+    修复权限模块，信息概览模块的bug
+
+[33mcommit d3d405160ac82b998320569f080dc433e5dd4c48[m
+Merge: 4937359 69e2057
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon Jun 6 17:21:48 2016 +0800
+
+    修复冲突
+
+[33mcommit 4937359d1738ea55c042cf7df89bf925e66067ba[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon Jun 6 17:20:54 2016 +0800
+
+    信息概览模块100%，权限管理模块100%
+
+[33mcommit 69e2057649fbb3f0ae859ed4eae278cdfe0b2880[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 6 15:29:29 2016 +0800
+
+    boss 系统 fix bug
+
+[33mcommit cb6fdd0e4b1cc264c658b5f220c02c5c55d08304[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 6 15:09:12 2016 +0800
+
+    修复 boss 部分 bug
+
+[33mcommit 751e4b105c57551d9ba306bee6c2d25c11628623[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 6 14:54:18 2016 +0800
+
+    修复 boss 部分 bug
+
+[33mcommit ed8b4daf3faaf98b7490264a04f2de8b122f050e[m
+Merge: f339653 b847647
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon Jun 6 14:38:03 2016 +0800
+
+    解决冲突
+
+[33mcommit f3396536422f461666fbe035f3feb17efff22290[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon Jun 6 14:32:20 2016 +0800
+
+    权限模块完成95%
+
+[33mcommit b8476476075b64d06dc7ef221ba30e4577a5131d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 6 11:33:04 2016 +0800
+
+    注释未完成代码，让程序能够正常运行
+
+[33mcommit 460ffc251a04e6cdc33cb5a572a77683be34e735[m
+Merge: 527b2c2 494f0dd
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 6 11:29:47 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+
+[33mcommit 527b2c22eb5c1b37aeeaa8ed7e5283d74b7cdfe3[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Jun 6 11:29:28 2016 +0800
+
+    财务管理 40%
+
+[33mcommit 494f0dd90550bc54319352d1b10120db6cbdfb74[m
+Merge: de8daf6 db4d8e4
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri Jun 3 19:26:03 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+    
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+[33mcommit de8daf6f0dc74e1fd84d36a6b2dd78c647d56159[m
+Merge: fac3827 b3dd59d
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri Jun 3 19:21:56 2016 +0800
+
+    权限列表完成90%
+
+[33mcommit db4d8e4e9e9018fc91c3bd48512a698e73519a53[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 3 10:40:42 2016 +0800
+
+    添加导航
+
+[33mcommit dc1c3855f9d71fea5aecd0aa0250e81558c9a8ba[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Jun 3 10:12:08 2016 +0800
+
+    客户管理 100%
+
+[33mcommit fac38276f674aae6bc62832d39499865d15c423d[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Thu Jun 2 20:04:33 2016 +0800
+
+    提交权限页面相关接口
+
+[33mcommit b3dd59d1f10e989cff17dec6afd60437426e31ba[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Jun 2 18:10:04 2016 +0800
+
+    客户管理模块70%
+
+[33mcommit dcbaaf4a709c3b295fdeb3c8497731d8a740d690[m
+Merge: 2d483ca abd43c4
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Wed Jun 1 20:06:45 2016 +0800
+
+    提交信息概览页，权限管理页相关html 文件
+
+[33mcommit 2d483ca7ea044a79533824141d044a1f6ec248f2[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Wed Jun 1 20:06:00 2016 +0800
+
+    添加权限管理，信息概览页相关html文件
+
+[33mcommit abd43c47bb638a1ca116ce4ac29582536fe4e6b6[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 1 15:16:51 2016 +0800
+
+    作者名称更改为产品名称
+
+[33mcommit f0b11ecc5785688ddcd3b82533568e980e0cf178[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 1 14:30:21 2016 +0800
+
+    修改获取表格接口
+
+[33mcommit 292d179411fa471b61bfea8dc5c28fcc8b993176[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 1 14:20:45 2016 +0800
+
+    更改 “销售和顾问变动日志” 导出功能，修改产品汇总提示
+
+[33mcommit d48b49aaca08df4b2ebd8601136b7950c814be75[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 1 11:46:57 2016 +0800
+
+    导出按钮采用链接而不采用异步请求
+
+[33mcommit d69b5cec5f56ba04f447542e334dc6699063deb6[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 1 11:19:40 2016 +0800
+
+    去除虚假数据
+
+[33mcommit dc94807281ec69294c69112e49c756442fbb41b9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Jun 1 11:16:41 2016 +0800
+
+    添加产品维度统计图表
+
+[33mcommit b9a64a5edf453ed0d267212b27157c036b1a855e[m
+Merge: 67775aa fd59994
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Tue May 31 20:08:00 2016 +0800
+
+    提交信息概览页,以及登录，注册相关js代码
+
+[33mcommit 67775aa74fdf63d47d90492943faf23bef97bd2b[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Tue May 31 20:07:00 2016 +0800
+
+    添加信息概览页，添加登录，修改密码js代码
+
+[33mcommit fd59994050d0947d5968bc8d16d21448bf9f3510[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 31 18:13:55 2016 +0800
+
+    BOSS 图表统计 20%，使用 highchairs 渲染图表
+
+[33mcommit a44b6ce4e35cacaa1f4cb0df1305e9753e66d095[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 31 16:54:36 2016 +0800
+
+    修改产品汇总接口
+
+[33mcommit 8e7fea246a1f0a49f39fa507d89b7de1d61341bf[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 31 16:44:24 2016 +0800
+
+    菜单管理修改添加页面和详情页面提示
+
+[33mcommit 71c095fa5a8b7f2510ceec52a57c720398d084c4[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 31 16:30:01 2016 +0800
+
+    去除搜索导出按钮事件判定，将导出搜索合并到一行
+
+[33mcommit 1648e5a75a562ae128abc5bdc0615555bd1b0a76[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 31 15:21:42 2016 +0800
+
+    添加公共模块代码，html 模块，js 请求模块添加公共状态码
+
+[33mcommit 802e02dbbcc02d8c304e98d9eea568bcbe692247[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Tue May 31 10:55:50 2016 +0800
+
+    fix
+
+[33mcommit 58e08f31588e8559466a27d43cb478e235483061[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 30 19:34:51 2016 +0800
+
+    修改gulpfile.js文件
+
+[33mcommit bf3892fef6b76952c8f1ded82f0a4f5dc0358d23[m
+Merge: e13cc24 aba1168
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 30 19:33:16 2016 +0800
+
+    提交登录，注册，重设密码模板文件
+
+[33mcommit e13cc248f22e3743568f35612e4f8d919c96d107[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 30 19:32:35 2016 +0800
+
+    登录，注册，重设密码模板文件
+
+[33mcommit aba1168aabf083967ee97bd27486033325f9fc17[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 30 17:00:29 2016 +0800
+
+    系统管理 100%
+
+[33mcommit 3d3103b4b55b8dcbc7458e1eb59b91d0b329d370[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 30 16:39:49 2016 +0800
+
+    添加菜单管理，权限管理 80%
+
+[33mcommit 4d28214e5fc2b6f9b7db0396cab8834ad35675ae[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Sun May 29 22:39:07 2016 +0800
+
+    添加 dsp 系统基本文件
+
+[33mcommit 70c4ac4148cd47499dbd136bfd21301eedea1337[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri May 27 16:59:00 2016 +0800
+
+    部门管理 100% 角色管理 100% 人员管理 80%
+
+[33mcommit 0aa0273fb024a976e12375f732a992dc468154b1[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu May 26 17:36:39 2016 +0800
+
+    角色管理 50%
+
+[33mcommit a689bcc07bac59e32ce70f8635920ed7bcb7ee98[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu May 26 16:41:47 2016 +0800
+
+    添加投放管理
+
+[33mcommit 0b9ce4896ed25366bfd47d01994d8e3aa1ea1381[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu May 26 16:18:23 2016 +0800
+
+    添加充值管理模块
+
+[33mcommit ccd9962780a9b3cc1dd15455c264ad4e5619d939[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu May 26 11:34:52 2016 +0800
+
+    客户管理 100%
+
+[33mcommit 47c2847467cefbcc960eb3b44c2be43376efc45e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 25 18:11:14 2016 +0800
+
+    去除多余代码，客户模块 70%
+
+[33mcommit 58404cdcd57df9c106d44ae077bfb1447d2036c3[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 25 17:29:15 2016 +0800
+
+    基础数据管理 100%
+
+[33mcommit 6832961987c6cee41ba041be2a6bd03ba29383c7[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 25 17:18:29 2016 +0800
+
+    接口添加 /admin 前缀，基础数据管理 95%
+
+[33mcommit 0f3fa960467fd89246e5940c08fe35db36da0f76[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 25 14:37:06 2016 +0800
+
+    添加产品汇总子页面，产品汇总模块 100%
+
+[33mcommit 21f0e2ad159df475fdb61023d4a5a0834d476d65[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 25 10:24:51 2016 +0800
+
+    修改分页模块
+    
+    添加产品管理模块
+
+[33mcommit d2c9dffa9d8c5d6fc02039af80ccbbfc573478fa[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 24 16:16:51 2016 +0800
+
+    添加产品汇总
+
+[33mcommit e56a37d6bb97b688100d8d66bd8351cc75309b91[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 24 14:59:17 2016 +0800
+
+    添加操作日志模块
+
+[33mcommit 91fe5365fea32c3b2f446df18bb4daac3b4175e0[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 24 14:53:11 2016 +0800
+
+    添加登录日志模块
+
+[33mcommit 1afc2de4b86df30215b5605c0b529be8e5e4c429[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 24 14:46:05 2016 +0800
+
+    添加 销售和顾问变动日志 模块
+
+[33mcommit 5033f61575d20a7d045b1a3607bbe37eb2a54af5[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 24 11:56:21 2016 +0800
+
+    添加我的客户明细模块
+
+[33mcommit 7c572b8a3c6112acb8d764b821c5972743537bd9[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 24 11:51:51 2016 +0800
+
+    添加客户明细（总）模块
+
+[33mcommit 6b800948bbb618af131acbb56b037f9172418a8d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 23 18:16:06 2016 +0800
+
+    客户明细（总表） 80%
+
+[33mcommit 072380e72df3b8df99bf575f963f2a2157a7575a[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 23 15:12:51 2016 +0800
+
+    添加基本文件，和报表罗列客户模块
+
+[33mcommit 10cc3b35e6ab4e2ab11ca9e222607d0abb698dbc[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 23 14:29:46 2016 +0800
+
+    添加基本目录结构
+
+[33mcommit 270178b8f62b3af7cbdb8cb3a7c2ed3ef3417b26[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 23 14:08:51 2016 +0800
+
+    删除错误生成的 build/demo
+
+[33mcommit c53ea4ac496849b76cc73c8b7474465ee4e72bbf[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 20 10:46:37 2016 +0800
+
+    fix bug
+
+[33mcommit f6e1782c73e0826b4833bc627cced16ce73e70e1[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Thu May 19 19:24:55 2016 +0800
+
+    add less file
+
+[33mcommit 0cffb61153d6d769df60e2a671f959ded5ce32a1[m
+Merge: d83f875 4c25551
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Thu May 19 19:22:46 2016 +0800
+
+    fix bug
+
+[33mcommit d83f8755f918ed828410eb0d857765f9f5e737fc[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Thu May 19 19:17:57 2016 +0800
+
+    添加关于我们的文字描述
+
+[33mcommit 4c25551f652ad9bc871e28b3a2f03afb1aada37e[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 11 10:21:50 2016 +0800
+
+    umeditor -> ueditor
+
+[33mcommit a0d6fd0d3ab6fb7e566ae37e4decdfb0b61d7f22[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 10 10:07:43 2016 +0800
+
+    banner 模块中间图链接默认 javascript:void(0)
+
+[33mcommit 328a615a78e1e120ab961e4f739e8b38e885e45f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue May 10 10:02:26 2016 +0800
+
+    banner 模块如果是图片则链接设置为非必要字段
+
+[33mcommit 0f49bbd782540b7b3497686feb40a76b6b6ceb4b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 9 15:20:17 2016 +0800
+
+    添加 .editorconfig(http://editorconfig.org/) 限制规范
+
+[33mcommit 92c8142d37aaeaebfcfa92b54bcd60a58d6c07e2[m
+Merge: 76b7776 bbf71c2
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 9 15:16:21 2016 +0800
+
+    合并代码
+
+[33mcommit 76b777655be9d7f7fac96cbf5a16f365b6933c46[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 9 15:15:43 2016 +0800
+
+    修改 banner 模块
+
+[33mcommit bbf71c290ff96b6386e7759fd75fef1a4d43fb79[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 9 14:32:52 2016 +0800
+
+    modify webpack.config.js
+
+[33mcommit 3b1688f5e32e24d23f056ef5b835cede84e82d69[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 9 14:13:29 2016 +0800
+
+    cpapp项目中添加webpack.config.js文件和readme.md文件
+
+[33mcommit 615e32b4aa4bf1ea298d679349c48c805e7a7f30[m
+Merge: 64ba25f 63e625a
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 9 11:44:51 2016 +0800
+
+    gulpfile.js 添加cpapp
+
+[33mcommit 64ba25fa6d77c94abadb381aa69f1640576b8469[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Mon May 9 11:40:01 2016 +0800
+
+    在gulpfile添加cpapp
+
+[33mcommit 63e625a298b1a87db9cc78b807f9975370b84c43[m
+Merge: 1b5a99e a25a0fa
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 9 10:50:25 2016 +0800
+
+    合并代码
+
+[33mcommit 1b5a99ea3901ae4cd3b5892179b188e1ab496255[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon May 9 10:49:45 2016 +0800
+
+    修改微思敦后台资源查看详情
+
+[33mcommit a25a0fa7566fe3d40d7a35832e5e508fb90d699d[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 18:56:45 2016 +0800
+
+    添加cpapp中的img文件
+
+[33mcommit fe21d6973aff2de640b08d77c63c2999f9c6f7e3[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 18:52:11 2016 +0800
+
+    test
+
+[33mcommit f84e223f367ce6d170faf2a27638aedbaf2d7388[m
+Merge: 1190e52 044f5f2
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 18:45:46 2016 +0800
+
+    重新上传cpapp
+
+[33mcommit 1190e52103888a6ada434a75f7190f6c535ae873[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 18:35:50 2016 +0800
+
+    重新上传cpapp文件夹
+
+[33mcommit 044f5f2b1e7490ef78f4ba23ad6fa9be47e02879[m
+Merge: 8972e68 70311ef
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri May 6 17:12:30 2016 +0800
+
+    合并代码
+
+[33mcommit 8972e68de5c3670c710fbfa81d3046ed02c7136a[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri May 6 17:11:58 2016 +0800
+
+    修改为思敦后台二级页面
+
+[33mcommit 70311effcf12ba8ca36c78d316186d24c0d51b4f[m
+Merge: 0bc0ddd 9086416
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 16:21:42 2016 +0800
+
+    Merge branch 'master' of 119.29.65.21:repositories/front_end
+    
+    按照规
+
+[33mcommit 0bc0dddc7bd2c1dacc48333e96d1f40b8fb13156[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 16:15:04 2016 +0800
+
+    根据规范重新，修改cpapp文件夹
+
+[33mcommit 90864163a785a6420680161e62a229b4a552d608[m
+Merge: ff76040 a1812af
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri May 6 15:34:22 2016 +0800
+
+    合并代码
+
+[33mcommit ff76040fa6f1ea00f1c7390b5c87912520777c71[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri May 6 15:32:02 2016 +0800
+
+    添加 banner
+
+[33mcommit a1812af362d8fe411363da79935abe257ca106da[m
+Author: liuzhujun <zhujun@wesdom.me>
+Date:   Fri May 6 09:49:07 2016 +0800
+
+    添加友钱推广页面单独文件夹cpapp
+
+[33mcommit 7ff1bf06ecd728574e3371a353c1792698dfce89[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 4 15:36:35 2016 +0800
+
+    添加登录模块
+
+[33mcommit cf4fbd883822229f44eb670ecf400a480a2a78ec[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed May 4 14:21:43 2016 +0800
+
+    删除洞察文章，作者，合作伙伴入口
+
+[33mcommit 2cb597640770474bb3b2267f9173ac1925dc3ff2[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Apr 29 11:19:31 2016 +0800
+
+    客户添加上下移动
+
+[33mcommit f92c790d22394a45c015ce856767614650c6f4fd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Apr 29 11:16:12 2016 +0800
+
+    修改客户，职位
+
+[33mcommit e14c8265e5bb6fbf4bc15dcdea9e2e5f8f7ce053[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Apr 29 10:22:27 2016 +0800
+
+    提交资源
+
+[33mcommit 6285a4f48ff366ac90a5d7e3293f411d79ea080f[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Apr 28 17:24:26 2016 +0800
+
+    修复案例，添加资源（添加，列表）
+
+[33mcommit 2c620208874ae6954e7e67628669cc2da58cbcb5[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Apr 26 17:20:12 2016 +0800
+
+    微思敦介绍页圆角被切
+
+[33mcommit 0216acefd1be6207487acd75605ac7fc1033b449[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Apr 25 16:00:58 2016 +0800
+
+    添加 vendor
+
+[33mcommit e03e023dbdac9cfc40762b785123d0cda000290d[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Apr 20 18:19:42 2016 +0800
+
+    添加微思敦后台代码
+
+[33mcommit 40b876689efed52f9d3493a902b839cdb336c8d1[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Apr 20 11:35:40 2016 +0800
+
+    添加合作伙伴，案例，客户，职位模块
+
+[33mcommit 6c523dbf5133aec323ecec5c4265058de50d52c5[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Apr 20 09:13:45 2016 +0800
+
+    添加 vendor
+
+[33mcommit 64f6761948f9db7a64c4a54ad3fb32a3eddb906b[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Apr 19 11:20:23 2016 +0800
+
+    修改自测初始页
+
+[33mcommit 3f9af28cbf84b7e3cc56398930a65cb2246fb3bd[m
+Author: aaronhsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Apr 13 18:23:29 2016 +0800
+
+    修改活动注册活动名称
+
+[33mcommit d834a7ed0e9dd3acbff706e2bd2fbfdf05b3ebba[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Apr 12 15:25:04 2016 +0800
+
+    修改 banner 尺寸
+
+[33mcommit eb1082953bf085922236b9bbcffe7a8911dc7489[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 8 17:30:25 2016 +0800
+
+    修复文章详情bug
+
+[33mcommit 6193f4a70ea7c2ec636c958a4902974e26fec07b[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 8 14:34:36 2016 +0800
+
+    添加 lazyload
+
+[33mcommit 41777c727e41ed681848f5ad50452ac20fa511dc[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Apr 7 16:11:59 2016 +0800
+
+    铺子文章添加标识
+
+[33mcommit 777773116bba05e1a368b4df74bdc6dc0ed0d7a5[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Apr 7 11:33:59 2016 +0800
+
+    微思敦官网添加合作伙伴页面
+
+[33mcommit d7e21e74a3cb7dbb27659cfb90599341e58583ec[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Apr 6 16:55:28 2016 +0800
+
+    添加遗漏文件
+
+[33mcommit e6859df3b8c6d1171e6cc4c705b953e9c9c8055d[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Apr 6 16:53:33 2016 +0800
+
+    添加微思敦官网编辑器，添加铺子后台接口返回错误提示
+
+[33mcommit 58bdefb4c900a3062c2d74ecb69fda7b766b0962[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Apr 6 16:05:40 2016 +0800
+
+    添加洞察文章，作者
+
+[33mcommit d1d3fb5f19e626ecdbb40550dea059c3c932a69a[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Apr 6 09:34:27 2016 +0800
+
+    上报，排重点击取消去除 loading
+
+[33mcommit 7ff8327bca8df6cf5da58178b84431ea7763c8c4[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Apr 5 14:46:11 2016 +0800
+
+    铺子文章详情更改为服务器获取方式
+
+[33mcommit 4627b178f64ac83714ee9342d0b8b62ec05d5317[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Apr 5 11:29:06 2016 +0800
+
+    添加新项目 gulpfile
+
+[33mcommit 800a68ff3c768351cdd30012c67404d4b57dac77[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Apr 5 11:26:53 2016 +0800
+
+    添加微思敦后台项目
+
+[33mcommit 3d65c785e3e36163ec352dc9d820d733176afa1f[m
+Merge: 4518a95 d4c0aae
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Apr 5 11:17:26 2016 +0800
+
+    铺子后台分页 loading，微思敦介绍页面更换图片
+
+[33mcommit 4518a95771df1be7acf0981559889c8e61a49da1[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Apr 5 11:17:04 2016 +0800
+
+    铺子后台分页 loading，微思敦介绍页面更换图片
+
+[33mcommit d4c0aae4f8720b6c6a3e8b13b9b5089ddd78d2c2[m
+Author: lewis <lewischu@126.com>
+Date:   Fri Apr 1 19:19:22 2016 +0800
+
+    分享文案调整
+
+[33mcommit e8bc094187810d53153ad5f6848b5a4970f2adca[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 18:15:34 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit c8a9fe4f59244e1ea1c6b54bf3ddc5b3d192f039[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 17:54:29 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit 7cd013a7310d5d00c2946152ec8589f1fdaea10a[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 17:10:33 2016 +0800
+
+    修改微思敦
+
+[33mcommit d6d191f56e2829f4a54b1e0d70cbd5f06200f821[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 16:47:55 2016 +0800
+
+    修改微思敦介绍页
+
+[33mcommit 5ae416bb3ea1d5600bc58d3f97f994cbd7dceb35[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 16:19:17 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit d0318110ea69d6f85b34d45868c364cea2abf3b0[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 12:42:45 2016 +0800
+
+    修改微思敦
+
+[33mcommit 7b382cab39719819b3db95ce7529be5054087cb6[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Apr 1 11:44:35 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit 21e2ddc86ae52d96bce7f03786c06967ae4ba55a[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 31 15:34:09 2016 +0800
+
+    铺子添加登录
+
+[33mcommit b43c87696bf1f136f577d1ac4ceab65e0482e4a8[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 31 10:09:49 2016 +0800
+
+    修改首屏动画延迟为3秒，删除联系方式文字
+
+[33mcommit d01e7495f50c804dfdbce6dc0801aa42849eb61a[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 30 18:51:03 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit 59d95b51df847fe90643e698816c3b7726406815[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 30 16:28:52 2016 +0800
+
+    修改文章标题最大为 20 个字
+
+[33mcommit bd42d05408b7e16985a6573851302cb62d53bb17[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 30 09:13:05 2016 +0800
+
+    首屏延迟显示，展示loading
+
+[33mcommit 1ec718096e9569cf55271b4e6260db9c493082d7[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 18:03:51 2016 +0800
+
+    修改 loading
+
+[33mcommit 51f42302551ca00793bdd0f15cf5cad327151a35[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 17:01:07 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit f6121c097a2294cc713420dfe891a8a4e8519cca[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 15:15:50 2016 +0800
+
+    添加空格
+
+[33mcommit adc4cd83a5608f1acd68b5525af9496bb5974a93[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 15:13:36 2016 +0800
+
+    删去 www
+
+[33mcommit 4b7c1dee151299713e105269132a695e9105b871[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 15:05:53 2016 +0800
+
+    删去电话空格
+
+[33mcommit e752b931dd354761629b38fe8e12e44540e6d794[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 15:01:56 2016 +0800
+
+    添加最后链接
+
+[33mcommit c5d1c6ff75dff5785ac48b560b6667bdaf15e190[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 13:37:57 2016 +0800
+
+    微思敦分享，铺子后台文章无法下一页
+
+[33mcommit a46171e27ee0a7ee42b526dddbc43174c8a34357[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 11:29:53 2016 +0800
+
+    去处微信调试模式
+
+[33mcommit 78cba41dad935ee367425ce3fc9242446540fabe[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 29 10:23:57 2016 +0800
+
+    修改微思敦介绍页面
+
+[33mcommit b8f789b3d163c23ca8185ecc33a618ae95215c23[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 28 18:05:42 2016 +0800
+
+    修改换量合作方名称
+
+[33mcommit 35e661dab75053138d243488b83cd6c3f1bc3d9d[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 28 14:38:33 2016 +0800
+
+    修改 banner 模块
+
+[33mcommit 6b3ead114a03b4d21a96c76be1618c751f3fd5a0[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 28 12:23:36 2016 +0800
+
+    更改项目名activity 为 wesdom ，更改交互内容
+
+[33mcommit bca722358c968647ee08e9b1b65873389a46e793[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 28 11:15:16 2016 +0800
+
+    公司介绍添加动画效果
+
+[33mcommit 0986d45a9aa78616c46abd639767a2ed7daccb20[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Mar 25 18:50:06 2016 +0800
+
+    添加活动项目和添加企业介绍页面
+
+[33mcommit 1955bf922695cab9d16873473fa0c5545650630c[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 24 10:57:32 2016 +0800
+
+    删除订阅时间
+
+[33mcommit 2c538c031fdf4d7822c87e64a23eaf9d54cf855f[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 24 10:34:39 2016 +0800
+
+    修改全局编辑器
+
+[33mcommit adb013da8cec450b7669b303e14843fad8d4bb01[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 23 17:22:34 2016 +0800
+
+    添加库
+
+[33mcommit 3741d8e4afa38b5232fa7731857abb43e49942ed[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 23 16:59:20 2016 +0800
+
+    更换编辑器为百度编辑器
+
+[33mcommit ba1ffb5a883855604bdd37d08fecacbbe392b429[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 23 09:47:17 2016 +0800
+
+    修改字数限制提示和修改后台名称
+
+[33mcommit 8bc808b8ac844f4c34547bc8709d2c1621d4bb13[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 17:35:50 2016 +0800
+
+    添加 ckeditor 库
+
+[33mcommit 6c1408fec5d550219eb7b6807b07a8a574e631f8[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 17:26:55 2016 +0800
+
+    修改订阅输入框为另一种输入框
+
+[33mcommit afe1d563c09b8b8ef6047548a553d34e5f8f8497[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 16:28:15 2016 +0800
+
+    添加邮件订阅
+
+[33mcommit 70dea3f6b8ba71fe541b951fa5f54884bf78c1a7[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 14:48:10 2016 +0800
+
+    修改默认图片
+
+[33mcommit 93396340d410716fb9a5a11738de9f57ae354a44[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 14:17:30 2016 +0800
+
+    修改构建工具，修改文章
+
+[33mcommit e39814d73f78b909ccbf3183730f2b80ac7a389f[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 13:34:24 2016 +0800
+
+    修改构建工具
+
+[33mcommit aac31bfe31230ac9970de4df818a0c0deee60241[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 22 10:09:49 2016 +0800
+
+    添加修改
+
+[33mcommit bd877167b3435278a776a951cdab60ba15a2a1f8[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 19:29:55 2016 +0800
+
+    限制活动标题为 2OC5 个字
+
+[33mcommit 16f6fb736f8b60af893c84c3efe79a9b8a765296[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 16:07:38 2016 +0800
+
+    添加活动描述
+
+[33mcommit b431f7292e11cbfef726137ec456304c7ff15c45[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 15:13:57 2016 +0800
+
+    修改后台让活动可以添加图片
+
+[33mcommit 987df688854827e5d55e1f93209631e30b55de5d[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 12:01:07 2016 +0800
+
+    修改常见问题
+
+[33mcommit 3161eced6b7c8d22fa8d73063b68666931c61ad5[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 11:55:20 2016 +0800
+
+    修改非登录状态下使用须知显示内容
+
+[33mcommit 1d43eb2e62061790a6d36b3972d42c7e5898e96b[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 11:29:00 2016 +0800
+
+    修改底部按钮
+
+[33mcommit 22d5976ff1fd542fbfd9ec42807af981873db686[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 10:38:31 2016 +0800
+
+    修改后台添加图片，修改活动显示类型
+
+[33mcommit 6d5ace9fbf61dcaaada48c1dc0caeddca9dab0e1[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 10:12:34 2016 +0800
+
+    修改活动列表，修改文章上传缩略图
+
+[33mcommit d363c2c3de1bed38b5732ac30cd846574512509c[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 21 09:27:12 2016 +0800
+
+    修改文章
+
+[33mcommit 82fe145012cad40429154039673d4c4f64f4c8dd[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 17 16:23:13 2016 +0800
+
+    提交修改
+
+[33mcommit 2c521ac38858e58a9e84e813ad56273e81d572cd[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 17 16:12:33 2016 +0800
+
+    修改标签传递值
+
+[33mcommit 04027b17f0829a34ee41dac729a6778a2e7e0cd4[m
+Author: songwei <songwei.wesdom.me>
+Date:   Thu Mar 17 15:04:28 2016 +0800
+
+    修改编辑显示广告banner原数据
+
+[33mcommit d91bc7d3eac9ab10ac50649d404569b365f33295[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 16 17:04:50 2016 +0800
+
+    修改后台上传地址
+
+[33mcommit 47757b8969807706ed21e322d6b8f68867887101[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 16 16:10:08 2016 +0800
+
+    添加作者描述
+
+[33mcommit 7b7f003527da23e4878064e50a08fd68912c766b[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 16 11:25:46 2016 +0800
+
+    移除全部common.js
+
+[33mcommit f95ec8208e061e878ebda5959b2fe894b3caf9b2[m
+Author: songwei <songwei.wesdom.me>
+Date:   Wed Mar 16 11:09:38 2016 +0800
+
+    修改为始终不用进入登录页面
+
+[33mcommit ef3aaca9be6ef106b11b4b59fd7d49ed9a8a0395[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 15 19:26:17 2016 +0800
+
+    删除common.js
+
+[33mcommit f5de0f28ff1b0c838e92400fcacc770d4a53316d[m
+Author: songwei <songwei.wesdom.me>
+Date:   Tue Mar 15 18:07:58 2016 +0800
+
+    添加换量合作方图片上传
+
+[33mcommit e8a154f81ae9fb1b384f592e904d57caa3f414cc[m
+Author: songwei <songwei.wesdom.me>
+Date:   Mon Mar 14 10:44:01 2016 +0800
+
+    修改后台数据格式
+
+[33mcommit ddeb5f270273e005ad5868506be467c5886cdf64[m
+Author: songwei <songwei.wesdom.me>
+Date:   Fri Mar 11 10:59:18 2016 +0800
+
+    新增添加广告和添加 banner 图片
+
+[33mcommit b495ab50e33d3e7ebb943b4ebfa77781d5140f96[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Mar 4 17:37:58 2016 +0800
+
+    修复 bug
+
+[33mcommit 755765f428c3b68c8fa10ff125295ae62b2ada76[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Fri Mar 4 10:14:45 2016 +0800
+
+    修改 bug 添加文章模块
+
+[33mcommit 790a840354562a60ed76f614212447edded35eb4[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Mar 3 19:27:59 2016 +0800
+
+    添加最新进度
+
+[33mcommit 786d283ccfc1a006b531b0736deabb93386689a0[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Thu Mar 3 09:15:22 2016 +0800
+
+    修改活动管理，作者管理，订阅管理，合作方管理，活动注册管理
+
+[33mcommit 09e6c16a6c16122e9e05f6550e9e8d88f36a80fb[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Tue Mar 1 22:31:37 2016 +0800
+
+    添加铺子后台最新进度
+
+[33mcommit dbb8f498a08d669fc078c658bd23db042b3d1891[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Feb 29 18:27:30 2016 +0800
+
+    添加铺子后台项目及部分已完成模块
+
+[33mcommit 4baaf75415616beb1f1f1e768268f68f251d90f1[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Wed Feb 24 11:38:02 2016 +0800
+
+    修改常见问题，新增文档
+
+[33mcommit 7e3d0806776acf9459c70cb8e846c8ad1944a32d[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Feb 22 11:59:21 2016 +0800
+
+    change login url
+
+[33mcommit 2b2b7226862c1b6215427d50864c482f06641de2[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Feb 22 11:41:10 2016 +0800
+
+    修改登陆地址志向
+
+[33mcommit 2e7f8d3781c9e86edfe4704a2dd7681d5868aff9[m
+Author: aaronshsieh <aaron.s.hsieh@gmail.com>
+Date:   Mon Feb 22 11:30:12 2016 +0800
+
+    修改弹窗
+
+[33mcommit 8ba0b04bd7fee2b5ae665a344e5ece073832d426[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Fri Feb 19 10:23:37 2016 +0800
+
+    修改对接系统
+
+[33mcommit fca5d02f3651a4e282060030b21c8453af06b454[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 14:14:55 2016 +0800
+
+    修改对接系统
+
+[33mcommit 75bbdf7ecef8ec6618f092d26f25b0e5eb467768[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 11:52:05 2016 +0800
+
+    修改对接系统
+
+[33mcommit 4b464b129bd28c64a5bc75ac5f8d58141f1a44c0[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 11:45:53 2016 +0800
+
+    修改对接系统
+
+[33mcommit 0fb86fe906eca5ee6c8cb63fcd38f690449eb4c6[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 11:39:24 2016 +0800
+
+    修改对接系统
+
+[33mcommit 6e328f1352ebf97822ecdfaa52d8eec71f5daefe[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 10:30:14 2016 +0800
+
+    修改对接系统
+
+[33mcommit 98d58f4122313639ac66b864ed293609c2d668c2[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 10:27:01 2016 +0800
+
+    修改对接系统
+
+[33mcommit 42a76eda02d9f594006aa9d259187bce501231d5[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 10:06:37 2016 +0800
+
+    修改对接系统
+
+[33mcommit 6d6bb8fe8e5ff173f86ae44d2708f45a87dc333f[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Feb 18 09:36:44 2016 +0800
+
+    提交修改
+
+[33mcommit ce00799805daa286b8e882a4e6327ef6cd83eadd[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 18:17:16 2016 +0800
+
+    提交修改
+
+[33mcommit f2d0c28388dc03c4eb19e78d53dd3be5d216b959[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 17:04:52 2016 +0800
+
+    修改错误连接
+
+[33mcommit 8d3d5501e645e11efeefb5a92e30c9b9e28cf228[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 16:59:50 2016 +0800
+
+    修改对接系统 bug
+
+[33mcommit a5f583a2a2a893e18e3ab829364202cda4fde68a[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 16:32:29 2016 +0800
+
+    修改链接去除 /html/
+
+[33mcommit 97b89a6e6b4d976f002102bcb5e44a93776f9a9b[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 16:13:53 2016 +0800
+
+    修改对接系统
+
+[33mcommit fcc9e0cc14c69f3fb11c4eeec244c346e8c75266[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 14:39:51 2016 +0800
+
+    删除二次激活上报页面url-input类名
+
+[33mcommit 9caf16cdb708a7ea85b8c3351a031fea9ac437c7[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 14:27:38 2016 +0800
+
+    修改对接系统
+
+[33mcommit 53b2de57bc440f7587bbad55b3b31914dd5dbfce[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Feb 17 10:21:14 2016 +0800
+
+    对接二期修改
+
+[33mcommit a941d1acacb56af57bfdf8383af2b534d6b59f00[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Tue Feb 16 18:23:25 2016 +0800
+
+    添加开发文件
+
+[33mcommit 92f5e1a30339dce60360c89409c53cb1c415ff4b[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Mon Feb 15 11:30:37 2016 +0800
+
+    修改构建工具，去除本地生成服务器
+
+[33mcommit c9c647ce97bb82f63ee59dbc58a9cef875d33a23[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Mon Feb 15 11:21:34 2016 +0800
+
+    修改 nginx 配置
+
+[33mcommit 47a01ff61e30e086c7c4127a8264697218ee1538[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Mon Feb 15 10:28:12 2016 +0800
+
+    nginx配置
+
+[33mcommit 3ea97f559ab4fe29a6cd80b7494a733308acadb4[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 28 16:46:50 2016 +0800
+
+    测试新旧兼容
+
+[33mcommit 24510c6f17dc8b03ca8801b162848db141aa885e[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 28 15:48:10 2016 +0800
+
+    修改ignore
+
+[33mcommit 2d0f9cbfe06d683a1a51832efaf6adf755518743[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 28 15:40:46 2016 +0800
+
+    添加 vendor dist
+
+[33mcommit bcc9c4375e9b19cf34d5999cd73d4f73bc1db595[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 28 15:39:57 2016 +0800
+
+    ignore
+
+[33mcommit bb498d4efa5dedcfc696bcfc0dbdb4bba9d1a770[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 28 15:25:47 2016 +0800
+
+    大小写
+
+[33mcommit 584621f61595fce474ad844b13202edf0f49fe33[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 28 15:23:37 2016 +0800
+
+    readme
+
+[33mcommit f861b410c05821d777a3bbeefdd9b00590bc1b3f[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 28 14:53:50 2016 +0800
+
+    将双引号替换成单引号
+
+[33mcommit e53cd2cc7933ba7913762497c9a8cc52fc3d443d[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 28 14:40:27 2016 +0800
+
+    删除 gulp-rename
+
+[33mcommit 66da287575bcab95c34c8cde96c3d995f6dea7bc[m
+Merge: 7286b3c c0dee8b
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 28 14:17:41 2016 +0800
+
+    合并master
+
+[33mcommit 7286b3cead4cc5f1721101bb59d4785eeb4fccf4[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 28 14:16:42 2016 +0800
+
+    提交 vendor 包
+
+[33mcommit c0dee8b28918e38318edf52973ec5182ec10ec16[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 27 15:40:12 2016 +0800
+
+    无需更改html目录结构
+
+[33mcommit 3d36aedeab46a284ed5dfe0a6097e2611f926033[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 27 15:05:20 2016 +0800
+
+    测试修改路径
+
+[33mcommit 1b2c921fd2ef5477c05f83cd7772600ad29799a0[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 27 12:12:32 2016 +0800
+
+    修改生成html目录
+
+[33mcommit b7e1feb496bb24f48b62285b21ed8eba40495fd2[m
+Merge: 7b2287c 51673c0
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 27 12:06:39 2016 +0800
+
+    修改构建工具，移除html后缀
+
+[33mcommit 7b2287ca10b72b97cd8295e5b5d744eb91a8906f[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 27 12:05:01 2016 +0800
+
+    移除 html 后缀
+
+[33mcommit 51673c0c439cf99152a215a6d410fec12a4c6957[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 27 10:54:53 2016 +0800
+
+    html路径替换
+
+[33mcommit 1e2ae07c8926199d2d6230ff8b67ba4a3e47bcdf[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 27 10:29:56 2016 +0800
+
+    html路径替换
+
+[33mcommit 8a101c594289f89ac8ee08428a94d25ee4ec104c[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 20 16:07:12 2016 +0800
+
+    修改遗漏文件
+
+[33mcommit d099d0000a230190f5d358fca50cbc6efbb4db13[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 20 15:45:33 2016 +0800
+
+    添加 html 后缀
+
+[33mcommit 73d0f02a1bbe7303724d4cea5feaef86b4e8d46c[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Mon Jan 18 09:09:07 2016 +0800
+
+    添加 git 项目文档
+
+[33mcommit 780114ce06f6b9f6f13b7134ffde2bbf09d08561[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 14 15:16:48 2016 +0800
+
+    修改打包脚本
+
+[33mcommit 015dc446682ece31f0f3b9b525f8a6b736779530[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 14:58:29 2016 +0800
+
+    修正标签错误
+
+[33mcommit b628807f90eb55a1593f3e94507f497f89f1bfe0[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 14:56:29 2016 +0800
+
+    修正书写错误
+
+[33mcommit 39b4ebccd4e4c85ce29cc540b9bb81124a16d2fb[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 14:50:43 2016 +0800
+
+    添加 demo
+
+[33mcommit d50180c9fc4be74c54ea08ba44c460b6722fe67e[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 14 14:18:08 2016 +0800
+
+    打包部署脚本&删除demo
+
+[33mcommit c51fefa576f3852040d815446247996a75b88987[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 14 14:07:19 2016 +0800
+
+    打包部署脚本
+
+[33mcommit b8335317693dcfb18feb3aed65af482ac4083730[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 12:16:10 2016 +0800
+
+    修改路径，添加遗漏文件
+
+[33mcommit f6cfe1e4b75df325ac3d0e49474d840e94fe906c[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 12:05:20 2016 +0800
+
+    修改文档
+
+[33mcommit 1aa573ddcd9f06b5db54c69e350dab318c5acfbc[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 11:49:23 2016 +0800
+
+    修改 cpboss 为 ferrari
+
+[33mcommit 4e366594297c4040667dc66a6e7bf0b07cba0bd4[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 10:59:13 2016 +0800
+
+    全局替换项目名
+
+[33mcommit 776c39d5afef4f30b95c3ff58965ff6a737eb4e4[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Thu Jan 14 10:18:22 2016 +0800
+
+    添加遗漏文件，解决路径问题
+
+[33mcommit 3bc6d2a1c3c864e83a1449e2d928fb538cdcd90f[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 13 18:57:03 2016 +0800
+
+    修正绝对相对路径
+
+[33mcommit 943d55b4988e9cfd266ab908e8b66c5ac58a35e1[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 13 15:43:54 2016 +0800
+
+    跨域nginx处理
+
+[33mcommit 31c1935b9c5377ec989ded111167a84062568aae[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Wed Jan 13 12:08:08 2016 +0800
+
+    ignore
+
+[33mcommit c8d263251911214dcef0590bfb27c41081621243[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 13 11:43:57 2016 +0800
+
+    删除 cpboss dist 文件夹
+
+[33mcommit a4bc02419405455da96f42973095e46900498bde[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 13 11:27:13 2016 +0800
+
+    修改文档
+
+[33mcommit a005f7f9b7e6f8408ec076b586fddf6a210fa26b[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 13 11:23:31 2016 +0800
+
+    添加文档
+
+[33mcommit 01de3d595473cadf7b3c9ca1440a65e1ab682e98[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 13 11:14:06 2016 +0800
+
+    添加初始项目文件
+
+[33mcommit f8d4c16fef86fd24b765c734f08e3159e53b8b60[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Jan 13 11:10:52 2016 +0800
+
+    删除无用文件
+
+[33mcommit 7bd5828cbbede1c0dba72537aa47c8d498e545e1[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Jan 7 17:35:52 2016 +0800
+
+    结构调整
+
+[33mcommit a36c9338eaed995b3b91b082f4a77a64cf19aba9[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Dec 3 16:25:30 2015 +0800
+
+    common&readme
+
+[33mcommit 63f3e61590e1105167b4e4685ed4b7c918be24a2[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Tue Dec 1 11:54:24 2015 +0800
+
+    修改生成代码路径
+
+[33mcommit eb2187f8856637ac419b8173ee52fda64aafbcc2[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Mon Nov 30 11:17:52 2015 +0800
+
+    路径修改
+
+[33mcommit 0ab5d16ab259098527884c1315685b5acc96d809[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Mon Nov 30 10:54:05 2015 +0800
+
+    修改生成代码文件夹
+
+[33mcommit 924969b75a1140be2d3064048806502530ea6f11[m
+Author: zhenzhijian <zhijian@iyouqian.com>
+Date:   Thu Nov 26 11:33:10 2015 +0800
+
+    前端旧代码迁移
+
+[33mcommit f498c5164296605b9dac70ac5e3d18e580b217c8[m
+Author: zhenzhijian <Administrator@ZCVXTYYHEMIGUIM>
+Date:   Wed Nov 25 09:59:00 2015 +0800
+
+    demo初版
+
+[33mcommit 65fef3fd479523144bb7017129d93d2589498dd5[m
+Author: zhenzhijian <Administrator@ZCVXTYYHEMIGUIM>
+Date:   Tue Nov 24 23:05:05 2015 +0800
+
+    demo
+
+[33mcommit 3929a041e5799a01be3d3f1984ab3d105aa9d3c2[m
+Author: zhenzhijian <Administrator@ZCVXTYYHEMIGUIM>
+Date:   Fri Nov 20 09:16:02 2015 +0800
+
+    ignore
+
+[33mcommit 7e34e80222c52f59042b17f35d5576e2d5cb45d0[m
+Author: songwei <songwei@iyouqian.com>
+Date:   Wed Nov 18 23:33:56 2015 +0800
+
+    提交项目测试文件

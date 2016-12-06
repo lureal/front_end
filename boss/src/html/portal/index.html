@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>微思敦企业门户</title>
+        <meta name="renderer" content="webkit">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    	<!--[if IE]>
+    	<script src="/vendor/html5shiv/dist/html5shiv.min.js"></script>
+    	<script src="/vendor/respond/dest/respond.min.js"></script>
+    	<![endif]-->
+
+        {#
+            IE 10, 11, edge 对 media query 支持不是很完善，具体表现在刚进入屏幕时执
+            行了 media query 设置小屏幕的 css 代码。并且 IE html 注释版本判定只支持
+            IE 9，IE 9 以上并不支持，所以这里新增识别 IE 9 以上以及 Edge 浏览器，让
+            他们强制使用 respond.min.js
+        #}
+        <script>
+            var ua = navigator.userAgent, head, link;
+            if(/rv:11.0/i.test(navigator.userAgent) ||/MSIE 10/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
+                head = document.getElementsByTagName('head')[0];
+                html5shiv = document.createElement('script');
+                html5shiv.src = '/vendor/html5shiv/dist/html5shiv.min.js';
+                respond = document.createElement('script');
+                respond.src = '/vendor/respond/dest/respond.min.js';
+                head.appendChild(respond);
+                head.appendChild(html5shiv);
+            }
+        </script>
+
+        {% block head %}
+        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/vendor/AdminLTE/dist/css/AdminLTE.min.css">
+    	<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    	<link rel="stylesheet" href="/#proj_name#/css/portal.css">
+        <link rel="stylesheet" href="/#proj_name#/css/portal-modal.css">
+    	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    	<script src="/vendor/underscore/underscore-min.js"></script>
+        {% endblock %}
+
+    </head>
+    <body>
+        <img id="loading" src="/#proj_name#/img/loading.gif" alt="loading" />
+        <div id="main-content" style="display: none;">
+
+            {# 顶部横栏 #}
+            <header class="b-navbar">
+                <div class="wrap">
+
+                    {# logo #}
+                    <a class="logo" href="javascript:void(0);">
+                        <img src="/#proj_name#/img/login-logo.png" srcset="/#proj_name#/img/login-logo@2x.png">
+                        <!-- <img src="/#proj_name#/img/logo.png" srcset="/#proj_name#/img/logo@2x.png" alt="logo" /> -->
+                    </a>
+
+                    {# 导航 #}
+                    <div class="nav">
+
+                        {# 固定导航 #}
+                        <ul class="navbar-fix">
+                            <li id="navbar-hidden-toggle" class="navbar-hidden-toggle">
+                                <a href="javascript:void(0);">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </a>
+                                <div class="navbar-hidden">
+                                    <ul id="navbar-hidden"></ul>
+                                </div>
+                            </li>
+                    		<li class="email">
+                    			<a href="javascript:void(0);" id="username">@wesdom.me</a>
+                    		</li>
+                    		<li>
+                    			<a href="javascript:void(0);" id="changePwd">修改密码</a>
+                    		</li>
+                    		<li>
+                    			<a href="javascript:void(0);" id="logout">退出</a>
+                    		</li>
+                        </ul>
+
+                        {# 变动导航 #}
+                        <div class="navbar-change">
+                        	<ul id="navbar-change"></ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="wrap">
+
+                {# 侧边栏 #}
+                <div class="b-sidebar" id="b-sidebar">
+                    <ul></ul>
+                </div>
+
+                {# 实际内容区域 #}
+                <div class="b-content" id="b-content"></div>
+                <div class="content-back-icon">
+                    <a class="icon-img" target="_blank" href="/#proj_name#/portal/suggest">
+                        <img src="/#proj_name#/img/portal-icon.png">
+                    </a>
+                    <a href="/#proj_name#/portal/suggest" target="_blank">
+                        <span class="icon-text">意见反馈</span>
+                    </a>
+                </div>
+            </div>
+            <footer class="b-footer">
+                <div class="wrap">
+                    <div class="copyright">
+                        <p>鄂 ICP备15001665号 Copyright © 2016 WESDOM. All Rights Reserved</p>
+                    </div>
+                </div>
+            </footer>
+
+            {# 站内信 #}
+            <div class="inside-letter">
+                <div class="letter-btn">
+                    <a href="#tabManage" class="backlog">待办</a>
+                    <a href="#tabNotice" class="remind">提醒</a>
+                </div>
+                <div class="letter-content tab-content">
+                    <div class="tab-pane fade active in tabManage">
+                        <div id="tabManage-table">
+                        </div>
+                        <div class="letter-footer clearfix w-pager">
+                            <div class="pull-right" id="tabManage-pager">
+                                <button class="w-previous pull-left">
+                                    <i class="fa fa-chevron-circle-left"></i>
+                                </button>
+                                <button class="w-next pull-left">
+                                    <i class="fa fa-chevron-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade tabNotice">
+                        <div id="tabNotice-table" class="notice-flag">
+                        </div>
+                        <div class="letter-footer clearfix w-pager unReadFlag">
+                            <div>
+                                <a href="javascript:void(0);" class="read-info">查看已读提醒</a>
+                            </div>
+                            <div class="pull-right" id="tabNotice-pager">
+                                <button class="w-previous pull-left">
+                                    <i class="fa fa-chevron-circle-left"></i>
+                                </button>
+                                <button class="w-next pull-left">
+                                    <i class="fa fa-chevron-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="letter-footer clearfix w-pager readFlag z-hidden">
+                            <div class="pull-right" id="tabNotice-pager">
+                                <button class="w-previous pull-left">
+                                    <i class="fa fa-chevron-circle-left"></i>
+                                </button>
+                                <button class="w-next pull-left">
+                                    <i class="fa fa-chevron-circle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# 顶部栏 #}
+        <script type="text/template" id="b-navbar-tpl">
+            <% _.each(sidebars, function(sidebar, index) { %>
+                <% if (index < 4) { %>
+                    <li>
+                        <a href="<%= sidebar.url === undefined ? 'javascript:void(0);' : sidebar.url %>"><%= sidebar.title %></a>
+                    </li>
+                <% } %>
+            <% }); %>
+        </script>
+
+        {# 顶部栏隐藏菜单 #}
+        <script type="text/template" id="hidden-navbar-tpl">
+            <% _.each(sidebars, function(sidebar, index) { %>
+                <% if (index >= 4) { %>
+                    <li>
+                        <a href="<%= sidebar.url === undefined ? 'javascript:void(0);' : sidebar.url %>"><%= sidebar.title %></a>
+                    </li>
+                <% } %>
+            <% }); %>
+        </script>
+
+        {# 侧边栏模板 #}
+        <script type="text/template" id="b-sidebar-tpl">
+            <% _.each(sections, function(nav, index) { %>
+                <li class="<%= index === 0 ? 'active' : '' %>">
+                    <a data-id="<%= nav.id %>" class="nav-item <%= nav.className === undefined ? '' : nav.className %>" href="<%= nav.url === undefined ? 'javascript:void(0);' : nav.url %>">
+                        <%= nav.title %>
+                    </a>
+                </li>
+            <% }); %>
+        </script>
+
+        {# 实际内容区域模板 #}
+        <script type="text/template" id="b-content-tpl">
+            <div class="banner" style="background: #efefef url(<%= banner.pic %>) no-repeat center center;">
+                <h2><%= banner.title %></h2>
+                <p><%= banner.description %></p>
+            </div>
+            <div class="website">
+                <div class="notice z-hidden" id="notice">
+                </div>
+                <% _.each(items, function(item, index) { %>
+                    <div>
+                        <% _.each(item, function(list, index) { %>
+                            <div class="<%= list.className %>">
+                                <a class="<%= list.isRowOnly ? 'row-only' : '' %>" href="<%= list.url === undefined ? 'javascript:void(0);' : list.url %>" target="_blank">
+                                    <img src="<%= list.logo %>" style="display: <%= list.logo === '' || list.logo === undefined ? 'none' : 'inline-block' %>">
+                                    <span><%= list.title %></span>
+                                    <% if (list.description) { %>
+                                        <span class="desc"><%= list.description %></span>
+                                    <% } %>
+                                </a>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% }); %>
+
+            </div>
+            <div class="description">
+            </div>
+        </script>
+
+        <script type="text/template" id="notice-tpl">
+            <span class="notice-img"><img src="/#proj_name#/img/notice.png"><a href="/#proj_name#/portal/notice">公告：</a></span>
+            <ul>
+                <%_.each(data, function(val, index) { %>
+                    <li>
+                        <a href="/#proj_name#/portal/notice-list-preview?id=<%= val.id%>">
+                            <span>
+                                <a href="/#proj_name#/portal/notice-list-preview?id=<%= val.id%>" class="roll-notice" data-type="<%= val.type%>"><%= val.title%></a>
+                            </span>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+        </script>
+
+        {# 站内信已读提醒模板 #}
+        <script type="text/template" id="tabNoticeRead-tpl">
+            <div class="letter-read"> 
+                <a href="javascript:void(0);" class="read-remind">已读提醒</a>
+            </div>
+            <%_.each(data.letters, function(val, index) { %>
+                <div class="letter-content-item">
+                    <h4 class="le-content"  data-type="<%= val.type%>"><%= val.content%></h4>
+                    <span class="letter-time"><%= val.lmodify%></span>
+                    <a href="javascript:void(0);" class="delete" data-id="<%= val.id%>" data-type="<%= val.type%>">删除</a>
+                </div>
+            <% }); %>
+        </script>
+
+        {# 站内信未读提醒模板 #}
+        <script type="text/template" id="tabNotice-tpl">
+            <%_.each(data.letters, function(val, index) { %>
+                <div class="letter-content-item">
+                    <div class="circle">
+                    </div>
+                    <h4 class="le-content"  data-type="<%= val.type%>"><%= val.content%></h4>
+                    <span class="letter-time"><%= val.lmodify%></span>
+                    <a href="javascript:void(0);" class="read-btn" data-id="<%= val.id%>">标记已读</a>
+                </div>
+            <% }); %>
+            <% if(data.letters.length === 0) { %>
+                <div class="letter-content-item">
+                    <h4 class="le-content" style="text-align: center;">没有未读提醒</h4>
+                </div>
+            <% } %>
+        </script>
+
+        {# 站内信待办模板 #}
+        <script type="text/template" id="tabManage-tpl">
+            <%_.each(data.letters, function(val, index) { %>
+                <div class="letter-content-item">
+                    <h4 class="le-content"  data-type="<%= val.type%>"><%= val.content%></h4>
+                    <span class="letter-time"><%= val.lmodify%></span>
+                </div>
+            <% }); %>
+        </script>
+
+        {% include '../modules/modal.html' %}
+        {% include '../modules/portal-modal.html' %}
+        <script src="/#proj_name#/js/portal.js"></script>
+    </body>
+</html>

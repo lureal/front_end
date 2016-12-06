@@ -1,0 +1,68 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>菜单管理</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 菜单管理</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">菜单管理<small>（单击菜单进行相关操作）</small></h3>
+                    <a href="/#proj_name#/html/system/menu-add.html" class="btn btn-info btn-sm pull-right add-btn" style="display: none;">新增菜单</a>
+                </div>
+                <div class="box-body">
+                    <div>
+                        <div class="col-md-6 block-style" id="tree"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    {# 自定义内容弹出框 #}
+    <div class="modal fade" id="modal-menu">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-menu__title">菜单操作</h4>
+    			</div>
+    			<div class="modal-body" id="modal-menu__body"></div>
+    		</div>
+    	</div>
+    </div>
+
+    <!-- 菜单操作弹出窗 -->
+    <script type="text/template" id="modal-menu-tpl">
+        <a id="del-menu" class="btn btn-app" href="javascript:void(0);" data-id="<%= id %>" data-parentId="<%= parentId %>">
+            <i class="fa fa-minus"></i>删除菜单
+        </a>
+        <a class="btn btn-app" href="/#proj_name#/html/system/menu-detail.html?id=<%= id %>&parentId=<%= parentId %>">
+            <i class="fa fa-edit"></i>修改菜单
+        </a>
+        <a class="btn btn-app" href="/#proj_name#/html/system/menu-action-list.html?id=<%= id %>&parentId=<%= parentId %>&menuName=<%= encodeURIComponent(menuName) %>">
+            <i class="fa fa-user"></i>修改菜单权限
+        </a>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-menu-list.js"></script>
+{% endblock %}

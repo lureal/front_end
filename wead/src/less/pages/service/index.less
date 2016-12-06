@@ -1,0 +1,119 @@
+// 推广服务页面
+.service {
+
+    // 设置 card 样式
+    .card {
+        > div {
+            border-radius: 4px;
+            box-shadow: none;
+            height: 100px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        // 当前有提供这个服务
+        .card-open {
+            h3 {
+                color: #303640;
+                font-size: 20px;
+                height: 100px;
+                line-height: 100px;
+                margin: 0;
+                padding-left: 30px;
+            }
+
+            // 立即开通和重新开通
+            .open-now,
+            .reopen {
+                margin-top: -20px;
+                position: absolute;
+                right: 30px;
+                top: 50%;
+            }
+
+            // 正在审核和已开通
+            .review,
+            .opened {
+                color: #1a8cff;
+                font-size: 16px;
+                line-height: 1;
+                margin-top: -8px;
+                position: absolute;
+                right: 30px;
+                top: 50%;
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        // 敬请期待
+        .card-close {
+            color: #ccc;
+            font-size: 20px;
+            height: 100%;
+            line-height: 100px;
+            padding-left: 80px;
+            width: 100%;
+            position: relative;
+
+            i {
+                font-size: 36px;
+                color: #ccc;
+                left: 30px;
+                line-height: 1;
+                margin-top: -18px;
+                position: absolute;
+                top: 50%;
+            }
+        }
+    }
+
+    // 服务介绍样式
+    .intro {
+        margin-bottom: 30px;
+        position: relative;
+
+        .intro-row {
+            border-bottom: 1px solid #f5f5f5;
+            min-height: 70px;
+
+            > div {
+                min-height: 70px;
+            }
+
+            p {
+                color: #738399;
+                font-size: 14px;
+                height: 70px;
+                line-height: 70px;
+                margin: 0;
+                overflow: hidden;
+                padding-left: 30px;
+                padding-right: 120px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        // 查看详情按钮
+        .intro-detail {
+            margin-top: -20px;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+        }
+    }
+
+    // 资质详情
+    .detail {
+        .detail-btn {
+            color: #1a8cff;
+        }
+    }
+}

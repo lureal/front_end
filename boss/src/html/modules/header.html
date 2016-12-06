@@ -1,0 +1,68 @@
+{# 顶部横栏模块 #}
+
+<div class="main-header">
+
+	{# 顶部软件名称 #}
+	<a href="/#proj_name#/html/portal/index.html" class="logo">
+		<span class="logo-mini">首页</span>
+		<span class="logo-lg">首页</span>
+	</a>
+
+	{# 顶部导航条 #}
+	<nav class="navbar navbar-static-top" role="navigation">
+		<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+			<span class="sr-only">导航开关</span>
+		</a>
+
+		<div class="navbar-custom-menu" id="header-custome">
+		</div>
+	</nav>
+</div>
+
+<script type="text/template" id="header-custome-tpl">
+	<ul class="nav navbar-nav">
+		<li>
+			<a href="/#proj_name#/html/system/mail-list.html">
+				<i class="fa fa-book"></i>
+				<span class="hidden-xs">通讯录</span>
+			</a>
+		</li>
+		<li class="dropdown user user-menu">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<div class="user-image" style="overflow:hidden;">
+					<img src="<%= data.userInfo.icon === null ? '/#proj_name#/img/none.png' : data.userInfo.icon %>" alt="User Image" style="width: 100%;">
+				</div>
+				<span class="hidden-xs"><%= data.userInfo.userName %></span>
+			</a>
+
+			<ul class="dropdown-menu">
+				<li class="user-header">
+					<div style="z-index: 5; height: 90px; width: 90px; border: 3px solid; border-color: transparent; border-color: rgba(255,255,255,0.2); overflow: hidden; margin: auto; overflow: hidden; border-radius: 50%;">
+						<img src="<%= data.userInfo.icon === null ? '/#proj_name#/img/none.png' : data.userInfo.icon %>" alt="User Image" style="width: 100%;">
+					</div>
+				<p>
+					<%= data.userInfo.userName %>
+                  	<small>个人 ID：<%= data.userInfo.userId %></small>
+				</p>
+				</li>
+				<li class="user-body">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<span>职位：<%= data.userInfo.position %></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<span>部门名称：<%= data.userInfo.departName %></span>
+						</div>
+					</div>
+				</li>
+				<li class="user-footer">
+					<div class="pull-right">
+						<a href="javascript:void(0);" class="btn btn-default btn-flat" id="signout">登出</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</script>

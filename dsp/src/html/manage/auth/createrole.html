@@ -1,0 +1,86 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<body>
+    <div class="wrapper">
+        {% include '../../modules/header.html' %}
+        {% include '../../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>
+					权限管理
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> 权限管理</a></li>
+				</ol>
+			</section>  
+			<section class="content">
+				<div class="row">
+					<div class="box box-info">
+						<div class="box-header with-border">
+							<button class="btn btn-info pull-right save-role">
+								保存
+							</button>
+						</div>
+					<form class="form-horizontal" id="auth-role">
+						<div class="box-body">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">人员名称</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" id="person-name" placeholder="人员名称">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">账号</label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" id="account" placeholder="账号">
+								</div>
+							</div>
+							<div class="form-group ">
+								<label for="management-person" class="col-sm-2 control-label">角色</label>
+								<div class="col-sm-3">
+									<select class="form-control select2" id="role-list" style="width:100%">					
+									</select>
+								</div>
+							</div>
+							<div class="role-manage">
+								<div class="form-group" id="permission-role">	
+								</div>
+							</div>
+						</div>
+					</form>
+			</section>
+        </div>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <!-- 角色 -->
+	<script type="text/template" id="role-list-tpl">
+		<% for(var prop in data) { %>
+			<option value="<%= prop%>"><%= data[prop] %></option>
+		<% } %>
+	</script>
+
+	<!-- 权限列表 -->
+	<script type="text/template" id="permission-role-tpl">
+			<label class="control-label col-sm-2">权限</label>
+			<div class="row">
+				<% _.each(data, function(val, index) { %>
+					<div class="checkbox col-sm-10 col-sm-offset-2">
+						<label class="control-label">
+							<input type="checkbox" name="customer-manage" id="customer-manage" value="客户管理" data-id="<%= index %>"><%= val %>
+						</label>
+					</div>
+				<% }); %>
+			</div>
+	</script>
+
+</body>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-auth-createrole.js"></script>
+{% endblock %}

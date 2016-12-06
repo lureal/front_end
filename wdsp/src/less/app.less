@@ -1,0 +1,187 @@
+
+// modules level
+@import "./modules/alert.less";
+@import "./modules/header.less";
+@import "./modules/sidebar.less";
+@import "./modules/notice.less";
+@import "./modules/content-header.less";
+@import "./modules/content.less";
+@import "./modules/button.less";
+@import "./modules/box.less";
+@import "./modules/table.less";
+@import "./modules/breadcrumb.less";
+@import "./modules/form.less";
+@import "./modules/collapse.less";
+@import "./modules/datepicker.less";
+@import "./modules/dropdown-select.less";
+@import "./modules/checkbox.less";
+@import "./modules/chart.less";
+@import "./modules/content-nav.less";
+@import "./modules/content-progress.less";
+
+// page level
+@import "./pages/overview/index.less";
+
+@import "./pages/ad/group.less";
+@import "./pages/ad/bill.less";
+@import "./pages/ad/detail.less";
+@import "./pages/ad/dimension-platform.less";
+@import "./pages/ad/dimension-subject.less";
+@import "./pages/ad/group.less";
+
+@import "./pages/ad/weibo/base-info.less";
+@import "./pages/ad/weibo/complete.less";
+@import "./pages/ad/weibo/orientation.less";
+@import "./pages/ad/weibo/promotion-info.less";
+@import "./pages/ad/weibo/time-to-market.less";
+
+@import "./pages/data/overview.less";
+@import "./pages/data/people.less";
+
+@import "./pages/service/weibo/first.less";
+@import "./pages/service/weibo/second.less";
+@import "./pages/service/weibo/third.less";
+
+@import "./pages/finance/index.less";
+@import "./pages/finance/invoice.less";
+
+@import "./pages/notice/index.less";
+
+@import "./pages/aptitude/detail.less";
+
+// 重置整体合模型
+* {
+    box-sizing: border-box !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #f5f5f5;
+    font: 14px Microsoft YaHei, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+//  重置 h* 字体
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Microsoft YaHei, 'Microsoft YaHei', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+// 更改 placeholder 颜色
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #e5e5e5 !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #e5e5e5 !important;
+   opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #e5e5e5 !important;
+   opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #e5e5e5 !important;
+}
+
+// 设置主要包含块背景颜色
+.content-wrapper {
+    background: #f5f5f5;
+}
+
+// 屏幕宽度大于 768 像素
+@media (min-width: 768px) {
+    .content-wrapper {
+        margin-left: 120px;
+    }
+}
+
+// tools
+// -----------------------------------------------------------------------------
+.margin-right5 {
+    margin-right: 5px;
+}
+
+// 用户选择 select 时的操作
+.w-select-in {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+// 自定义弹出框中只有一个输入框和一个按钮
+.input-modal {
+
+    // 标题
+    .modal-diy-title {
+        color: #738399;
+        font-size: 16px;
+        margin: 0;
+        padding: 30px 0 20px;
+        text-align: center;
+    }
+
+    // 弹出框主体
+    .modal-diy-body {
+        padding: 0 40px;
+    }
+
+    // 弹出框输入框
+    .modal-diy-input {
+        border: 1px solid #eee;
+        border-radius: 4px;
+        color: #738399;
+        font-size: 14px;
+        min-height: 40px;
+        padding: 0 12px;
+
+        // 焦点聚焦时状态
+        &:focus {
+            border-color: #1a8cff;
+        }
+    }
+
+    // 弹出框按钮
+    .modal-diy-btn {
+        padding: 15px 40px 30px;
+
+        button {
+            min-width: 100%;
+        }
+    }
+
+    // 错误提示
+    .modal-diy-body {
+        &.error {
+
+            input {
+                border-color: #f64d46;
+            }
+
+            .error-tip {
+                display: block;
+            }
+        }
+        // 错误信息
+        .error-tip {
+            bottom: -10px;
+            display: none;
+            color: #f64d46;
+            line-height: 1;
+            left: 18px;
+            margin: 0;
+            position: relative;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "youqian",
+  "version": "0.0.1",
+  "authors": [
+    "aaronhsieh"
+  ],
+  "description": "youqian front-end projects",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "youqian",
+    "front-end"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "^4.6.3",
+    "bootstrap-wysiwyg": "*",
+    "underscore": "~1.8.3",
+    "bootstrap-select": "~1.9.3",
+    "Chart.js": "~1.0.2",
+    "awesome-bootstrap-checkbox": "~0.3.5",
+    "bootstrap-datepicker": "~1.5.1",
+    "jquery-form": "~3.46.0",
+    "jquery-qrcode": "*",
+    "jquery-touchswipe": "~1.6.15",
+    "respond": "~1.4.2",
+    "ExplorerCanvas": "*",
+    "html5shiv": "~3.7.3",
+    "jqueryrotate": "*",
+    "Swiper": "swiper#~3.3.0",
+    "jquery.cookie": "~1.4.1",
+    "moment": "~2.11.2",
+    "ckeditor": "~4.5.7",
+    "animate.css": "~3.5.1",
+    "jquery_lazyload": "jquery.lazyload#~1.9.7",
+    "video.js": "~5.9.0",
+    "fullpage.js": "~2.7.9",
+    "jqTree": "jqtree#~1.3.2",
+    "highcharts": "^4.2.5",
+    "bootstrap-switch": "~3.3.2",
+    "fullcalendar": "^2.9.0",
+    "blueimp-file-upload": "^9.12.5",
+    "vue": "^1.0.26",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "Sortable": "sortablejs#~1.4.2"
+  }
+}

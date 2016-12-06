@@ -1,0 +1,173 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>充值记录详情</h1>
+            <ol class="breadcrumb">
+                <li><a href="/#proj_name#/html/data/recharge-list.html"><i class="fa fa-dashboard"></i>充值管理</a></li>
+                <li>
+                    充值记录详情
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default" id="detail"></div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="detail-tpl">
+        <!-- <div class="box-header with-border">
+            <h3 class="box-title">充值记录详情</h3>
+        </div> -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>合同日期</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="contractDate" value="<%= data.recharge.contractDate %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>合同号</label>
+                        <input type="text" class="form-control" placeholder="" id="contractId" value="<%= data.recharge.contractId %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>平台ID</label>
+                        <input type="text" class="form-control" placeholder="" id="platformId" value="<%= data.recharge.platformId %>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>客户名称</label>
+                        <input type="text" class="form-control" placeholder="" id="custName" value="<%= data.recharge.custName %>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>有无代理</label>
+                        <select id="agent" class="form-control select2" style="width: 100%;"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>合同金额</label>
+                        <input type="number" class="form-control" placeholder="" id="contractAmount" value="<%= data.recharge.contractAmount %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>回款金额</label>
+                        <input type="number" class="form-control" placeholder="" id="paymentAmount" value="<%= data.recharge.paymentAmount %>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>回款日期</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="paymentDate" value="<%= data.recharge.paymentDate %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>折扣</label>
+                        <input type="text" class="form-control" placeholder="" id="discount" value="<%= data.recharge.discount %>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>赠送金额（元）</label>
+                        <input type="number" class="form-control" placeholder="" id="donate" value="<%= data.recharge.donate %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>充值金额（元）</label>
+                        <input type="number" class="form-control" placeholder="" id="chargeAmount" value="<%= data.recharge.chargeAmount %>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>划拨日期</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="allotDate" value="<%= data.recharge.allotDate %>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>服务费（元）</label>
+                        <input type="number" class="form-control" placeholder="" id="serviceCharge" value="<%= data.recharge.serviceCharge %>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>开户费（元）</label>
+                        <input type="number" class="form-control" placeholder="" id="openCharge" value="<%= data.recharge.openCharge %>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input type="text" class="form-control" placeholder="" id="memo" value="<%= data.recharge.memo %>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-default" id="canel">取消</button>
+            <button class="btn btn-info pull-left" id="submit">修改</button>
+        </div>
+    </script>
+
+    <!-- 客户 -->
+    <script type="text/template" id="select-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/data-recharge-detail.js"></script>
+{% endblock %}

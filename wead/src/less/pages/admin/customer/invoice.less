@@ -1,0 +1,369 @@
+.admin-service-invoice {
+
+    // 公司名称
+    .company-name {
+        color: #39414d;
+        font-size: 20px;
+        padding: 8px 0 28px;
+    }
+
+    // 内容区域导航
+    .content-nav {
+
+        > div {
+            position: relative;
+        }
+
+        // 导航中的每一个项
+        > div > a {
+            background: #fff;
+            border-radius: 4px;
+            color: #738399;
+            display: block;
+            font-size: 16px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+
+            &:hover,
+            &.active {
+                color: #1a8cff;
+            }
+
+            > i {
+                margin: 0 5px;
+            }
+
+            // 提示更新数量
+            .notice-num {
+                background: #f54f49;
+                border-radius: 7px;
+                color: #fff;
+                display: inline-block;
+                font-size: 12px;
+                line-height: 1;
+                margin-left: 5px;
+                padding: 1px 4px;
+            }
+        }
+
+        // 导航下拉菜单
+        > div > ul {
+            border-width: 0 1px 1px 1px;
+            border-style: solid;
+            border-color: #f5f5f5;
+            border-radius: 0;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background: #fff;
+            display: none;
+            list-style: none;
+            left: 15px;
+            margin: -1px -1px 0;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            right: 15px;
+            top: 60px;
+            z-index: 100;
+
+            &:focus {
+                display: block;
+            }
+
+            a {
+                color: #738399;
+                display: block;
+                font-size: 16px;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+
+                &:hover,
+                &.active {
+                    color: #1a8cff;
+                }
+
+                i {
+                    margin: 0 5px 0 -13px;
+                }
+                
+                // 提示更新数量
+                .notice-num {
+                    background: #f54f49;
+                    border-radius: 7px;
+                    color: #fff;
+                    display: inline-block;
+                    font-size: 12px;
+                    line-height: 1;
+                    margin-left: 5px;
+                    margin-right: -13px;
+                    padding: 1px 4px;
+                }
+            }
+        }
+    }
+
+    // 发票金额和发票审核标题
+    .recharge-title h2,
+    .invoice-list-title h2 {
+        color: #39414d;
+        font-size: 20px;
+        padding: 30px 0;
+        margin: 0;
+
+        span {
+            color: #999;
+            font-size: 13px;
+        }
+    }
+
+    // 发票金额 card
+    .card {
+        .info-box {
+            border-radius: 4px;
+            box-shadow: none;
+            height: 120px;
+            margin-bottom: 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        i {
+            background: #1a8cff;
+            border-radius: 50%;
+            display: none;
+            height: 60px;
+            left: 30px;
+            margin-top: -30px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 60px;
+
+            &:after {
+                color: #fff;
+                content: "\f1c0";
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: 27px;
+                display: inline-block;
+                line-height: 60px;
+            }
+        }
+
+        .info-box > div {
+            padding-top: 28px;
+
+            h3,
+            p {
+                color: #303640;
+                line-height: 1.2;
+                margin: 0;
+            }
+
+            h3 {
+                font-size: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            p {
+                font-size: 30px;
+                margin-top: 7px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        // 有 icon 的 card
+        &.card-with-icon {
+            .info-box {
+                padding-left: 120px;
+
+                h3,
+                p {
+                    color: #303640;
+                }
+            }
+
+            i {
+                display: block;
+            }
+        }
+
+        // 按钮
+        .edit-all,
+        .edit-fensitong {
+            bottom: 23px;
+            position: absolute;
+            right: 30px;
+        }
+    }
+
+    // 发表列表
+    #invoices-table {
+
+        // 下载按钮的单元格
+        .download-td {
+            padding-top: 12px;
+            padding-bottom: 10px;
+        }
+
+        // 表格中的发票内容
+        .table-invoice-ctn {
+            > div {
+                line-height: 1.5;
+
+                & + div {
+                    margin-top: 20px;
+                }
+            }
+
+            // 驳回原因
+            .reason {
+                background: #f5f5f5;
+                border-radius: 5px;
+                padding: 8px 14px;
+                position: relative;
+            }
+        }
+
+        // 表格中的按钮
+        .table-btn {
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 0;
+            text-align: center;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+
+        // 操作单元格小图标
+        .operate-td i {
+            margin-left: 5px;
+        }
+
+        // 状态单元格小图标
+        .status-td i {
+            margin-right: 5px;
+
+            &.fa-check {
+                color: #b8e62e;
+            }
+        }
+    }
+}
+
+// 定制自定义弹窗标题
+.modal-fensitong-invoice.modal-diy-title {
+    color: #738399;
+    font-size: 16px;
+    margin: 0;
+    padding: 30px 0 20px;
+    text-align: center;
+}
+
+// 定制自定义弹窗主体
+.modal-fensitong-invoice.modal-diy-body {
+    padding: 0 40px;
+}
+
+// 定制自定义弹窗输入框
+.modal-fensitong-invoice.modal-diy-input {
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    color: #738399;
+    font-size: 14px;
+    min-height: 40px;
+    padding: 0 12px;
+
+    // 焦点聚焦时状态
+    &:focus {
+        border-color: #1a8cff;
+    }
+}
+
+// 定制自定义弹窗按钮
+.modal-fensitong-invoice.modal-diy-btn {
+    padding: 15px 40px 30px;
+
+    button {
+        min-width: 100%;
+    }
+}
+
+// 错误提示
+.modal-fensitong-invoice.modal-diy-body {
+    &.error {
+
+        input {
+            border-color: #f64d46;
+        }
+
+        .error-tip {
+            display: block;
+        }
+    }
+    // 错误信息
+    .error-tip {
+        bottom: -10px;
+        display: none;
+        color: #f64d46;
+        line-height: 1;
+        left: 18px;
+        margin: 0;
+        position: relative;
+    }
+}
+
+@media (max-width: 992px) {
+    .admin-service-invoice {
+
+        // 内容导航条适配小屏幕
+        .content-nav {
+
+            // 让每一个导航项之间产生间距
+            > div + div {
+                margin-top: 20px;
+            }
+
+            // 下拉列表
+            > div > ul  {
+                position: static;
+            }
+
+            // 实际导航项
+            > div > a {
+                .move-left5 {
+                    margin-left: -12px;
+                }
+            }
+        }
+
+        // 资金明细 card
+        .card + .card {
+            .info-box {
+                margin-top: 30px;
+            }
+        }
+    }
+}

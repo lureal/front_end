@@ -1,0 +1,239 @@
+.w-table {
+    border: 0;
+    margin: 0;
+
+    // 表格头
+    tbody > tr > th {
+        background: #fafafa;
+        border-bottom: 1px solid #f5f5f5;
+        border-top: 0;
+        color: #738399;
+        font-weight: normal;
+        font-size: 14px;
+        height: 40px;
+        padding: 0;
+        padding-left: 30px;
+        vertical-align: middle;
+    }
+
+    // 表格内容
+    tbody > tr > td {
+        color: #738399;
+        font-size: 14px;
+        line-height: 1;
+        padding: 23px 0 23px 30px;
+        vertical-align: middle;
+    }
+
+    // 表格内容高亮显示
+    tbody > tr.tr-danger {
+        background: rgba(255, 77, 77, .1);
+    }
+}
+
+// 工具栏
+.w-table-tool {
+    padding-left: 30px;
+
+    // 工具栏项
+    .w-tool-item {
+        margin-right: 30px;
+    }
+
+    // 工具栏项名称
+    .w-tool-name {
+        color: #75839a;
+        font-size: 14px;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+
+    // 工具栏项 input 框
+    .w-tool-input {
+        border-radius: 4px;
+        border: 1px solid #f2f2f2;
+        height: 40px;
+        outline: none;
+    }
+
+    // 为不同类型的项设置不同的宽度
+    // 文本输入框
+    .w-tool-item-input {
+        min-width: 150px;
+        padding-left: 10px;
+    }
+
+    // 单选框
+    .w-tool-item-select {
+        min-width: 140px;
+    }
+
+    // 日期选择
+    .w-tool-item-datepicker {
+        min-width: 240px;
+    }
+}
+
+// table 中的某个 td 可以被展开，形式类似于通知列表
+.w-table-collapse-td {
+    border: 0;
+    margin: 0;
+
+    tbody > tr > th {
+        background: #fafafa;
+        border-bottom: 1px solid #f5f5f5;
+        border-top: 0;
+        color: #738399;
+        font-weight: normal;
+        font-size: 14px;
+        height: 40px;
+        padding: 0;
+        padding-left: 30px;
+        vertical-align: middle;
+    }
+
+    // 表格内容
+    tbody > tr > td {
+        color: #738399;
+        font-size: 14px;
+        padding-left: 30px;
+        padding-top: 21px;
+        padding-bottom: 21px;
+    }
+    .w-collapse-td {
+        > div {
+            font-size: 14px;
+            max-height: 1.5em;
+            min-height: 1.5em;
+            overflow: hidden;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        // 内容展开
+        &.w-collapse-td-open {
+            > div {
+                max-height: 20em;
+                transition: max-height .7s ease-in;
+            }
+        }
+
+        // 内容关闭
+        &.w-collapse-td-close {
+            > div {
+                max-height: 1.5em;
+                transition: max-height .5s ease;
+            }
+        }
+    }
+}
+
+// table 中有 collapse (展开隐藏的 tr)
+.w-table-collapse-tr {
+    border: 0;
+    margin: 0;
+
+    tbody > tr > th {
+        background: #fafafa;
+        border-bottom: 1px solid #f5f5f5;
+        border-top: 0;
+        color: #738399;
+        font-weight: normal;
+        font-size: 14px;
+        height: 40px;
+        padding: 0;
+        padding-left: 30px;
+        vertical-align: middle;
+        vertical-align: middle;
+    }
+
+    tbody > tr > td {
+        color: #738399;
+        font-size: 14px;
+        line-height: 1;
+        padding: 23px 0 23px 30px;
+        vertical-align: middle;
+    }
+
+    .w-table-collapse-row td {
+        border: 0;
+    }
+}
+
+// 表格中的分页
+.w-pager {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    // 向前翻页按钮
+    .w-previous {}
+
+    // 向后翻页按钮
+    .w-next {}
+
+    .w-previous,
+    .w-next {
+        background: #fff;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #ccc;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 0;
+        padding: 7px 15px;
+        text-align: center;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        white-space: nowrap;
+
+        &:focus {
+            outline: none;
+        }
+
+        // 鼠标移动上去改变字体颜色
+        &:hover {
+            color: #3b8cff;
+        }
+    }
+
+    // 实际的分页内容，包含当前分页数和总页数
+    > div > div {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    // 当前分页
+    .w-page-now {
+        border: 1px solid #f2f2f2;
+        border-radius: 4px;
+        color: #1a8cff;
+        font-size: 14px;
+        height: 30px;
+        margin-right: 10px;
+        padding: 0;
+        text-align: center;
+        width: 30px;
+
+        // 焦点聚焦时状态
+        &:focus {
+            border-color: #1a8cff;
+        }
+    }
+
+    // 总分页
+    .w-allpage {
+        color: #999;
+        font-size: 14px;
+    }
+}

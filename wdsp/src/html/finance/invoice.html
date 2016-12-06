@@ -1,0 +1,151 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">索取发票</a>
+        </li>
+    </ol>
+</section>
+<section class="content finance-invoice">
+    <div class="row" id="cards">
+        <div class="col-md-6 col-sm-12 col-xs-12 card">
+            <div class="info-box">
+                <i></i>
+                <div>
+                    <h3>已开发票金额（元）</h3>
+                    <p id="total"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12 card card-reserve">
+            <div class="info-box">
+                <i></i>
+                <div>
+                    <h3>可开具发票金额（元）</h3>
+                    <p id="surplus"></p>
+                </div>
+                <a href="javascript:void(0);" style="display: none;" class="w-btn w-btn-default-noborder get-invoice-btn" id="get-invoice" data-money="0">索取发票</a>
+            </div>
+        </div>
+    </div>
+
+    {# 发票列表 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="invoice">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">发票列表</h3>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table-collapse-tr" id="invoice-table"></div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="invoice-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 发票列表模板 #}
+<script type="text/template" id="invoice-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>时间</th>
+                <th>金额（元）</th>
+                <th>类型</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(invoice, index) { %>
+                    <tr>
+                        <td width="200"><%= invoice.time %></td>
+                        <td><%= invoice.amount %></td>
+                        <td><%= invoice.typeName %></td>
+                        <td>
+
+                            <!-- 处理中 -->
+                            <% if (invoice.status === 0) { %>
+                                <span class="processing">
+                                    <i class="fa fa-clock-o"></i>处理中
+                                </span>
+
+                            <!-- 审核失败 -->
+                            <% } else if (invoice.status === 2) { %>
+                                <span>
+                                    <i class="fa fa-close"></i>已完成
+                                </span>
+
+                            <!-- 已完成 -->
+                            <% } else { %>
+                                <span class="process-done">
+                                    <i class="fa fa-check"></i>已完成
+                                </span>
+                            <% } %>
+                        </td>
+                        <td width="120">
+                            <a href="javascript:void(0);" class="accordion-toggle view-detail" data-toggle="collapse" data-target="#collapse-tr-<%= index %>" aria-expanded="false">
+                                查看详情<i class="fa fa-caret-down"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- 作为 collapse 的行 -->
+                    <tr class="w-table-collapse-row">
+                        <td colspan="5" style="padding: 0 !important;">
+                            <div class="accordian-body collapse" id="collapse-tr-<%= index %>">
+                                <div class="detail-ctn">
+                                    <p>发票内容：<%= invoice.typeName %></p>
+                                    <p>发票抬头：<%= invoice.companyName %></p>
+                                    <p>邮寄地址：<%= invoice.address %></p>
+                                    <p>快递单号：<%= invoice.serialNo === '' ? '-' : invoice.serialNo %></p>
+                                </div>
+                                <% if (invoice.status === 2) { %>
+                                    <div class="detail-ctn">
+                                        <%= invoice.memo %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/finance-invoice.js"></script>
+{% endblock %}

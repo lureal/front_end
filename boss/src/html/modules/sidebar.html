@@ -1,0 +1,43 @@
+{# 侧边栏模块 #}
+
+<aside class="main-sidebar">
+	<section class="sidebar" id="main-sidebar"></section>
+</aside>
+
+{# 侧边栏模板 #}
+<script type="text/template" id="main-sidebar-tpl">
+
+    <div class="user-panel">
+        <div class="pull-left image">
+			<div style="width: 45px; height: 45px; overflow: hidden; border-radius: 50%;">
+            	<img src="<%= data.userInfo.icon === null ? '/#proj_name#/img/none.png' : data.userInfo.icon %>" alt="User Image" style="width: 100%;">
+			</div>
+        </div>
+        <div class="pull-left info">
+            <p><%= data.userInfo.userName %></p>
+            <a href="javascript:void(0);">ID：<%= data.userInfo.userId %></a>
+        </div>
+    </div>
+
+    <ul class="sidebar-menu">
+    	<li class="header">导航</li>
+        <% _.each(data.menus, function(menu, index) { %>
+    		<li class="home treeview <%= menu.expand === true ? 'active' : '' %>">
+    			<a href="<%= menu.url !== '' ? (menu.url + '?menuId=' + menu.id) : 'javascript:void(0);' %>">
+    				<i class="<%= menu.icon !== '' ? menu.icon : 'fa fa-hand-spock-o' %>"></i><span><%= menu.label %></span>
+    			</a>
+    			<% if(menu.children.length > 0) { %>
+    				<ul class="treeview-menu">
+    					<% _.each(menu.children, function(_menu, index) { %>
+    						<li class="<%= _menu.expand === true ? 'active' : '' %>">
+    							<a href="<%= _menu.url !== '' ? (_menu.url + '?menuId=' + _menu.id) : 'javascript:void(0);' %>">
+    								<i class="<%= _menu.icon !== '' ? _menu.icon : 'fa fa-circle-o' %>"></i> <%= _menu.label %>
+    							</a>
+    						</li>
+    					<% }); %>
+    				</ul>
+    			<% } %>
+    		</li>
+        <% }); %>
+    </ul>
+</script>

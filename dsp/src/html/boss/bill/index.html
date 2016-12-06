@@ -1,0 +1,219 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+	{% include '../../modules/header.html' %}
+	{% include '../../modules/sidebar.html' %}
+
+	<div class="content-wrapper">
+		<section class="content-header">
+			<h1>订单管理</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i>订单管理</a></li>
+			</ol>
+		</section>
+		<section class="content">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="box">
+						<div class="box-header">
+							<h3 class="box-title">订单管理</h3>
+							<div class="box-tools">
+							</div>
+						</div>
+						<div class="col-xs-12 box-toolbar last">
+							<div class="form-inline">
+								<div class="form-group">
+									<select id="bill-list" class="form-control select2" style="width: 100%;">
+										<!-- <option>所有订单</option> -->
+									</select>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="order-name" placeholder="订单名称/订单ID">
+								</div>
+
+								<!-- 搜索按钮 -->
+								<div class="form-group">
+									<a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="search">搜索</a>
+
+									<!--暂时隐藏导出功能-->
+									<a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="export" style="display: none;">导出</a>
+								</div>
+							</div>
+						</div>
+						<div class="box-body" id="order"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	{% include '../../modules/copyright.html' %}
+	{% include '../../modules/modal.html' %}
+
+	<script type="text/template" id="order-tpl">
+		<table class="table table-responsive">
+			<thead>
+				<th>广告订单名称</th>
+				<th>订单ID</th>
+				<th>客户名称</th>
+				<th>所属组</th>
+				<th>定价</th>
+				<th>实际出价</th>
+				<th>出价范围</th>
+				<th>最后出价时间</th>
+				<th>出价模式</th>
+				<th>操作</th>
+				<th>状态</th>
+			</thead>
+			<tbody>
+				<% _.each(data.records, function(val,index) { %>
+					<tr>
+						<td><%= val.orderName ? val.orderName :'--' %></td>
+						<td><%= val.orderId ? val.orderId :'--' %></td>
+						<td><%= val.customName? val.customName :'--'%></td>
+						<td><%= val.groupName? val.groupName :'--'%></td>
+						<td><%= val.price ? (val.price)/100 :'--'%></td>
+						<td><%= val.bidPrice ? (val.bidPrice)/100 :'--'%></td>
+						<td><%= val.priceRange ? val.priceRange :'--'%></td>
+						<td>
+							<% if(val.lastBidTime === null ) { %>
+								--
+							<% } else { %>
+							<%= val.lastBidTime_str %>
+							<% } %>
+						</td>
+						<td><%= val.modeName? val.modeName :'--'%></td>
+						<td id="modify-operate" data-orderId="<%= val.orderId %>" data-priceRange="<%= val.priceRange %>"><a href="#">修改出价模式</a></td>
+						<% if(val.status === null) { %>
+							<td>--</td>
+						<% } else if(val.status === 0) { %>
+							<td>未送审</td>
+						<% } else if(val.status === 1 ) { %>
+							<td>审核中</td>
+						<% } else if(val.status === 2 ) { %>
+							<td>审核不通过</td>
+						<% } else if(val.status === 3 ) { %>
+							<td>审核通过，启用中</td>
+						<% } else if(val.status === 4 ) { %>
+							<td>审核通过，停用</td>
+						<% } else { %>
+							<td>投放结束</td>
+						<% } %>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+
+        <% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+	        <nav>
+	            <ul class="pagination pull-right table-pageination">
+	                <li>
+	                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+	                        <span aria-hidden="true">&laquo;</span>
+	                    </a>
+	                </li>
+									<li class="<%= 1 === data.page ? 'active' : '' %>">
+	                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+	                </li>
+	               <% if(data.pageCount > 2) {
+	               		var end = data.pageCount - 1;
+	              		var start = 2;
+	              		var pagenum = 7;
+	              		if(data.pageCount > pagenum) {
+	              			var left = data.page - start;
+	              			var right = end- data.page > 2 ? 2:end- data.page;
+	              			if(left<2) {
+	              				end = start + 4;
+	              			} else if(right<2){
+	              				start = end - 4;
+	              			} else {
+	              				start = data.page - 2;
+	              				end = data.page + 2;
+	              			}
+		              	}
+	                	for(var i = start; i <= end; i++) {
+	               %>
+	                <li class="<%= i === data.page ? 'active' : '' %>">
+	                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+	                </li>
+	               <% } }%>
+	               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+	                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+	                </li>
+	                <li>
+	                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+	                        <span aria-hidden="true">&raquo;</span>
+	                    </a>
+	                </li>
+	            </ul>
+	        </nav>
+        <% } %>
+
+	</script>
+
+	<!-- 修改出价方式弹出框 -->
+	<script type="text/template" id="modify-order">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+			aria-label="Close">
+				<span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">修改出价模式</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row modify-bill">
+				<div class="form-group">
+				   <label class="col-sm-4 control-label">出价模式</label>
+					<div class="col-sm-8">
+						<select class="form-control select2" style="width: 100%;" id="modify-mode">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row modify-bill">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">最小出价范围</label>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="min-value" min=0>
+					</div>
+				</div>
+			</div>
+			<div class="row modify-bill">
+				<div class="form-group">
+					<label class="col-sm-4 control-label">最大出价范围</label>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="max-value" min=0>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="cancel">取消</button>
+            <button type="button" class="btn btn-primary" id="commit">保存</button>
+        </div>
+	</script>
+
+	<!--订单出价模式,增加所有订单 -->
+	<script type="text/template" id="bill-list-tpl">
+		<option>所有订单</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="mode-list-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/boss-bill.js"></script>
+{% endblock %}

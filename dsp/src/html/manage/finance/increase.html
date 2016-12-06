@@ -1,0 +1,64 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>向客户转入资金</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>财务管理</a></li>
+                <li><a href="#">向客户转入资金</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">向客户转入资金</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>客户名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>账户 ID</label>
+                                <input type="text" class="form-control" placeholder="" id="id" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>转入金额</label>
+                                <input type="number" class="form-control" placeholder="" id="money">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">上一步</button>
+                    <button class="btn btn-info pull-left" id="submit">确定转入</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-finance-increase.js"></script>
+{% endblock %}

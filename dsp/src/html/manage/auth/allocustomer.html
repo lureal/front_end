@@ -1,0 +1,131 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<body>
+    <div class="wrapper">
+        {% include '../../modules/header.html' %}
+        {% include '../../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+             <section class="content-header">
+               <h1>权限管理</h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> 权限管理</a></li>
+                    <li><a href="#">分配权限</a></li>   
+                </ol> 
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+									 <div class="row">
+                                        <div class="col-sm-8" id="allo-person">
+                                        </div>
+                                        <div class="col-sm-4">
+                                        	<a href="javascript:void(0);" class="btn btn-info pull-right" id="allocation-customer">分配选中客户</a>
+                                        </div>
+                                    </div>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+
+                <div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<div class="col-sm-3 search-allocustomer">
+									<input type="text" name="search-customer" class="form-control" id="search-customer" placeholder="客户名称/ID">
+								</div>
+								<button class="btn btn-info" id="search">查询</button>
+							</div>
+							<div class="box-body">
+								<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+									<div class="row">
+	                                    <div class="col-sm-12" id="allo-list">
+	                                    </div>
+	                                </div>
+								</div>
+							</div>
+						</div>
+					</div>
+      			</div>
+            </section>
+        </div>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <!-- 检索客户列表信息 -->
+    <script type="text/template" id="allo-list-tpl">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+            <thead>
+                <tr role="row">
+                    <th tabindex="0" rowspan="1" colspan="1">客户名称</th>
+                    <th tabindex="0" colspan="1">产品名</th>
+                    <th tabindex="0" rowspan="1" colspan="1">账户ID</th>
+                    <th tabindex="0" rowspan="1" colspan="1">创建日期</th>
+                    <th tabindex="0" rowspan="1" colspan="1">账户余额</th>
+                    <th tabindex="0" rowspan="1" colspan="1" >投放运营</th>
+                    <th tabindex="0" rowspan="1" colspan="1" >操作</th>
+                </tr>
+            </thead>
+	        <tbody>
+	        	<% _.each(data.records, function(val, index) { %>
+			        <tr role="row" class="odd">
+				        <td data-userId="<%= val.userId %>"><%= val.customName %></td>
+				        <td><%= val.productName %></td>
+				        <td data-customId="<%= val.customId %>"><%= val.customId %></td>
+				        <td><%= val.posttime_str %></td>
+				        <td><%= (val.balance)/100 %></td>
+				        <td><%= val.operators %></td>
+				        <% if(val.allot === true) { %>
+				        <td>
+				        	<span>已分配</span>
+				        </td>
+				        <% }  else { %>
+				        	<td>
+				        		<input type="checkbox" name="unselect" data-customId="<%= val.customId %>" data-userId="<%= val.userId %>">
+				        		未分配
+				        	</td>
+				        <% } %>
+			        </tr>
+			    <% }); %>
+	        </tbody>
+        </table>
+    </script> 
+
+    <!-- 用户信息 -->
+    <script type="text/template" id="allo-person-tpl">
+       	<table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+			<thead>
+				<tr role="row">
+				    <th tabindex="0" rowspan="1" colspan="1">人员
+				    </th>
+				    <th tabindex="0" colspan="1">录入时间
+				    </th>
+				    <th tabindex="0" rowspan="1" colspan="1">登录账号
+				    </th>
+				    <th tabindex="0" rowspan="1" colspan="1">角色
+				    </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr role="row" class="odd">
+				    <td><%= data.name%></td>
+				    <td><%= data.posttime_str%></td>
+				    <td><%= data.username%></td>
+				    <td><%= data.role%></td>		
+				</tr>
+			</tbody>          
+        </table>
+    </script> 
+</body>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-auth-allocustomer.js"></script>
+{% endblock %}

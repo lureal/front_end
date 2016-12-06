@@ -1,0 +1,166 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>我的得分</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 我的得分</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body" id="score">
+                            <div class="row" id="self-assessment">
+                            </div>
+                            <div class="row col-xs-12 col-sm-12 col-md-12" id="self-tip">
+                                Ø 每项评分范围为0-5分，分值须为整数。<br/>
+                                Ø 单一维度（自评得分/主管评分/环评得分）打分最高为9分，最低为1分，不得打0分或10分。<br/>
+                                Ø 总分为三个维度的加权得分，三个评价维度的加权系数分别为：自评20%，主管评价50%，部门间环评30%。<br/>
+                                Ø 环评以部门为单位进行，业务相关单位之间互相评分，由主管统一意见向其他部门打分。环评得分为所有参与评价团队打分的平均分（分值四舍五入）。
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" id="score-table">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="self-assessment-tpl">
+        <div class="col-md-6 col-xs-12 col-sm-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua">自评</span>
+                <div class="info-box-content">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">能力</label>
+                            <div class="col-sm-7">
+                                <input type="number" name="ability" id="ability"  class="form-control" min="1" max="5">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">态度</label>
+                            <div class="col-sm-7">
+                                <input type="number" name="attitude" id="attitude" class="form-control" min="1" max="5">
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-info" id="commit">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6" style="font-size: 12px;">
+            Ø 每项评分范围为0-5分，分值须为整数。<br/>
+            Ø 单一维度（自评得分/主管评分/环评得分）打分最高为9分，最低为1分，不得打0分或10分。<br/>
+            Ø 总分为三个维度的加权得分，三个评价维度的加权系数分别为：自评20%，主管评价50%，部门间环评30%。<br/>
+            Ø 环评以部门为单位进行，业务相关单位之间互相评分，由主管统一意见向其他部门打分。环评得分为所有参与评价团队打分的平均分（分值四舍五入）。
+        </div>
+    </script>
+
+    <script type="text/template" id="score-table-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>时间</th>
+                    <th>能力(自评)</th>
+                    <th>态度(自评)</th>
+                    <th>能力(主管)</th>
+                    <th>态度(主管)</th>
+                    <th>能力(环评)</th>
+                    <th>态度(环评)</th>
+                    <th>评价得分</th>
+                    <th>奖金发放系数</th>
+                    <th>工作建议</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%_.each(data.grades, function(val, index) { %>
+                    <tr>
+                        <td><%= val.dataDate || '--'%></td>
+                        <td><%= val.myAbilityScore || '--' %></td>
+                        <td><%= val.myAttitudeScore || '--'%></td>
+                        <td><%= val.mgrAbilityScore || '--'%></td>
+                        <td><%= val.mgrAttitudeScore || '--'%></td>
+                        <td><%= val.othAbilityScore || '--'%></td>
+                        <td><%= val.othAttitudeScore ||'--'%></td>
+                        <td><%= val.score || '--'%></td>
+                        <td><%= val.coefficient || '--'%></td>
+                        <td><%= val.suggest || '--'%></td>
+                    </tr>
+                <% });%>
+            </tbody>
+        </table>
+        <% if(data.grades.length === 0) { %>
+            <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+            <nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                        var end = data.pageCount - 1;
+                        var start = 2;
+                        var pagenum = 7;
+                        if(data.pageCount > pagenum) {
+                            var left = data.page - start;
+                            var right = end- data.page > 2 ? 2:end- data.page;
+                            if(left<2) {
+                                end = start + 4;
+                            } else if(right<2){
+                                start = end - 4;
+                            } else {
+                                start = data.page - 2;
+                                end = data.page + 2;
+                            }
+                        }
+                        for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/grade-my-score.js"></script>
+{% endblock %}

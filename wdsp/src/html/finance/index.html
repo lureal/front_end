@@ -1,0 +1,110 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="/#proj_name#/html/service/index.html">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">资金管理</a>
+        </li>
+    </ol>
+</section>
+<section class="content finance">
+    <div class="row" id="cards">
+        <div class="col-md-12 col-sm-12 col-xs-12 card">
+            <div class="info-box"></div>
+        </div>
+    </div>
+
+    {# 明细列表 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="detail">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">明细列表</h3>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table-collapse-td" id="detail-table"></div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="detail-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 顶部小卡片 #}
+<script type="text/template" id="cards-tpl">
+    <% _.each(cards, function(card) { %>
+        <div class="col-md-12 col-sm-12 col-xs-12 card <%= card.withIcon ? 'card-with-icon' : '' %>">
+            <div class="info-box">
+                <i></i>
+                <div>
+                    <h3><%= card.title %></h3>
+                    <p><%= card.money %></p>
+                </div>
+
+                <% if (card.button) { %>
+                    <a href="/#proj_name#/html/finance/invoice.html" class="w-btn w-btn-primary get-invoice-btn">申请发票</a>
+                <% } %>
+            </div>
+        </div>
+    <% }); %>
+</script>
+
+{# 通知表格模板 #}
+<script type="text/template" id="detail-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>时间</th>
+                <th>内容</th>
+                <th>操作</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+            <% _.each(records, function(record) { %>
+                <tr>
+                    <td width="200"><%= record.time %></td>
+                    <td class="w-collapse-td w-collapse-td-close">
+                        <div>
+                            <p><%= record.content %></p>
+                        </div>
+                    </td>
+                    <td width="120">
+                        <a href="javascript:void(0);" class="w-collapse-toggle">展开详情<i class="fa fa-caret-down"></i></a>
+                    </td>
+                </tr>
+            <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/finance.js"></script>
+{% endblock %}

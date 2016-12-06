@@ -1,0 +1,78 @@
+.ad-base-info {
+    .create-ad-group {
+        margin-left: -15px;
+    }
+}
+
+// 新建广告组弹窗
+.create-ad-group-modal {
+    // 主体
+    .modal-diy-body {
+        padding: 34px 40px 0 40px;
+
+        > div {
+            & + div {
+                margin-top: 15px;
+            }
+            label {
+                color: #738399;
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 1;
+                margin-bottom: 15px;
+            }
+
+            [type="text"] {
+                border: 1px solid #eee;
+                border-radius: 4px;
+                color: #738399;
+                font-size: 14px;
+                min-height: 40px;
+                padding: 0 12px;
+
+                // 焦点聚焦时状态
+                &:focus {
+                    border-color: #1a8cff;
+                }
+            }
+
+            .error-msg {
+                color: #ff4d4d;
+                display: none;
+                font-size: 13px;
+                margin-top: 15px;
+                position: relative;
+
+                p {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+            }
+
+            &.error {
+                .error-msg {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // 尾部
+    .modal-diy-footer {
+        padding: 15px 40px 34px 40px;
+
+        button {
+            width: 100%;
+        }
+    }
+}
+
+// 最小屏幕宽度
+@media (max-width: 768px) {
+    .ad-base-info {
+        .create-ad-group {
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+    }
+}

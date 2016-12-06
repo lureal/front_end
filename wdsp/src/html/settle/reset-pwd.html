@@ -1,0 +1,91 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">修改密码</a>
+        </li>
+    </ol>
+</section>
+<section class="content settle-reset-pwd">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">修改密码</h3>
+                </div>
+                <div class="box-body w-box-body w-form w-form-readonly">
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="oldPassword" data-validate="empty" id="old-pwd">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">旧密码</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="password" class="form-control w-field-input" name="name" placeholder="为保障您的账号安全，请先输入账号原密码">
+                                <div class="w-field-check clearfix pass-check" style="display: none;">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix">
+                            <p class="col-sm-10 col-sm-offset-2">为保障您的账号安全，请先输入账号原密码</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="newPassword" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">新密码</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="password" class="form-control w-field-input" name="name" placeholder="请设置您的新密码">
+                                <div class="w-field-check clearfix" style="display: none;">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix" id="new-pwd-errmsg">
+                            <p class="col-sm-10 col-sm-offset-2">请设置您的新密码</p>
+                        </div>
+                    </div>
+                    <div class="form-horizontal clearfix w-row" data-type="input" data-id="reNewPassword" data-validate="empty">
+                        <div class="w-field">
+                            <label class="col-sm-2 w-field-title">重复密码</label>
+                            <div class="col-sm-4 w-field-content">
+                                <input type="password" class="form-control w-field-input" name="name" placeholder="请重新输入一遍您的新密码">
+                                <div class="w-field-check clearfix" style="display: none;">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-field-error clearfix" id="renew-pwd-errmsg">
+                            <p class="col-sm-10 col-sm-offset-2">请确保两次输入密码相同</p>
+                        </div>
+                    </div>
+                    <div class="w-form-footer clearfix">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <a href="javascript:void(0);" class="w-btn w-btn-primary" id="confirm-edit">确认修改</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 请先完成开户流程弹窗 #}
+<script type="text/template" id="create-aptitude2-tpl">
+    <div class="input-modal">
+        <h2 class="modal-diy-title">请先完成开户流程</h2>
+        <div class="modal-diy-btn">
+            <a href="/#proj_name#/html/aptitude/edit.html" class="w-btn w-btn-primary">立即开户</a>
+        </div>
+    </div>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/settle-resetpwd.js"></script>
+{% endblock %}

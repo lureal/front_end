@@ -1,0 +1,151 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>图书明细</h1>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                        </div>
+                        <div class="col-xs-12 box-toolbar table-toolbar last pull-right">
+                            <div class="form-inline" style="float: left;">
+                                <div class="form-group">
+                                    <a href="/#proj_name#/html/library/my-borrow-record.html" type="button" class="btn btn-warning btn-sm download-btn" id="download">借书记录</a>
+                                </div>
+                                <div class="form-group">
+                                    <a href="/#proj_name#/html/library/my-wish-list.html" type="button" class="btn btn-info btn-sm import-btn" id="import">心愿单</a>
+                                </div>
+                                
+                                <!-- 藏书地点 -->
+                                <div class="form-group">
+                                    <select class="form-control select2" id="collection-place" style="width: 100%;">
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>（请选择藏书地点）</label>
+                                </div>
+                                
+                                <!-- 书名、作者名 -->
+                                <div class="form-group">
+                                    <input class="form-control" type="text" id="author" placeholder="书名、作者名">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm search-btn" id="search">搜索</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="borrow-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="borrow-list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                   <td>购入时间</td>
+                   <td>书名</td>
+                   <td>作者</td>
+                   <td>状态</td>
+                   <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.books, function(val, index) { %>
+                   <tr>
+                        <td style="vertical-align: middle;"><%= val.buyDate %></td>
+                        <td style="vertical-align: middle;"><%= val.bookName %></td>
+                        <td style="vertical-align: middle;"><%= val.author %></td>
+                        <td style="vertical-align: middle;"><%= val.bookStatus %></td>
+                        <td><a href="/#proj_name#/library/borrow-list-detail?id=<%= val.id %>" data-id="<%= val.id%>" class="btn btn-sm btn-success">详情</a>
+                        <% if(val.bookStatus === '可借') { %>
+                            <a href="javascript:void(0);" data-id="<%= val.id%>" class="btn btn-sm btn-info" id="bo-read">借阅</a>
+                        <% } %>
+                        </td>
+                   </tr>
+               <% }); %>
+            </tbody>
+        </table>   
+
+        <% if(data.books.length === 0) { %>
+            <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+            <nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                        var end = data.pageCount - 1;
+                        var start = 2;
+                        var pagenum = 7;
+                        if(data.pageCount > pagenum) {
+                            var left = data.page - start;
+                            var right = end- data.page > 2 ? 2:end- data.page;
+                            if(left<2) {
+                                end = start + 4;
+                            } else if(right<2){
+                                start = end - 4;
+                            } else {
+                                start = data.page - 2;
+                                end = data.page + 2;
+                            }
+                        }   
+                        for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>
+    </script>
+
+    <!-- 藏书地点 -->
+    <script type="text/template" id="collection-place-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+    
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/library-borrow-list.js"></script>
+{% endblock %}

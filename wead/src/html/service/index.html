@@ -1,0 +1,173 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+    <section class="content-header">
+        <i class="fa fa-exclamation-circle margin-right5"></i>您尚未开通任何推广服务
+    </section>
+    <section class="content service">
+
+        {# cards #}
+        <div class="row" id="cards">
+            <div class="col-md-4 col-sm-12 col-xs-12 card">
+                <div class="info-box"></div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12 card">
+                <div class="info-box"></div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12 card">
+                <div class="info-box"></div>
+            </div>
+        </div>
+
+        {# 服务介绍 #}
+        <div class="row intro">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">服务介绍</h3>
+                    </div>
+                    <div class="box-body w-box-body" id="intro"></div>
+                </div>
+            </div>
+        </div>
+
+        {# 资质详情 #}
+        <div class="row detail">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box" id="detail">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">资质详情</h3>
+                    </div>
+                    <div class="box-body w-box-body table-responsive w-table" id="detail-table"></div>
+                    <div class="box-footer clearfix w-pager">
+                        <div class="pull-right" id="detail-pager">
+                            <button class="w-previous pull-left">
+                                <i class="fa fa-chevron-circle-left"></i>
+                            </button>
+                            <div class="pull-left clearfix">
+                                <input type="text" class="w-page-now form-control pull-left" value="1">
+                                <span class="w-allpage pull-left">
+                                    /
+                                    <span>1</span>
+                                </span>
+                            </div>
+                            <button class="w-next pull-left">
+                                <i class="fa fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {#
+        cards 内部逻：
+        主要有两种状态，一种是敬请期待，一种是已经提供了这个服务。
+        其中已经提供了这个服务这个状态的按钮又分为 4 种不同的状态，一种为立即开通，一种
+        为正在审核，一种为已经开通，一种为重新开通。
+    #}
+    <script type="text/template" id="card-tpl">
+        <% _.each(data.records, function(item) { %>
+            <div class="col-md-4 col-sm-12 col-xs-12 card">
+                <div class="info-box">
+
+                    <!-- 敬请期待 -->
+                    <% if (item.type === -1) { %>
+                        <div class="card-close">
+                            <i class="fa fa-question-circle-o"></i>
+                            敬请期待
+                        </div>
+
+                    <!-- 有实际的内容 -->
+                    <% } else { %>
+                        <div class="card-open">
+                            <h3><%= item.type === 1 ? '微博粉丝通' : '' %></h3>
+
+                            <!-- 立即开通 -->
+                            <% if(item.status === -1) { %>
+                                <a href="javascript:void(0);" class="w-btn w-btn-primary open-now open-fensitong" data-open="0">立即开通</a>
+
+                            <!-- 正在审核 -->
+                            <% } else if(item.status === 0) { %>
+                                <span class="review">正在审核</span>
+
+                            <!-- 已经开通 -->
+                            <% } else if(item.status === 1) { %>
+                                <span class="opened"><i class="fa fa-check"></i>已开通</span>
+
+                            <!-- 重新开通 -->
+                            <% } else { %>
+                                <a href="javascript:void(0);" class="w-btn w-btn-red reopen open-fensitong">重新开通</a>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+
+    {# 服务介绍每一条介绍 #}
+    <script type="text/template" id="intro-tpl">
+        <% _.each(intros, function(val) { %>
+            <div class="row intro-row">
+                <div class="col-md-12">
+                    <p><%= val.title %></p>
+                    <a href="/external/business/fansIntroduce.do" class="w-btn w-btn-success intro-detail">查看详情</a>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+
+    {#
+        资质详情
+        资质的状态有三个，0 -> 正在审核，1 -> 审核失败，2 -> 审核通过
+        操作有两种，一种是查看资质，一种是重新开通
+    #}
+    <script type="text/template" id="detail-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th width=150>服务</th>
+                    <th>申请公司（网站）</th>
+                    <th width=150>审核状态</th>
+                    <th width=150>操作</th>
+                </tr>
+
+                <% if (records.length < 1) { %>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                <% } else { %>
+                    <% _.each(records, function(val) { %>
+                        <tr class="<%= val.status === 2 ? 'tr-danger' : '' %>">
+                            <td width="150"><%= val.typeName %></td>
+                            <td><%= val.companyName %></td>
+                            <td width=150>
+                                <% if (val.status === 0) { %>
+                                    正在审核
+                                <% } else if (val.status === 2) { %>
+                                    审核失败
+                                <% } else { %>
+                                    审核通过
+                                <% } %>
+                            </td>
+                            <td width=150>
+                                <% if (val.status === 2) { %>
+                                    <a href="javascript:void(0);" class="detail-btn open-fensitong">重新开通</a>
+                                <% } else { %>
+                                    <a href="/#proj_name#/html/service/fensitong/aptitude.html?id=<%= val.id %>" class="detail-btn">查看资质</a>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } %>
+            </tbody>
+        </table>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/service.js"></script>
+{% endblock %}

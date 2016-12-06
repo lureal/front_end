@@ -1,0 +1,162 @@
+{% extends '../layouts/default.html' %}
+{% block otherNeedInHead %}
+    <script src="/vendor/highcharts/modules/map.js"></script>
+{% endblock %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">数据统计</a>
+        </li>
+    </ol>
+</section>
+<section class="content data-people">
+
+    {# 顶部导航 #}
+    <div class="content-nav row">
+        <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu" id="">
+            <a href="javascript:void(0);">
+                <i class="fa fa-th"></i>信息概览<i class="fa fa-caret-down"></i>
+            </a>
+            <ul id="content-sub-nav"></ul>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/data/overview.html" class="content-nav-link">
+                <i class="fa fa-files-o"></i>数据概览<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="javascript:void(0);" class="content-nav-link active">
+                <i class="fa fa-file-o"></i>人群数据<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+    </div>
+
+    {# 人群数据图表 #}
+    <div class="row">
+        <div class="ccol-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="overview">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">人群数据</h3>
+                </div>
+
+                {# 图表工具 #}
+                <div class="w-chart">
+                    <div class="w-chart-tool form-inline">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">投放平台</label>
+                            <select id="platform" required class="form-control w-tool-input w-tool-item-select" data-field="placementId" data-type="select" data-errmsg="请选择投放平台" data-isRequire="1">
+                            </select>
+                        </div>
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">广告组</label>
+                            <select id="group" required class="form-control w-tool-input w-tool-item-select" data-field="placementId" data-type="select" data-errmsg="请选择广告组" data-isRequire="1">
+                            </select>
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" id="select-chart-start-date">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" id="select-chart-end-date">
+                        </div>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="search">搜索</button>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="export" style="display: none;">导出</button>
+                    </div>
+                </div>
+
+                <div class="box-body w-box-body">
+                    
+                    {# 省市数据 #}
+                    <div class="row" id="province">
+                        <div class="crow-chart col-md-6 col-sm-6 col-xs-12" id="province-chart"></div>
+                        <div class="crow-info col-md-6 col-sm-6 col-xs-12" id="province-table"></div>
+                    </div>
+
+                    {# 年龄数据 #}
+                    <div class="row" id="age">
+                        <div class="crow-chart col-md-6 col-sm-6 col-xs-12" id="age-chart"></div>
+                        <div class="crow-info col-md-6 col-sm-6 col-xs-12" id="age-table"></div>
+                    </div>
+
+                    {# 性别数据 #}
+                    <div class="row" id="sex">
+                        <div class="crow-chart col-md-6 col-sm-6 col-xs-12" id="sex-chart"></div>
+                        <div class="crow-info col-md-6 col-sm-6 col-xs-12" id="sex-table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 图表信息模板 #}
+<script type="text/template" id="info-tpl">
+    <div class="info-wrap">
+        <div class="info-select clearfix">
+            <% _.each(selects, function(select) { %>
+                <% if (select.check) { %>
+                    <div class="pull-left">
+                        <label>
+                            <input checked type="radio" name="<%= radioName %>" value="<%= select.val %>"><%= select.val %>
+                        </label>
+                    </div>
+                <% } else { %>
+                    <div class="pull-left">
+                        <label>
+                            <input type="radio" name="<%= radioName %>" value="<%= select.val %>"><%= select.val %>
+                        </label>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+        <div class="info-table"></div>
+    </div>
+</script>
+
+{# 表格模板 #}
+<script type="text/template" id="table-tpl">
+    <div class="table-header clearfix">
+        <% _.each(table[0], function(item, index) { %>
+            <div class="pull-left"><%= item %></div>
+        <% }); %>
+    </div>
+    <div class="table-wrap">
+        <table class="table">
+            <tbody>
+                <% _.each(table, function(item, index) { %>
+                    <% if (index > 0) { %>
+                        <tr>
+                            <% _.each(item, function(td) { %>
+                                <td><%= td %></td>
+                            <% }); %>
+                        </tr>
+                    <% } %>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+{# 内部导航下拉项模板 #}
+<script type="text/template" id="content-nav-tpl">
+    <% _.each(navs, function(nav, index) { %>
+        <li>
+            <a href="javascript:void(0);" data-type="<%= nav.type %>" class="info-overview-nav content-nav-link"><%= nav.content %></a>
+        </li>
+    <% }); %>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/data-people.js"></script>
+{% endblock %}

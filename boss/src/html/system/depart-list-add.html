@@ -1,0 +1,69 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>部门管理</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/#proj_name#/html/system/menu-list.html"><i class="fa fa-dashboard"></i>部门管理</a>
+                </li>
+                <li>
+                    <a href="/#proj_name#/html/system/menu-list.html"><i class="fa fa-dashboard"></i>设置主管</a>
+                </li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="box box-default">
+                <div class="box-body">
+                    <div class="row" id="depart-add">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>主管姓名</label>
+                                <select class="form-control select2" id="director-name" style="width:100%">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">取消</button>
+                    <button class="btn btn-info pull-left" id="submit">提交</button>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 主管下拉框 -->
+    <script type="text/template" id="director-name-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="depart-add-tpl">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>部门名称</label>
+                <input type="text" class="form-control" placeholder="" id="name">
+            </div>
+        </div>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-depart-list-add.js"></script>
+{% endblock %}

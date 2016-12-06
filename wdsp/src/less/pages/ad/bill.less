@@ -1,0 +1,252 @@
+.ad-bill {
+
+    // 表格
+    .w-table {
+        td {
+            line-height: 1.8572;
+
+            &.name {
+                padding-left: 7px;
+            }
+
+            &.table-btns {
+                a {
+                    display: block;
+                }
+            }
+
+            // 订单名称
+            .bill-name {
+                position: relative;
+
+                input {
+                    bottom: 0;
+                    height: 100%;
+                    left: 0;
+                    margin: 0;
+                    outline: none;
+                    padding: 0;
+                    position: absolute;
+                    opacity: 0;
+                    right: 0;
+                    top: 0;
+                    width: 100%;
+                }
+
+                > span {
+                    line-height: 20px;
+                    margin-top: 3px;
+                }
+            }
+
+            // 勾选图标
+            .active-bill .fa-check {
+                color: #3388ff;
+            }
+
+            // 暂停按钮
+            .stop {
+                color: #3388ff;
+            }
+
+            // 删除和详情按钮
+            .del,
+            .detail {
+                color: #738399;
+            }
+        }
+    }
+
+    // 表格底部工具
+    .w-table-footer-tool {
+        border-top: 1px solid #f5f5f5;
+        padding: 0 30px 20px 7px;
+
+        // 全选
+        .select-all {
+            color: #738399;
+            position: relative;
+
+            input {
+                bottom: 0;
+                height: 100%;
+                left: 0;
+                margin: 0;
+                outline: none;
+                padding: 0;
+                position: absolute;
+                opacity: 0;
+                right: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            > span {
+                float: left;
+                line-height: 20px;
+            }
+        }
+
+        // 工具
+        .tool-left {
+            margin-top: 30px;
+        }
+        .tool-right {
+            button {
+                font-size: 15px;
+                margin-top: 20px;
+                margin-left: 12px;
+                padding-left: 15px;
+                padding-right: 15px;
+
+                // 定制删除按钮样式
+                &.del {
+                    background: #fff;
+                    color: #ff4d4d;
+
+                    &:hover {
+                        border-color: #ff4d4d;
+                        background: #fafafa;
+                    }
+                }
+            }
+        }
+    }
+
+    // 表格内的广告组日限额
+    .budget-wrap,
+    .total-budge-wrap {
+        margin-top: 8px;
+    }
+    .quota-title,
+    .budget-title,
+    .total-budget-title {
+        display: block;
+        height: 38px;
+        margin-right: 10px;
+        line-height: 38px;
+    }
+    .quota,
+    .budget,
+    .total-budget {
+        border-radius: 4px;
+        border: 1px solid #eee;
+        float: left;
+        width: 122px;
+
+        input,
+        button {
+            float: left;
+        }
+
+        // 输入框
+        input {
+            border: 0;
+            background: #fff;
+            height: 38px;
+            outline: none;
+            text-align: center;
+            width: 60px;
+
+            // 只读状态
+            &[readonly] {
+                background: #f5f5f5;
+            }
+        }
+
+        // 按钮
+        button {
+            background: #b4e02d;
+            border-radius: 4px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border: 0;
+            box-shadow: none;
+            color: #fff;
+            height: 38px;
+            line-height: 38px;
+            outline: none;
+            width: 60px;
+        }
+    }
+
+    // 中等屏幕时，调整内部导航项
+    @media (max-width: 992px) {
+
+        // 向右移动 20 像素
+        .move-right20 {
+            margin-right: -20px;
+        }
+
+        // 向右移动 30 px
+        .move-right30 {
+            margin-right: -35px;
+        }
+    }
+}
+
+// 出价和日期弹窗
+.edit-date-modal,
+.edit-bidprice-modal,
+.edit-time-modal {
+
+    // 主体
+    .modal-diy-body {
+        padding: 34px 40px 0 40px;
+
+        > div {
+            & + div {
+                margin-top: 15px;
+            }
+            label {
+                color: #738399;
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 1;
+                margin-bottom: 15px;
+            }
+
+            [type="text"] {
+                border: 1px solid #eee;
+                border-radius: 4px;
+                color: #738399;
+                font-size: 14px;
+                min-height: 40px;
+                padding: 0 12px;
+
+                // 焦点聚焦时状态
+                &:focus {
+                    border-color: #1a8cff;
+                }
+            }
+
+            .error-msg {
+                color: #ff4d4d;
+                display: none;
+                font-size: 13px;
+                margin-top: 15px;
+                position: relative;
+
+                p {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                }
+            }
+
+            &.error {
+                .error-msg {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    // 尾部
+    .modal-diy-footer {
+        padding: 15px 40px 34px 40px;
+
+        button {
+            width: 100%;
+        }
+    }
+}

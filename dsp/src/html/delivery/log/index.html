@@ -1,0 +1,185 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<body>
+
+    <div class="wrapper">
+
+        {% include '../../modules/header.html' %}
+        {% include '../../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>操作日志</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#"><i class="fa fa-dashboard"></i> 操作日志</a>
+                    </li>
+                </ol>
+            </section>
+            <section class="content">
+                <form class="form-horizontal">
+                    <div class="col-sm-3">
+                        <div class="form-group ">
+                            <label for="delivery-platform" class="col-sm-4 control-label">投放平台</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2" id="delivery-platform" style="width:100%">  
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="role" class="col-sm-4 control-label">操作对象</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2" id="delivery-object" style="width:100%">
+                     
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="role" class="col-sm-4 control-label">操作人</label>
+                            <div class="col-sm-6">
+                                <select class="form-control select2" id="delivery-person" style="width:100%">
+                     
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+						<div class="form-inline">
+
+							<div class="input-group">
+								<input type="text" class="form-control pull-right active" id="datepicker" placeholder="选择日期" style="width: 183px;">
+							</div>
+
+							<!-- 搜索按钮 -->
+							<div class="form-group">
+								<a href="javascript:void(0);" type="button" class="btn btn-default btn-sm" id="log-search" style="margin-left:15px;">搜索</a>
+							</div>
+            			</div>
+                    </div>   
+                </form>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+                            <div class="box-body">
+                                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12" id="delivery-log">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+                        
+    <script type="text/template" id="delivery-log-tpl">
+        <table id="example2" class="table table-bordered table-hover dataTable" role="grid">
+            <thead>
+                <tr role="row">
+                    <th tabindex="0"  rowspan="1" colspan="1" >操作时间</th>
+                    <th  tabindex="0"  colspan="1" >操作对象</th>
+                    <th  tabindex="0"  colspan="1" >对象名称</th>
+                    <th  tabindex="0"  rowspan="1" colspan="1" >操作人</th>
+                    <th  tabindex="0"  rowspan="1" colspan="1" >操作类型</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr role="row" class="odd">
+                        <td><%= val.posttime_str %></td>
+                        <td><%= val.type %></td>
+                        <td><%= val.target %></td>
+                        <td><%= val.operator %></td>
+                        <td><%= val.operate %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+        <% if(data.records.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+            <nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <% if(data.pageCount > 1) { 
+                    var end = data.pageCount - 1; var start = 1; var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2? 2:end- data.page;
+                        if(left < 2) {
+                            end = start + 4;
+                        } else if(right < 2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }   
+                    for(var i = start; i <= end; i++) { %>
+                        <li class="<%= i === data.page ? 'active' : '' %>">
+                            <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                        </li>
+                    <% } }  %> 
+
+                    <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>
+    </script>
+
+    <!-- 操作人 -->
+    <script type="text/template" id="delivery-person-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 操作对象 -->
+    <script type="text/template" id="delivery-object-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 投放平台 -->
+    <script type="text/template" id="delivery-platform-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop%>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+                         
+</body>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-log.js"></script>
+
+{% endblock %}

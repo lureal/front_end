@@ -1,0 +1,222 @@
+.main-header {
+    background: #fff;
+    height: 60px;
+}
+
+// logo
+.main-header .logo {
+    background: #fff;
+    height: 60px;
+    line-height: 60px;
+        width: 120px;
+}
+
+// header 中的 navbar
+.main-header .navbar {
+    height: 60px;
+    margin-left: 120px;
+
+    // header 中的项
+    .navbar-nav li {
+        position: relative;
+
+        i.w-icon-sm {
+            font-size: 12px;
+        }
+
+        // 鼠标移动到 header 中的项时显示下拉列表
+        &:hover {
+            background: #fafafa;
+
+            .sub-nav {
+                display: block;
+            }
+        }
+
+        a:focus {
+            background: #fff;
+        }
+
+        // 当前 header 项激活状态
+        &.active {
+
+            a {
+                background: #fafafa;
+            }
+
+            ul {
+                display: block;
+            }
+        }
+    }
+    .navbar-nav > li > a {
+        color: #303640;
+        min-width: 90px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+
+        // 通知
+        .label {
+            background: #f54f49 !important;
+            border-radius: 7px;
+            font-size: 11px;
+            left: 65px;
+            right: auto;
+            top: 17px;
+            z-index: 100;
+        }
+
+        // email
+        &.email {
+            cursor: default;
+            &:hover,
+            &:focus {
+                background: #fff;
+            }
+        }
+    }
+
+    // header 项中的子菜单
+    .navbar-nav .sub-nav {
+        background: #fafafa;
+        display: none;
+        list-style: none;
+        left: 50%;
+        margin-left: -45px;
+        padding: 0;
+        position: absolute;
+        width: 90px;
+
+        li {
+            height: 55px;
+            line-height: 55px;
+            text-align: center;
+
+            a {
+                color: #303640;
+                font-size: 14px;
+                padding: 20px 15px;
+
+                &:hover {
+                    color: #1a8cff;
+                }
+            }
+        }
+    }
+
+    // header 项中的自定义子菜单
+    .navbar-nav .sub-nav-custom {
+        background: #fafafa;
+        list-style: none;
+        position: absolute;
+        padding: 0;
+    }
+
+    // 实时数据
+    .navbar-nav .real-time {
+        display: none;
+        min-height: 104px;
+        min-width: 245px;
+        padding: 7px 19px;
+        right: 0;
+        top: 60px;
+        z-index: 100;
+
+        li {
+            color: #738399;
+            font-size: 14px;
+            line-height: 2.07142;
+
+            a {
+                color: #1b8cfa;
+                float: right;
+            }
+        }
+
+        // 实时数据中的 loading
+        .real-time-loading {
+            position: static;
+
+            img {
+                height: 20px;
+                left: 50%;
+                margin: -10px 0 0 -10px;
+                position: absolute;
+                top: 50%;
+                width: 20px;
+            }
+        }
+    }
+}
+
+// 开启关闭小开关
+.main-header .sidebar-toggle {
+    color: #303640;
+    display: none;
+    padding: 20px;
+
+    &:hover {
+        color: #303640;
+    }
+}
+
+// 中屏幕
+@media (max-width: 991px) {
+
+    // 调整 header 中的项的上下边距，达到整体高度 60 的状态
+    .navbar-custom-menu .navbar-nav > li > a {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+// 小屏幕
+@media (max-width: 768px) {
+
+    // 更改 header 最大高度
+    .main-header {
+        height: auto;
+        max-height: 120px;
+    }
+
+    // 设置 header 背景颜色
+    .main-header .navbar {
+        background: #f1f1f1;
+        margin-left: 0;
+
+        // header 中的项不设置最小宽度
+        // 隐藏字体，只显示图标
+        // 调整通知右上角图标位置
+        // 调整 email 鼠标浮动或者焦点聚焦时的背景颜色
+        .navbar-nav > li > a {
+            min-width: auto;
+
+            .name {
+                display: none;
+            }
+
+            .notice-num {
+                left: 20px;
+                top: 15px;
+            }
+
+            &.email:hover,
+            &.email:focus {
+                background: #f1f1f1;
+            }
+        }
+
+        // 实时数据
+        .navbar-nav .real-time {
+            left: 50%;
+            margin-left: -122px;
+        }
+    }
+
+    // 打开侧边栏小图标调整尺寸达到整体 60 像素
+    .main-header .sidebar-toggle {
+        display: block;
+        padding: 20px 15px;
+    }
+}

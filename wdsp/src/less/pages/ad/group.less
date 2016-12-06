@@ -1,0 +1,77 @@
+.ad-group {
+
+    .w-table {
+        td {
+            line-height: 1.8572;
+
+            .fa-check {
+                color: #3388ff;
+            }
+
+            .stop {
+                color: #3388ff;
+            }
+
+            .del {
+                color: #738399;
+            }
+        }
+    }
+
+    // 表格内的广告组日限额
+    .quota {
+        border-radius: 4px;
+        border: 1px solid #eee;
+        display: block;
+        width: 122px;
+
+        input,
+        button {
+            float: left;
+        }
+
+        // 输入框
+        input {
+            border: 0;
+            background: #fff;
+            height: 38px;
+            outline: none;
+            text-align: center;
+            width: 60px;
+
+            // 只读状态
+            &[readonly] {
+                background: #f5f5f5;
+            }
+        }
+
+        // 按钮
+        button {
+            background: #b4e02d;
+            border-radius: 4px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border: 0;
+            box-shadow: none;
+            color: #fff;
+            height: 38px;
+            line-height: 38px;
+            outline: none;
+            width: 60px;
+        }
+    }
+
+    // 中等屏幕时，调整内部导航项
+    @media (max-width: 992px) {
+
+        // 向右移动 20 像素
+        .move-right20 {
+            margin-right: -20px;
+        }
+
+        // 向右移动 30 px
+        .move-right30 {
+            margin-right: -35px;
+        }
+    }
+}

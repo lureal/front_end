@@ -1,0 +1,190 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>广告详情</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>广告管理</a></li>
+                <li><a href="#">广告详情</a></li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">广告详情</h3>
+                </div>
+                <div class="box-body" id="detail"></div>
+                <div class="box-footer" style="position: fixed; bottom: 0;opacity: .7;background: gray;width: 100%;margin-left: -15px; padding-left: 20px; z-index:9999;">
+                    <button class="btn btn-default" id="copy">复制当前订单内容，创建一个新订单</button>
+                    <button class="btn btn-info pull-left" id="edit">编辑</button>
+                    <button class="btn btn-default" id="canel">上一步</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="preview-tpl">
+        <div class="row" style="margin-bottom: 15px;">
+            <div class="col-md-12 form-inline">
+                <div class="input-group" style="margin-right: 10px;">
+                    <input type="text" class="form-control" id="chart-datepicker" placeholder="选择日期" style="width: 183px;">
+                </div>
+                <button class="btn btn-default" style="margin-right: 20px;" id="chart-search">搜索</button>
+                <div class="form-group" style="margin-right: 10px">
+                    <select id="chart-select" multiple class="form-control select2" style="width: 183px;"></select>
+                </div>
+                <button class="btn btn-default" id="generate-chart">生成图表</button>
+            </div>
+            <div class="col-md-12">
+                <div class="chart" id="chart"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <!--如果是博文-->
+                <% if(type === '1') { %>
+
+                    <!--如果是 mid-->
+                    <% if(ad.mid !== '' && ad.mid) { %>
+                        <div class="mid" style="padding-bottom: 10px;">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label>Mid：</label>
+                                    <input type="text" class="form-control" value="<%= ad.mid %>" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!--如果是编辑博文-->
+                    <% } else { %>
+                        <div class="article">
+                            <textarea class="form-control" style="height:300px;" disabled><%= ad.text %></textarea>
+                            <ul style="list-style: none; padding: 0;overflow:hidden;">
+                                <% _.each(ad.picUrls, function(val, index) { %>
+                                    <li style="height: 120px; float: left; margin-right: 15px;padding-top: 10px; padding-bottom: 10px;">
+                                        <img style="height: 100%;" src="<%= val %>" alt="wesdom">
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    <% } %>
+
+                <!--如果是 Banner-->
+                <% } else if(type === '2') { %>
+                    <div class="banner">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label>链接：</label>
+                                <a target="_blank" href="<%= ad.landingpageUrl %>"><%= ad.landingpageUrl %></a>
+                            </div>
+                        </div>
+                        <div style="height: 120px; padding-top: 10px; padding-bottom: 10px;">
+                            <img src="<%= ad.picUrl %>" alt="wesdom" style="height: 100%; float: left;">
+                        <div>
+                    </div>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="row" style="border-top: 1px solid #ecf0f5; padding-top: 15px;">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>推广计划</label>
+                    <input id="plan" type="text" class="form-control" value="" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>广告名称</label>
+                    <input type="text" class="form-control" value="<%= name %>" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>广告ID</label>
+                    <input type="text" class="form-control" id="order-id"  disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>投放日期</label>
+                    <input type="text" class="form-control" value="<%= date %>" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>投放时间</label>
+                    <input type="text" class="form-control" value="<%= time %>" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>广告出价</label>
+                    <input id="price-type" type="text" class="form-control" value="" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>订单限额</label>
+                    <input type="text" class="form-control" value="<%= (quota / 100).toFixed(2) %>元" disabled>
+                </div>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>曝光回调(选填)</label>
+                    <input type="text" class="form-control" value="<%= exposureMonitorUrl %>" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>点击回调(选填)</label>
+                    <input type="text" class="form-control" value="<%= clickMonitorUrl %>" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>定向用户</label>
+                    <textarea id="target" type="text" class="form-control" disabled style="min-height: 70px"></textarea>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-ad-detail.js"></script>
+{% endblock %}

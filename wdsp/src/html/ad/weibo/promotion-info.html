@@ -1,0 +1,1205 @@
+{% extends '../../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">创建新广告</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-promotion-info">
+
+    {# 订单数据 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <ul class="content-progress clearfix">
+                <li class="active reedit">
+                    <div class="progress-step">
+                        <span>1</span>
+                    </div>
+                    <div class="progress-title">
+                        填写基本信息
+                        <a href="/#proj_name#/html/ad/weibo/base-info.html">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="progress-step">
+                        <span>2</span>
+                    </div>
+                    <div class="progress-title">
+                        设置推广信息
+                        <a href="">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="progress-step">
+                        <span>3</span>
+                    </div>
+                    <div class="progress-title">
+                        设置定向范围
+                        <a href="">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="progress-step">
+                        <span>4</span>
+                    </div>
+                    <div class="progress-title">
+                        设置投放时间
+                        <a href="">[ 重新编辑 ]</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="progress-step">
+                        <span>5</span>
+                    </div>
+                    <div class="progress-title">完成</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {# 设置推广信息 #}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">第2步：设置推广信息</h3>
+                </div>
+                <div class="box-body w-box-body w-form w-form-readonly">
+
+                    {# 表单 #}
+                    <div class="col-md-6 col-sm-12 col-xs-12 promotion-form">
+                        <div class="form-horizontal clearfix w-row">
+                            <div class="w-field select-ad-type" id="select-ad-type">
+                                <label class="col-md-4 col-sm-2 w-field-title">选择广告形式</label>
+                                <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                    <select class="form-control w-field-input">
+                                        <option value="#weibo-feed">微博</option>
+                                        <option value="#weibo-banner">Banner</option>
+                                        <option value="#weibo-card">品速Card</option>
+                                        <option value="#weibo-grid">九宫格</option>
+                                    </select>
+                                    <!--<button class="w-btn w-btn-default active" data-target="#weibo-feed">微博Feeds</button>
+                                    <button class="w-btn w-btn-default" data-target="#weibo-banner">Banner</button>
+                                    <button class="w-btn w-btn-default" data-target="#weibo-card">品速Card</button>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        {# 微博 Feed #}
+                        <div class="weibo-feed active" id="weibo-feed">
+                            <div class="form-horizontal clearfix w-row" data-type="radio" data-id="platformId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">选择广告位</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-radio" id="weibo-feed-place"></div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="select" data-id="groupId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">微博UID</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                        <select class="form-control w-field-input" id="weibo-feed-uid"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="radio" data-id="platformId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title xs-hide-title"></label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-radio" id="weibo-feed-type">
+                                        <span class="pull-left">
+                                            <label>
+                                                <input name="feed-type" type="radio" value="1" checked>博文链接推广
+                                            </label>
+                                        </span>
+                                        <span class="pull-left">
+                                            <label>
+                                                <input name="feed-type" type="radio" value="2">编辑博文
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="weibo-feed-link">
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">推广链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input id="weibo-feed-mid" type="text" class="form-control w-field-input" name="name" placeholder="请填写推广链接">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写推广链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">费用参考</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content cost-ref weibo-feed-cost-ref"></div>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-feed-link-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="weibo-feed-article" style="display: none;">
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">编辑博文</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <textarea id="weibo-feed-text" class="form-control w-field-input" row=1 placeholder="请输入博文内容，最多140个字"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请输入博文内容，最多140个字</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field multi-img-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">上传图片</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <div class="multi-upload-tip">（格式png、jpg或gif，大小不超过 5M ，最多可传9张）</div>
+
+                                            {# 已经上传的图片插入的区域 #}
+                                            <div class="multi-upload-items" id="weibo-feed-upload">
+                                                <div class="multi-upload-item add">
+                                                    <div class="add-wrap">
+                                                        <input type="file" access="image/*">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="upload-wrap">
+                                                        <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                        <button>
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">费用参考</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content cost-ref weibo-feed-cost-ref"></div>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-feed-article-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# Banner #}
+                        <div class="weibo-banner" id="weibo-banner">
+                            <div class="form-horizontal clearfix w-row" data-type="radio" data-id="platformId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">选择广告位</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-radio" id="weibo-banner-ad-place"></div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">网页链接</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content">
+                                        <input id="weibo-banner-landing" type="text" class="form-control w-field-input" name="name" placeholder="请填写推广链接">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写网页链接</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                <div class="w-field single-img-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">推广图片</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content">
+                                        <div class="single-upload-tip">（图片大小：600x100，320x50，格式png、jpg或gif，大小不超过 5M ，最多可传9张）</div>
+
+                                        {# 已经上传的图片插入的区域 #}
+                                        <div class="single-upload-items weibo-banner-img" id="weibo-banner-upload">
+                                            <div class="single-upload-item add">
+                                                <div class="add-wrap">
+                                                    <input type="file" access="image/*">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                                <div class="upload-wrap">
+                                                    <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                    <button>
+                                                        <i class="fa fa-close"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">费用参考</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content cost-ref" id="weibo-banner-cost-ref"></div>
+                                </div>
+                            </div>
+                            <div class="w-form-footer clearfix">
+                                <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                    <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-banner-submit">下一步</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# 品速 Card #}
+                        <div class="weibo-card" id="weibo-card">
+                            <div class="form-horizontal clearfix w-row" data-type="select" data-id="groupId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">微博UID</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                        <select class="form-control w-field-input" id="weibo-card-uid"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">品牌Card标题</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content">
+                                        <input type="text" class="form-control w-field-input" name="name" placeholder="请填写品牌Card标题" id="card-title">
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写品牌Card标题</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">品牌Card内容</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="请输入品牌Card内容，最多34个字" id="card-content"></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请输入品牌Card内容，最多34个字</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="radio" data-id="platformId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">品牌Card类型</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-radio" id="weibo-card-type">
+                                        <span class="pull-left">
+                                            <label>
+                                                <input name="card-type" type="radio" value="1" checked>活动
+                                            </label>
+                                        </span>
+                                        <span class="pull-left">
+                                            <label>
+                                                <input name="card-type" type="radio" value="2">视频
+                                            </label>
+                                        </span>
+                                        <span class="pull-left">
+                                            <label>
+                                                <input name="card-type" type="radio" value="3">视频活动
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# 活动 #}
+                            <div id="weibo-card-activity">
+                                <div class="form-horizontal clearfix w-row" data-type="radio" data-id="platformId" data-validate="">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">按钮类型</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content w-field-radio" id="activity-btn">
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="btn-type" type="radio" value="none" checked>无
+                                                </label>
+                                            </span>
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="btn-type" type="radio" value="join">参与
+                                                </label>
+                                            </span>
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="btn-type" type="radio" value="buy">购买
+                                                </label>
+                                            </span>
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="btn-type" type="radio" value="download">下载
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">Card按钮链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input type="text" class="form-control w-field-input" name="name" placeholder="请填写正确的Card按钮链接" id="activity-card-btn-link">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写正确的Card按钮链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">Card链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input type="text" class="form-control w-field-input" name="name" placeholder="请填写正确的Card链接" id="activity-card-link">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写正确的Card链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                    <div class="w-field single-img-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">上传图片</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <div class="single-upload-tip">（尺寸：592*296像素，格式 png 或 jpg，不超过 70KB）</div>
+
+                                            {# 已经上传的图片插入的区域 #}
+                                            <div class="single-upload-items weibo-card-img" id="weibo-card-banner-upload">
+                                                <div class="single-upload-item add">
+                                                    <div class="add-wrap">
+                                                        <input type="file" access="image/*">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="upload-wrap">
+                                                        <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                        <button>
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">推广博文</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <textarea class="form-control w-field-input" row=1 placeholder="请输入推广博文，最多130个字" id="activity-blog-ctn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请输入推广博文，最多130个字</p>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-card-activity-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# 视频 #}
+                            <div id="weibo-card-video" style="display: none;">
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">Card链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input type="text" class="form-control w-field-input" name="name" placeholder="请填写正确的Card链接" id="video-card-link">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写正确的Card链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                    <div class="w-field single-img-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">上传图片</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <div class="single-upload-tip">（尺寸：592*296像素，格式 png 或 jpg，不超过 70KB）</div>
+
+                                            {# 已经上传的图片插入的区域 #}
+                                            <div class="single-upload-items weibo-card-img" id="weibo-card-video-upload">
+                                                <div class="single-upload-item add">
+                                                    <div class="add-wrap">
+                                                        <input type="file" access="image/*">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="upload-wrap">
+                                                        <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                        <button>
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                    <div class="w-field single-video-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">上传视频</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content" id="weibo-card-video-uploadv">
+                                            <div class="single-upload-tip">（尺寸：16:9，时长 <= 1 分钟，格式 MP4，视频分辨率 720p 以上）</div>
+                                            <input type="file" accept="video/mp4" id="video-upload">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">推广博文</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <textarea class="form-control w-field-input" row=1 placeholder="请输入推广博文，最多130个字" id="video-blog-ctn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请输入推广博文，最多130个字</p>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-card-video-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# 活动视频 #}
+                            <div id="weibo-card-video-activity" style="display: none;">
+                                <div class="form-horizontal clearfix w-row" data-type="radio" data-id="platformId" data-validate="">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">按钮类型</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content w-field-radio" id="activity-video-btn">
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="video-btn-type" type="radio" value="none" checked>无
+                                                </label>
+                                            </span>
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="video-btn-type" type="radio" value="join">参与
+                                                </label>
+                                            </span>
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="video-btn-type" type="radio" value="buy">购买
+                                                </label>
+                                            </span>
+                                            <span class="pull-left">
+                                                <label>
+                                                    <input name="video-btn-type" type="radio" value="download">下载
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">Card按钮链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input type="text" class="form-control w-field-input" name="name" placeholder="请填写正确的Card按钮链接" id="activity-video-card-btn-link">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写正确的Card按钮链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">Card链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input type="text" class="form-control w-field-input" name="name" placeholder="请填写正确的Card链接" id="activity-video-card-link">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写正确的Card链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                    <div class="w-field single-img-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">上传图片</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <div class="single-upload-tip">（尺寸：592*296像素，格式 png 或 jpg，不超过 70KB）</div>
+
+                                            {# 已经上传的图片插入的区域 #}
+                                            <div class="single-upload-items weibo-card-img" id="weibo-card-actvideo-upload">
+                                                <div class="single-upload-item add">
+                                                    <div class="add-wrap">
+                                                        <input type="file" access="image/*">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="upload-wrap">
+                                                        <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                        <button>
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                    <div class="w-field single-video-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">上传视频</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content" id="weibo-card-video-act-uploadv">
+                                            <div class="single-upload-tip">（尺寸：16:9，时长 <= 1 分钟，格式 MP4，视频分辨率 720p 以上）</div>
+                                            <input type="file" accept="video/mp4" id="activity-video-upload">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">推广博文</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <textarea class="form-control w-field-input" row=1 placeholder="请输入推广博文，最多130个字" id="activity-video-blog-ctn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请输入推广博文，最多130个字</p>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-card-actvideo-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# 九宫格 #}
+                        <div class="weibo-grid" id="weibo-grid">
+                            <div class="form-horizontal clearfix w-row" data-type="select" data-id="groupId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">微博UID</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                        <select class="form-control w-field-input" id="weibo-grid-uid"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">微博正文</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content">
+                                        <textarea class="form-control w-field-input" row=1 placeholder="最多不超过30个汉字，不允许链接" id="weibo-grid-content"></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-field-error clearfix">
+                                    <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请输入微博正文，至少10个汉字，最多不超过30个汉字，不允许链接</p>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="" data-validate="empty">
+                                <div class="w-field multi-img-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">上传图片</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content">
+                                        <div class="mmulti-upload-tip">( 支持上传4、6、9张图片，图片尺寸为1242*1242像素，每张图片小于100k，图片格式为 png / jpg )</div>
+                                        <div class="w-field-select grid-select-img">
+                                            <select class="form-control w-field-input" id="weibo-grid-select-upload">
+                                                <option value="4">4 张</option>
+                                                <option value="6">6 张</option>
+                                                <option value="9">9 张</option>
+                                            </select>
+                                        </div>
+                                        <div class="multi-upload-items" id="weibo-grid-upload" data-minedge="0" data-maxedge="4">
+                                            <div class="multi-upload-item add">
+                                                <div class="add-wrap">
+                                                    <input data-minedge="0" data-maxedge="4" type="file" access="image/*" multiple>
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                                <div class="upload-wrap">
+                                                    <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                    <button>
+                                                        <i class="fa fa-close"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="select" data-id="groupId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">标签类型</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                        <select class="form-control w-field-input" id="weibo-grid-tag">
+                                            <option value="1">立即下载</option>
+                                            <option value="2">立即使用</option>
+                                            <option value="3">玩游戏</option>
+                                            <option value="4">立即安装</option>
+                                            <option value="5">立即购买</option>
+                                            <option value="6">了解详情</option>
+                                            <option value="7">去看看</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal clearfix w-row" data-type="select" data-id="groupId" data-validate="">
+                                <div class="w-field">
+                                    <label class="col-md-4 col-sm-2 w-field-title">APP类型</label>
+                                    <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                        <select class="form-control w-field-input" id="weibo-grid-app">
+                                            <option value="0">安卓</option>
+                                            <option value="1">ios</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# android #}
+                            <div class="weibo-grid-android">
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">下载链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input id="android-download-link" type="text" class="form-control w-field-input" name="name" placeholder="请填写下载链接">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写下载链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">应用名称</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input id="android-download-name" type="text" class="form-control w-field-input" name="name" placeholder="请填写应用名称">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写应用名称</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="select" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">应用分类</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                            <select class="form-control w-field-input" id="android-app-type"></select>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写应用分类</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="select" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title"></label>
+                                        <div class="col-md-8 col-sm-10 w-field-content w-field-select">
+                                            <select class="form-control w-field-input" id="android-app-sub-type"></select>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写应用子分类</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">开发者</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input id="android-develop" type="text" class="form-control w-field-input" name="name" placeholder="请填写开发者">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写开发者</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">应用描述</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <textarea class="form-control w-field-input" row=1 placeholder="最多不超过500个汉字，不允许链接" id="android-description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写应用描述，最少10个汉字，最多不超过30个汉字，不允许链接</p>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-id="" data-validate="empty">
+                                    <div class="w-field single-img-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">应用图标</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <div class="single-upload-tip">( 建议图片尺寸为 72*72 像素，图片格式为 png )</div>
+                                            <div class="single-upload-items" id="weibo-grid-app-upload">
+                                                <div class="single-upload-item add">
+                                                    <div class="add-wrap">
+                                                        <input type="file" access="image/x-png,image/png">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="upload-wrap">
+                                                        <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                        <button>
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal clearfix w-row" data-type="textarea" data-id="address" data-validate="empty">
+                                    <div class="w-field multi-img-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">应用截图</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <div class="multi-upload-tip">( 建议图片尺寸为 480*80 像素，图片格式为 png ，最多可上传3张图片)</div>
+
+                                            {# 已经上传的图片插入的区域 #}
+                                            <div class="multi-upload-items weibo-grid-screenshot-upload" id="weibo-grid-screenshot-upload">
+                                                <div class="multi-upload-item add">
+                                                    <div class="add-wrap">
+                                                        <input type="file" access="image/x-png,image/png">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                    <div class="upload-wrap">
+                                                        <img src="http://wdsp.iyq.me/dsp/img/none.png" alt="上传图片">
+                                                        <button>
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-grid-android-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {# ios #}
+                            <div class="weibo-grid-ios" style="display: none;">
+                                <div class="form-horizontal clearfix w-row" data-type="input" data-id="name" data-validate="empty">
+                                    <div class="w-field">
+                                        <label class="col-md-4 col-sm-2 w-field-title">下载链接</label>
+                                        <div class="col-md-8 col-sm-10 w-field-content">
+                                            <input id="ios-download-link" type="text" class="form-control w-field-input" name="name" placeholder="请填写下载链接">
+                                        </div>
+                                    </div>
+                                    <div class="w-field-error clearfix">
+                                        <p class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">请填写下载链接</p>
+                                    </div>
+                                </div>
+                                <div class="w-form-footer clearfix">
+                                    <div class="col-md-8 col-sm-10 col-md-offset-4 col-sm-offset-2">
+                                        <a href="javascript:void(0);" class="w-btn w-btn-primary col-sm-12" id="weibo-grid-ios-submit">下一步</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# 预览 #}
+                    <div class="col-md-6 col-sm-12 col-xs-12 promotion-preview">
+                        <div class="weibo-preview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 选择下拉框模板 #}
+<script type="text/template" id="select-tpl">
+    <% for (var prop in data) { %>
+        <option value="<%= prop %>"><%= data[prop] %></option>
+    <% } %>
+</script>
+
+{# 勾选框模板 #}
+<script type="text/template" id="checkbox-tpl">
+    <% _.each(data, function(item, index) { %>
+        <% if (index === 0) { %>
+            <span class="pull-left">
+                <label>
+                    <input type="radio" name="<%= name %>" value="<%= item.id %>" checked><%= item.val %>
+                </label>
+            </span>
+        <% } else { %>
+            <span class="pull-left">
+                <label>
+                    <input type="radio" name="<%= name %>" value="<%= item.id %>"><%= item.val %>
+                </label>
+            </span>
+        <% } %>
+    <% }); %>
+</script>
+
+{# 参考费用模板 #}
+<script type="text/template" id="cost-ref-tpl">
+    <% _.each(data, function(item, index) { %>
+        <% if (index === 0) { %>
+            <div>
+                <span>竞价底价（分）: <%= item.basePrice %></span>
+                <span>日曝光量：<%= item.avgShow %></span>
+                <span>平均花费/CPC：<%= item.avgCPC %></span>
+                <span>平均花费/CPM：<%= item.avgCPM %></span>
+                <span>平均花费/CPE：<%= item.avgCPE %></span>
+            </div>
+        <% } else { %>
+            <div style="display: none;">
+                <span>竞价底价（分）: <%= item.basePrice %></span>
+                <span>日曝光量：<%= item.avgShow %></span>
+                <span>平均花费/CPC：<%= item.avgCPC %></span>
+                <span>平均花费/CPM：<%= item.avgCPM %></span>
+                <span>平均花费/CPE：<%= item.avgCPE %></span>
+            </div>
+        <% } %>
+    <% }); %>
+</script>
+
+{# 微博广告预览 - 微博 feed #}
+<script type="text/template" id="weibo-feed-preview-tpl">
+    <div class="feed-preview">
+
+        {# 微博头部 #}
+        <header>
+            <p>
+                <img src="/#proj_name#/img/topline.png">1万微博用户关注了
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+
+        {# 微博内容 #}
+        <div class="preview-main">
+            <div class="preview-main-header">
+                <div class="summary">
+
+                    {# 微博用户头像 #}
+                    <span class="summary-header"></span>
+
+                    {# 微博用户名称 #}
+                    <h2>微博名称</h2>
+
+                    {# 微博标识 #}
+                    <p>来自微博 weibo.com</p>
+                </div>
+                <div class="follow">
+
+                    {# 关注按钮 #}
+                    <button class="w-btn">
+                        <i class="fa fa-plus"></i>
+                        关注
+                    </button>
+                </div>
+            </div>
+
+            {# 微博内容 #}
+            <p id="preview-feed-ctn"><%= data.ad.text %></p>
+
+            {# 微博配图 #}
+            <% if (data.ad.picUrls && data.ad.picUrls.length > 0) { %>
+                <ul class="preview-main-imgs clearfix" id="preview-feed-pics">
+                    <% _.each(data.ad.picUrls, function(val, index) { %>
+                        <li>
+                            <img src="<%= val %>">
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 微博广告预览 - banner #}
+<script type="text/template" id="weibo-banner-preview-tpl">
+    <div class="banner-preview">
+        <div class="banner">
+            <a id="preview-banner-link" href="<%= data.ad.landingpageUrl ? data.ad.langingpageUrl : 'javascript:void(0);' %>">
+                <img id="preview-banner-pic" src="<%= data.ad.picUrl ? data.ad.picUrl : '/#proj_name#/img/weibo-banner-preview.png' %>" alt="推广图片区域">
+            </a>
+        </div>
+        <div class="shadow-weibo">
+            <img src="/#proj_name#/img/wesdom-weibo.png" alt="微思敦微博">
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 微博广告预览 - 品速Card #}
+<script type="text/template" id="weibo-card-preview-tpl">
+    <div class="card-preview">
+
+        {# 微博头部 #}
+        <header>
+            <p>
+                <img src="/#proj_name#/img/topline.png">推荐
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+
+        {# 微博内容 #}
+        <div class="preview-main">
+            <div class="preview-main-header">
+                <div class="summary">
+
+                    {# 微博用户头像 #}
+                    <span class="summary-header"></span>
+
+                    {# 微博用户名称 #}
+                    <h2>微博名称</h2>
+
+                    {# 微博标识 #}
+                    <p>来自微博 weibo.com</p>
+                </div>
+                <div class="follow">
+
+                    {# 关注按钮 #}
+                    <button class="w-btn">
+                        <i class="fa fa-plus"></i>
+                        关注
+                    </button>
+                </div>
+            </div>
+
+            {# 微博内容 #}
+            <p id="preview-card-blog-ctn"><%= data.ad.text %></p>
+
+            {# card #}
+            <div class="spread-area">
+
+                {# card 图片，如果有视频，点击播放视频 #}
+                {# TODO: 暂时没时间做这个功能 #}
+                <a href="javascript:void(0);" class="spread-area-img">
+                    <img id="preview-card-pic" class="spread-img" src="<%= data.ad.picUrl ? data.ad.picUrl : '/#proj_name#/img/spread-img.png' %>" alt="推广图片区域">
+                </a>
+
+                {# card 描述，点击跳转链接 #}
+                <a id="preview-card-link" href="<%= data.ad.landingpageUrl ? data.ad.landingpageUrl : 'javascript:void(0);' %>" class="spread-area-desc" target="_blank">
+                    <span class="spread-summary">
+                        <span class="spread-title" id="preview-card-title"><%= data.ad.cardTitle %></span>
+                        <span class="spread-desc" id="preview-card-ctn"><%= data.ad.cardDesc %></span>
+                    </span>
+                </a>
+
+                {# 按钮区域（只有当前是活动才有按钮区域） #}
+                {# 参与 #}
+                <a
+                    id="preview-card-btn-join"
+                    href="<%= data.ad.cardButtonUrl %>"
+                    class="card-btn"
+                    target="_blank"
+                    style="display: <%= (String(data.ad.cardType) === '1' || String(data.ad.cardType) === '3') && data.ad.cardButtonType === 'join' ? 'block' : 'none' %>"
+                >
+                    <img src="/#proj_name#/img/card-join.png" alt="参与">
+                </a>
+                
+                {# 购买 #}
+                <a
+                    id="preview-card-btn-buy"
+                    href="<%= data.ad.cardButtonUrl %>"
+                    class="card-btn"
+                    target="_blank"
+                    style="display: <%= (String(data.ad.cardType) === '1' || String(data.ad.cardType) === '3') && data.ad.cardButtonType === 'buy' ? 'block' : 'none' %>">
+                    <img src="/#proj_name#/img/card-buy.png" alt="购买">
+                </a>
+                
+                {# 下载 #}
+                <a
+                    id="preview-card-btn-download"
+                    href="<%= data.ad.cardButtonUrl %>"
+                    class="card-btn"
+                    target="_blank"
+                    style="display: <%= (String(data.ad.cardType) === '1' || String(data.ad.cardType) === '3') && data.ad.cardButtonType === 'download' ? 'block' : 'none' %>">
+                    <img src="/#proj_name#/img/card-download.png" alt="下载">
+                </a>
+            </div>
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 微博广告预览 - 九宫格 #}
+<script type="text/template" id="weibo-grid-preview-tpl">
+    <div class="feed-preview">
+
+        {# 微博头部 #}
+        <header>
+            <p>
+                <img src="/#proj_name#/img/topline.png">1万微博用户关注了
+                <i class="fa fa-close"></i>
+            </p>
+        </header>
+
+        {# 微博内容 #}
+        <div class="preview-main">
+            <div class="preview-main-header">
+                <div class="summary">
+
+                    {# 微博用户头像 #}
+                    <span class="summary-header"></span>
+
+                    {# 微博用户名称 #}
+                    <h2>微博名称</h2>
+
+                    {# 微博标识 #}
+                    <p>来自微博 weibo.com</p>
+                </div>
+                <div class="follow">
+
+                    {# 关注按钮 #}
+                    <button class="w-btn">
+                        <i class="fa fa-plus"></i>
+                        关注
+                    </button>
+                </div>
+            </div>
+
+            {# 微博内容 #}
+            <p id="preview-grid-ctn"><%= data.ad.text %></p>
+
+            {# 微博配图 #}
+            <% if (data.ad.picUrls && data.ad.picUrls.length > 0) { %>
+                <ul class="preview-main-imgs clearfix" id="preview-grid-pics">
+                    <% _.each(data.ad.picUrls, function(val, index) { %>
+
+                        <!-- 4张图 -->
+                        <% if (data.ad.picUrls.length === 4) { %>
+                            <li style="width: 50%;">
+                                <img src="<%= val %>">
+                            </li>
+
+                        <!-- 6张图和9张图 -->
+                        <% } else { %>
+                            <li>
+                                <img src="<%= val %>">
+                            </li>
+                        <% } %>
+
+                    <% }); %>
+                </ul>
+            <% } %>
+        </div>
+
+        {# 微博尾部 #}
+        <footer class="preview-main-footer clearfix">
+
+            {# 转发 #}
+            <a href="javascript:void(0);" class="replay">
+                <img src="/#proj_name#/img/retweet.png"> 69
+            </a>
+
+            {# 评论 #}
+            <a href="javascript:void(0);" class="comment">
+                <img src="/#proj_name#/img/comment.png"> 168
+            </a>
+
+            {# 点赞 #}
+            <a href="javascript:void(0);" class="like">
+                <img src="/#proj_name#/img/like.png"> 563
+            </a>
+        </footer>
+    </div>
+</script>
+
+{# 广告组模板 #}
+<script type="text/template" id="dimension-platform-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>投放平台</th>
+                <th>曝光量</th>
+                <th>互动情况</th>
+                <th>点击情况</th>
+                <th>下载量</th>
+                <th>消耗（元）</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(record, index) { %>
+                    <tr>
+                        <td><%= record.name %></td>
+                        <td><%= record.showCount %></td>
+                        <td>
+                            <span>互动量：<%= record.interactCount %></span><br>
+                            <span>互动率：<%= record.interactRatio %></span><br>
+                            <span>互动成本（元）：<%= record.interactPrice %></span>
+                        </td>
+                        <td>
+                            <span>点击量：<%= record.clickCount %></span><br>
+                            <span>点击率：<%= record.clickRatio %></span><br>
+                            <span>点击成本（元）：<%= record.clickPrice %></span>
+                        </td>
+                        <td><%= record.downloadCount %></td>
+                        <td><%= record.consume %></td>
+                    <tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-weibo-promotioninfo.js"></script>
+{% endblock %}

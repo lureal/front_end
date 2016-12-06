@@ -1,0 +1,233 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>录入新客户</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>客户管理</a></li>
+                <li><a href="#">录入新客户</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">录入新客户</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>公司名称<span style="color: red;">*</span></label>
+                                <input type="text" class="form-control" placeholder="" id="custom-name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>产品名称<span style="color: red;">*</span></label>
+                                <input type="text" class="form-control" placeholder="" id="product-name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>DSP 行业<span style="color: red;">*</span></label>
+                                <select id="inner-trades" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--营业执照-->
+                    <div class="row snapshats" id="business-license" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ecf0f5;"></div>
+
+                    <!--icp 备案-->
+                    <div class="row snapshats" id="icp"></div>
+
+                    <!--其他资质-->
+                    <div class="other-qualification row">
+                        <div class="col-md-12">
+                            <label>
+                                <small style="color: #777;">单击 + 按钮添加其他资质附件</small>
+                            </label>
+                            <button type="button" class="btn btn-default btn-flat" id="add-qualification" data-index="0">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                            <div id="qualification"></div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ecf0f5;">
+                        <div class="col-md-12">
+                            <h4 style="margin-bottom: 20px; color: #777;">微博 WAX</h4>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>WAX 行业<span style="color: red;">*</span></label>
+                                <select id="wax-industry" class="form-control select2" style="width: 100%;"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>网站链接</label>
+                                <input type="text" class="form-control" placeholder="" id="wax-link">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>微博 UID</label>
+                                <ul class="uid-list col-md-12" id="uid-list" style="padding: 0; margin: 10px 0;">
+                                </ul>
+                                <form class="form-horizontal">
+                                    <div class="form-group margin-bottom-none">
+                                        <div class="col-sm-9">
+                                            <input class="form-control input-sm" placeholder="请输入微博 UID" id="uid-text">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-success pull-right btn-block btn-sm" id="add-uid">添加</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>游戏ID（选填）</label>
+                                <input type="text" class="form-control" placeholder="请输入游戏ID" id="game-ID">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>媒体ID（选填）</label>
+                                <input type="text" class="form-control" placeholder="请输入媒体ID" id="media-ID">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>上报URL（选填）</label>
+                                <input type="text" class="form-control" placeholder="请输入上报URL" id="report-url">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 这期不做腾讯 ADX
+                    <div class="row" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ecf0f5;">
+                        <div class="col-md-12">
+                            <h4 style="margin-bottom: 20px; color: #777;">腾讯 ADX</h4>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>网站链接</label>
+                                <input type="text" class="form-control" placeholder="" id="adx-link">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>应用 ID</label>
+                                <input type="text" class="form-control" placeholder="" id="adx-id">
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-default" id="canel">上一步</button>
+                    <button class="btn btn-info pull-left" id="submit">保存</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="file-tpl">
+        <form class="file-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><%= title %><span style="color: red;">*</span></label>
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit" type="submit"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </script>
+
+    <script type="text/template" id="file-tpl2">
+        <form class="file-form top15 form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>资质名称<span style="color: red;">*</span></label>
+                        <input type="text" class="form-control file-name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label><%= title %><span style="color: red;">*</span></label>
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit" type="submit"></p>
+                            <a href="javascript:void(0);" class="file-del btn btn-danger btn-sm" style="margin-left: 10px;">删除当前资质</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </script>
+
+    <script type="text/template" id="uid-list-tpl">
+        <li style="list-style: none; padding: 10px 20px; background: #efefef; ">
+            <span class="wbuid" data-uid="<%= encodeURIComponent(name) %>"><%= name %></span>
+            <a href="javascript:void(0)" class="del-uid label label-danger" style="margin-left: 5px;">删除 uid</a>
+        </li>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/manage-customer-add.js"></script>
+{% endblock %}

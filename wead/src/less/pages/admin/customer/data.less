@@ -1,0 +1,277 @@
+.admin-service-data {
+
+    // 公司名称
+    .company-name {
+        color: #39414d;
+        font-size: 20px;
+        padding: 8px 0 28px;
+    }
+
+    // 内容区域导航
+    .content-nav {
+
+        > div {
+            position: relative;
+        }
+
+        // 导航中的每一个项
+        > div > a {
+            background: #fff;
+            border-radius: 4px;
+            color: #738399;
+            display: block;
+            font-size: 16px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+
+            &:hover,
+            &.active {
+                color: #1a8cff;
+            }
+
+            > i {
+                margin: 0 5px;
+            }
+
+            // 提示更新数量
+            .notice-num {
+                background: #f54f49;
+                border-radius: 7px;
+                color: #fff;
+                display: inline-block;
+                font-size: 12px;
+                line-height: 1;
+                margin-left: 5px;
+                padding: 1px 4px;
+            }
+        }
+
+        // 导航下拉菜单
+        > div > ul {
+            border-width: 0 1px 1px 1px;
+            border-style: solid;
+            border-color: #f5f5f5;
+            border-radius: 0;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background: #fff;
+            display: none;
+            list-style: none;
+            left: 15px;
+            margin: -1px -1px 0;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            right: 15px;
+            top: 60px;
+            z-index: 100;
+
+            &:focus {
+                display: block;
+            }
+
+            a {
+                color: #738399;
+                display: block;
+                font-size: 16px;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+
+                &:hover,
+                &.active {
+                    color: #1a8cff;
+                }
+
+                i {
+                    margin: 0 5px 0 -13px;
+                }
+
+                // 提示更新数量
+                .notice-num {
+                    background: #f54f49;
+                    border-radius: 7px;
+                    color: #fff;
+                    display: inline-block;
+                    font-size: 12px;
+                    line-height: 1;
+                    margin-left: 5px;
+                    margin-right: -13px;
+                    padding: 1px 4px;
+                }
+            }
+        }
+    }
+
+    // 数据导入和历史数据标题
+    .import-data-title h2,
+    .history-data-title h2 {
+        color: #39414d;
+        font-size: 20px;
+        padding: 30px 0;
+        margin: 0;
+
+        span {
+            color: #999;
+            font-size: 13px;
+        }
+    }
+
+    // 数据导入内容
+    .import-data {
+        .search {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            top: 14px;
+
+            input {
+                bottom: 0;
+                height: 400px;
+                outline: none;
+                opacity: 0;
+                position: absolute;
+                position: absolute;
+                right: 0;
+                width: 400px;
+                z-index: 10000;
+            }
+        }
+
+        .template {
+            display: inline-block;
+            margin-left: 10px;
+            overflow: hidden;
+            position: relative;
+            top: 14px;
+        }
+    }
+
+    // 工具条
+    .tools {
+        background: #fff;
+        border-radius: 4px;
+        padding: 20px 30px;
+    }
+
+    // 日期
+    .w-datepicker + .w-datepicker {
+        margin-left: 25px;
+    }
+
+    // 搜索按钮
+    .search {
+        margin-left: 10px;
+    }
+
+    // 导出表格
+    .export {
+        margin-left: 10px;
+    }
+
+    .w-collapse {
+        margin-top: 30px;
+
+        // 每一个 collapse 上添加一个隔离带
+        .w-table + .w-table {
+            border-top: solid 16px #f5f5f5;
+        }
+
+        .w-table table {
+            margin-bottom: 0;
+
+            th,
+            td {
+                min-width: 100px;
+            }
+        }
+
+        // 表格标题
+        .table-name {
+            color: #1b8cfa;
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0;
+            padding-left: 30px;
+
+            // 表格删除按钮
+            .table-del {
+                color: #ff4d4d;
+                font-size: 12px;
+                position: absolute;
+                padding: 0 20px;
+                right: 15px;
+            }
+        }
+    }
+}
+
+// 当屏幕小于 1160 时，改变展现方式
+@media (max-width: 1160px) {
+    .admin-service-data {
+        .w-datepicker + .w-datepicker {
+            margin-left: 0;
+        }
+        .w-datepicker {
+            display: block;
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            [type="text"] {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        // 搜索按钮
+        .search {
+            margin-left: 0;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .admin-service-data {
+
+        // 内容导航条适配小屏幕
+        .content-nav {
+
+            // 让每一个导航项之间产生间距
+            > div + div {
+                margin-top: 20px;
+            }
+
+            // 下拉列表
+            > div > ul  {
+                position: static;
+            }
+
+            // 实际导航项
+            > div > a {
+                .move-left5 {
+                    margin-left: -12px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-service-data {
+
+        .import-data-title h2,
+        .history-data-title h2 {
+            span {
+                display: block;
+                line-height: 1.5;
+                margin-top: 10px;
+            }
+        }
+    }
+}

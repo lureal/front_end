@@ -1,0 +1,210 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>产品维度统计</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 产品维度统计</li>
+            </ol>
+        </section>
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <!-- <div class="box-header">
+                            <h3 class="box-title">产品维度统计</h3>
+                        </div> -->
+                        <div class="col-xs-12 box-toolbar table-toolbar">
+                            <div class="form-inline">
+
+                                 <!-- 消耗来源 -->
+                                <div class="form-group">
+                                    <select id="consumption" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 日期选择 -->
+                                <div class="form-group">
+                                  <div class="input-group">
+                                      <input type="text" class="form-control pull-right" id="datapicker" placeholder="选择日期" style="width: 183px;">
+                                  </div>
+                                </div>
+
+                                <!-- 产品线选择 -->
+                                <div class="form-group">
+                                    <select id="product-line" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 客户筛选 -->
+                                <div class="form-group">
+                                    <select id="customer-type" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 排序 -->
+                                <div class="form-group">
+                                    <select id="col-sort" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 排序类型 -->
+                                <div class="form-group">
+                                    <select id="type-sort" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!--客户名称-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="" id="customer-name" placeholder="请输入客户名称">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm search-btn" id="search" style="display: none;">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm charts" data-type="0">行业图表</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm charts" data-type="1">区域图表</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm charts" data-type="2">团队图表</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm charts" data-type="3">渠道图表</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="static"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th style="min-width:85px;">产品名称</th>
+                    <th style="min-width:85px;">客户名称</th>
+                    <th style="min-width:105px;">产品创建日期</th>
+                    <th style="min-width:85px;">所属行业</th>
+                    <th style="min-width:85px;">所属区域</th>
+                    <th style="min-width:85px;">渠道来源</th>
+                    <th style="min-width:85px;">销售人员</th>
+                    <th style="min-width:85px;">运营经理</th>
+                    <th style="min-width:85px;">返点</th>
+                    <th style="text-align: right; min-width:85px;">消耗金额</th>
+                    <th style="text-align: right; min-width:85px;">续费金额</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.prodList, function(val, index) { %>
+                    <tr>
+                        <td><%= val.productName %></td>
+                        <td><%= val.name %></td>
+                        <td><%= val.openDate %></td>
+                        <td><%= val.industry %></td>
+                        <td><%= val.area %></td>
+                        <td><%= val.channel %></td>
+                        <td><%= val.sales %></td>
+                        <td><%= val.adviser %></td>
+                        <td><%= val.rebate %></td>
+                        <td style="text-align: right;"><%= val.consume %></td>
+                        <td style="text-align: right;"><%= val.recharge %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.prodList.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <nav>
+            <% if(data.prodList.length > 0) { %>
+            <div class="pull-left" style="margin: 20px 0;">
+                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                    <span style="margin-right: 20px;">总客户数：<%= data.total %></span>
+                    <span style="margin-right: 20px;">总消耗合计：<%= data.totalComsume %></span>
+                    <span style="margin-right: 10px;">续费金额合计：<%= data.totalRecharge %></span>
+                </div>
+            </div>
+            <% } %>
+
+            <% if(data.pageCount > 1) { %>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+               		var end = data.pageCount - 1;
+              		var start = 2;
+              		var pagenum = 7;
+              		if(data.pageCount > pagenum) {
+              			var left = data.page - start;
+              			var right = end- data.page > 2 ? 2:end- data.page;
+              			if(left<2) {
+              				end = start + 4;
+              			} else if(right<2){
+              				start = end - 4;
+              			} else {
+              				start = data.page - 2;
+              				end = data.page + 2;
+              			}
+	              	}
+                	for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+               	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+            <% } %>
+        </nav>
+    </script>
+
+    <!-- 产品线 -->
+    <script type="text/template" id="type-tpl">
+        <option value="clear">清除选项</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 排序 -->
+    <script type="text/template" id="col-sort-tpl">
+        <option value="clear">清除选项</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!-- 排序类型 -->
+    <script type="text/template" id="type-sort-tpl">
+        <option value="clear">清除选项</option>
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/report-static.js"></script>
+{% endblock %}

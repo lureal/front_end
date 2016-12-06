@@ -1,0 +1,149 @@
+{% extends '../../layouts/admin.html' %}
+{% block content %}
+    <section class="content-header">
+        <ol class="breadcrumb w-breadcrumb">
+            <li class="active">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-home"></i>推送消息
+                </a>
+            </li>
+        </ol>
+    </section>
+    <section class="content admin-notice">
+        <div class="row create-push">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">新建推送</h3>
+                    </div>
+                    <div class="box-body w-box-body">
+                        <div class="form-horizontal clearfix area" id="area" data-select="">
+                            <label class="col-sm-2">范围</label>
+                            <div class="col-sm-10 selected" id="selected" style="display: none;">
+                                <div class="col-sm-10" id="selected-content">
+                                    <i class="fa fa-check-circle"></i><span></span>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="javascript:void(0);" id="reselect">重新选择</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-10" id="not-select">
+                                <button class="w-btn w-btn-default select-btn">选择</button>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix ctn">
+                            <label class="col-sm-2">内容</label>
+                            <div class="col-sm-10 push-ctn">
+                                <textarea placeholder="请填写推送内容" id="push-content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-horizontal clearfix push-btn">
+                            <label class="col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <button class="w-btn w-btn-primary" id="push-message">确认推送</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row push-list">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box w-box" id="lists">
+                    <div class="box-header w-box-header">
+                        <h3 class="box-title">推送列表</h3>
+                    </div>
+                    <div class="box-body w-box-body table-responsive w-table-collapse-td" id="lists-table"></div>
+                    <div class="box-footer clearfix w-pager" id="lists-pager">
+                        <div class="pull-right">
+                            <button class="w-previous pull-left">
+                                <i class="fa fa-chevron-circle-left"></i>
+                            </button>
+                            <div class="pull-left clearfix">
+                                <input type="text" class="w-page-now form-control pull-left" value="1">
+                                <span class="w-allpage pull-left">
+                                    /
+                                    <span>15</span>
+                                </span>
+                            </div>
+                            <button class="w-next pull-left">
+                                <i class="fa fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# 操作列表模板 #}
+    <script type="text/template" id="lists-tpl">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th width=200>时间</th>
+                    <th>内容</th>
+                    <th>范围</th>
+                    <th width=150>操作</th>
+                </tr>
+                <% _.each(records, function(record) { %>
+                    <tr>
+                        <td width=200><%= record.time %></td>
+                        <td class="w-collapse-td w-collapse-td-close">
+                            <div>
+                                <p><%= record.content %></p>
+                            </div>
+                        </td>
+                        <td class="w-collapse-td w-collapse-td-close">
+                            <div>
+                                <p><%= record.scope %></p>
+                            </div>
+                        </td>
+                        <td width=150>
+                            <a href="javascript:void(0);" class="w-collapse-toggle">展开详情<i class="fa fa-caret-down"></i></a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
+
+    {# 选择范围弹窗 #}
+    <script type="text/template" id="area-modal-tpl">
+        <h2 class="modal-diy-title modal-push">请选择范围</h2>
+        <div class="modal-diy-body modal-push">
+            <input type="text" class="form-control modal-diy-input modal-push" id="area-modal-search" placeholder="搜索">
+            <i class="fa fa-search modal-search-icon" id="area-modal-search-icon"></i>
+            <ul class="select-item" id="area-modal-company">
+                <li>
+                    <label>
+                        <img src="/#proj_name#/img/loading.gif" alt="loading" style="width:14px;">
+                    </label>
+                </li>
+            </ul>
+
+            <!-- 搜索不到 -->
+            <div class="no-result" style="display: none;" id="area-modal-company-noresult">
+                抱歉，搜索不到结果
+            </div>
+        </div>
+        <div class="modal-diy-btn modal-push">
+            <button class="w-btn w-btn-primary" id="modal-confirm">确认</button>
+        </div>
+    </script>
+
+    {# 选择范围弹窗中的公司列表 #}
+    <script type="text/template" id="area-modal-company-tpl">
+        <% _.each(records, function(record) { %>
+            <li>
+                <label>
+                    <input type="checkbox" value="<%= record.id %>" data-name="<%= record.name %>">
+                    <span class="company-name"><%= record.name %></span>
+                </label>
+            </li>
+        <% }); %>
+    </script>
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/admin-message.js"></script>
+{% endblock %}

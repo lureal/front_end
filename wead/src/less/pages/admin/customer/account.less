@@ -1,0 +1,141 @@
+.admin-service-account {
+
+    // 公司名称
+    .company-name {
+        color: #39414d;
+        font-size: 20px;
+        padding: 8px 0 28px;
+    }
+
+    // 内容区域导航
+    .content-nav {
+
+        > div {
+            position: relative;
+        }
+
+        // 导航中的每一个项
+        > div > a {
+            background: #fff;
+            border-radius: 4px;
+            color: #738399;
+            display: block;
+            font-size: 16px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+
+            &:hover,
+            &.active {
+                color: #1a8cff;
+            }
+
+            > i {
+                margin: 0 5px;
+            }
+
+            // 提示更新数量
+            .notice-num {
+                background: #f54f49;
+                border-radius: 7px;
+                color: #fff;
+                display: inline-block;
+                font-size: 12px;
+                line-height: 1;
+                margin-left: 5px;
+                padding: 1px 4px;
+            }
+        }
+
+        // 导航下拉菜单
+        > div > ul {
+            border-width: 0 1px 1px 1px;
+            border-style: solid;
+            border-color: #f5f5f5;
+            border-radius: 0;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background: #fff;
+            display: none;
+            list-style: none;
+            left: 15px;
+            margin: -1px -1px 0;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            right: 15px;
+            top: 60px;
+            z-index: 100;
+
+            &:focus {
+                display: block;
+            }
+
+            a {
+                color: #738399;
+                display: block;
+                font-size: 16px;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+
+                &:hover,
+                &.active {
+                    color: #1a8cff;
+                }
+
+                i {
+                    margin: 0 5px 0 -13px;
+                }
+                
+                // 提示更新数量
+                .notice-num {
+                    background: #f54f49;
+                    border-radius: 7px;
+                    color: #fff;
+                    display: inline-block;
+                    font-size: 12px;
+                    line-height: 1;
+                    margin-left: 5px;
+                    margin-right: -13px;
+                    padding: 1px 4px;
+                }
+            }
+        }
+    }
+
+    // 记录区块
+    .records-box {
+        margin-top: 30px;
+
+        td .fa {
+            margin: 0 5px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .admin-service-account {
+
+        // 内容导航条适配小屏幕
+        .content-nav {
+
+            // 让每一个导航项之间产生间距
+            > div + div {
+                margin-top: 20px;
+            }
+
+            // 下拉列表
+            > div > ul  {
+                position: static;
+            }
+
+            // 实际导航项
+            > div > a {
+                .move-left5 {
+                    margin-left: -12px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>管理后台</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	{% block head %}
+	<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/dist/css/skins/skin-green.min.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/plugins/select2/select2.min.css">
+	<link rel="stylesheet" href="/vendor/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="/vendor/AdminLTE/dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="/vendor/ueditor-full/themes/default/css/ueditor.min.css">
+	<link rel="stylesheet" href="/#proj_name#/css/common.css">
+	<link rel="stylesheet" href="/#proj_name#/css/app.css">
+	{% endblock %}
+	<!--[if lt IE 9]>
+	<script src="/vendor/html5shiv/dist/html5shiv.min.js"></script>
+	<script src="/vendor/respond/dest/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body class="hold-transition sidebar-mini skin-green">
+	{% block content %}{% endblock %}
+
+	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/vendor/underscore/underscore-min.js"></script>
+	<script src="/vendor/jquery.cookie/jquery.cookie.js"></script>
+	<script src="/vendor/AdminLTE/plugins/select2/select2.full.min.js"></script>
+	<script src="/vendor/moment/min/moment.min.js"></script>
+	<script src="/vendor/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+	<script src="/vendor/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js"></script>
+	<script src="/vendor/jquery-form/jquery.form.js"></script>
+	<script src="/vendor/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="/vendor/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<script src="/vendor/AdminLTE/dist/js/app.min.js"></script>
+	<script src="/vendor/ueditor-full/ueditor.config.js"></script>
+	<script src="/vendor/ueditor-full/ueditor.all.js"></script>
+	<script src="/#proj_name#/js/common.js"></script>
+	{% block js %}{% endblock %}
+</body>
+</html>

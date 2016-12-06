@@ -1,0 +1,138 @@
+
+// 公共样式
+* {
+	box-sizing: border-box !important;
+}
+
+body {
+	font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, "Microsoft Yahei", Arial, sans-serif;
+	background: #fafafa;
+	margin: 0;
+}
+
+// 主要区域
+.main {
+    height: 356px;
+    left: 50%;
+    margin: -178px 0 0 -412px;
+	position: absolute;
+	top: 50%;
+	width: 825px;
+
+    // 主要区域的图片
+    .pic {
+        float: left;
+        height: 100%;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    // 主要表单
+    .login-form {
+        float: right;
+        padding-top: 47px;
+        width: 260px;
+
+        // 表单 logo
+        .logo {
+            padding-bottom: 15px;
+            text-align: center;
+
+            img {
+                height: 32px;
+                width: 172px;
+            }
+        }
+
+        // 输入框
+        .form-user,
+        .form-password {
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+
+            .fa {
+                font-size: 16px;
+                left: 15px;
+                margin-top: -8px;
+                position: absolute;
+                top: 50%;
+            }
+
+            input {
+                border: 1px solid #ebebeb;
+                display: block;
+                height: 40px;
+                line-height: 40px;
+                padding-left: 40px;
+                width: 100%;
+
+                &:focus {
+                    border-color: #29cc29;
+                    outline: none;
+                }
+            }
+        }
+
+        .form-password {
+            margin-top: 15px;
+        }
+
+        // 登陆按钮
+        button {
+            background: #29cc29;
+            border: 0;
+            color: #fff;
+            display: block;
+            height: 40px;
+            margin-top: 15px;
+            outline: none;
+            width: 100%;
+
+            &:hover {
+                opacity: 0.75;
+            }
+        }
+
+        .forget {
+            color: #525666;
+        	float: right;
+        	font-size: 13px;
+        	margin-top: 10px;
+        	opacity: .5;
+        	text-decoration: none;
+
+            &:hover {
+                color: #29cc29;
+            }
+        }
+    }
+}
+
+// 版权信息
+.copyright{
+    bottom: 30px;
+	color: #525666;
+	display: block;
+	font-size: 13px;
+	opacity: .5;
+	position: absolute;
+	text-align:center;
+	width: 100%;
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: #525666;
+    	font-size: 13px;
+    	text-decoration:none;
+    }
+
+    .conpany{
+    	margin: 3px;
+    }
+}

@@ -1,0 +1,108 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>权限分配</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 权限分配</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#role" data-toggle="tab">角色</a>
+                    </li>
+                    <li>
+                        <a href="#person" data-toggle="tab">人员</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="role">
+                        <div id="role-list"></div>
+                    </div>
+                    <div class="tab-pane" id="person">
+                        <div id="person-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!--角色列表-->
+    <script type="text/template" id="role-list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.roles, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.name %></td>
+                        <td>
+                            <a href="/#proj_name#/html/system/auth-role-tree.html?id=<%= val.id %>" type="button" class="btn btn-xs btn-success detail-action assignright-btn" style="display: none;">权限分配</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.roles.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+    </script>
+
+    <!--人员列表-->
+    <script type="text/template" id="person-list-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                    <th>部门</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.users, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.name %></td>
+                        <td><%= val.depart %></td>
+                        <td>
+                            <a href="/#proj_name#/html/system/auth-person-tree.html?id=<%= val.id %>" type="button" class="btn btn-xs btn-success detail-action assignright-btn" style="display: none;">权限分配</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <% if(data.users.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+    </script>
+
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/system-auth-list.js"></script>
+{% endblock %}

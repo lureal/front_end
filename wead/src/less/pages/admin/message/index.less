@@ -1,0 +1,222 @@
+.admin-notice {
+
+    // 分割两个块
+    .push-list {
+        margin-top: 30px;
+    }
+
+    // 新建推送
+    .create-push {
+
+        // 范围
+        .area {
+            margin-top: 15px;
+
+            // 选择按钮
+            .select-btn {
+                border-color: #1b8cfa;
+                color: #1b8cfa;
+            }
+
+            // 已经选择，展示内容
+            .selected {
+                > div {
+                    height: 39px;
+                    line-height: 39px;
+                    overflow: hidden;
+                    padding: 0;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    i {
+                        color: #1b8cfa;
+                        margin-right: 5px;
+                    }
+                }
+
+                // 按钮
+                > div + div {
+                    text-align: right;
+                }
+            }
+        }
+
+        // 内容
+        .ctn {
+            margin-top: 15px;
+
+            textarea {
+                border: 1px solid #f2f2f2;
+                border-radius: 4px;
+                color: #738399;
+                font-size: 14px;
+                min-height: 40px;
+                margin: 0;
+                padding: 12px 12px;
+                width: 100%;
+
+                // 焦点聚焦时状态
+                &:focus {
+                    border-color: #1a8cff;
+                    outline: none;
+                }
+            }
+        }
+
+        // 按钮
+        .push-btn {
+            margin-top: 15px;
+            padding-bottom: 24px;
+        }
+
+        .area,
+        .ctn,
+        .push-btn {
+            label {
+                font-weight: normal;
+                height: 39px;
+                line-height: 39px;
+                margin: 0;
+                padding-left: 30px;
+                padding-right: 0;
+                width: 70px;
+            }
+        }
+    }
+
+    .w-collapse-toggle {
+        .fa {
+            margin-left: 5px;
+        }
+    }
+}
+
+// 定制自定义弹窗标题
+.modal-push.modal-diy-title {
+    color: #738399;
+    font-size: 16px;
+    margin: 0;
+    padding: 30px 0 20px;
+    text-align: center;
+}
+
+// 定制自定义弹窗主体
+.modal-push.modal-diy-body {
+    padding: 0 40px;
+    position: relative;
+
+    // 定制自定义弹窗输入框
+    .modal-push.modal-diy-input {
+        border: 1px solid #f2f2f2;
+        border-radius: 4px;
+        color: #738399;
+        font-size: 14px;
+        height: 40px;
+        padding: 0 12px;
+        padding-right: 35px;
+
+        // 焦点聚焦时状态
+        &:focus {
+            border-color: #1a8cff;
+        }
+    }
+
+    // 搜索框放大镜图标
+    .modal-search-icon {
+        cursor: pointer;
+        position: absolute;
+        padding: 10px;
+        right: 44px;
+        top: 3px;
+    }
+
+    // 选项
+    .select-item {
+        list-style: none;
+        margin: 0;
+        max-height: 200px;
+        overflow-y: auto;
+        padding: 0;
+
+        li {
+            margin-bottom: 18px;
+
+            label {
+                font-weight: normal;
+
+                .company-name {
+                    position: relative;
+                    top: 2px;
+                }
+            }
+
+            .icheckbox_flat-blue {
+                margin-right: 5px;
+            }
+
+            &:first-child {
+                margin-top: 18px;
+            }
+        }
+    }
+
+    // 没有结果
+    .no-result {
+        color: #999;
+        padding: 20px 0 5px 17px;
+    }
+}
+
+// 定制自定义弹窗按钮
+.modal-push.modal-diy-btn {
+    padding: 15px 40px 30px;
+
+    button {
+        min-width: 100%;
+    }
+}
+
+// 小屏幕时表单的表现
+@media (max-width: 768px) {
+    .admin-notice {
+
+        .create-push {
+            #not-select,
+            #selected,
+            .push-ctn {
+                padding-left: 30px;
+            }
+
+            .push-btn {
+                > label {
+                    display: none;
+                }
+
+                > div {
+                    padding-left: 30px;
+                }
+            }
+
+            // 范围
+            .area {
+
+                // 已经选择，展示内容
+                .selected {
+                    > div {
+                        height: auto;
+                        line-height: 1.5;
+                        margin-bottom: 10px;
+                        overflow: visible;;
+                        padding: 0;
+                        white-space: normal;
+                    }
+
+                    // 按钮
+                    > div + div {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}

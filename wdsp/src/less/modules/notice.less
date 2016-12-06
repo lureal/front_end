@@ -1,0 +1,51 @@
+.notice-bar {
+    background: #ffdd33;
+    color: #39404d;
+    font-size: 13px;
+    height: 0;
+    line-height: 40px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    transition: height .5s ease;
+
+    // 通知栏目关闭按钮
+    .close {
+        bottom: 0;
+        font-size: 9px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40px;
+
+        i {
+            color: #39404d;
+        }
+    }
+}
+
+// 当通知栏激活时, 当 body 元素有 .active-notice 类时，说明应该激活通知栏目
+.active-notice {
+
+    // 通知栏的操作
+    .notice-bar {
+        height: 40px;
+        transition: height .5s ease;
+    }
+
+    // 激活状态下并且当前屏幕为非小屏幕时的侧边栏的操作
+    @media (min-width: 768px) {
+        .main-sidebar {
+            margin-top: 100px;
+            transition: margin-top .5s ease;
+        }
+    }
+
+    // 激活状态下的小屏幕侧边栏
+    @media (max-width: 768px) {
+        .main-sidebar {
+            margin-top: 160px;
+            transition: margin-top .5s ease, transform .3s ease-in-out,width .3s ease-in-out;
+        }
+    }
+}

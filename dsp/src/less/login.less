@@ -1,0 +1,242 @@
+/*
+ ** 登录页面样式 ,包括登录、找回密码、重设密码页面等 (user/login 等)
+ */
+.rounded-corners (@radius: 0px) {
+	border-radius: @radius;
+}
+.martop-height (@height:90px) {
+	margin-top: @height;
+}
+body {
+    // background: url('../img/bg.jpg');
+    // background-size: 100% 100%;
+    font-family: 'Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',san-serif;; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+}
+.form-control-feedback {
+    color: #cccccc;
+    height: 50px;
+    left: 0;
+    line-height: 50px;
+    width: 50px;
+}
+.form-group > label {
+    color: #E64D4D;
+    font-size: 10px;
+    position: absolute;
+    top:35px;
+}
+
+.form-group {
+    margin: 0 40px 20px 40px ;
+    z-index: 1;
+    #login-submit {
+        background: #e02629;
+        border: 0;
+        color: #fff;
+        font-size: 20px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        padding: 0;
+    }
+}
+  
+.has-feedback label~
+.form-control-feedback {
+    color: rgba(224, 225, 228, 0.92);
+    left: 0;
+    top: 0;
+}
+.form-control {
+    font-size: 14px;
+    height: 50px;
+    line-height: 1;
+    padding-left: 50px;
+    .rounded-corners;
+}
+
+.btn-primary {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    .rounded-corners;
+    margin-left: -20px;
+}
+
+.login-word {
+	margin-top: 20px;
+	padding-top: 5px;
+}
+
+.sign-in {
+    left: 50%;
+    position: absolute;
+    margin-left: -235px;
+    top: 90px;
+    .sign-in-logo {
+        margin: 40px auto;
+
+
+	    .sign-in-title {
+			font-size: 32px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	}
+
+	.sign-in-form {
+		background: white;
+		height: 290px;
+		margin-left: 200px;
+		margin: 0 auto;
+		vertical-align: middle;
+		width: 460px;
+        #validate-form {
+            padding-top: 40px;
+            .sign-word {
+                a {
+                    color: #b5b5b5;
+                    font-size: 14px;
+                }
+            }
+            .sign-word a,
+            a:hover,
+            a:visited,
+            a:link {
+                text-decoration: none;
+            }
+        }
+	}
+}
+@media screen and (max-height: 650px) {
+    .copyright {
+        display: none;
+    }
+}
+
+.copyright{
+    bottom: 40px;
+    color: #b5b5b5;
+    font-size: 14px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+}
+.register-in {
+    .martop-height;
+    .register-in-logo {
+        margin: 40px auto;
+	    .register-in-title {
+			font-size: 32px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	}
+	.register-in-form {
+		background: white;
+		height: 300px;
+		margin-left: 200px;
+		margin: 0 auto;
+		vertical-align: middle;
+		width: 420px;
+
+		.register-in-form-title {
+			padding: 20px;
+			text-align: center;
+		}
+
+		.register-word {
+			margin-left: 20px;
+		}
+
+		.register-word a,
+		a:hover,
+		a:visited,
+		a:link {
+			text-decoration: none;
+		}
+	}
+}
+.resetpwd-in {
+    .martop-height;
+
+    .resetpwd-in-logo {
+        margin: 40px auto;
+
+	    .resetpwd-in-title {
+			font-size: 32px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	}
+	
+	.resetpwd-in-form {
+		background: #fff;
+		height: 420px;
+		margin-left: 200px;
+		margin: 0 auto;
+		vertical-align: middle;
+		width: 420px;
+
+		.resetpwd-in-form-title {
+			padding: 20px;
+			text-align: center;
+		}
+
+		.resetpwd-word {
+			margin-left: 40px;
+		}
+
+		.resetpwd-word a,
+		a:hover,
+		a:visited,
+		a:link {
+			text-decoration: none;
+		}
+
+	}
+
+}
+
+.forget-in {
+    .martop-height;
+
+    .forget-in-logo {
+        margin: 40px auto;
+
+        .forget-in-title {
+            font-size: 32px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+    
+    .forget-in-form {
+        background: #fff;
+        height: 195px;
+        margin-left: 200px;
+        margin: 0 auto;
+        vertical-align: middle;
+        width: 420px;
+
+        .forget-in-form-title {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .forget-word {
+            margin-left: 20px;
+        }
+
+        .forget-word a,
+        a:hover,
+        a:visited,
+        a:link {
+            text-decoration: none;
+        }
+
+    }
+
+}

@@ -1,0 +1,124 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+    <div class="wrapper" id="registration-list">
+        {% include '../modules/header.html' %}
+        {% include '../modules/sidebar.html' %}
+
+        <div class="content-wrapper">
+			<section class="content-header">
+				<h1>活动注册管理</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+					<li class="active">活动注册管理</li>
+				</ol>
+			</section>
+
+			<section class="content">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box">
+							<div class="box-header">
+								<h3 class="box-title">活动注册列表</h3>
+							</div>
+							<div class="box-body" id="registration-list-wrap"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+        {% include '../modules/copyright.html' %}
+		{% include '../modules/modal.html' %}
+
+        {# 合作方列表 #}
+        <script type="text/template" id="registration-list-tpl">
+			<table id="registration-list-table" class="table table-borderd table-hover">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>活动名称</th>
+						<th>用户名</th>
+						<th>手机</th>
+						<th>电子邮件</th>
+						<th>企业</th>
+						<th>职位</th>
+						<th>所在地</th>
+						<th>微博</th>
+						<th>微信</th>
+						<th>qq</th>
+						<th>提交时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(data.registrations, function(val, index) { %>
+						<tr>
+							<td><%= val.id %></td>
+							<td><%= val.activityName %></td>
+							<td><%= val.username %></td>
+							<td><%= val.mobile %></td>
+							<td><%= val.email %></td>
+							<td><%= val.company %></td>
+							<td><%= val.occupation %></td>
+							<td><%= val.location %></td>
+							<td><%= val.weibo %></td>
+							<td><%= val.weixin %></td>
+							<td><%= val.qq %></td>
+							<td>
+                                <% if(val.posttime !== null) { %>
+                                    <%= val.posttime_str %>
+                                <% } %>
+                            </td>
+						</tr>
+					<% }); %>
+        		</tbody>
+			</table>
+			<% if(data.pageCount > 1) { %>
+			<nav>
+                <ul class="pagination pull-right table-pageination">
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li class="<%= 1 === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                    </li>
+                   <% if(data.pageCount > 2) {
+                   		var end = data.pageCount - 1;
+                  		var start = 2;
+                  		var pagenum = 7;
+                  		if(data.pageCount > pagenum) {
+                  			var left = data.page - start;
+                  			var right = end- data.page > 2 ? 2:end- data.page;
+                  			if(left<2) {
+                  				end = start + 4;
+                  			} else if(right<2){
+                  				start = end - 4;
+                  			} else {
+                  				start = data.page - 2;
+                  				end = data.page + 2;
+                  			}
+    	              	}
+                    	for(var i = start; i <= end; i++) {
+                   %>
+                    <li class="<%= i === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                    </li>
+                   <% } }%>
+                   	<li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                        <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+			</nav>
+			<% } %>
+        </script>
+    </div>
+{% endblock %}

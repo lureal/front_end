@@ -1,0 +1,148 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>报警管理</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>报警管理</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active">
+                            <a href="#weibo" data-toggle="tab" aria-expanded="true">微博WAX</a>
+                        </li>
+
+                        <!-- 腾讯ADX没有数据，为方便以后增加功能，暂时先做tab样式，先隐藏 -->
+                       <!--  <li role="presentation">
+                            <a href="#tengxun" data-toggle="tab" aria-expanded="true">腾讯ADX</a>
+                        </li> -->
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="weibo">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>竞价耗时报警阈值 </label>
+                                             <input type="number" class="form-control" id="bidCostTime" min=0>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>竞赢耗时报警阈值 </label>
+                                            <input type="number" class="form-control" id="winBidCostTime" min=0>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>停止竞价请求时间 </label>
+                                            <input type="number" class="form-control" id="stopBidTime" min=0>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>开启报警 </label>
+                                            <div class="radio" id="alarm">
+                                                <label>
+                                                    <input type="radio" name="alarm" value="true"><span>开启</span>
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="alarm" value="false"><span>关闭</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                                               
+                            </div>   
+                            <div class="box-footer">
+                                <button class="btn btn-info pull-left" id="commit">提交</button>
+                            </div>                             
+                        </div>
+
+                        <!-- 腾讯ADX tab 暂时用不上 -->
+                        <!-- <div class="tab-pane fade" id="tengxun">
+                            <div class="box-body">
+                                <div class="row platform-config">
+                                    <div class="form-group ">
+                                        <label class="control-label col-sm-2">竞价耗时报警阈值 </label>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" id="txbidCostTime">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label>ms</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row platform-config">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">竞赢耗时报警阈值</label>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" id="txwinBidCostTime">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label>ms</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row platform-config">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">停止竞价请求时间</label>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" id="txstopBidTime">
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label>分钟</label>
+                                        </div>
+                                    </div>  
+                                </div>  
+                                <div class="row platform-config">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">开启报警</label>
+                                        <div class="col-sm-5">
+                                            <label>
+                                                <input type="checkbox" name="txalarm" id="txalarm">
+                                            </label>
+                                        </div>
+                                        
+                                    </div>  
+                                </div>
+                                <div class="row platform-config">
+                                    <div class="form-group">
+                                        <div class="col-sm-5 col-sm-offset-2">
+                                            <button class="btn btn-info pull-right" id="tx-commit">提交</button>
+                                            <button class="btn btn-default" id="tx-cancel">取消</button>
+                                        </div>
+                                    </div>  
+                                </div>                                                                
+                            </div>                                
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/boss-warn.js"></script>
+{% endblock %}

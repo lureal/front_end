@@ -1,0 +1,109 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>职位详情</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>职位</a></li>
+                <li><a href="#">职位详情</a></li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">职位详情</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>职位名称</label>
+                                <input type="text" class="form-control" placeholder="" id="name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row snapshats" id="snapshats"></div>
+                    <div class="row snapshats" id="snapshats2"></div>
+                    <div class="row snapshats" id="snapshats3"></div>
+
+                    {# 编辑器 #}
+                    <div class="box-header">
+                        <h3 class="box-title"><small>招聘信息</small></h3>
+                    </div>
+                    <div class="box-body">
+    					<form>
+                            <div type="text/plain" id="myEditor" style="width:100%;height:240px;"></div>
+    					</form>
+                    </div>
+
+                    <div class="box-footer">
+                        <button class="btn btn-default" id="canel">取消</button>
+                        <button class="btn btn-info pull-left" id="submit">更新</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <script type="text/template" id="snapshots-tpl">
+        <form class="snapshats-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+           <div class="form-group">
+               <label>PC常态图标（尺寸：91*91像素）</label>
+               <div class="input-group">
+                   <input type="file" name="<%= name %>" class="snapshats-input" accept="image/*">
+                   <br>
+                   <img class="snapshats-preview" src="<%= icon %>" alt="职位图标" />
+                   <br>
+                   <button class="snapshats-submit btn btn-primary btn-sm" type="submit" data-img="<%= icon %>">重新上传图片</button>
+               </div>
+           </div>
+        </form>
+    </script>
+
+    <script type="text/template" id="snapshots2-tpl">
+        <form class="snapshats-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+           <div class="form-group">
+               <label>PC交互图标（尺寸：99*99像素）</label>
+               <div class="input-group">
+                   <input type="file" name="<%= name %>" class="snapshats-input" accept="image/*">
+                   <br>
+                   <img class="snapshats-preview" src="<%= icon %>" alt="职位图标" />
+                   <br>
+                   <button class="snapshats-submit btn btn-primary btn-sm" type="submit" data-img="<%= icon %>">重新上传图片</button>
+               </div>
+           </div>
+        </form>
+    </script>
+
+    <!-- @zhujun 添加职位app图标-->
+    <script type="text/template" id="snapshots3-tpl">
+        <form class="snapshats-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+           <div class="form-group">
+               <label>APP适配图标（尺寸：48*48像素）</label>
+               <div class="input-group">
+                   <input type="file" name="<%= name %>" class="snapshats-input" accept="image/*">
+                   <br>
+                   <img class="snapshats-preview" src="<%= icon %>" alt="职位图标" />
+                   <br>
+                   <button class="snapshats-submit btn btn-primary btn-sm" type="submit" data-img="<%= icon %>">重新上传图片</button>
+               </div>
+           </div>
+        </form>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/job-detail.js"></script>
+{% endblock %}

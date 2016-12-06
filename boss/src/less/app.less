@@ -1,0 +1,105 @@
+@import "./modules/theme.less";
+@import "./modules/auth.less";
+@import "./modules/breadcrumb.less";
+@import "./modules/color-bar.less";
+@import './modules/calendar.less';
+
+// 分页 loading
+.page-loading {
+	height: 10px;
+	width: 10px;
+}
+
+// loading
+.overlay {
+	height: 60px;
+	position: relative;
+    top: 80px;
+}
+
+// 列表头部搜索
+.box-toolbar {
+    margin: 20px 0 0;
+
+	&.last {
+		margin-bottom: 10px;
+	}
+
+    > div {
+        float: right;
+    }
+
+    .form-group {
+        margin-left: 10px;
+    }
+
+    .select2 {
+        min-width: 150px;
+    }
+}
+@media (max-width: 767px) {
+    .box-toolbar {
+        > div {
+            float: none;
+        }
+
+        .form-group {
+            margin-left: 0;
+        }
+    }
+}
+
+// 所有页面尾部更新按钮右侧margin加上10像素
+.box-footer {
+	.btn-info {
+		margin-right: 10px;
+	}
+}
+
+// 树结构
+#tree {
+	padding: 8px 16px;
+
+	&.jqtree-loading:after {
+		content: url(spinner.gif);
+	}
+}
+
+.block-style {
+	background-color: #fafafa;
+}
+
+.jqtree-tree .jqtree-loading > div .jqtree-title:after {
+	content: url(spinner.gif);
+	margin-left: 8px;
+}
+
+.block-style ul.jqtree-tree {
+	margin-left: 0;
+}
+
+.block-style ul.jqtree-tree ul.jqtree_common {
+	margin-left: 2em;
+}
+
+.block-style ul.jqtree-tree .jqtree-element {
+    margin-bottom: 8px;
+    background-color: #ddd;
+    padding: 8px;
+}
+
+.block-style ul.jqtree-tree .jqtree-element .jqtree-title {
+	margin-left: 0;
+}
+
+.block-style ul.jqtree-tree li.jqtree-selected > .jqtree-element,
+.block-style ul.jqtree-tree li.jqtree-selected > .jqtree-element:hover {
+    background: #97BDD6;
+    text-shadow: none;
+}
+
+// 当屏幕缩小时 sibar 头像
+.sidebar-collapse .sidebar .user-panel .image > div {
+	max-width: 30px;
+	max-height: 30px;
+}

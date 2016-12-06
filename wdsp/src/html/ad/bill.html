@@ -1,0 +1,317 @@
+{% extends '../layouts/default.html' %}
+{% block content %}
+<section class="content-header">
+    <ol class="breadcrumb w-breadcrumb">
+        <li>
+            <a href="javascript:void(0);">
+                <i class="fa fa-home"></i><span id="company"></span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);" id="breadcrumb-company"></a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">广告管理</a>
+        </li>
+    </ol>
+</section>
+<section class="content ad-bill">
+
+    {# 顶部导航 #}
+    <div class="content-nav row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="/#proj_name#/html/ad/group.html" class="content-nav-link">
+                <i class="fa fa-files-o"></i>广告组<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <a href="javascript:void(0);" class="content-nav-link active">
+                <i class="fa fa-file-o"></i>广告订单<span class="notice-num" style="display: none;">2</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 content-sub-menu">
+            <a href="javascript:void(0);">
+                <i class="fa fa-bullseye"></i>投放维度<i class="fa fa-caret-down move-right20"></i>
+            </a>
+            <ul>
+                <li>
+                    <a href="/#proj_name#/html/ad/dimension-platform.html" class="content-nav-link">
+                        <i class="fa fa-television"></i><span class="move-right30">投放平台</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/#proj_name#/html/ad/dimension-subject.html" class="content-nav-link">
+                        <i class="fa fa-th"></i><span class="move-right30">投放主体</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-nav-btn">
+            <button class="w-btn w-btn-primary" id="create-ad">创建新广告</button>
+        </div>
+    </div>
+
+    {# 广告组列表 #}
+    <div class="row">
+        <div class="ccol-md-12 col-sm-12 col-xs-12">
+            <div class="box w-box" id="bill">
+                <div class="box-header w-box-header">
+                    <h3 class="box-title">广告订单</h3>
+                </div>
+                <div class="w-box-tool form-inline">
+                    <div class="w-table-tool" id="bill-tool">
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">名称</label>
+                            <input type="text" class="w-tool-input w-tool-item-input" placeholder="请输入名称" data-field="keyword" data-type="input" data-errmsg="请输入名称" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item">
+                            <label class="w-tool-name">状态</label>
+                             <select required class="form-control w-tool-input w-tool-item-select" data-field="status" data-type="select" data-errmsg="请选择状态" data-isRequire="0">
+                                <option value="" disabled selected style="color: $e5e5e5;">请选择</option>
+                                <option value="0">未送审</option>
+                                <option value="1">审核中</option>
+                                <option value="2">审核不通过</option>
+                                <option value="3">启用</option>
+                                <option value="4">停用</option>
+                                <option value="5">投放结束</option>
+                            </select>
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>开始日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="startDate" data-type="date" data-errmsg="请选择开始日期" data-isRequire="0">
+                        </div>
+                        <div class="form-group w-tool-item w-datepicker">
+                            <label>结束日期</label>
+                            <input autocomplete="off" type="text" class="w-tool-input w-tool-item-datepicker" data-field="endDate" data-type="date" data-errmsg="请选择结束日期" data-isRequire="0">
+                        </div>
+                        <!--<div class="form-group w-tool-item w-multi-datepicker">
+                            <label class="w-tool-name">时间</label>
+                            <input type="text" placeholder="请选择日期" class="w-tool-input w-tool-item-datepicker" data-field="startDate,endDate" data-type="date" data-errmsg="请选择日期" data-isRequire="0">
+                        </div>-->
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="bill-search">搜索</button>
+                        <button type="button" name="button" class="w-btn w-btn-default w-tool-btn" id="bill-export" style="display: none;">导出</button>
+                    </div>
+                </div>
+                <div class="box-body w-box-body table-responsive w-table" id="bill-table"></div>
+                <div class="w-table-footer-tool clearfix">
+                    <div class="pull-left tool-left">
+                        <div class="select-all clearfix">
+                            <span class="w-checkbox">
+                                <input type="checkbox" value="-1" data-name="全选" id="select-all">
+                                <span>
+                                    <i class="fa fa-check"></i>
+                                </span>
+                            </span>
+                            <span>全选</span>
+                        </div>
+                    </div>
+                    <div class="pull-right tool-right">
+                        <button class="w-btn w-btn-default" id="group-active">批量启用</button>
+                        <button class="w-btn w-btn-default" id="group-stop">批量暂停</button>
+                        <button class="w-btn w-btn-default" id="group-edit-date">批量修改日期</button>
+                        <button class="w-btn w-btn-default" id="group-edit-time">批量修改时间</button>
+                        <button class="w-btn w-btn-default" id="group-edit-bidprice">批量修改出价</button>
+                        <button class="w-btn w-btn-red del" id="group-del">批量删除</button>
+                    </div>
+                </div>
+                <div class="box-footer clearfix w-pager">
+                    <div class="pull-right" id="bill-pager">
+                        <button class="w-previous pull-left">
+                            <i class="fa fa-chevron-circle-left"></i>
+                        </button>
+                        <div class="pull-left clearfix">
+                            <input type="text" class="w-page-now form-control pull-left" value="1">
+                            <span class="w-allpage pull-left">
+                                /
+                                <span>1</span>
+                            </span>
+                        </div>
+                        <button class="w-next pull-left">
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# 广告组模板 #}
+<script type="text/template" id="bill-tpl">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>名称</th>
+                <th>曝光量</th>
+                <th>互动情况</th>
+                <th>点击情况</th>
+                <th>消耗（元）</th>
+                <th>出价方式</th>
+                <th>订单价格（元）</th>
+                <th width=100>状态</th>
+                <th width=80>操作</th>
+            </tr>
+            <% if (records.length < 1) { %>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td width=100>-</td>
+                    <td width=80>-</td>
+                </tr>
+            <% } else { %>
+                <% _.each(records, function(record, index) { %>
+                    <tr>
+                        <td class="name">
+                            <div class="bill-name clearfix">
+                                <span class="w-checkbox">
+                                    <input class="bill-checkbox" type="checkbox" value="<%= record.orderId %>" data-name="<%= record.orderName %>">
+                                    <span>
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                </span>
+                                <span><%= record.orderName %></span>
+                            </div>
+                        </td>
+                        <td><%= record.showCount %></td>
+                        <td>
+                            <span>互动量：<%= record.interactCount %></span><br>
+                            <span>互动率：<%= record.interactRatio %></span><br>
+                            <span>互动成本（元）：<%= record.interactPrice %></span>
+                        </td>
+                        <td>
+                            <span>点击量：<%= record.clickCount %></span><br>
+                            <span>点击率：<%= record.clickRatio %></span><br>
+                            <span>点击成本（元）：<%= record.clickPrice %></span>
+                        </td>
+                        <td><%= record.consume %></td>
+                        <td><%= record.bidWay %></td>
+                        <td>
+                            <div class="quota-wrap clearfix bidprice-wrap">
+                                <span class="quota-title">出价</span>
+                                <span class="quota clearfix" data-isEdit="0">
+                                    <input type="text" value="<%= record.bidPrice %>" readonly="readonly">
+                                    <button data-id="<%= record.orderId %>">修改</button>
+                                </span>
+                            </div>
+                            <div class="budget-wrap clearfix">
+                                <span class="budget-title">每日预算</span>
+                                <span class="budget clearfix" data-isEdit="0">
+                                    <input type="text" value="<%= record.quota %>" readonly="readonly">
+                                    <button data-id="<%= record.orderId %>">修改</button>
+                                </span>
+                            </div>
+                            <div class="total-budget-wrap clearfix">
+                                <span class="total-budget-title">总体预算</span>
+                                <span class="total-budget clearfix" data-isEdit="0">
+                                    <input type="text" value="<%= record.totalQuota %>" readonly="readonly">
+                                    <button data-id="<%= record.orderId %>">修改</button>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="table-status" width=100>
+                            <span class="unsubmit-bill" style="display: <%= record.status === 0 ? 'inline-block' : 'none' %>">
+                                未送审
+                            </span>
+                            <span class="submiting-bill" style="display: <%= record.status === 1 ? 'inline-block' : 'none' %>">
+                                <i class="fa fa-hourglass-o"></i> 审核中
+                            </span>
+                            <span class="no-through-bill" style="display: <%= record.status === 2 ? 'inline-block' : 'none' %>" data-toggle="tooltip" data-placement="top" title="<%= record.reason %>">
+                                <i class="fa fa-exclamation-circle"></i> 审核不通过
+                            </span>
+                            <span class="active-bill" style="display: <%= record.status === 3 ? 'inline-block' : 'none' %>">
+                                <i class="fa fa-check"></i> 已启用
+                            </span>
+                            <span class="stop-bill" style="display: <%= record.status === 4 ? 'inline-block' : 'none' %>">
+                                <i class="fa fa-clock-o"></i> 已暂停
+                            </span>
+                            <span
+                                class="finish-bill"
+                                style="display: <%= record.status !== 0 && record.status !== 1 && record.status !== 2 && record.status !== 3 && record.status !== 4 ? 'inline-block' : 'none' %>">
+                                <i class="fa fa-ban"></i> 已结束
+                            </span>
+                        </td>
+                        <td class="table-btns" width=80>
+                            <a href="javascript:void(0);" class="toggle" data-status="<%= record.status %>" data-id="<%= record.orderId %>">
+                                <% if (record.status === 3) { %>
+                                    停用
+                                <% } %>
+
+                                <% if (record.status === 4 || record.status === 5) { %>
+                                    启用
+                                <% } %>
+                            </a>
+                            <a href="/#proj_name#/html/ad/detail.html?id=<%= record.orderId %>" class="detail">详情</a>
+                            <a href="javascript:void(0);" class="del" data-id="<%= record.orderId %>">删除</a>
+                        </td>
+                    <tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+</script>
+
+{# 批量修改日期模板 #}
+<script type="text/template" id="edit-date-tpl">
+    <div class="modal-diy-body">
+        <div class="row">
+            <label class="col-xs-12">日期</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" placeholder="请选择日期" id="modal-datepicker">
+            </div>
+            <div class="col-xs-12 error-msg">请选择正确的日期</div>
+        </div>
+    </div>
+    <div class="modal-diy-footer">
+        <button class="w-btn w-btn-success" id="edit-date-btn">确定</button>
+    </div>
+</script>
+
+{# 批量修改时间模板 #}
+<script type="text/template" id="edit-time-tpl">
+    <div class="modal-diy-body">
+        <div class="row start-time-wrap">
+            <label class="col-xs-12">开始时间</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" placeholder="请选择开始时间" id="modal-start-time">
+            </div>
+            <div class="col-xs-12 error-msg">请选择正确的时间</div>
+        </div>
+        <div class="row end-time-wrap">
+            <label class="col-xs-12">结束时间</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" placeholder="请选择结束时间" id="modal-end-time">
+            </div>
+            <div class="col-xs-12 error-msg">请选择正确的时间</div>
+        </div>
+    </div>
+    <div class="modal-diy-footer">
+        <button class="w-btn w-btn-success" id="edit-time-btn">确定</button>
+    </div>
+</script>
+
+{# 批量修改出价模板 #}
+<script type="text/template" id="edit-bidprice-tpl">
+    <div class="modal-diy-body">
+        <div class="row">
+            <label class="col-xs-12">出价</label>
+            <div class="col-xs-12">
+                <input type="text" class="form-control" placeholder="请填写出价" id="modal-bidprice">
+            </div>
+            <div class="col-xs-12 error-msg">请输入正确的出价</div>
+        </div>
+    </div>
+    <div class="modal-diy-footer">
+        <button class="w-btn w-btn-success" id="edit-bidprice-btn">确定</button>
+    </div>
+</script>
+
+{% endblock %}
+{% block js %}
+    <script src="/#proj_name#/js/ad-bill.js"></script>
+{% endblock %}

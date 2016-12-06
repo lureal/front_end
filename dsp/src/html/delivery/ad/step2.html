@@ -1,0 +1,951 @@
+{% extends '../../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../../modules/header.html' %}
+    {% include '../../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>广告</h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i>广告管理</a></li>
+                <li><a href="#">广告</a></li>
+            </ol>
+        </section>
+
+        <section class="content" id="delivery-ad-step2">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">广告</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group" id="list">
+                                <label>投放位置选择</label>
+                                <div class="radio">
+                                    <label>
+                                        <input class="delivery-site" type="radio" name="site" value="1" checked>
+                                        <span>微博 feeds 广告</span>
+                                    </label>
+                                </div>
+                                <!--隐藏掉banner类型-->
+                                <!-- <div class="radio">
+                                    <label>
+                                        <input class="delivery-site" type="radio" name="site" value="2">
+                                        <span>Banner</span>
+                                    </label>
+                                </div> -->
+                                <div class="radio">
+                                    <label>
+                                        <input class="delivery-site" type="radio" name="site" value="3">
+                                        <span>品速Card广告</span>
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input class="delivery-site" type="radio" name="site" value="4">
+                                        <span>九宫格广告</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid #f4f4f4;" id="detail"></div>
+                </div>
+                <div class="box-footer" style="position: fixed; bottom: 0;opacity: .7;background: gray;width: 100%;margin-left: -15px; padding-left: 20px; z-index:999;">
+                    <button class="btn btn-default" id="canel">上一步</button>
+                    <button class="btn btn-info pull-left" id="submit">下一步</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% include '../../modules/copyright.html' %}
+    {% include '../../modules/modal.html' %}
+
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="card-type-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+
+    <!--投放内容：微博 feeds 广告-->
+    <script type="text/template" id="feed-tpl">
+        <div class="row">
+            <h3 class="col-md-12" style="color: #d2d6de;">投放内容</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>微博 UID</label>
+                    <select id="weibo-uid" class="form-control select2" style="width: 100%;"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="feed-ad-type1"></div>
+        </div>
+        <div class="row" id="feed-ad-type-detail" style="display: none;" data-type="" data-ad_placement_id="">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom" style="border-top: 1px solid #f4f4f4;">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#post-mid" data-toggle="tab">博文推广链接</a></li>
+                        <li><a href="#edit-post" data-toggle="tab">编辑博文</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="post-mid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>博文推广链接</label>
+                                        <input type="text" class="form-control" id="feed-mid" placeholder="输入推广链接">
+                                        <ul id="mid-list" class="search-dropdown"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="edit-post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>编辑博文</label>
+                                        <textarea id="feed-text" class="form-control" style="min-height: 300px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="snapshat-wrap" id="feed-snapshat-wrap">
+                                <h4 style="margin-bottom: 20px;">上传图片<button class="btn btn-primary btn-xs" style="margin-left: 15px" id="add-snapshot" data-index="0">新增图片</button></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="feed-ad-type-tpl">
+        <table class="table table-borderd table-hover tab-table">
+            <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>广告位</th>
+                    <th>广告规格</th>
+                    <th>日均曝光量</th>
+                    <th>平均花费/CPC</th>
+                    <th>平均花费/CPM</th>
+                    <th>平均花费/CPE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td>
+                            <input type="radio" name="ad-type" class="feed-ad-type" data-type="<%= val.type %>" data-ad_placement_id="<%= val.adPlacementId %>">
+                        </td>
+                        <td><%= val.name === null ? '-' : val.name %></td>
+                        <td><%= val.restrict === null ? '-' : val.restrict %></td>
+                        <td><%= val.avgShow === null ? '-' : val.avgShow %></td>
+                        <td><%= val.avgCPC === null ? '-' : val.avgCPC %></td>
+                        <td><%= val.avgCPM === null ? '-' : val.avgCPM %></td>
+                        <td><%= val.avgCPE === null ? '-' : val.avgCPE %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav class="tab-pager">
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <% for(var i = 0; i < data.pageCount; i++) { %>
+                <li class="<%= (i + 1) === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i + 1 %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i + 1 %></a>
+                </li>
+                <% } %>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <!--投放内容：banner-->
+    <script type="text/template" id="banner-tpl">
+        <div class="row">
+            <h3 class="col-md-12" style="color: #d2d6de;">投放内容</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="margin-top: 10px;">
+                <div class="form-group">
+                    <label>网页链接（请以 http:// 或 https:// 开头）<a href="#" id="view-webpage-link" style="margin-left: 10px; display: none;" class="btn btn-default btn-xs" target="_blank">查看网页链接</a></label>
+                    <input type="text" class="form-control" placeholder="请输入网页链接" id="webpage-link">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="feed-ad-type2"></div>
+        </div>
+
+        <!--上传图片-->
+        <div class="snapshat-wrap" id="banner-snapshat-wrap" style="display: none;">
+            <h4 style="margin-bottom: 20px;">上传图片（请按照上面选择的规格上传图片）</h4>
+        </div>
+    </script>
+
+    <!--投放内容：card-->
+    <script type="text/template" id="card-ad-tpl">
+        <div class="row">
+            <h3 class="col-md-12" style="color:#d2d6de;">投放内容</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>微博 UID</label>
+                    <select id="card-weibo-uid" class="form-control select2" style="width: 100%;"></select>
+                </div>
+                <div class="form-group">
+                    <label>品速Card标题</label>
+                    <input class="form-control" type="text" id="card-title">
+                </div>
+                <div class="form-group">
+                    <label>品速Card内容</label>
+                    <textarea class="form-control" id="card-content" rows="3" placeholder="34个字以内"></textarea>
+                </div>
+                <div class="form-group" id="card-type">
+                    <label>类型</label>
+                    <div class="radio">
+                        <label class="checkbox-inline">
+                            <input class="card-type" type="radio" name="type" value="1" checked="">
+                            <span>活动</span>
+                        </label>
+                        <label class="checkbox-inline">
+                            <input class="card-type" type="radio" name="type" value="2" checked="">
+                            <span>视频</span>
+                        </label>
+
+                        <label class="checkbox-inline">
+                            <input class="card-type" type="radio" name="type" value="3" checked="">
+                            <span>视频活动</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 视频类型 -->
+                <div class="video-common" style="display: none">
+                    <div class="form-group">
+                        <label>视频地址<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="复制已发布的微博中的视频地址，必须是短链接；只支持微博、新浪、秒拍、小咖秀原生视频，其他第三方如优酷、爱奇艺等无法使用"></i></label>
+                        <input class="form-control" type="text" id="video-address">
+                    </div>
+                </div>
+
+                <!-- 活动类型 -->
+                <div class="activity-video-common" style="display: none" id="card-button-type">
+                    <div class="form-group">
+                        <label>card按钮类型</label>
+                        <div class="radio">
+                            <label class="checkbox-inline">
+                                <input class="card-button" type="radio" name="card-button-type" value="none" checked="">
+                                <span>无</span>
+                            </label>
+                            <label class="checkbox-inline">
+                                <input class="card-button" type="radio" name="card-button-type" value="join" checked="">
+                                <span>参与</span>
+                            </label>
+
+                            <label class="checkbox-inline">
+                                <input class="card-button" type="radio" name="card-button-type" value="buy" checked="">
+                                <span>购买</span>
+                            </label>
+                            <label class="checkbox-inline">
+                                <input class="card-button" type="radio" name="card-button-type" value="download" checked="">
+                                <span>下载</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-link card-button-link" style="display: none;"
+                >
+                    <div class="form-group">
+                        <label>card按钮链接</label>
+                        <input class="form-control" type="text" id="card-button-link">
+                    </div>
+                </div>
+
+                <div class="card-none" style="display: none">
+                    <div class="form-group">
+                        <label>card链接</label>
+                        <input class="form-control" type="text" id="card-link">
+                    </div>
+                </div>
+                <div class="snapshat-wrap" id="card-snapshat-wrap" style="display:none;">
+                    <h4 style="margin-bottom: 20px;">上传图片 <span class="pic-tip">(图片尺寸为592px*296px,图片仅支持png及jpg,大小不能超过70k)</span>
+                    </h4>
+                </div>
+
+                <!-- 视频图片上传 -->
+                <div class="snapshat-wrap1" id="card-snapshat-wrap1" style="display:none;">
+                    <h4 style="margin-bottom: 20px;">上传图片 <span class="pic-tip">(图片尺寸为592px*296px,图片仅支持png及jpg,大小不能超过70k)</span>
+                    </h4>
+                </div>
+
+                <!--视频上传-->
+                <div class="snapshat-video-wrap" id="card-snapshat-video-wrap" style="display:none;">
+                    <h4 style="margin-bottom: 20px;">上传视频(视频尺寸：16:9; 视频时长≤1分钟;视频格式：MP4;视频分辨率：720p及以上)
+                    </h4>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>最终推广的博文内容</label>
+                        <textarea class="form-control" id="weibo-content" rows="3" placeholder="130字以内"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="card-title">
+                        推荐
+                    </div>
+                    <div class="card-content">
+                        <div class="person-icon">
+                            <img src="/#proj_name#/img/nav-2.png">
+                        </div>
+                        <div class="person-des">
+                            <p class="person-name">
+                            <strong>秋妈小倭瓜</strong>
+                            </p>
+                            <p>
+                                <span>1分钟</span> <span>来自微博weibo.com</span>
+                            </p>
+                            <button class="btn btn-default btn-focus" style="">+关注</button>
+                        </div>
+                        <div class="card-wbcontent-watch">
+                            <p style="margin-left: 18px;">
+                                <span class="card-wbpromote-watch">
+                                </span>
+                            </p>
+                        </div>
+                        <div class="upload-img">
+                            <img src="/#proj_name#/img/none.png" id="upload-img" width="300" height="168">
+                        </div>
+                        <div class="card-watch">
+                            <p>
+                                <span class="card-title-watch">
+                                </span>
+                                <span class="user" style=""><i class="fa fa-user-plus"></i>
+                                </span>
+                            </p>
+                            <p>
+                                <span class="card-content-watch">
+                                </span>
+                                <span class="card-button-watch">
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer" >
+                        <div>
+                            <ul class="nav nav-tabs">
+                                <li>
+                                    <span>
+                                        <i class="fa fa-share-square-o"></i>
+                                    </span>0
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class="fa fa-commenting-o"></i>
+                                    </span>0
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </span>0
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <!--投放内容：九宫格-->
+    <script type="text/template" id="scratchable-tpl">
+        <div class="row">
+            <h3 class="col-md-12" style="color:#d2d6de;">投放内容</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>微博 UID</label>
+                    <select id="scratchable-uid" class="form-control select2" style="width: 100%;"></select>
+                </div>
+                <div class="form-group">
+                    <label>微博正文</label>
+                    <textarea class="form-control" id="scratchable-text" rows="3" placeholder="至少输入10个汉字，最多不超过30个汉字，不允许链接"></textarea>
+                </div>
+                <div class="form-group ">
+                    <label>图片(支持上传4、6、9张图片，图片尺寸为1242*1242像素，每张图片 <= 100k，图片格式为png/jpg)</label>
+                </div>
+                <div class="form-group">
+                    <select class="select2 form-control" id="upload-pic-number">
+                        <option value="4">4张</option>
+                        <option value="6">6张</option>
+                        <option value="9">9张</option>
+                    </select>
+                </div>
+               <div class="form-group snapshat-wrap" id="scratchablecard">
+               </div>
+               <div class="form-group">
+                   <label>标签类型（图片标签文案要求保持一致）</label>
+                   <select class="form-control select2" id="scratchable-type">
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label>APP类型</label>
+                   <select class="form-control select2" id="scratchable-app" style="width:100%;">
+                   </select>
+               </div>
+               <div class="form-group">
+                    <label>下载链接</label>
+                    <input class="form-control" type="text" name="" id="scratchable-download">
+               </div>
+               <div class="form-group ios-type z-hidden">
+                   <label>应用名称</label>
+                   <input type="text" class="form-control" name="application" id="scratchable-application">
+               </div>
+                <div class="form-group ios-type z-hidden">
+                    <label>应用分类</label>
+                    <div>
+                        <select class="select2 form-control" id="application-classify" style="width: 100%;"></select>
+                    </div>
+                </div>
+                <div class="form-group ios-type z-hidden">
+                   <label>开发者</label>
+                   <input type="text" class="form-control" name="" id="develop">
+               </div>
+               <div class="form-group ios-type z-hidden">
+                   <label>应用描述</label>
+                   <textarea class="form-control" id="application-description" rows="3" placeholder="应用描述"></textarea>
+               </div>
+               <div class="form-group ios-type z-hidden">
+                   <label>应用图标</label>
+                   <div id="application-icon"></div>
+               </div>
+               <div class="form-group ios-type z-hidden">
+                   <label>应用截图</label>
+                   <div class="snapshat-wrap" id="scratchable-snapshat-wrap">
+                        <h4 style="margin-bottom: 20px;">上传图片<button class="btn btn-primary btn-xs" style="margin-left: 15px" id="scratchable-add-snapshot" data-index="0">新增图片</button></h4>
+                    </div>
+               </div>
+            </div>
+            <div class="col-md-6" id="watch-scratchable">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="card-title">
+                        推荐
+                    </div>
+                    <div class="card-content">
+                        <div class="person-icon">
+                            <img src="/#proj_name#/img/nav-2.png">
+                        </div>
+                        <div class="person-des">
+                            <p class="person-name">
+                            <strong>秋妈小倭瓜</strong>
+                            </p>
+                            <p>
+                                <span>1分钟</span> <span>来自微博weibo.com</span>
+                            </p>
+                            <button class="btn btn-default btn-focus" style="">+关注</button>
+                        </div>
+                        <div class="card-wbcontent-watch">
+                            <p style="margin-left: 18px;">
+                                <span class="card-wbpromote-watch">
+                                </span>
+                            </p>
+                        </div>
+                        <div class="scratchable-para" style="margin-left: 10px;">
+                            夏日小清新的套装100元2套免邮 喜欢的妹纸点击图片的就能买哟~
+                        </div>
+                        <div class="scratchable-upload-img watch-pic-9 z-hidden" style="margin: 10px;">
+                            <div style=" display: flex;" >
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img1"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img1"></span>
+                                <span class="scratchable-watch-buttonType pic9-button1">
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img2"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img2"></span>
+                                <span class="scratchable-watch-buttonType pic9-button2">
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img3"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img3"></span>
+                                <span class="scratchable-watch-buttonType pic9-button3">
+                                
+                                </span>
+                            </div>
+                            <div style="display: flex;" class="pic-6">
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img4"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img4"></span>
+                                <span class="scratchable-watch-buttonType pic9-button4" >
+                                
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img5"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img5"></span>
+                                <span class="scratchable-watch-buttonType pic9-button5" >
+                                
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img6"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img6"></span>
+                                <span class="scratchable-watch-buttonType pic9-button6">
+                                
+                                </span>
+                            </div>
+                            <div style="display: flex; width: 100%;">
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img7"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img7"></span>
+                                <span class="scratchable-watch-buttonType pic9-button7">
+                                
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img8"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img8"></span>
+                                <span class="scratchable-watch-buttonType pic9-button8">
+                                
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic9-upload-img9"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic9-img9"></span>
+                                <span class="scratchable-watch-buttonType pic9-button9" >
+                                
+                                </span>
+                            </div>
+                        </div>
+                         <div class="scratchable-upload-img watch-pic-6 z-hidden" style="margin: 10px;">
+                            <div style=" display: flex;" >
+                                <img src="/#proj_name#/img/none.png" id="pic6-upload-img1"  height="168" style="width:33.33%; padding: 2px;" >
+                                <span class="arrow-right pic6-img1"></span>
+                                <span class="scratchable-watch-buttonType pic6-button1">
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic6-upload-img2"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic6-img2" ></span>
+                                <span class="scratchable-watch-buttonType pic6-button2" >
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic6-upload-img3" height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic6-img3" ></span>
+                                <span class="scratchable-watch-buttonType pic6-button3">
+                                </span>
+                            </div>
+                            <div style="display: flex;" class="pic-6">
+                                <img src="/#proj_name#/img/none.png" id="pic6-upload-img4"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic6-img4" ></span>
+                                <span class="scratchable-watch-buttonType pic6-button4">
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic6-upload-img5"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic6-img5" ></span>
+                                <span class="scratchable-watch-buttonType pic6-button5">
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic6-upload-img6"  height="168" style="width:33.33%; padding: 2px;">
+                                <span class="arrow-right pic6-img6"></span>
+                                <span class="scratchable-watch-buttonType pic6-button6">
+                                </span>
+                            </div>
+                        </div>
+                         <div class="scratchable-upload-img watch-pic-4 " style="margin: 10px;">
+                            <div style=" display: flex;" >
+                                <img src="/#proj_name#/img/none.png" id="pic4-upload-img1"  height="168" style="width:50%; padding: 2px;">
+                                <span class="arrow-right pic4-img1"></span>
+                                <span class="scratchable-watch-buttonType pic4-button1">
+                                    
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic4-upload-img2"  height="168" style="width:50%; padding: 2px;">
+                                <span class="arrow-right pic4-img2" ></span>
+                                <span class="scratchable-watch-buttonType pic4-button2">
+                                </span>
+                            </div>
+                            <div style="display: flex;" class="pic-6">
+                                <img src="/#proj_name#/img/none.png" id="pic4-upload-img3"  height="168" style="width:50%; padding: 2px;">
+                                 <span class="arrow-right pic4-img3" ></span>
+                                <span class="scratchable-watch-buttonType pic4-button3">
+                                </span>
+                                <img src="/#proj_name#/img/none.png" id="pic4-upload-img4"  height="168" style="width:50%; padding: 2px;">
+                                <span class="arrow-right pic4-img4" ></span>
+                                <span class="scratchable-watch-buttonType pic4-button4">
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer" >
+                        <div>
+                            <ul class="nav nav-tabs">
+                                <li>
+                                    <span>
+                                        <i class="fa fa-share-square-o"></i>
+                                    </span>0
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class="fa fa-commenting-o"></i>
+                                    </span>0
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </span>0
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <script type="text/template" id="banner-ad-type-tpl">
+        <table class="table table-borderd table-hover tab-table">
+            <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>广告位</th>
+                    <th>广告规格</th>
+                    <th>日均曝光量</th>
+                    <th>平均花费/CPC</th>
+                    <th>平均花费/CPM</th>
+                    <th>平均花费/CPE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.records, function(val, index) { %>
+                    <tr>
+                        <td>
+                            <input type="radio" name="ad-type" class="banner-ad-type" data-type="<%= val.type %>" data-ad_placement_id="<%= val.adPlacementId %>">
+                        </td>
+                        <td><%= val.name === null ? '-' : val.name %></td>
+                        <td><%= val.restrict === null ? '-' : val.restrict %></td>
+                        <td><%= val.avgShow === null ? '-' : val.avgShow %></td>
+                        <td><%= val.avgCPC === null ? '-' : val.avgCPC %></td>
+                        <td><%= val.avgCPM === null ? '-' : val.avgCPM %></td>
+                        <td><%= val.avgCPE === null ? '-' : val.avgCPE %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <% if(data.pageCount > 1) { %>
+        <nav class="tab-pager">
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <% for(var i = 0; i < data.pageCount; i++) { %>
+                <li class="<%= (i + 1) === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i + 1 %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i + 1 %></a>
+                </li>
+                <% } %>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <!--上传图片模板-->
+    <script type="text/template" id="snapshat-tpl">
+        <div class="row snapshats" id="snapshat<%= index %>">
+            <form class="file-form form-group col-md-12" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <a href="javascript:void(0);" class="file-del btn btn-danger btn-xs pull-right  delete-btn z-hidden">删除</a>
+                                <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                                <br>
+                                <a class="snapshats-link" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                    <img class="snapshats-preview" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                                </a>
+                                <br>
+                                <p class="file-submit"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <!--九宫格应用截图模板-->
+    <script type="text/template" id="screensnapshat-tpl">
+        <div class="row snapshats" id="screensnapshat<%= index %>">
+            <form class="file-form form-group col-md-12" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <a href="javascript:void(0);" class="file-del btn btn-danger btn-xs pull-right">删除</a>
+                                <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                                <br>
+                                <a class="snapshats-link" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                    <img class="snapshats-preview" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                                </a>
+                                <br>
+                                <p class="file-submit"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <!-- 应用图标图片模板 -->
+    <script type="text/template" id="application-icon-tpl">
+        <div class="row snapshats" id="scrasnapshat<%= index %>">
+            <form class="file-form form-group col-md-12" multiple="multiple" enctype="multipart/form-data" method="POST" action="<%= action %>">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                                <br>
+                                <a class="snapshats-link" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                    <img class="snapshats-preview" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                                </a>
+                                <br>
+                                <p class="file-submit"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+
+     <!--九宫格上传图片模板-->
+    <script type="text/template" id="scratchablecard-tpl">
+        <div class="row" >
+            <div class="snapshats col-md-4" id="snapshatcard0" >
+                <form class="file-form form-group col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link0" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview0" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit0 "></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snapshats col-md-4" id="snapshatcard1">
+                <form class="file-form form-group  col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link1" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview1" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit1 "></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snapshats col-md-4  pic-6 z-hidden" id="snapshatcard2">
+                <form class="file-form form-group  col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link2" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview2" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit2 "></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="snapshats col-md-4" id="snapshatcard3">
+                <form class="file-form form-group col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link3" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview3" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit3 "></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snapshats col-md-4" id="snapshatcard4">
+                <form class="file-form form-group  col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link4" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview4" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit4 "></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snapshats col-md-4 pic-6 z-hidden" id="snapshatcard5">
+                <form class="file-form form-group  col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link5" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview5" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit5"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row scratchable-pic-9 z-hidden">
+            <div class="snapshats col-md-4" id="snapshatcard6">
+                <form class="file-form form-group col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link6" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview6" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit6"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snapshats col-md-4" id="snapshatcard7">
+                <form class="file-form form-group  col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link7" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview7" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit7"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="snapshats col-md-4 pic-6" id="snapshatcard8">
+                <form class="file-form form-group  col-md-3" multiple="multiple"  enctype="multipart/form-data" method="POST" action="<%= action %>">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="file" name="<%= name %>" class="file-input" accept="file/*">
+                            <br>
+                            <a class="snapshats-link snapshats-link8" target="_blank" href="/#proj_name#/img/none.png" style="display:block; width: 100px; height: 100px;">
+                                <img class="snapshats-preview8" style="width: 100%;" src="/#proj_name#/img/none.png" alt="附件" />
+                            </a>
+                            <br>
+                            <p class="file-submit file-submit8"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </script>
+
+    <!-- 上传图片详情模板-->
+    <script type="text/template" id="snapshat-detail-tpl">
+        <div class="row snapshats" id="snapshat<%= index %>">
+            <form class="file-form form-group col-md-12" enctype="multipart/form-data" method="POST" action="<%= action %>">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="file" name="<%= name %>"  class="file-input" accept="file/*">
+                                <br>
+                                <a class="snapshats-link" target="_blank" href="<%= url %>" style="display:block; width: 100px; height: 100px;">
+                                    <img class="snapshats-preview" style="width: 100%;" src="<%= url %>" alt="附件" />
+                                </a>
+                                <br>
+                                <p class="file-submit" type="submit" data-url="<%= url %>">图片已上传</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <!-- mid 列表模板 -->
+    <script type="text/template" id="mid-list-tpl">
+        <% for(var prop in data) { %>
+            <li data-id="<%= prop %>">
+                <a href="javascript:void(0);" data-mid="<%= data[prop] %>"><%= data[prop] %></a>
+            </li>
+        <% } %>
+    </script>
+
+    <!--app操作系统模板、九宫格按钮类型-->
+    <script type="text/template" id="type-tpl">
+        <% for(var prop in data) { %>
+            <li data-id="<%= prop %>">
+                <a href="javascript:void(0);" data-mid="<%= data[prop] %>"><%= data[prop] %></a>
+            </li>
+        <% } %>
+    </script>
+
+    <!-- 应用分类模板列表 -->
+    <script type="text/template" id="application-tpl">
+        <li>
+            <%_.each(data.records, function(val, index) { %>
+                <optgroup label="<%= val.name%> ">
+                    <%_.each(val.childs, function(val, index) { %>
+                        <option value="<%= val.id %>"><%= val.name%></option>
+                    <% });%>
+                </optgroup>
+            <% }); %>
+        </li>
+    </script>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/delivery-ad-step2.js"></script>
+{% endblock %}

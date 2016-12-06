@@ -1,0 +1,196 @@
+{% extends '../layouts/default.html' %}
+
+{% block content %}
+<div class="wrapper">
+    {% include '../modules/header.html' %}
+    {% include '../modules/sidebar.html' %}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>我的渠道商明细</h1>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-dashboard"></i> 我的渠道商明细</li>
+            </ol>
+        </section>
+
+        <section class="content content-have-auth" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                        </div>
+                        <div class="col-xs-12 box-toolbar table-toolbar last">
+                            <div class="form-inline">
+
+                                <!-- 拓展进度 -->
+                                <div class="form-group">
+                                    <select id="expand-process" class="form-control select2" style="width: 100%;"></select>
+                                </div>
+
+                                <!-- 渠道商名称、ID -->
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="" placeholder="请输入渠道商名称、ID" id="channel-name">
+                                </div>
+
+                                <!-- 选择日期 -->
+                                <div class="form-group">
+                                    <input type="" name="" id="datepaker" class="form-control" placeholder="选择日期" style="width: 183px;">
+                                </div>
+
+                                <!-- 搜索按钮 -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0);" type="button" class="btn btn-success btn-sm search-btn" id="search">搜索</a>
+                                    <a href="javascript:void(0);" type="button" class="btn btn-info btn-sm export-btn" id="export">导出</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body" id="my-channel-detail">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+ 
+        <section class="content content-no-auth"></section>
+    </div>
+
+    {% include '../modules/copyright.html' %}
+    {% include '../modules/modal.html' %}
+
+    <!-- 渠道商管理模板 -->
+    <script type="text/template" id="my-channel-detail-tpl">
+        <table class="table table-borderd table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>渠道经理</th>
+                    <th>渠道商</th>
+                    <th>地区</th>
+                    <th>级别</th>
+                    <th>自营产品</th>
+                    <th>主要客户</th>
+                    <th>主要行业</th>
+                    <th>合作方向</th>
+                    <th style="text-align: right;">拓展进度</th>
+                    <th style="text-align: right;">创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(data.channels, function(val, index) { %>
+                    <tr>
+                        <td><%= val.id %></td>
+                        <td><%= val.channleManager %></td>
+                        <td><%= val.channelBusiness %></td>
+                        <td><%= val.area %></td>
+                        <td><%= val.grade %></td>
+                        <td><%= val.selfProduct %></td>
+                        <td><%= val.mainCustomer %></td>
+                        <td><%= val.industry %></td>
+                        <td><%= val.cooperateDirection %></td>
+                        <td style="text-align: right;"><%= val.expandProgress %></td>
+                        <td style="text-align: right;"><%= val.posttime %></td>
+                        <td>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-success" id="detail">详情</a>
+                            <a href="/boss/report/contribute-customer?channelBusinessId=<%= val.id%>" class="btn btn-sm btn-info">贡献客户</a>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" class="btn btn-default btn-sm customer-out" data-id="<%= val.id%>">转出</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+        <% if(data.channels.length === 0) { %>
+        <div style="text-align: center; margin: 20px 0 10px;">当前没有数据</div>
+        <% } %>
+
+        <% if(data.pageCount > 1) { %>
+        <nav>
+            <ul class="pagination pull-right table-pageination">
+                <li>
+                    <a href="javascript:void(0);" aria-label="Previous" class="previous" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+               <li class="<%= 1 === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="1" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">1</a>
+                </li>
+               <% if(data.pageCount > 2) {
+                    var end = data.pageCount - 1;
+                    var start = 2;
+                    var pagenum = 7;
+                    if(data.pageCount > pagenum) {
+                        var left = data.page - start;
+                        var right = end- data.page > 2 ? 2:end- data.page;
+                        if(left<2) {
+                            end = start + 4;
+                        } else if(right<2){
+                            start = end - 4;
+                        } else {
+                            start = data.page - 2;
+                            end = data.page + 2;
+                        }
+                    }   
+                    for(var i = start; i <= end; i++) {
+               %>
+                <li class="<%= i === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= i %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= i %></a>
+                </li>
+               <% } }%>
+                <li class="<%= data.pageCount === data.page ? 'active' : '' %>">
+                    <a class="page" href="javascript:void(0);" data-page="<%= data.pageCount %>" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>"><%= data.pageCount %></a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" aria-label="Next" class="next" data-pagecount="<%= data.pageCount %>" data-pagenow="<%= data.page %>" data-ajaxParam="<%= data.ajaxParam %>">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <% } %>
+    </script>
+
+    <script type="text/template" id="modal-tpl" data-type="" data-id="" data-today="" data-days="" data-dateType="">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><%= title %></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                    <div class="col-md-12" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                <label>将渠道商转给：</label>
+                                    <select class="select2 form-control" id="s-person" style="width: 100%;"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+             <button id="cancel" type="button" class="btn btn-default">取消</button>
+            <button id="submit" type="button" class="btn btn-primary">提交</button>
+        </div>
+    </script>
+
+    <!--  拓展进度 -->
+    <script type="text/template" id="expand-process-tpl">
+        <% for(var prop in data) { %>
+            <option value="<%= prop %>"><%= data[prop] %></option>
+        <% } %>
+    </script>
+ 
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/#proj_name#/js/report-my-channel-detail.js"></script>
+{% endblock %} 
